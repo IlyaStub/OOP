@@ -32,14 +32,14 @@ public class Sort {
 
     private static void heapify(int[] array, int len, int root) {
         int largest = root;
-        int left_child = 2 * root + 1;
-        int right_child = 2 * root + 2;
+        int leftChild = 2 * root + 1;
+        int rightChild = 2 * root + 2;
 
-        if (left_child < len && array[left_child] > array[largest]) {
-            largest = left_child;
+        if (leftChild < len && array[leftChild] > array[largest]) {
+            largest = leftChild;
         }
-        if (right_child < len && array[right_child] > array[largest]) {
-            largest = right_child;
+        if (rightChild < len && array[rightChild] > array[largest]) {
+            largest = rightChild;
         }
         if (largest != root) {
             int temp = array[root];
