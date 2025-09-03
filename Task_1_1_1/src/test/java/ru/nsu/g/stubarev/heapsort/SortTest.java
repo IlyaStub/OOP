@@ -1,6 +1,8 @@
 package ru.nsu.g.stubarev.heapsort;
 
 import org.junit.jupiter.api.Test;
+
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class SortTest {
@@ -55,7 +57,9 @@ class SortTest {
         //большие числа как отрицательные так и положительные, ну и маленькие есть
         int[] test10 = new int[]{-1235953403, 342342345, -463244523, 212323, 23, 1, 5};
         int[] result10 = Sort.sort(test10);
-        assertArrayEquals(new int[]{-1235953403, -463244523, 1, 5, 23, 212323,
-                342342345}, result10);
+        assertArrayEquals(
+                new int[]{-1235953403, -463244523, 1, 5, 23, 212323, 342342345},
+                result10
+        );
     }
 }
