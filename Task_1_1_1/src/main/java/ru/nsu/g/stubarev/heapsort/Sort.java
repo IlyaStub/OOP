@@ -10,9 +10,8 @@ public class Sort {
      * Метод sort сортирует массив целых чисел.
      *
      * @param array массив для сортировки
-     * @return отсортированный массив
      */
-    public static int[] sort(int[] array) {
+    public static void sort(int[] array) {
         int len = array.length;
 
         for (int i = len / 2 - 1; i >= 0; i--) {
@@ -26,27 +25,30 @@ public class Sort {
 
             heapify(array, i, 0);
         }
-
-        return array;
     }
 
     private static void heapify(int[] array, int len, int root) {
-        int largest = root;
-        int leftChild = 2 * root + 1;
-        int rightChild = 2 * root + 2;
+        int cur = root;
 
-        if (leftChild < len && array[leftChild] > array[largest]) {
-            largest = leftChild;
-        }
-        if (rightChild < len && array[rightChild] > array[largest]) {
-            largest = rightChild;
-        }
-        if (largest != root) {
-            int temp = array[root];
-            array[root] = array[largest];
+        while(true){
+            int largest = cur;
+            int leftChild = 2 * cur + 1;
+            int rightChild = 2 * cur + 2;
+
+            if (leftChild < len && array[leftChild] > array[largest]) {
+                largest = leftChild;
+            }
+            if (rightChild < len && array[rightChild] > array[largest]) {
+                largest = rightChild;
+            }
+            if (largest == cur){
+                break;
+            }
+            int temp = array[cur];
+            array[cur] = array[largest];
             array[largest] = temp;
 
-            heapify(array, len, largest);
+            cur = largest;
         }
     }
 }
