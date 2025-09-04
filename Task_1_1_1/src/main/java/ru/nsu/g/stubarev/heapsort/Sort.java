@@ -30,7 +30,7 @@ public class Sort {
     private static void heapify(int[] array, int len, int root) {
         int cur = root;
 
-        while(true){
+        while (true) {
             int largest = cur;
             int leftChild = 2 * cur + 1;
             int rightChild = 2 * cur + 2;
@@ -41,7 +41,7 @@ public class Sort {
             if (rightChild < len && array[rightChild] > array[largest]) {
                 largest = rightChild;
             }
-            if (largest == cur){
+            if (largest == cur) {
                 break;
             }
             int temp = array[cur];
