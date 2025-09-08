@@ -97,9 +97,9 @@ class SortTest {
             long endTime = System.nanoTime();
 
             double timeMs = (endTime - startTime) / 1_000_000.0;
-            double nLogn = n * Math.log(n);
+            double nlogn = n * Math.log(n);
 
-            System.out.printf("%d\t%.2f\t%.2f%n", n, timeMs, nLogn);
+            System.out.printf("%d\t%.2f\t%.2f%n", n, timeMs, nlogn);
 
             for (int j = 1; j < n; j++) {
                 if (array[j - 1] > array[j]) {
