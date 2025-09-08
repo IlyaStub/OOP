@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"ru.nsu.g.stubarev.heapsort","c":"Sort","l":"Sort()","u":"%3Cinit%3E()"},{"p":"ru.nsu.g.stubarev.heapsort","c":"Sort","l":"sort(int[])"}];updateSearchResults();

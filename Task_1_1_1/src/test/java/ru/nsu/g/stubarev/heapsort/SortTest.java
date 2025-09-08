@@ -3,6 +3,7 @@ package ru.nsu.g.stubarev.heapsort;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
+import java.util.Random;
 
 class SortTest {
 
@@ -73,5 +74,38 @@ class SortTest {
                 new int[]{-1235953403, -463244523, 1, 5, 23, 212323, 342342345},
                 mixedLargeSmall
         );
+    }
+
+    @Test
+    void timeComplexityAnalysis() {
+        System.out.println("=== Time Complexity Analysis ===");
+        System.out.println("n\tTime(ms)\tn*log(n)");
+        System.out.println("----------------------------");
+
+        Random random = new Random(42);
+        int[] sizes = {1000, 5000, 10000, 20000, 50000, 100000};
+
+        for (int n : sizes) {
+            int[] array = new int[n];
+
+            for (int j = 0; j < n; j++) {
+                array[j] = random.nextInt();
+            }
+
+            long startTime = System.nanoTime();
+            Sort.sort(array);
+            long endTime = System.nanoTime();
+
+            double timeMs = (endTime - startTime) / 1_000_000.0;
+            double nLogN = n * Math.log(n);
+
+            System.out.printf("%d\t%.2f\t%.2f%n", n, timeMs, nLogN);
+
+            for (int j = 1; j < n; j++) {
+                if (array[j - 1] > array[j]) {
+                    throw new AssertionError("Array not sorted correctly for size " + n);
+                }
+            }
+        }
     }
 }
