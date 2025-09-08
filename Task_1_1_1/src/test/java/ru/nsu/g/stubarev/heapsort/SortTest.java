@@ -2,8 +2,8 @@ package ru.nsu.g.stubarev.heapsort;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import org.junit.jupiter.api.Test;
 import java.util.Random;
+import org.junit.jupiter.api.Test;
 
 class SortTest {
 
@@ -97,9 +97,9 @@ class SortTest {
             long endTime = System.nanoTime();
 
             double timeMs = (endTime - startTime) / 1_000_000.0;
-            double nLogN = n * Math.log(n);
+            double nLogn = n * Math.log(n);
 
-            System.out.printf("%d\t%.2f\t%.2f%n", n, timeMs, nLogN);
+            System.out.printf("%d\t%.2f\t%.2f%n", n, timeMs, nLogn);
 
             for (int j = 1; j < n; j++) {
                 if (array[j - 1] > array[j]) {
