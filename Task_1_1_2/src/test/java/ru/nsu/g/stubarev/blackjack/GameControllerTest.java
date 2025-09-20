@@ -137,9 +137,11 @@ class GameControllerTest {
 
         assertTrue(result);
     }
+
     @Test
     void testPlayDealerTurn_DealerRevealsHiddenCard() {
         Deck deck = new Deck();
+
         Hand playerHand = new Hand();
         Hand dealerHand = new Hand();
 

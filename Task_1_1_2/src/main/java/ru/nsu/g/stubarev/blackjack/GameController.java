@@ -110,21 +110,23 @@ public class GameController {
     }
 
     private static boolean stopGame(Scanner scan) {
-        if (scan.hasNextInt()) {
-            switch (scan.nextInt()) {
-                case 0:
-                    return false;
-                case 1:
-                    return true;
-                default:
-                    Parser.printError(Errors.WRONG_INPUT);
-                    scan.next();
+        while (true) {
+            if (scan.hasNextInt()) {
+                int input = scan.nextInt();
+                switch (input) {
+                    case 0:
+                        return false;
+                    case 1:
+                        return true;
+                    default:
+                        Parser.printError(Errors.WRONG_INPUT);
+                        break;
+                }
+            } else {
+                Parser.printError(Errors.WRONG_INPUT);
+                scan.next();
             }
-        } else {
-            Parser.printError(Errors.WRONG_INPUT);
-            scan.next();
         }
-        return false;
     }
 
     private static void dealInitialCards(Deck deck, Hand playerHand, Hand dealerHand) {
