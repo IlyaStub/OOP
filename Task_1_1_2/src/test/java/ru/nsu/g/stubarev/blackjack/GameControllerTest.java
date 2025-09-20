@@ -57,7 +57,21 @@ class GameControllerTest {
 
     @Test
     void testStopGame_InvalidInput_ReturnsFalse() {
-        assertFalse(GameController.testStopGame("2"));
+        assertFalse(GameController.testStopGame("2\n0\n"));
+        String output = outputStream.toString();
+        assertTrue(output.contains("Invalid input. Please enter 0 or 1."));
+    }
+
+    @Test
+    void testPlayPlayerTurn_InvalidInputThenValidInput_ContinuesCorrectly() {
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        boolean result = GameController.testPlayPlayerTurn("2\n0", deck,
+                playerHand, dealerHand);
+
+        assertFalse(result);
         String output = outputStream.toString();
         assertTrue(output.contains("Invalid input. Please enter 0 or 1."));
     }
@@ -143,8 +157,8 @@ class GameControllerTest {
         Deck deck = new Deck();
 
         Hand playerHand = new Hand();
+        playerHand.addCardToHand(deck);
         Hand dealerHand = new Hand();
-
         dealerHand.addCardToHand(deck);
         dealerHand.addCardToHand(deck, true);
 

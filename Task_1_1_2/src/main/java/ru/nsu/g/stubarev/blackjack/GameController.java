@@ -120,7 +120,6 @@ public class GameController {
                         return true;
                     default:
                         Parser.printError(Errors.WRONG_INPUT);
-                        break;
                 }
             } else {
                 Parser.printError(Errors.WRONG_INPUT);
@@ -159,7 +158,6 @@ public class GameController {
                         break;
                     default:
                         Parser.printError(Errors.WRONG_INPUT);
-                        scan.next();
                 }
             } else {
                 Parser.printError(Errors.WRONG_INPUT);
