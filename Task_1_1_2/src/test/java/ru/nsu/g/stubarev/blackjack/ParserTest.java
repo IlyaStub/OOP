@@ -116,7 +116,9 @@ class ParserTest {
     @Test
     void printError() {
         Parser.printError(GameController.Errors.WRONG_INPUT);
-        String expected = "Error: " + GameController.Errors.WRONG_INPUT.getMessage() + System.lineSeparator();
+        String expected = "Error: "
+                + GameController.Errors.WRONG_INPUT.getMessage()
+                + System.lineSeparator();
         assertEquals(expected, outputStream.toString());
     }
 }

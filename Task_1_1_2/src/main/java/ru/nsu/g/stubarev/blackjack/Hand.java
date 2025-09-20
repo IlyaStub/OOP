@@ -10,7 +10,7 @@ public class Hand {
     private final ArrayList<Card> hand;
 
     /**
-     * Gets the copy of hand
+     * Gets the copy of hand.
      *
      * @return copy of hand
      */

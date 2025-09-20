@@ -1,12 +1,14 @@
 package ru.nsu.g.stubarev.blackjack;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class GameControllerTest {
 
@@ -26,7 +28,7 @@ class GameControllerTest {
     @Test
     void testIsLoser_WhenHandOver21_ReturnsTrue() {
         Hand hand = new Hand();
-        // Добавляем карты до перебора
+
         Deck deck = new Deck();
         for (int i = 0; i < 10; i++) {
             hand.addCardToHand(deck);
@@ -55,9 +57,21 @@ class GameControllerTest {
 
     @Test
     void testStopGame_InvalidInput_ReturnsFalse() {
-        assertFalse(GameController.testStopGame("invalid"));
+        assertFalse(GameController.testStopGame("2"));
         String output = outputStream.toString();
         assertTrue(output.contains("Invalid input. Please enter 0 or 1."));
+    }
+
+    @Test
+    void testPlayPlayerTurn_PlayerTakesOneCardAndStops_ReturnsFalse() {
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        boolean result = GameController.testPlayPlayerTurn("1\n0", deck, playerHand, dealerHand);
+
+        assertFalse(result);
+        assertEquals(1, playerHand.getHand().size());
     }
 
     @Test
@@ -90,7 +104,8 @@ class GameControllerTest {
         Hand dealerHand = new Hand();
 
         boolean result =
-                GameController.testPlayPlayerTurn("1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n", deck, playerHand, dealerHand);
+                GameController.testPlayPlayerTurn("1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n",
+                        deck, playerHand, dealerHand);
 
         assertTrue(result);
     }
@@ -122,4 +137,21 @@ class GameControllerTest {
 
         assertTrue(result);
     }
+    @Test
+    void testPlayDealerTurn_DealerRevealsHiddenCard() {
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        dealerHand.addCardToHand(deck);
+        dealerHand.addCardToHand(deck, true);
+
+        assertTrue(dealerHand.getHand().get(1).isHidden());
+        GameController.testPlayDealerTurn(deck, playerHand, dealerHand);
+
+        for (Card card : dealerHand.getHand()) {
+            assertFalse(card.isHidden());
+        }
+    }
+
 }
