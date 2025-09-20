@@ -21,7 +21,7 @@ public class Hand {
      * @return the last card in the hand
      */
     public Card getLastCard() {
-        return hand.getLast();
+        return hand.get(hand.size() - 1);
     }
 
     /**
@@ -45,7 +45,7 @@ public class Hand {
      * Reveals the last hidden card in the hand.
      */
     public void revealHiddenCard() {
-        hand.getLast().setHidden(false);
+        hand.get(hand.size() - 1).setHidden(false);
     }
 
     /**

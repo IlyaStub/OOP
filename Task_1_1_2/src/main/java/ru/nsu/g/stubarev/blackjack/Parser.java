@@ -1,11 +1,7 @@
 package ru.nsu.g.stubarev.blackjack;
 
-import javax.sound.midi.Soundbank;
-import java.sql.SQLOutput;
-
 /**
  * Utility class for handling game output and user interface messages.
- * This class contains static methods for printing game information.
  */
 public class Parser {
 
@@ -18,6 +14,7 @@ public class Parser {
 
     /**
      * Prints round information.
+     *
      * @param round current round number
      */
     public static void printRound(int round) {
@@ -27,6 +24,7 @@ public class Parser {
 
     /**
      * Prints both player's and dealer's hands.
+     *
      * @param playerHand the player's hand
      * @param dealerHand the dealer's hand
      */
@@ -37,6 +35,7 @@ public class Parser {
 
     /**
      * Prints turn information for the specified player.
+     *
      * @param player the player whose turn it is
      */
     public static void printTurn(GameController.Players player) {
@@ -52,6 +51,7 @@ public class Parser {
 
     /**
      * Prints information about a revealed card.
+     *
      * @param card the card that was revealed
      * @param player the player who revealed the card
      */
@@ -65,6 +65,7 @@ public class Parser {
 
     /**
      * Prints information about a revealed hidden card.
+     *
      * @param card the hidden card that was revealed
      */
     public static void printOpenHiddenCard(Card card) {
@@ -73,6 +74,7 @@ public class Parser {
 
     /**
      * Prints round result and updated scores.
+     *
      * @param loser the player who lost (null for draw)
      * @param playerScore current player score
      * @param dealerScore current dealer score
@@ -93,6 +95,7 @@ public class Parser {
 
     /**
      * Prints error message.
+     *
      * @param error the error to display
      */
     public static void printError(GameController.Errors error) {

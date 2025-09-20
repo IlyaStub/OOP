@@ -9,57 +9,31 @@ public class Card {
      * Enum representing card ranks with their values.
      */
     public enum Rank {
-        /**
-         * Two with value 2
-         */
+        /** Two with value 2. */
         TWO("Two", 2),
-        /**
-         * Three with value 3
-         */
+        /** Three with value 3. */
         THREE("Three", 3),
-        /**
-         * Four with value 4
-         */
+        /** Four with value 4. */
         FOUR("Four", 4),
-        /**
-         * Five with value 5
-         */
+        /** Five with value 5. */
         FIVE("Five", 5),
-        /**
-         * Six with value 6
-         */
+        /** Six with value 6. */
         SIX("Six", 6),
-        /**
-         * Seven with value 7
-         */
+        /** Seven with value 7. */
         SEVEN("Seven", 7),
-        /**
-         * Eight with value 8
-         */
+        /** Eight with value 8. */
         EIGHT("Eight", 8),
-        /**
-         * Nine with value 9
-         */
+        /** Nine with value 9. */
         NINE("Nine", 9),
-        /**
-         * Ten with value 10
-         */
+        /** Ten with value 10. */
         TEN("Ten", 10),
-        /**
-         * Jack with value 10
-         */
+        /** Jack with value 10. */
         JACK("Jack", 10),
-        /**
-         * Queen with value 10
-         */
+        /** Queen with value 10. */
         QUEEN("Queen", 10),
-        /**
-         * King with value 10
-         */
+        /** King with value 10. */
         KING("King", 10),
-        /**
-         * Ace with value 11 (can be adjusted to 1)
-         */
+        /** Ace with value 11 (can be adjusted to 1). */
         ACE("Ace", 11);
 
         private final String title;
@@ -68,7 +42,7 @@ public class Card {
         /**
          * Constructs a rank with title and point value.
          *
-         * @param title  the display title
+         * @param title the display title
          * @param points the point value
          */
         Rank(String title, int points) {
@@ -99,21 +73,13 @@ public class Card {
      * Enum representing card suits.
      */
     public enum Suit {
-        /**
-         * Spades suit
-         */
+        /** Spades suit. */
         SPADES("Spades"),
-        /**
-         * Hearts suit
-         */
+        /** Hearts suit. */
         HEARTS("Hearts"),
-        /**
-         * Diamonds suit
-         */
+        /** Diamonds suit. */
         DIAMONDS("Diamonds"),
-        /**
-         * Clubs suit
-         */
+        /** Clubs suit. */
         CLUBS("Clubs");
 
         private final String name;
