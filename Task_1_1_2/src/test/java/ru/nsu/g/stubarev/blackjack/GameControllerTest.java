@@ -90,7 +90,7 @@ class GameControllerTest {
         Hand dealerHand = new Hand();
 
         boolean result =
-                GameController.testPlayPlayerTurn("1\n1\n1\n1\n1", deck, playerHand, dealerHand);
+                GameController.testPlayPlayerTurn("1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n", deck, playerHand, dealerHand);
 
         assertTrue(result);
     }
