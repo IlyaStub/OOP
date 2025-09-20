@@ -148,6 +148,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Draws a random card from the deck.</div>
 </dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/Hand.html#getHand()" class="member-name-link">getHand()</a> - Method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a></dt>
+<dd>
+<div class="block">Gets the copy of hand</div>
+</dd>
 <dt><a href="ru/nsu/g/stubarev/blackjack/Hand.html#getLastCard()" class="member-name-link">getLastCard()</a> - Method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a></dt>
 <dd>
 <div class="block">Gets the last card added to the hand.</div>
@@ -215,16 +219,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
-<dt><a href="ru/nsu/g/stubarev/blackjack/Main.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/Main.html" title="class in ru.nsu.g.stubarev.blackjack">Main</a></dt>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
 <dd>
 <div class="block">Main method that starts the Blackjack game.</div>
 </dd>
-<dt><a href="ru/nsu/g/stubarev/blackjack/Main.html" class="type-name-link" title="class in ru.nsu.g.stubarev.blackjack">Main</a> - Class in <a href="ru/nsu/g/stubarev/blackjack/package-summary.html">ru.nsu.g.stubarev.blackjack</a></dt>
-<dd>
-<div class="block">Main class that serves as the entry point for the Blackjack application.</div>
-</dd>
-<dt><a href="ru/nsu/g/stubarev/blackjack/Main.html#%3Cinit%3E()" class="member-name-link">Main()</a> - Constructor for class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/Main.html" title="class in ru.nsu.g.stubarev.blackjack">Main</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
@@ -318,6 +316,30 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/g/stubarev/blackjack/Card.Rank.html#TEN" class="member-name-link">TEN</a> - Enum constant in enum class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/Card.Rank.html" title="enum class in ru.nsu.g.stubarev.blackjack">Card.Rank</a></dt>
 <dd>
 <div class="block">Ten with value 10.</div>
+</dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#testDealInitialCards(ru.nsu.g.stubarev.blackjack.Deck,ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand)" class="member-name-link">testDealInitialCards(Deck, Hand, Hand)</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
+<dd>
+<div class="block">Public wrapper for testing dealInitialCards logic.</div>
+</dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#testDetermineRoundWinner(ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand,int,int)" class="member-name-link">testDetermineRoundWinner(Hand, Hand, int, int)</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
+<dd>
+<div class="block">Public wrapper for testing determineRoundWinner logic.</div>
+</dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#testIsLoser(ru.nsu.g.stubarev.blackjack.Hand)" class="member-name-link">testIsLoser(Hand)</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
+<dd>
+<div class="block">Public wrapper for testing isLoser logic.</div>
+</dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#testPlayDealerTurn(ru.nsu.g.stubarev.blackjack.Deck,ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand)" class="member-name-link">testPlayDealerTurn(Deck, Hand, Hand)</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
+<dd>
+<div class="block">Public wrapper for testing playDealerTurn logic.</div>
+</dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#testPlayPlayerTurn(java.lang.String,ru.nsu.g.stubarev.blackjack.Deck,ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand)" class="member-name-link">testPlayPlayerTurn(String, Deck, Hand, Hand)</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
+<dd>
+<div class="block">Public wrapper for testing playPlayerTurn logic.</div>
+</dd>
+<dt><a href="ru/nsu/g/stubarev/blackjack/GameController.html#testStopGame(java.lang.String)" class="member-name-link">testStopGame(String)</a> - Static method in class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/GameController.html" title="class in ru.nsu.g.stubarev.blackjack">GameController</a></dt>
+<dd>
+<div class="block">Public wrapper for testing stopGame logic.</div>
 </dd>
 <dt><a href="ru/nsu/g/stubarev/blackjack/Card.Rank.html#THREE" class="member-name-link">THREE</a> - Enum constant in enum class ru.nsu.g.stubarev.blackjack.<a href="ru/nsu/g/stubarev/blackjack/Card.Rank.html" title="enum class in ru.nsu.g.stubarev.blackjack">Card.Rank</a></dt>
 <dd>
