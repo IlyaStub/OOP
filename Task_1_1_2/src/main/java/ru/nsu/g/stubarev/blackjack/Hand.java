@@ -18,6 +18,7 @@ public class Hand {
 
     /**
      * Gets the last card added to the hand.
+     *
      * @return the last card in the hand
      */
     public Card getLastCard() {
@@ -26,6 +27,7 @@ public class Hand {
 
     /**
      * Adds a card to the hand from the deck.
+     *
      * @param deck the deck to draw from
      * @param hidden whether the card should be hidden
      */
@@ -35,6 +37,7 @@ public class Hand {
 
     /**
      * Adds a visible card to the hand from the deck. (ordinary)
+     *
      * @param deck the deck to draw from
      */
     public void addCardToHand(Deck deck) {
@@ -50,6 +53,7 @@ public class Hand {
 
     /**
      * Calculates the total points of the hand with Ace adjustment.
+     *
      * @return the sum of points in the hand
      */
     public int getSumPoints() {
@@ -72,6 +76,7 @@ public class Hand {
 
     /**
      * Returns string representation of the hand.
+     *
      * @return string showing cards and total points if all visible
      */
     @Override

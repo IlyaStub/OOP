@@ -12,9 +12,7 @@ public class GameController {
      * Enum representing possible error messages in the game.
      */
     public enum Errors {
-        /**
-         * Invalid input error
-         */
+        /** Invalid input error. */
         WRONG_INPUT("Invalid input. Please enter 0 or 1.");
 
         private final String message;
@@ -181,7 +179,6 @@ public class GameController {
         return false;
     }
 
-    // Определение победителя раунда
     private static int[] determineRoundWinner(Hand playerHand, Hand dealerHand,
                                               int playerScore, int dealerScore) {
         int playerPoints = playerHand.getSumPoints();
