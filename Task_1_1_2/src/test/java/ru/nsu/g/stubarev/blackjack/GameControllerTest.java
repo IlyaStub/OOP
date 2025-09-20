@@ -138,6 +138,30 @@ class GameControllerTest {
     }
 
     @Test
+    void testDetermineRoundWinner_DealerWins() {
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        dealerHand.addCardToHand(new Deck());
+
+        int[] result = GameController.testDetermineRoundWinner(playerHand, dealerHand, 0, 0);
+
+        assertEquals(0, result[0]);
+        assertEquals(1, result[1]);
+    }
+
+    @Test
+    void testDetermineRoundWinner_Tie() {
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        int[] result = GameController.testDetermineRoundWinner(playerHand, dealerHand, 2, 3);
+
+        assertEquals(2, result[0]);
+        assertEquals(3, result[1]);
+    }
+
+    @Test
     void testPlayDealerTurn_DealerBusts_ReturnsTrue() {
         Deck deck = new Deck();
         Hand playerHand = new Hand();
@@ -170,4 +194,15 @@ class GameControllerTest {
         }
     }
 
+    @Test
+    void testErrorsEnum_GetMessage() {
+        assertEquals("Invalid input. Please enter 0 or 1.",
+                GameController.Errors.WRONG_INPUT.getMessage());
+    }
+
+    @Test
+    void testPlayersEnum_Values() {
+        assertEquals("PLAYER", GameController.Players.PLAYER.name());
+        assertEquals("DEALER", GameController.Players.DEALER.name());
+    }
 }
