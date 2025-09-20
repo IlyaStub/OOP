@@ -9,6 +9,15 @@ import java.util.Scanner;
 public class GameController {
 
     /**
+     * Main method that starts the Blackjack game.
+     *
+     * @param args command line arguments (not used)
+     */
+    public static void main(String[] args) {
+        game();
+    }
+
+    /**
      * Enum representing possible error messages in the game.
      */
     public enum Errors {
@@ -159,6 +168,9 @@ public class GameController {
     }
 
     private static boolean playDealerTurn(Deck deck, Hand playerHand, Hand dealerHand) {
+        if (dealerHand.getSumPoints() > 21) {
+            return true;
+        }
         Parser.printTurn(Players.DEALER);
 
         dealerHand.revealHiddenCard();
@@ -194,5 +206,51 @@ public class GameController {
             Parser.printLoser(null, playerScore, dealerScore);
         }
         return new int[]{playerScore, dealerScore};
+    }
+
+    /**
+     * Public wrapper for testing isLoser logic.
+     */
+    public static boolean testIsLoser(Hand hand) {
+        return isLoser(hand);
+    }
+
+    /**
+     * Public wrapper for testing stopGame logic.
+     */
+    public static boolean testStopGame(String input) {
+        Scanner scan = new Scanner(input);
+        return stopGame(scan);
+    }
+
+    /**
+     * Public wrapper for testing dealInitialCards logic.
+     */
+    public static void testDealInitialCards(Deck deck, Hand playerHand, Hand dealerHand) {
+        dealInitialCards(deck, playerHand, dealerHand);
+    }
+
+    /**
+     * Public wrapper for testing playPlayerTurn logic.
+     */
+    public static boolean testPlayPlayerTurn(String input, Deck deck,
+                                             Hand playerHand, Hand dealerHand) {
+        Scanner scan = new Scanner(input);
+        return playPlayerTurn(scan, deck, playerHand, dealerHand);
+    }
+
+    /**
+     * Public wrapper for testing playDealerTurn logic.
+     */
+    public static boolean testPlayDealerTurn(Deck deck, Hand playerHand, Hand dealerHand) {
+        return playDealerTurn(deck, playerHand, dealerHand);
+    }
+
+    /**
+     * Public wrapper for testing determineRoundWinner logic.
+     */
+    public static int[] testDetermineRoundWinner(Hand playerHand, Hand dealerHand,
+                                                 int playerScore, int dealerScore) {
+        return determineRoundWinner(playerHand, dealerHand, playerScore, dealerScore);
     }
 }

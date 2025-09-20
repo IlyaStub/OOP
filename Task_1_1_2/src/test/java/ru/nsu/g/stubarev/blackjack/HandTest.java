@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 class HandTest {
@@ -16,6 +17,22 @@ class HandTest {
         assertNotNull(hand);
         assertEquals(0, hand.getSumPoints());
         assertTrue(hand.toString().contains("[]"));
+    }
+
+    @Test
+    void testGetHand() {
+        Hand hand = new Hand();
+        Deck deck = new Deck();
+
+        assertNotNull(hand.getHand());
+        assertTrue(hand.getHand().isEmpty());
+
+        hand.addCardToHand(deck);
+        hand.addCardToHand(deck);
+
+        ArrayList<Card> cards = hand.getHand();
+        assertNotNull(cards);
+        assertEquals(2, cards.size());
     }
 
     @Test

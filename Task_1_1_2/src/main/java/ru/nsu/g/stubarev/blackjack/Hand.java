@@ -10,6 +10,15 @@ public class Hand {
     private final ArrayList<Card> hand;
 
     /**
+     * Gets the copy of hand
+     *
+     * @return copy of hand
+     */
+    public ArrayList<Card> getHand() {
+        return new ArrayList<>(hand);
+    }
+
+    /**
      * Constructs an empty hand.
      */
     public Hand() {

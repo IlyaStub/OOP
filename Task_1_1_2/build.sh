@@ -9,4 +9,4 @@ javadoc -d build/docs -sourcepath src/main/java -subpackages ru.nsu.g.stubarev.b
 
 jar -cf build/jar/blackjack.jar -C build/classes .
 
-java -cp build/classes ru.nsu.g.stubarev.blackjack.Main
+java -cp build/classes ru.nsu.g.stubarev.blackjack.GameController
