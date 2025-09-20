@@ -40,9 +40,9 @@ public class GameController {
      * Enum representing the players in the game.
      */
     public enum Players {
-        /** Player participant */
+        /** Player participant. */
         PLAYER,
-        /** Dealer participant */
+        /** Dealer participant. */
         DEALER
     }
 
