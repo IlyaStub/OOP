@@ -7,16 +7,6 @@ import java.util.Scanner;
  * Handles player and dealer turns, scoring, and game logic.
  */
 public class GameController {
-
-    /**
-     * Main method that starts the Blackjack game.
-     *
-     * @param args command line arguments (not used)
-     */
-    public static void main(String[] args) {
-        game();
-    }
-
     /**
      * Enum representing possible error messages in the game.
      */
@@ -56,10 +46,11 @@ public class GameController {
     }
 
     /**
-     * Main game method that runs the Blackjack game.
-     * Manages rounds, scoring, and game flow.
+     * Main method that starts the Blackjack game.
+     *
+     * @param args command line arguments (not used)
      */
-    public static void game() {
+    public static void main(String[] args) {
         Parser.printWelcome();
         int round = 1;
         int playerScore = 0;
