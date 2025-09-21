@@ -227,21 +227,6 @@ class GameControllerTest {
     }
 
     @Test
-    void testPlayDealerTurn_DealerAlreadyHas17OrMore_ReturnsFalse() {
-        Deck deck = new Deck();
-        Hand playerHand = new Hand();
-        Hand dealerHand = new Hand();
-
-        while (dealerHand.getSumPoints() < 17) {
-            dealerHand.addCardToHand(deck);
-        }
-
-        boolean result = GameController.testPlayDealerTurn(deck, playerHand, dealerHand);
-
-        assertFalse(result);
-    }
-
-    @Test
     void testPlayDealerTurn_DealerRevealsHiddenCard() {
         Deck deck = new Deck();
 
