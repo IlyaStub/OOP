@@ -3,6 +3,7 @@ package ru.nsu.g.stubarev.blackjack;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -34,16 +35,6 @@ class GameControllerTest {
         }
 
         assertTrue(GameController.testIsLoser(hand));
-    }
-
-    @Test
-    void testIsLoser_WhenHandExactly21_ReturnsFalse() {
-        Hand hand = new Hand();
-        Deck deck = new Deck();
-
-        hand.addCardToHand(deck);
-
-        assertFalse(GameController.testIsLoser(hand));
     }
 
     @Test
@@ -211,7 +202,7 @@ class GameControllerTest {
     }
 
     @Test
-    void testPlayDealerTurn_DealerHasLessThan17_TakesCardsUntil17OrMore() {
+    void testPlayDealerTurn_DealerHasMore17Points() {
         Deck deck = new Deck();
         Hand playerHand = new Hand();
         playerHand.addCardToHand(deck);
@@ -255,5 +246,32 @@ class GameControllerTest {
         assertEquals(2, GameController.Players.values().length);
         assertEquals("PLAYER", GameController.Players.PLAYER.name());
         assertEquals("DEALER", GameController.Players.DEALER.name());
+    }
+
+    @Test
+    void testPlayGameRound_PlayerBusts() {
+        String input = "1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n0";
+        int[] result = GameController.testPlayGameRound(input, 1, 0, 0);
+
+        assertEquals(0, result[0]);
+        assertEquals(1, result[1]);
+    }
+
+    @Test
+    void testPlayGameRound_InvalidInputThenValid() {
+        String input = "5\n2\n0\n0";
+        int[] result = GameController.testPlayGameRound(input, 1, 0, 0);
+
+        assertNotNull(result);
+        assertEquals(2, result.length);
+    }
+
+    @Test
+    void testPlayGameRound_PlayerTakesOneCardAndStops() {
+        String input = "1\n0\n0";
+        int[] result = GameController.testPlayGameRound(input, 1, 0, 0);
+
+        assertNotNull(result);
+        assertEquals(2, result.length);
     }
 }

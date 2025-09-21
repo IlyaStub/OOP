@@ -57,43 +57,49 @@ public class GameController {
         int dealerScore = 0;
         Scanner scan = new Scanner(System.in);
 
-        outer_loop:
         while (true) {
-            Parser.printRound(round++);
-
-            Deck deck = new Deck();
-            Hand playerHand = new Hand();
-            Hand dealerHand = new Hand();
-
-            dealInitialCards(deck, playerHand, dealerHand);
-            Parser.printHands(playerHand, dealerHand);
-
-            if (playPlayerTurn(scan, deck, playerHand, dealerHand)) {
-                dealerScore++;
-                Parser.printLoser(Players.PLAYER, playerScore, dealerScore);
-                if (stopGame(scan)) {
-                    break;
-                }
-                continue;
-            }
-
-            if (playDealerTurn(deck, playerHand, dealerHand)) {
-                playerScore++;
-                Parser.printLoser(Players.DEALER, playerScore, dealerScore);
-                if (stopGame(scan)) {
-                    break;
-                }
-                continue;
-            }
-
-            int[] scores = determineRoundWinner(playerHand, dealerHand, playerScore, dealerScore);
-            playerScore = scores[0];
-            dealerScore = scores[1];
+            int[] newScores = playGameRound(scan, round++, playerScore, dealerScore);
+            playerScore = newScores[0];
+            dealerScore = newScores[1];
 
             if (stopGame(scan)) {
                 break;
             }
         }
+    }
+
+    /**
+     * Plays one complete round of Blackjack.
+     *
+     * @param scan Scanner for user input
+     * @param round current round number
+     * @param playerScore current player score
+     * @param dealerScore current dealer score
+     * @return array with updated scores [playerScore, dealerScore]
+     */
+    private static int[] playGameRound(Scanner scan, int round, int playerScore, int dealerScore) {
+        Parser.printRound(round);
+
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        dealInitialCards(deck, playerHand, dealerHand);
+        Parser.printHands(playerHand, dealerHand);
+
+        if (playPlayerTurn(scan, deck, playerHand, dealerHand)) {
+            dealerScore++;
+            Parser.printLoser(Players.PLAYER, playerScore, dealerScore);
+            return new int[]{playerScore, dealerScore};
+        }
+
+        if (playDealerTurn(deck, playerHand, dealerHand)) {
+            playerScore++;
+            Parser.printLoser(Players.DEALER, playerScore, dealerScore);
+            return new int[]{playerScore, dealerScore};
+        }
+
+        return determineRoundWinner(playerHand, dealerHand, playerScore, dealerScore);
     }
 
     private static boolean isLoser(Hand hand) {
@@ -159,7 +165,7 @@ public class GameController {
     }
 
     private static boolean playDealerTurn(Deck deck, Hand playerHand, Hand dealerHand) {
-        if (dealerHand.getSumPoints() > 21) {
+        if (isLoser(dealerHand)) {
             return true;
         }
         Parser.printTurn(Players.DEALER);
@@ -243,5 +249,13 @@ public class GameController {
     public static int[] testDetermineRoundWinner(Hand playerHand, Hand dealerHand,
                                                  int playerScore, int dealerScore) {
         return determineRoundWinner(playerHand, dealerHand, playerScore, dealerScore);
+    }
+
+    /**
+     * Public wrapper for testing playGameRound logic.
+     */
+    public static int[] testPlayGameRound(String input, int round, int playerScore, int dealerScore) {
+        Scanner scan = new Scanner(input);
+        return playGameRound(scan, round, playerScore, dealerScore);
     }
 }
