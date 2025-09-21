@@ -30,11 +30,21 @@ class GameControllerTest {
         Hand hand = new Hand();
 
         Deck deck = new Deck();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 13; i++) {
             hand.addCardToHand(deck);
         }
 
         assertTrue(GameController.testIsLoser(hand));
+    }
+
+    @Test
+    void testIsLoser_WhenHandExactly21_ReturnsFalse() {
+        Hand hand = new Hand();
+        Deck deck = new Deck();
+
+        hand.addCardToHand(deck);
+
+        assertFalse(GameController.testIsLoser(hand));
     }
 
     @Test
@@ -58,6 +68,13 @@ class GameControllerTest {
     @Test
     void testStopGame_InvalidInput_ReturnsFalse() {
         assertFalse(GameController.testStopGame("2\n0\n"));
+        String output = outputStream.toString();
+        assertTrue(output.contains("Invalid input. Please enter 0 or 1."));
+    }
+
+    @Test
+    void testStopGame_InvalidInput_ReturnsTrue() {
+        assertTrue(GameController.testStopGame("2\n1\n"));
         String output = outputStream.toString();
         assertTrue(output.contains("Invalid input. Please enter 0 or 1."));
     }
@@ -98,7 +115,24 @@ class GameControllerTest {
 
         assertEquals(2, playerHand.getHand().size());
         assertEquals(2, dealerHand.getHand().size());
+        assertTrue(dealerHand.getHand().get(1).isHidden());
     }
+
+    @Test
+    void testPlayPlayerTurn_InvalidInputFollowedByTakeCard() {
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        boolean result = GameController.testPlayPlayerTurn("5\n1\n0",
+                deck, playerHand, dealerHand);
+
+        assertFalse(result);
+        assertEquals(1, playerHand.getHand().size());
+        String output = outputStream.toString();
+        assertTrue(output.contains("Invalid input. Please enter 0 or 1."));
+    }
+
 
     @Test
     void testPlayPlayerTurn_PlayerStops_ReturnsFalse() {
@@ -109,6 +143,7 @@ class GameControllerTest {
         boolean result = GameController.testPlayPlayerTurn("0", deck, playerHand, dealerHand);
 
         assertFalse(result);
+        assertEquals(0, playerHand.getHand().size());
     }
 
     @Test
@@ -177,6 +212,36 @@ class GameControllerTest {
     }
 
     @Test
+    void testPlayDealerTurn_DealerHasLessThan17_TakesCardsUntil17OrMore() {
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        playerHand.addCardToHand(deck);
+        Hand dealerHand = new Hand();
+        dealerHand.addCardToHand(deck);
+
+        int initialPoints = dealerHand.getSumPoints();
+        GameController.testPlayDealerTurn(deck, playerHand, dealerHand);
+
+        assertTrue(dealerHand.getSumPoints() >= 17);
+        assertTrue(dealerHand.getSumPoints() > initialPoints);
+    }
+
+    @Test
+    void testPlayDealerTurn_DealerAlreadyHas17OrMore_ReturnsFalse() {
+        Deck deck = new Deck();
+        Hand playerHand = new Hand();
+        Hand dealerHand = new Hand();
+
+        while (dealerHand.getSumPoints() < 17) {
+            dealerHand.addCardToHand(deck);
+        }
+
+        boolean result = GameController.testPlayDealerTurn(deck, playerHand, dealerHand);
+
+        assertFalse(result);
+    }
+
+    @Test
     void testPlayDealerTurn_DealerRevealsHiddenCard() {
         Deck deck = new Deck();
 
@@ -196,12 +261,14 @@ class GameControllerTest {
 
     @Test
     void testErrorsEnum_GetMessage() {
+        assertEquals(1, GameController.Errors.values().length);
         assertEquals("Invalid input. Please enter 0 or 1.",
                 GameController.Errors.WRONG_INPUT.getMessage());
     }
 
     @Test
     void testPlayersEnum_Values() {
+        assertEquals(2, GameController.Players.values().length);
         assertEquals("PLAYER", GameController.Players.PLAYER.name());
         assertEquals("DEALER", GameController.Players.DEALER.name());
     }
