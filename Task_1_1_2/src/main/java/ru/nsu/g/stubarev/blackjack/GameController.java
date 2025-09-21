@@ -254,7 +254,8 @@ public class GameController {
     /**
      * Public wrapper for testing playGameRound logic.
      */
-    public static int[] testPlayGameRound(String input, int round, int playerScore, int dealerScore) {
+    public static int[] testPlayGameRound(String input, int round,
+                                          int playerScore, int dealerScore) {
         Scanner scan = new Scanner(input);
         return playGameRound(scan, round, playerScore, dealerScore);
     }
