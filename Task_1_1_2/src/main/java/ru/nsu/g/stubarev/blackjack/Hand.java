@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Hand {
     private final ArrayList<Card> hand;
 
-    private final int MAX_POINT = 21;
+    private final int maxPoint = 21;
 
     /**
      * Gets the copy of hand.
@@ -25,8 +25,8 @@ public class Hand {
      *
      * @return const MAX_POINT = 21
      */
-    protected int getMAX_POINT() {
-        return MAX_POINT;
+    protected int getMaxPoint() {
+        return maxPoint;
     }
 
     /**
@@ -87,7 +87,7 @@ public class Hand {
                 cntAce++;
             }
         }
-        while (summ > MAX_POINT && cntAce > 0) {
+        while (summ > maxPoint && cntAce > 0) {
             summ -= 10;
             cntAce--;
         }

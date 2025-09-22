@@ -103,7 +103,7 @@ public class GameController {
     }
 
     private static boolean isLoser(Hand hand) {
-        return hand.getSumPoints() > hand.getMAX_POINT();
+        return hand.getSumPoints() > hand.getMaxPoint();
     }
 
     private static boolean stopGame(Scanner scan) {
