@@ -2,7 +2,6 @@ package ru.nsu.g.stubarev.blackjack;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -153,37 +152,40 @@ class GameControllerTest {
     void testDetermineRoundWinner_PlayerWins() {
         Hand playerHand = new Hand();
         Hand dealerHand = new Hand();
+        GameController.Scores scores = new GameController.Scores(0, 0);
 
         playerHand.addCardToHand(new Deck());
 
-        int[] result = GameController.testDetermineRoundWinner(playerHand, dealerHand, 0, 0);
+        GameController.testDetermineRoundWinner(playerHand, dealerHand, scores);
 
-        assertEquals(1, result[0]);
-        assertEquals(0, result[1]);
+        assertEquals(1, scores.getPlayerScore());
+        assertEquals(0, scores.getDealerScore());
     }
 
     @Test
     void testDetermineRoundWinner_DealerWins() {
         Hand playerHand = new Hand();
         Hand dealerHand = new Hand();
+        GameController.Scores scores = new GameController.Scores(0, 0);
 
         dealerHand.addCardToHand(new Deck());
 
-        int[] result = GameController.testDetermineRoundWinner(playerHand, dealerHand, 0, 0);
+        GameController.testDetermineRoundWinner(playerHand, dealerHand, scores);
 
-        assertEquals(0, result[0]);
-        assertEquals(1, result[1]);
+        assertEquals(0, scores.getPlayerScore());
+        assertEquals(1, scores.getDealerScore());
     }
 
     @Test
     void testDetermineRoundWinner_Tie() {
         Hand playerHand = new Hand();
         Hand dealerHand = new Hand();
+        GameController.Scores scores = new GameController.Scores(2, 3);
 
-        int[] result = GameController.testDetermineRoundWinner(playerHand, dealerHand, 2, 3);
+        GameController.testDetermineRoundWinner(playerHand, dealerHand, scores);
 
-        assertEquals(2, result[0]);
-        assertEquals(3, result[1]);
+        assertEquals(2, scores.getPlayerScore());
+        assertEquals(3, scores.getDealerScore());
     }
 
     @Test
@@ -251,27 +253,33 @@ class GameControllerTest {
     @Test
     void testPlayGameRound_PlayerBusts() {
         String input = "1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n0";
-        int[] result = GameController.testPlayGameRound(input, 1, 0, 0);
+        GameController.Scores scores = new GameController.Scores(0, 0);
 
-        assertEquals(0, result[0]);
-        assertEquals(1, result[1]);
+        GameController.testPlayGameRound(input, 1, scores);
+
+        assertEquals(0, scores.getPlayerScore());
+        assertEquals(1, scores.getDealerScore());
     }
 
     @Test
     void testPlayGameRound_InvalidInputThenValid() {
         String input = "5\n2\n0\n0";
-        int[] result = GameController.testPlayGameRound(input, 1, 0, 0);
+        GameController.Scores scores = new GameController.Scores(0, 0);
 
-        assertNotNull(result);
-        assertEquals(2, result.length);
+        GameController.testPlayGameRound(input, 1, scores);
+
+        assertTrue(scores.getPlayerScore() >= 0);
+        assertTrue(scores.getDealerScore() >= 0);
     }
 
     @Test
     void testPlayGameRound_PlayerTakesOneCardAndStops() {
         String input = "1\n0\n0";
-        int[] result = GameController.testPlayGameRound(input, 1, 0, 0);
+        GameController.Scores scores = new GameController.Scores(0, 0);
 
-        assertNotNull(result);
-        assertEquals(2, result.length);
+        GameController.testPlayGameRound(input, 1, scores);
+
+        assertTrue(scores.getPlayerScore() >= 0);
+        assertTrue(scores.getDealerScore() >= 0);
     }
 }

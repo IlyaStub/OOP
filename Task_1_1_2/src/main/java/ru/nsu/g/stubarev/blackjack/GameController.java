@@ -46,6 +46,63 @@ public class GameController {
     }
 
     /**
+     * Class representing game scores for player and dealer.
+     * Used to track scores across multiple rounds.
+     */
+    protected static class Scores {
+        private int playerScore;
+        private int dealerScore;
+
+        /**
+         * Constructs Scores with initial values.
+         *
+         * @param playerScore initial player score
+         * @param dealerScore initial dealer score
+         */
+        public Scores(int playerScore, int dealerScore) {
+            this.playerScore = playerScore;
+            this.dealerScore = dealerScore;
+        }
+
+        /**
+         * Sets the player score.
+         *
+         * @param playerScore new player score value
+         */
+        public void setPlayerScore(int playerScore) {
+            this.playerScore = playerScore;
+        }
+
+        /**
+         * Sets the dealer score.
+         *
+         * @param dealerScore new dealer score value
+         */
+        public void setDealerScore(int dealerScore) {
+            this.dealerScore = dealerScore;
+        }
+
+        /**
+         * Gets the current player score.
+         *
+         * @return player score value
+         */
+        public int getPlayerScore() {
+            return playerScore;
+        }
+
+        /**
+         * Gets the current dealer score.
+         *
+         * @return dealer score value
+         */
+        public int getDealerScore() {
+            return dealerScore;
+        }
+    }
+
+
+    /**
      * Main method that starts the Blackjack game.
      *
      * @param args command line arguments (not used)
@@ -53,19 +110,12 @@ public class GameController {
     public static void main(String[] args) {
         Parser.printWelcome();
         int round = 1;
-        int playerScore = 0;
-        int dealerScore = 0;
+        Scores scores = new Scores(0, 0);
         Scanner scan = new Scanner(System.in);
 
-        while (true) {
-            int[] newScores = playGameRound(scan, round++, playerScore, dealerScore);
-            playerScore = newScores[0];
-            dealerScore = newScores[1];
-
-            if (stopGame(scan)) {
-                break;
-            }
-        }
+        do {
+            playGameRound(scan, round++, scores);
+        } while (!stopGame(scan));
     }
 
     /**
@@ -73,11 +123,9 @@ public class GameController {
      *
      * @param scan Scanner for user input
      * @param round current round number
-     * @param playerScore current player score
-     * @param dealerScore current dealer score
-     * @return array with updated scores [playerScore, dealerScore]
+     * @param scores current player scores
      */
-    private static int[] playGameRound(Scanner scan, int round, int playerScore, int dealerScore) {
+    private static void playGameRound(Scanner scan, int round, Scores scores) {
         Parser.printRound(round);
 
         Deck deck = new Deck();
@@ -88,18 +136,18 @@ public class GameController {
         Parser.printHands(playerHand, dealerHand);
 
         if (playPlayerTurn(scan, deck, playerHand, dealerHand)) {
-            dealerScore++;
-            Parser.printLoser(Players.PLAYER, playerScore, dealerScore);
-            return new int[]{playerScore, dealerScore};
+            scores.setDealerScore(scores.getDealerScore() + 1);
+            Parser.printLoser(Players.PLAYER, scores.getPlayerScore(), scores.getDealerScore());
+            return;
         }
 
         if (playDealerTurn(deck, playerHand, dealerHand)) {
-            playerScore++;
-            Parser.printLoser(Players.DEALER, playerScore, dealerScore);
-            return new int[]{playerScore, dealerScore};
+            scores.setPlayerScore(scores.getPlayerScore() + 1);
+            Parser.printLoser(Players.DEALER, scores.getPlayerScore(), scores.getDealerScore());
+            return;
         }
 
-        return determineRoundWinner(playerHand, dealerHand, playerScore, dealerScore);
+        determineRoundWinner(playerHand, dealerHand, scores);
     }
 
     private static boolean isLoser(Hand hand) {
@@ -188,21 +236,20 @@ public class GameController {
         return false;
     }
 
-    private static int[] determineRoundWinner(Hand playerHand, Hand dealerHand,
-                                              int playerScore, int dealerScore) {
+    private static void determineRoundWinner(Hand playerHand, Hand dealerHand,
+                                              Scores scores) {
         int playerPoints = playerHand.getSumPoints();
         int dealerPoints = dealerHand.getSumPoints();
 
         if (playerPoints > dealerPoints) {
-            playerScore++;
-            Parser.printLoser(Players.DEALER, playerScore, dealerScore);
+            scores.setPlayerScore(scores.getPlayerScore() + 1);
+            Parser.printLoser(Players.DEALER, scores.getPlayerScore(), scores.getDealerScore());
         } else if (dealerPoints > playerPoints) {
-            dealerScore++;
-            Parser.printLoser(Players.PLAYER, playerScore, dealerScore);
+            scores.setDealerScore(scores.getDealerScore() + 1);
+            Parser.printLoser(Players.PLAYER, scores.getPlayerScore(), scores.getDealerScore());
         } else {
-            Parser.printLoser(null, playerScore, dealerScore);
+            Parser.printLoser(null, scores.getPlayerScore(), scores.getDealerScore());
         }
-        return new int[]{playerScore, dealerScore};
     }
 
     /**
@@ -246,17 +293,17 @@ public class GameController {
     /**
      * Public wrapper for testing determineRoundWinner logic.
      */
-    protected static int[] testDetermineRoundWinner(Hand playerHand, Hand dealerHand,
-                                                 int playerScore, int dealerScore) {
-        return determineRoundWinner(playerHand, dealerHand, playerScore, dealerScore);
+    protected static void testDetermineRoundWinner(Hand playerHand, Hand dealerHand,
+                                                   Scores scores) {
+        determineRoundWinner(playerHand, dealerHand, scores);
     }
 
     /**
      * Public wrapper for testing playGameRound logic.
      */
-    protected static int[] testPlayGameRound(String input, int round,
-                                          int playerScore, int dealerScore) {
+    protected static void testPlayGameRound(String input, int round,
+                                          Scores scores) {
         Scanner scan = new Scanner(input);
-        return playGameRound(scan, round, playerScore, dealerScore);
+        playGameRound(scan, round, scores);
     }
 }
