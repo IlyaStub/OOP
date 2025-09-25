@@ -100,6 +100,11 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color">
 <div class="block">Enum representing the players in the game.</div>
 </div>
+<div class="col-first even-row-color"><code>protected static class&nbsp;</code></div>
+<div class="col-second even-row-color"><code><a href="GameController.Scores.html" class="type-name-link" title="class in ru.nsu.g.stubarev.blackjack">GameController.Scores</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Class representing game scores for player and dealer.</div>
+</div>
 </div>
 </section>
 </li>
@@ -139,11 +144,10 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Public wrapper for testing dealInitialCards logic.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>protected static int[]</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#testDetermineRoundWinner(ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand,int,int)" class="member-name-link">testDetermineRoundWinner</a><wbr>(<a href="Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a>&nbsp;playerHand,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>protected static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#testDetermineRoundWinner(ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.GameController.Scores)" class="member-name-link">testDetermineRoundWinner</a><wbr>(<a href="Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a>&nbsp;playerHand,
  <a href="Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a>&nbsp;dealerHand,
- int&nbsp;playerScore,
- int&nbsp;dealerScore)</code></div>
+ <a href="GameController.Scores.html" title="class in ru.nsu.g.stubarev.blackjack">GameController.Scores</a>&nbsp;scores)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Public wrapper for testing determineRoundWinner logic.</div>
 </div>
@@ -159,11 +163,10 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Public wrapper for testing playDealerTurn logic.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>protected static int[]</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#testPlayGameRound(java.lang.String,int,int,int)" class="member-name-link">testPlayGameRound</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input,
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>protected static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#testPlayGameRound(java.lang.String,int,ru.nsu.g.stubarev.blackjack.GameController.Scores)" class="member-name-link">testPlayGameRound</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input,
  int&nbsp;round,
- int&nbsp;playerScore,
- int&nbsp;dealerScore)</code></div>
+ <a href="GameController.Scores.html" title="class in ru.nsu.g.stubarev.blackjack">GameController.Scores</a>&nbsp;scores)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Public wrapper for testing playGameRound logic.</div>
 </div>
@@ -265,22 +268,20 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="testDetermineRoundWinner(ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand,int,int)">
+<section class="detail" id="testDetermineRoundWinner(ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.Hand,ru.nsu.g.stubarev.blackjack.GameController.Scores)">
 <h3>testDetermineRoundWinner</h3>
-<div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type">int[]</span>&nbsp;<span class="element-name">testDetermineRoundWinner</span><wbr><span class="parameters">(<a href="Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a>&nbsp;playerHand,
+<div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">testDetermineRoundWinner</span><wbr><span class="parameters">(<a href="Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a>&nbsp;playerHand,
  <a href="Hand.html" title="class in ru.nsu.g.stubarev.blackjack">Hand</a>&nbsp;dealerHand,
- int&nbsp;playerScore,
- int&nbsp;dealerScore)</span></div>
+ <a href="GameController.Scores.html" title="class in ru.nsu.g.stubarev.blackjack">GameController.Scores</a>&nbsp;scores)</span></div>
 <div class="block">Public wrapper for testing determineRoundWinner logic.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="testPlayGameRound(java.lang.String,int,int,int)">
+<section class="detail" id="testPlayGameRound(java.lang.String,int,ru.nsu.g.stubarev.blackjack.GameController.Scores)">
 <h3>testPlayGameRound</h3>
-<div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type">int[]</span>&nbsp;<span class="element-name">testPlayGameRound</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input,
+<div class="member-signature"><span class="modifiers">protected static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">testPlayGameRound</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;input,
  int&nbsp;round,
- int&nbsp;playerScore,
- int&nbsp;dealerScore)</span></div>
+ <a href="GameController.Scores.html" title="class in ru.nsu.g.stubarev.blackjack">GameController.Scores</a>&nbsp;scores)</span></div>
 <div class="block">Public wrapper for testing playGameRound logic.</div>
 </section>
 </li>
