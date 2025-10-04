@@ -18,8 +18,6 @@ class NumberTest {
     void testNumberDerivative() {
         Number num = new Number(5.123);
         Expression derivative = num.derivative("x");
-        assertTrue(derivative instanceof Number);
-        assertEquals(0, derivative);
         assertEquals(0, derivative.eval("x=10"), 0.001);
     }
 

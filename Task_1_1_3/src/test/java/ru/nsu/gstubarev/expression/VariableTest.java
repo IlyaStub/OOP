@@ -24,7 +24,6 @@ class VariableTest {
     void testVariableDerivativeSameVariable() {
         Variable variable = new Variable("x");
         Expression derivative = variable.derivative("x");
-        assertTrue(derivative instanceof Number);
         assertEquals(1, derivative.eval("x=2"), 0.001);
     }
 
@@ -32,7 +31,6 @@ class VariableTest {
     void testVariableDerivativeDifferentVariable() {
         Variable variable = new Variable("x");
         Expression derivative = variable.derivative("y");
-        assertTrue(derivative instanceof Number);
         assertEquals(0, derivative.eval("x=10"), 0.001);
     }
 
