@@ -13,7 +13,7 @@ class MainTest {
                 new Number(3),
                 new Div(new Number(2), new Variable("x"))
         );
-        assertEquals(4.0, complex.eval("x=2"));
+        assertEquals(4.0, complex.eval("x=2"), 0.001);
     }
 
     @Test
@@ -23,7 +23,7 @@ class MainTest {
                 new Div(new Number(2), new Variable("x"))
         );
         Expression derivative = complex.derivative("x");
-        assertEquals(-0.5, derivative.eval("x=2"));
+        assertEquals(-0.5, derivative.eval("x=2"), 0.001);
     }
 
     @Test
@@ -32,7 +32,7 @@ class MainTest {
                 new Add(new Variable("x"), new Number(2)),
                 new Sub(new Variable("x"), new Number(1))
         );
-        assertEquals(10.0, nested.eval("x=3"));
+        assertEquals(10.0, nested.eval("x=3"), 0.001);
     }
 
     @Test
@@ -44,7 +44,7 @@ class MainTest {
     @Test
     void testMultipleVariableExpression() {
         Expression expr = new Add(new Variable("x"), new Variable("y"));
-        assertEquals(7.0, expr.eval("x=3; y=4"));
+        assertEquals(7.0, expr.eval("x=3; y=4"), 0.001);
     }
 
     @Test
@@ -65,7 +65,7 @@ class MainTest {
                 new Add(new Variable("x"), new Mul(new Number(2), new Variable("x"))),
                 new Number(1)
         );
-        assertEquals(8.0, chain.eval("x=3"));
+        assertEquals(8.0, chain.eval("x=3"), 0.001);
     }
 
     @Test

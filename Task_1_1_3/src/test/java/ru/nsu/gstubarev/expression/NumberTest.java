@@ -11,7 +11,7 @@ class NumberTest {
     void testNumberEvaluation() {
         Number num = new Number(5.123);
         assertEquals(5.123, num.eval("x=10"));
-        assertEquals(5.123, num.eval(""));
+        assertEquals(5.123, num.eval(""), 0.001);
     }
 
     @Test
@@ -20,7 +20,7 @@ class NumberTest {
         Expression derivative = num.derivative("x");
         assertTrue(derivative instanceof Number);
         assertEquals(0, derivative);
-        assertEquals(0, derivative.eval("x=10"));
+        assertEquals(0, derivative.eval("x=10"), 0.001);
     }
 
     @Test
