@@ -32,7 +32,7 @@ public abstract class Expression {
     /**
      * Prints the string representation of the expression to standard output.
      */
-    public void print(){
+    public void print() {
         System.out.println(this.toString());
     }
 }

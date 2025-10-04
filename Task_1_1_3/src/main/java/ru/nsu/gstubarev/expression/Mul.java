@@ -4,14 +4,14 @@ package ru.nsu.gstubarev.expression;
  * Represents a multiplication operation between two expressions.
  * Implements the mathematical operation: left * right
  */
-public class Mul extends Expression{
+public class Mul extends Expression {
     private final Expression left;
     private final Expression right;
 
     /**
      * Constructs a multiplication expression representing left * right.
      *
-     * @param left the left operand of the multiplication
+     * @param left  the left operand of the multiplication
      * @param right the right operand of the multiplication
      */
     public Mul(Expression left, Expression right) {
@@ -26,7 +26,7 @@ public class Mul extends Expression{
      * @return the product of left and right operand evaluations
      */
     @Override
-    public double eval(String varEqValue){
+    public double eval(String varEqValue) {
         return left.eval(varEqValue) * right.eval(varEqValue);
     }
 
@@ -49,7 +49,7 @@ public class Mul extends Expression{
      * @return string representation of the multiplication
      */
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("(%s*%s)", left.toString(), right.toString());
     }
 }

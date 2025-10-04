@@ -4,14 +4,14 @@ package ru.nsu.gstubarev.expression;
  * Represents a division operation between two expressions.
  * Implements the mathematical operation: left / right
  */
-public class Div extends Expression{
+public class Div extends Expression {
     private final Expression left;
     private final Expression right;
 
     /**
      * Constructs a division expression representing left / right.
      *
-     * @param left the numerator expression
+     * @param left  the numerator expression
      * @param right the denominator expression
      */
     public Div(Expression left, Expression right) {
@@ -26,7 +26,7 @@ public class Div extends Expression{
      * @return the quotient of left and right operand evaluations
      */
     @Override
-    public double eval(String varEqValue){
+    public double eval(String varEqValue) {
         return left.eval(varEqValue) / right.eval(varEqValue);
     }
 
@@ -49,7 +49,7 @@ public class Div extends Expression{
      * @return string representation of the division
      */
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("(%s/%s)", left.toString(), right.toString());
     }
 }

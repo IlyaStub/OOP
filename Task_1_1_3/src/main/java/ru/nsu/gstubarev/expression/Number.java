@@ -4,7 +4,7 @@ package ru.nsu.gstubarev.expression;
  * Represents a constant numerical value in expressions.
  * Immutable class storing a double precision floating-point number.
  */
-public class Number extends Expression{
+public class Number extends Expression {
     private final double number;
 
     /**
@@ -23,7 +23,7 @@ public class Number extends Expression{
      * @return the constant value
      */
     @Override
-    public double eval(String varEqValue){
+    public double eval(String varEqValue) {
         return number;
     }
 
@@ -44,7 +44,7 @@ public class Number extends Expression{
      * @return the number as a string
      */
     @Override
-    public String toString(){
+    public String toString() {
         return String.valueOf(number);
     }
 }

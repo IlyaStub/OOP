@@ -4,14 +4,14 @@ package ru.nsu.gstubarev.expression;
  * Represents a subtraction operation between two expressions.
  * Implements the mathematical operation: left - right
  */
-public class Sub extends Expression{
+public class Sub extends Expression {
     private final Expression left;
     private final Expression right;
 
     /**
      * Constructs a subtraction expression representing left - right.
      *
-     * @param left the left operand of the subtraction
+     * @param left  the left operand of the subtraction
      * @param right the right operand of the subtraction
      */
     public Sub(Expression left, Expression right) {
@@ -26,7 +26,7 @@ public class Sub extends Expression{
      * @return the difference of left and right operand evaluations
      */
     @Override
-    public double eval(String varEqValue){
+    public double eval(String varEqValue) {
         return left.eval(varEqValue) - right.eval(varEqValue);
     }
 
@@ -48,7 +48,7 @@ public class Sub extends Expression{
      * @return string representation of the subtraction
      */
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("(%s-%s)", left.toString(), right.toString());
     }
 }

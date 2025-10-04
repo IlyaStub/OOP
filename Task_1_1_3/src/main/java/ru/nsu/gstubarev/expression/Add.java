@@ -4,14 +4,14 @@ package ru.nsu.gstubarev.expression;
  * Represents an addition operation between two expressions.
  * Implements the mathematical operation: left + right
  */
-public class Add extends Expression{
+public class Add extends Expression {
     private final Expression left;
     private final Expression right;
 
     /**
      * Construct an addition expression represent left + right
      *
-     * @param left the left operand of the addition
+     * @param left  the left operand of the addition
      * @param right the right operand of the addition
      */
     public Add(Expression left, Expression right) {
@@ -26,7 +26,7 @@ public class Add extends Expression{
      * @return the sum of left and right operand evaluations
      */
     @Override
-    public double eval(String varEqValue){
+    public double eval(String varEqValue) {
         return left.eval(varEqValue) + right.eval(varEqValue);
     }
 
@@ -48,7 +48,7 @@ public class Add extends Expression{
      * @return string representation of the addition
      */
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("(%s+%s)", left.toString(), right.toString());
     }
 }
