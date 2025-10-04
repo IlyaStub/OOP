@@ -9,7 +9,7 @@ public class Add extends Expression {
     private final Expression right;
 
     /**
-     * Construct an addition expression represent left + right
+     * Construct an addition expression represent left + right.
      *
      * @param left  the left operand of the addition
      * @param right the right operand of the addition
