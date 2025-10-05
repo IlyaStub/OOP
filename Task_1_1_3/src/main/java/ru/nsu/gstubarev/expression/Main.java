@@ -17,5 +17,8 @@ public class Main {
         de.print();
         double result = e.eval("x=10; y=13");
         System.out.println(result);
+        ExpressionParser parser = new ExpressionParser();
+        Expression as = parser.parse("(4*((2+1)*3))");
+        as.print();
     }
 }
