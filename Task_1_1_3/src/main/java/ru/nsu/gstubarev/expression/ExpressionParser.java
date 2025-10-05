@@ -40,7 +40,7 @@ public class ExpressionParser {
         Expression left = parseExp();
         char op = input.charAt(position++);
         Expression right = parseExp();
-        if (input.charAt(position) != ')'){
+        if (input.charAt(position) != ')') {
             throw new RuntimeException("There is no closing parenthesis");
         }
         position++;
