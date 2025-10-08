@@ -75,11 +75,13 @@ public class Variable extends Expression {
 
     private Map<String, Double> stringEvalToConvenient(String varEqValue) {
         var map = new HashMap<String, Double>();
-        varEqValue.replaceAll("\\s", "");
-        String[] variables = varEqValue.split(";");
+        String cleaned = varEqValue.replaceAll("\\s", "");
+        String[] variables = cleaned.split(";");
         for (String s : variables) {
             String[] nameValue = s.split("=");
-            map.put(nameValue[0], Double.valueOf(nameValue[1]));
+            if (nameValue.length == 2) { // добавил проверку
+                map.put(nameValue[0], Double.valueOf(nameValue[1]));
+            }
         }
         return map;
     }

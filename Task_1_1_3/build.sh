@@ -3,7 +3,10 @@
 rm -rf build
 mkdir -p build/classes build/docs build/jar
 
-javac -d build/classes src/main/java/ru/nsu/gstubarev/expression/*.java
+# Компилируем ВСЕ java файлы включая подпакеты
+find src/main/java -name "*.java" > sources.txt
+javac -d build/classes @sources.txt
+rm sources.txt
 
 javadoc -d build/docs -sourcepath src/main/java -subpackages ru.nsu.gstubarev.expression
 
