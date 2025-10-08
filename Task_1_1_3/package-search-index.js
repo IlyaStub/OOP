@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.gstubarev.expression"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.gstubarev.expression"},{"l":"ru.nsu.gstubarev.expression.exceptions"}];updateSearchResults();
