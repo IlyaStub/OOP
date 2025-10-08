@@ -79,7 +79,7 @@ public class Variable extends Expression {
         String[] variables = cleaned.split(";");
         for (String s : variables) {
             String[] nameValue = s.split("=");
-            if (nameValue.length == 2) { // добавил проверку
+            if (nameValue.length == 2) {
                 map.put(nameValue[0], Double.valueOf(nameValue[1]));
             }
         }
@@ -87,14 +87,14 @@ public class Variable extends Expression {
     }
 
     //эххх жаль плохая попытка, но почти полусилось...
-    private double stringFindSubstring(String varEqValue, String str) {
-        String s = varEqValue.replaceAll("\\s", "");
-        int lenStr = str.length();
-        int d = s.indexOf(String.format("%s=", str));
-        int i = d + lenStr + 1;
-        while (i < s.length() && (Character.isDigit(s.charAt(i)) || (s.charAt(i) == '.'))) {
-            i++;
-        }
-        return Double.parseDouble(s.substring(d + lenStr + 1, i));
-    }
+//    private double stringFindSubstring(String varEqValue, String str) {
+//        String s = varEqValue.replaceAll("\\s", "");
+//        int lenStr = str.length();
+//        int d = s.indexOf(String.format("%s=", str));
+//        int i = d + lenStr + 1;
+//        while (i < s.length() && (Character.isDigit(s.charAt(i)) || (s.charAt(i) == '.'))) {
+//            i++;
+//        }
+//        return Double.parseDouble(s.substring(d + lenStr + 1, i));
+//    }
 }

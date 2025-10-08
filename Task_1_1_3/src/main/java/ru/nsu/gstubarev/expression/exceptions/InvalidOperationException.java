@@ -5,6 +5,8 @@ package ru.nsu.gstubarev.expression.exceptions;
  */
 public class InvalidOperationException extends InvalidInputException {
     /**
+     * Constructor of exception about invalid operation.
+     *
      * @param message the invalid operation symbol
      */
     public InvalidOperationException(String message) {
