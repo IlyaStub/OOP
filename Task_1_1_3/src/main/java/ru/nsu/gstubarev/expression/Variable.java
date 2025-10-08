@@ -89,12 +89,12 @@ public class Variable extends Expression {
     //эххх жаль плохая попытка, но почти полусилось...
     private double stringFindSubstring(String varEqValue, String str) {
         String s = varEqValue.replaceAll("\\s", "");
-        int len_str = str.length();
+        int lenStr = str.length();
         int d = s.indexOf(String.format("%s=", str));
-        int i = d + len_str + 1;
+        int i = d + lenStr + 1;
         while (i < s.length() && (Character.isDigit(s.charAt(i)) || (s.charAt(i) == '.'))) {
             i++;
         }
-        return Double.parseDouble(s.substring(d + len_str + 1, i));
+        return Double.parseDouble(s.substring(d + lenStr + 1, i));
     }
 }

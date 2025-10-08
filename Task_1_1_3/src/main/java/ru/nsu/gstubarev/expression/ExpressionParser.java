@@ -43,15 +43,15 @@ public class ExpressionParser {
         if (position >= input.length()) {
             throw new InvalidInputException("Unexpected end of expression after '('");
         }
-        Expression left = parseExp();
+        final Expression left = parseExp();
         if (position >= input.length()) {
             throw new InvalidInputException("Unexpected end of expression: expected operator");
         }
-        char op = input.charAt(position++);
+        final char op = input.charAt(position++);
         if (position >= input.length()) {
             throw new InvalidInputException("Unexpected end of expression: expected right operand");
         }
-        Expression right = parseExp();
+        final Expression right = parseExp();
         if (position >= input.length()) {
             throw new InvalidInputException("Unexpected end of expression: expected ')'");
         }

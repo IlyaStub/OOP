@@ -1,7 +1,13 @@
 package ru.nsu.gstubarev.expression.exceptions;
 
-public class InvalidInputException extends RuntimeException{
+/**
+ * Thrown when expression input is invalid.
+ */
+public class InvalidInputException extends RuntimeException {
+    /**
+     * @param message description of the input error
+     */
     public InvalidInputException(String message) {
-        super("Invalid input" + message);
+        super("Invalid input: " + message);
     }
 }

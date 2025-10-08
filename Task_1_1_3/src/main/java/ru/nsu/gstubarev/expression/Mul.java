@@ -45,8 +45,8 @@ public class Mul extends Expression {
             return new Number(result);
         }
 
-        if ((simplLeft instanceof Number && simplLeft.eval("") == 0) ||
-                (simplRight instanceof Number && simplRight.eval("") == 0)) {
+        if ((simplLeft instanceof Number && simplLeft.eval("") == 0)
+                || (simplRight instanceof Number && simplRight.eval("") == 0)) {
             return new Number(0);
         }
 

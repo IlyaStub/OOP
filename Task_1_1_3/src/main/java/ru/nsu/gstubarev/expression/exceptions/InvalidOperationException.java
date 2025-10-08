@@ -1,6 +1,12 @@
 package ru.nsu.gstubarev.expression.exceptions;
 
-public class InvalidOperationException extends InvalidInputException{
+/**
+ * Thrown when mathematical operation is invalid or unsupported.
+ */
+public class InvalidOperationException extends InvalidInputException {
+    /**
+     * @param message the invalid operation symbol
+     */
     public InvalidOperationException(String message) {
         super("There is no operation: " + message);
     }
