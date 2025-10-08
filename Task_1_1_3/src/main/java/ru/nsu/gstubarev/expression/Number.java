@@ -39,6 +39,16 @@ public class Number extends Expression {
     }
 
     /**
+     * Method to simplify the number.
+     *
+     * @return just number
+     */
+    @Override
+    public Expression simplify() {
+        return this;
+    }
+
+    /**
      * Returns string representation of the number.
      *
      * @return the number as a string

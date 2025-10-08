@@ -1,7 +1,7 @@
 package ru.nsu.gstubarev.expression;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +10,10 @@ class VariableTest {
     @Test
     void testVariableEvaluation() {
         Variable var = new Variable("x");
-        assertEquals(10.0, var.eval("x=10"), 0.001);
-        assertEquals(5.123, var.eval("x=5.123; y=3"), 0.001);
+        assertAll(
+            () -> assertEquals(10.0, var.eval("x=10"), 0.001),
+            () -> assertEquals(5.123, var.eval("x=5.123; y=3"), 0.001)
+        );
     }
 
     @Test

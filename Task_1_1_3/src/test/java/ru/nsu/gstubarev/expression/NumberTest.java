@@ -1,7 +1,7 @@
 package ru.nsu.gstubarev.expression;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +10,10 @@ class NumberTest {
     @Test
     void testNumberEvaluation() {
         Number num = new Number(5.123);
-        assertEquals(5.123, num.eval("x=10"));
-        assertEquals(5.123, num.eval(""), 0.001);
+        assertAll(
+                () -> assertEquals(5.123, num.eval("x=10")),
+                () -> assertEquals(5.123, num.eval(""), 0.001)
+        );
     }
 
     @Test

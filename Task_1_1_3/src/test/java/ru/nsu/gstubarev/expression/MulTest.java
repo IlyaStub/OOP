@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 class MulTest {
-
     @Test
     void testMulEvaluation() {
         Expression mul = new Mul(new Number(3), new Number(4));

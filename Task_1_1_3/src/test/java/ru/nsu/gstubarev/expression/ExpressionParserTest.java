@@ -1,5 +1,6 @@
 package ru.nsu.gstubarev.expression;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -45,8 +46,11 @@ class ExpressionParserTest {
     void testParseVariable() {
         ExpressionParser parser = new ExpressionParser();
         Expression expr = parser.parse("x");
-        assertEquals("x", expr.toString());
-        assertEquals(5.0, expr.eval("x=5"), 0.001);
+        assertAll(
+                () -> assertEquals("x", expr.toString()),
+                () -> assertEquals(5.0, expr.eval("x=5"), 0.001)
+        );
+
     }
 
     @Test
@@ -81,10 +85,11 @@ class ExpressionParserTest {
     void testParseAssignmentExample() {
         ExpressionParser parser = new ExpressionParser();
         Expression expr = parser.parse("(3+(2*x))");
-        assertEquals(23.0, expr.eval("x=10"), 0.001);
-
         Expression derivative = expr.derivative("x");
-        assertEquals(2.0, derivative.eval("x=5"), 0.001);
+        assertAll(
+                () -> assertEquals(23.0, expr.eval("x=10"), 0.001),
+                () -> assertEquals(2.0, derivative.eval("x=5"), 0.001)
+        );
     }
 
     @Test

@@ -1,5 +1,7 @@
 package ru.nsu.gstubarev.expression;
 
+import java.util.Objects;
+
 /**
  * Represents a division operation between two expressions.
  * Implements the mathematical operation: left / right
@@ -27,7 +29,43 @@ public class Div extends Expression {
      */
     @Override
     public double eval(String varEqValue) {
+        if (right.eval(varEqValue) == 0) {
+            throw new ArithmeticException("You can't divide by zero.");
+        }
         return left.eval(varEqValue) / right.eval(varEqValue);
+    }
+
+    /**
+     * Method to simplify the div.
+     *
+     * @return simple expression
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplLeft = left.simplify();
+        Expression simplRight = right.simplify();
+
+        if (simplLeft instanceof Number && simplRight instanceof Number) {
+            try {
+                double result = simplLeft.eval("") / simplRight.eval("");
+                return new Number(result);
+            } catch (ArithmeticException e) {
+                System.out.println(e);
+            }
+        }
+        if (simplLeft instanceof Number && simplLeft.eval("") == 0) {
+            return new Number(0);
+        }
+
+        if (simplLeft.toString().equals(simplRight.toString())) {
+            return new Number(1);
+        }
+
+        if (simplRight instanceof Number && simplRight.eval("") == 1) {
+            return simplLeft;
+        }
+
+        return new Div(simplLeft, simplRight);
     }
 
     /**

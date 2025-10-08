@@ -10,6 +10,8 @@ import java.util.Objects;
  */
 public class Variable extends Expression {
     private final String variable;
+    private static String lastVarEqValue;
+    private static Map<String, Double> cachedMap;
 
     /**
      * Constructs a variable expression with the given name.
@@ -25,12 +27,24 @@ public class Variable extends Expression {
      *
      * @param varEqValue string in format "var1=value1; var2=value2;..."
      * @return the value assigned to this variable
-     * @throws RuntimeException if the variable is not found in the assignments
      */
     @Override
     public double eval(String varEqValue) {
-        Map<String, Double> map = stringEvalToConvenient(varEqValue);
-        return map.get(variable);
+        if (!varEqValue.equals(lastVarEqValue)) {
+            cachedMap = stringEvalToConvenient(varEqValue);
+            lastVarEqValue = varEqValue;
+        }
+        return cachedMap.get(variable);
+    }
+
+    /**
+     * Method to simplify the add.
+     *
+     * @return just variable
+     */
+    @Override
+    public Expression simplify() {
+        return this;
     }
 
     /**
@@ -59,30 +73,26 @@ public class Variable extends Expression {
         return variable;
     }
 
-    //надо переделать
     private Map<String, Double> stringEvalToConvenient(String varEqValue) {
         var map = new HashMap<String, Double>();
-        StringBuilder variableName;
-        StringBuilder variableValue;
-        int i = 0;
-        while (i < varEqValue.length()) {
-            variableName = new StringBuilder();
-            variableValue = new StringBuilder();
-            while (varEqValue.charAt(i) != '=') {
-                variableName.append(varEqValue.charAt(i));
-                i++;
-            }
-            i++;
-            while (varEqValue.charAt(i) != ';') {
-                variableValue.append(varEqValue.charAt(i));
-                if (i == varEqValue.length() - 1) {
-                    break;
-                }
-                i++;
-            }
-            map.put(String.valueOf(variableName), Double.valueOf(String.valueOf(variableValue)));
-            i += 2;
+        varEqValue.replaceAll("\\s", "");
+        String[] variables = varEqValue.split(";");
+        for (String s : variables) {
+            String[] nameValue = s.split("=");
+            map.put(nameValue[0], Double.valueOf(nameValue[1]));
         }
         return map;
+    }
+
+    //эххх жаль плохая попытка, но почти полусилось...
+    private double stringFindSubstring(String varEqValue, String str) {
+        String s = varEqValue.replaceAll("\\s", "");
+        int len_str = str.length();
+        int d = s.indexOf(String.format("%s=", str));
+        int i = d + len_str + 1;
+        while (i < s.length() && (Character.isDigit(s.charAt(i)) || (s.charAt(i) == '.'))) {
+            i++;
+        }
+        return Double.parseDouble(s.substring(d + len_str + 1, i));
     }
 }

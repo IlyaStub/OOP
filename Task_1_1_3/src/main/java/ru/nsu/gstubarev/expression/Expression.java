@@ -30,6 +30,13 @@ public abstract class Expression {
     public abstract String toString();
 
     /**
+     * Method to simplify the expression.
+     *
+     * @return simple expression
+     */
+    public abstract Expression simplify();
+
+    /**
      * Prints the string representation of the expression to standard output.
      */
     public void print() {

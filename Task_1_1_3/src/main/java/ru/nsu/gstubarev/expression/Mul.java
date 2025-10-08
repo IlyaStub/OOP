@@ -31,6 +31,36 @@ public class Mul extends Expression {
     }
 
     /**
+     * Method to simplify the mul.
+     *
+     * @return simple expression
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplLeft = left.simplify();
+        Expression simplRight = right.simplify();
+
+        if (simplLeft instanceof Number && simplRight instanceof Number) {
+            double result = simplLeft.eval("") * simplRight.eval("");
+            return new Number(result);
+        }
+
+        if ((simplLeft instanceof Number && simplLeft.eval("") == 0) ||
+                (simplRight instanceof Number && simplRight.eval("") == 0)) {
+            return new Number(0);
+        }
+
+        if (simplLeft instanceof Number && simplLeft.eval("") == 1) {
+            return simplRight;
+        }
+        if (simplRight instanceof Number && simplRight.eval("") == 1) {
+            return simplLeft;
+        }
+
+        return new Mul(simplLeft, simplRight);
+    }
+
+    /**
      * Computes the derivative of the multiplication expression using product rule.
      * The product rule: (fg)' = f'g + fg'
      *

@@ -30,6 +30,26 @@ public class Add extends Expression {
         return left.eval(varEqValue) + right.eval(varEqValue);
     }
 
+    @Override
+    public Expression simplify() {
+        Expression simplLeft = left.simplify();
+        Expression simplRight = right.simplify();
+
+        if (simplLeft instanceof Number && simplRight instanceof Number) {
+            double result = simplLeft.eval("") + simplRight.eval("");
+            return new Number(result);
+        }
+
+        if (simplLeft instanceof Number && simplLeft.eval("") == 0) {
+            return simplRight;
+        }
+        if (simplRight instanceof Number && simplRight.eval("") == 0) {
+            return simplLeft;
+        }
+
+        return new Add(simplLeft, simplRight);
+    }
+
     /**
      * Computes the derivative of the addition expression.
      * The derivative of a sum is the sum of the derivatives.

@@ -31,6 +31,32 @@ public class Sub extends Expression {
     }
 
     /**
+     * Method to simplify the sub.
+     *
+     * @return simple expression
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplLeft = left.simplify();
+        Expression simplRight = right.simplify();
+
+        if (simplLeft instanceof Number && simplRight instanceof Number) {
+            double result = simplLeft.eval("") - simplRight.eval("");
+            return new Number(result);
+        }
+
+        if (simplLeft.toString().equals(simplRight.toString())) {
+            return new Number(0);
+        }
+
+        if (simplRight instanceof Number && simplRight.eval("") == 0) {
+            return simplLeft;
+        }
+
+        return new Sub(simplLeft, simplRight);
+    }
+
+    /**
      * Computes the derivative of the subtraction expression.
      * The derivative of a difference is the difference of the derivatives.
      *

@@ -1,5 +1,8 @@
 package ru.nsu.gstubarev.expression;
 
+import ru.nsu.gstubarev.expression.exceptions.InvalidInputException;
+import ru.nsu.gstubarev.expression.exceptions.InvalidOperationException;
+
 /**
  * A simple parser class that only works with parentheses.
  */
@@ -21,7 +24,7 @@ public class ExpressionParser {
 
     private Expression parseExp() {
         if (position >= input.length()) {
-            throw new RuntimeException("Unexpected end of expression");
+            throw new InvalidInputException("Unexpected end of expression");
         }
         char nowChar = input.charAt(position);
         if (nowChar == '(') {
@@ -31,17 +34,29 @@ public class ExpressionParser {
         } else if (Character.isLetter(nowChar)) {
             return parseVariable();
         } else {
-            throw new RuntimeException("Unexpected character: " + input.charAt(position));
+            throw new InvalidInputException("Unexpected character: " + input.charAt(position));
         }
     }
 
     private Expression parseOperation() {
         position++;
+        if (position >= input.length()) {
+            throw new InvalidInputException("Unexpected end of expression after '('");
+        }
         Expression left = parseExp();
+        if (position >= input.length()) {
+            throw new InvalidInputException("Unexpected end of expression: expected operator");
+        }
         char op = input.charAt(position++);
+        if (position >= input.length()) {
+            throw new InvalidInputException("Unexpected end of expression: expected right operand");
+        }
         Expression right = parseExp();
+        if (position >= input.length()) {
+            throw new InvalidInputException("Unexpected end of expression: expected ')'");
+        }
         if (input.charAt(position) != ')') {
-            throw new RuntimeException("There is no closing parenthesis");
+            throw new InvalidInputException("There is no )");
         }
         position++;
         return switch (op) {
@@ -49,7 +64,7 @@ public class ExpressionParser {
             case '-' -> new Sub(left, right);
             case '*' -> new Mul(left, right);
             case '/' -> new Div(left, right);
-            default -> throw new RuntimeException("Unexpected operation");
+            default -> throw new InvalidOperationException(String.valueOf(op));
         };
     }
 
