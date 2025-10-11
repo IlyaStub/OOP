@@ -85,16 +85,4 @@ public class Variable extends Expression {
         }
         return map;
     }
-
-    //эххх жаль плохая попытка, но почти полусилось...
-//    private double stringFindSubstring(String varEqValue, String str) {
-//        String s = varEqValue.replaceAll("\\s", "");
-//        int lenStr = str.length();
-//        int d = s.indexOf(String.format("%s=", str));
-//        int i = d + lenStr + 1;
-//        while (i < s.length() && (Character.isDigit(s.charAt(i)) || (s.charAt(i) == '.'))) {
-//            i++;
-//        }
-//        return Double.parseDouble(s.substring(d + lenStr + 1, i));
-//    }
 }

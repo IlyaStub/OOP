@@ -1,5 +1,7 @@
 package ru.nsu.gstubarev.expression;
 
+import ru.nsu.gstubarev.expression.exceptions.DivisionByZeroExeption;
+
 import java.util.Objects;
 
 /**
@@ -30,7 +32,7 @@ public class Div extends Expression {
     @Override
     public double eval(String varEqValue) {
         if (right.eval(varEqValue) == 0) {
-            throw new ArithmeticException("You can't divide by zero.");
+            throw new DivisionByZeroExeption("You can't divide by zero.");
         }
         return left.eval(varEqValue) / right.eval(varEqValue);
     }
