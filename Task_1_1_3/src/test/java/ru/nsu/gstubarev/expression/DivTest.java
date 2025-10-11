@@ -1,6 +1,7 @@
 package ru.nsu.gstubarev.expression;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -35,5 +36,13 @@ class DivTest {
     void testDivToString() {
         Expression div = new Div(new Variable("x"), new Number(2));
         assertEquals("(x/2.0)", div.toString());
+    }
+
+    @Test
+    void testDivZero() {
+        Expression div = new Div(new Variable("x"), new Number(0));
+        assertThrows(RuntimeException.class, () -> {
+            div.eval("x=3");
+        });
     }
 }
