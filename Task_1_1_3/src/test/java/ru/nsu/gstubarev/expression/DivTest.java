@@ -2,8 +2,10 @@ package ru.nsu.gstubarev.expression;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.expression.exceptions.DivisionByZeroExeption;
 
 class DivTest {
     @Test
@@ -44,5 +46,27 @@ class DivTest {
         assertThrows(RuntimeException.class, () -> {
             div.eval("x=3");
         });
+    }
+
+    @Test
+    void testDivByZeroWithVariable() {
+        Expression div = new Div(new Variable("x"), new Number(0));
+
+        DivisionByZeroExeption exception = assertThrows(DivisionByZeroExeption.class, () -> {
+            div.eval("x=5");
+        });
+
+        assertEquals("You can't divide by zero.", exception.getMessage());
+    }
+
+    @Test
+    void testDivByZeroWithComplexExpression() {
+        Expression div = new Div(new Variable("x"), new Sub(new Number(5), new Number(5)));
+
+        DivisionByZeroExeption exception = assertThrows(DivisionByZeroExeption.class, () -> {
+            div.eval("x=10");
+        });
+
+        assertEquals("You can't divide by zero.", exception.getMessage());
     }
 }
