@@ -2,8 +2,6 @@ package ru.nsu.gstubarev.expression;
 
 import ru.nsu.gstubarev.expression.exceptions.DivisionByZeroExeption;
 
-import java.util.Objects;
-
 /**
  * Represents a division operation between two expressions.
  * Implements the mathematical operation: left / right
