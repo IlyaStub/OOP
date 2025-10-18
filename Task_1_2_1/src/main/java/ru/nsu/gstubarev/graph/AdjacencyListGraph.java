@@ -39,7 +39,9 @@ public class AdjacencyListGraph<V> implements Graph<V> {
 
     @Override
     public void deleteVertex(V vertex) {
-        if (!adjacencyList.containsKey(vertex)) return;
+        if (!adjacencyList.containsKey(vertex)) {
+            return;
+        }
 
         edgeCount -= adjacencyList.get(vertex).size();
         adjacencyList.remove(vertex);
@@ -99,7 +101,9 @@ public class AdjacencyListGraph<V> implements Graph<V> {
 
     @Override
     public void deleteEdge(V from, V to, int weight) {
-        if (!adjacencyList.containsKey(from)) return;
+        if (!adjacencyList.containsKey(from)) {
+            return;
+        }
         List<V> neighbors = adjacencyList.get(from);
         if (neighbors.remove(to)) {
             edgeCount--;
@@ -110,7 +114,9 @@ public class AdjacencyListGraph<V> implements Graph<V> {
 
     @Override
     public boolean hasEdge(V from, V to, int weight) {
-        if (!adjacencyList.containsKey(from)) return false;
+        if (!adjacencyList.containsKey(from)) {
+            return false;
+        }
         String edgeKey = from + "-" + to;
         return adjacencyList.get(from).contains(to) &&
                 edgeWeights.getOrDefault(edgeKey, 0) == weight;
@@ -180,8 +186,12 @@ public class AdjacencyListGraph<V> implements Graph<V> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         AdjacencyListGraph<?> other = (AdjacencyListGraph<?>) obj;
         if (adjacencyList.size() != other.adjacencyList.size() || edgeCount != other.edgeCount) {
             return false;

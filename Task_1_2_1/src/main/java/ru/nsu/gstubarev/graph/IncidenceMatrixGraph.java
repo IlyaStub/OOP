@@ -60,7 +60,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
     @Override
     public void deleteVertex(V vertex) {
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return;
+        if (vertexIndex == -1) {
+            return;
+        }
 
         for (int j = edgeCount - 1; j >= 0; j--) {
             if (matrix[vertexIndex][j] != 0) {
@@ -74,7 +76,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
         vertices.remove(vertexIndex);
         int[][] newMatrix = new int[matrix.length - 1][matrix[0].length];
         for (int i = 0, newI = 0; i < vertices.size() + 1; i++) {
-            if (i == vertexIndex) continue;
+            if (i == vertexIndex) {
+                continue;
+            }
             System.arraycopy(matrix[i], 0, newMatrix[newI], 0, edgeCount);
             newI++;
         }
@@ -151,7 +155,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
     public void deleteEdge(V from, V to, int weight) {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
-        if (fromIndex == -1 || toIndex == -1) return;
+        if (fromIndex == -1 || toIndex == -1) {
+            return;
+        }
 
         for (int j = 0; j < edgeCount; j++) {
             if (matrix[fromIndex][j] == 1 && matrix[toIndex][j] == -1
@@ -174,7 +180,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
     public boolean hasEdge(V from, V to, int weight) {
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
-        if (fromIndex == -1 || toIndex == -1) return false;
+        if (fromIndex == -1 || toIndex == -1) {
+            return false;
+        }
 
         for (int j = 0; j < edgeCount; j++) {
             if (matrix[fromIndex][j] == 1 && matrix[toIndex][j] == -1
@@ -240,8 +248,12 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         IncidenceMatrixGraph<?> other = (IncidenceMatrixGraph<?>) obj;
         if (vertices.size() != other.vertices.size() || edgeCount != other.edgeCount) {
             return false;

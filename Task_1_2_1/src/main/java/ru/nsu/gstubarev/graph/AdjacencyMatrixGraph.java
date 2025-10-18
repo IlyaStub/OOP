@@ -65,11 +65,17 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
     @Override
     public void deleteVertex(V vertex) {
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return;
+        if (vertexIndex == -1) {
+            return;
+        }
 
         for (int i = 0; i < vertices.size(); i++) {
-            if (matrix[vertexIndex][i] != 0) edgeCount--;
-            if (matrix[i][vertexIndex] != 0) edgeCount--;
+            if (matrix[vertexIndex][i] != 0) {
+                edgeCount--;
+            }
+            if (matrix[i][vertexIndex] != 0) {
+                edgeCount--;
+            }
         }
 
         vertices.remove(vertexIndex);
@@ -79,9 +85,13 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
         }
 
         for (int i = 0, newI = 0; i < vertices.size() + 1; i++) {
-            if (i == vertexIndex) continue;
+            if (i == vertexIndex) {
+                continue;
+            }
             for (int j = 0, newJ = 0; j < vertices.size() + 1; j++) {
-                if (j == vertexIndex) continue;
+                if (j == vertexIndex) {
+                    continue;
+                }
                 newMatrix[newI][newJ] = matrix[i][j];
                 newJ++;
             }
@@ -209,8 +219,12 @@ public class AdjacencyMatrixGraph<V> implements Graph<V> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
         AdjacencyMatrixGraph<?> other = (AdjacencyMatrixGraph<?>) obj;
         if (vertices.size() != other.vertices.size() || edgeCount != other.edgeCount) {
             return false;
