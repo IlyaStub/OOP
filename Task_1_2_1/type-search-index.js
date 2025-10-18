@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.gstubarev.graph","l":"AdjacencyListGraph"},{"p":"ru.nsu.gstubarev.graph","l":"AdjacencyMatrixGraph"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.gstubarev.graph","l":"Graph"},{"p":"ru.nsu.gstubarev.graph","l":"IncidenceMatrixGraph"},{"p":"ru.nsu.gstubarev.graph","l":"Main"}];updateSearchResults();
