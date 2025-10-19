@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.graph.exeptions.TopologicalSortImpossible;
 import ru.nsu.gstubarev.graph.storages.AdjacencyListGraph;
-import java.util.List;
 
 class GraphAlgorithmsTest {
 
@@ -27,7 +27,7 @@ class GraphAlgorithmsTest {
     }
 
     @Test
-    void testTopologicalSortDAG() {
+    void testTopologicalSortDag() {
         AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
 
         graph.addEdge("A", "B", 1);
