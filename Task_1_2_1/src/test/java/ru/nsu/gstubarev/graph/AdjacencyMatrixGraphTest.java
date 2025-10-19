@@ -36,6 +36,16 @@ class AdjacencyMatrixGraphTest {
     }
 
     @Test
+    void testAddEdgeUpdatesWeight() {
+        graph.addEdge("A", "B", 5);
+        graph.addEdge("A", "B", 10);
+
+        assertTrue(graph.hasEdge("A", "B", 10));
+        assertFalse(graph.hasEdge("A", "B", 5));
+        assertEquals(1, graph.getEdgeCount());
+    }
+
+    @Test
     void testGetNeighbors() {
         graph.addEdge("A", "B", 4);
         graph.addEdge("A", "C", 2);
@@ -64,11 +74,58 @@ class AdjacencyMatrixGraphTest {
         graph.addEdge("A", "B", 3);
         graph.addEdge("B", "C", 2);
 
-        // Удаляем ребро
         graph.deleteEdge("A", "B", 3);
 
         assertFalse(graph.hasEdge("A", "B", 3));
         assertTrue(graph.hasEdge("B", "C", 2));
+        assertEquals(1, graph.getEdgeCount());
+    }
+
+    @Test
+    void testDeleteNonExistentEdge() {
+        graph.addEdge("A", "B", 1);
+        graph.deleteEdge("A", "C", 1);
+        assertEquals(1, graph.getEdgeCount());
+    }
+
+    @Test
+    void testDeleteEdgeWithWrongWeight() {
+        graph.addEdge("A", "B", 3);
+        graph.deleteEdge("A", "B", 5);
+        assertTrue(graph.hasEdge("A", "B", 3));
+    }
+
+    @Test
+    void testHasVertex() {
+        graph.addVertex("A");
+        assertTrue(graph.hasVertex("A"));
+        assertFalse(graph.hasVertex("B"));
+    }
+
+    @Test
+    void testHasEdge() {
+        graph.addEdge("A", "B", 5);
+        assertTrue(graph.hasEdge("A", "B", 5));
+        assertFalse(graph.hasEdge("A", "C", 5));
+    }
+
+    @Test
+    void testGetVertexCount() {
+        assertEquals(0, graph.getVertexCount());
+        graph.addVertex("A");
+        assertEquals(1, graph.getVertexCount());
+        graph.addEdge("B", "C", 1);
+        assertEquals(3, graph.getVertexCount());
+    }
+
+    @Test
+    void testGetEdgeCount() {
+        assertEquals(0, graph.getEdgeCount());
+        graph.addEdge("A", "B", 1);
+        assertEquals(1, graph.getEdgeCount());
+        graph.addEdge("B", "C", 2);
+        assertEquals(2, graph.getEdgeCount());
+        graph.deleteEdge("A", "B", 1);
         assertEquals(1, graph.getEdgeCount());
     }
 
@@ -93,4 +150,19 @@ class AdjacencyMatrixGraphTest {
         assertEquals(graph1, graph2);
         assertEquals(graph1.hashCode(), graph2.hashCode());
     }
+
+    @Test
+    void testCapacityExpansion() {
+        AdjacencyMatrixGraph<String> smallGraph = new AdjacencyMatrixGraph<>(2);
+
+        smallGraph.addVertex("A");
+        smallGraph.addVertex("B");
+        smallGraph.addVertex("C");
+
+        assertEquals(3, smallGraph.getVertexCount());
+        assertTrue(smallGraph.hasVertex("A"));
+        assertTrue(smallGraph.hasVertex("B"));
+        assertTrue(smallGraph.hasVertex("C"));
+    }
+
 }

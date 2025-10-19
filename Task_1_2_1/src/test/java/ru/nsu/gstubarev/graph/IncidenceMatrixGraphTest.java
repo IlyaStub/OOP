@@ -54,7 +54,58 @@ class IncidenceMatrixGraphTest {
         graph.addEdge("A", "B", 1);
         String result = graph.toString();
         assertTrue(result.contains("Incidence Matrix Graph"));
+        assertTrue(result.contains("Vertices: 2, Edges: 1"));
         assertTrue(result.contains("A"));
         assertTrue(result.contains("B"));
+    }
+
+    @Test
+    void testGetVertexCount() {
+        assertEquals(0, graph.getVertexCount());
+        graph.addVertex("A");
+        assertEquals(1, graph.getVertexCount());
+        graph.addVertex("B");
+        assertEquals(2, graph.getVertexCount());
+    }
+
+    @Test
+    void testGetEdgeCount() {
+        assertEquals(0, graph.getEdgeCount());
+        graph.addEdge("A", "B", 1);
+        assertEquals(1, graph.getEdgeCount());
+        graph.addEdge("B", "C", 2);
+        assertEquals(2, graph.getEdgeCount());
+    }
+
+    @Test
+    void testEqualsAndHashCode() {
+        IncidenceMatrixGraph<String> graph1 = new IncidenceMatrixGraph<>(5);
+        IncidenceMatrixGraph<String> graph2 = new IncidenceMatrixGraph<>(5);
+
+        graph1.addEdge("A", "B", 1);
+        graph1.addEdge("B", "C", 2);
+
+        graph2.addEdge("A", "B", 1);
+        graph2.addEdge("B", "C", 2);
+
+        assertEquals(graph1, graph2);
+        assertEquals(graph1.hashCode(), graph2.hashCode());
+
+        graph2.addEdge("C", "D", 3);
+        assertFalse(graph1.equals(graph2));
+    }
+
+    @Test
+    void testCapacityExpansion() {
+        IncidenceMatrixGraph<String> smallGraph = new IncidenceMatrixGraph<>(2);
+
+        smallGraph.addVertex("A");
+        smallGraph.addVertex("B");
+        smallGraph.addVertex("C");
+
+        assertEquals(3, smallGraph.getVertexCount());
+        assertTrue(smallGraph.hasVertex("A"));
+        assertTrue(smallGraph.hasVertex("B"));
+        assertTrue(smallGraph.hasVertex("C"));
     }
 }
