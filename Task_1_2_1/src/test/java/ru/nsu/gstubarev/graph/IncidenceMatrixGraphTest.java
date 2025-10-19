@@ -78,6 +78,20 @@ class IncidenceMatrixGraphTest {
     }
 
     @Test
+    void testHasVertex() {
+        graph.addVertex("A");
+        assertTrue(graph.hasVertex("A"));
+        assertFalse(graph.hasVertex("B"));
+    }
+
+    @Test
+    void testHasEdge() {
+        graph.addEdge("A", "B", 1);
+        assertTrue(graph.hasEdge("A", "B", 1));
+        assertFalse(graph.hasEdge("A", "C", 1));
+    }
+
+    @Test
     void testEqualsAndHashCode() {
         IncidenceMatrixGraph<String> graph1 = new IncidenceMatrixGraph<>(5);
         IncidenceMatrixGraph<String> graph2 = new IncidenceMatrixGraph<>(5);
