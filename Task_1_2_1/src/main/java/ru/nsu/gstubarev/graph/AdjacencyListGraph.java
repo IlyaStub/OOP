@@ -118,8 +118,8 @@ public class AdjacencyListGraph<V> implements Graph<V> {
             return false;
         }
         String edgeKey = from + "-" + to;
-        return adjacencyList.get(from).contains(to) &&
-                edgeWeights.getOrDefault(edgeKey, 0) == weight;
+        return adjacencyList.get(from).contains(to)
+                && edgeWeights.getOrDefault(edgeKey, 0) == weight;
     }
 
     @Override
