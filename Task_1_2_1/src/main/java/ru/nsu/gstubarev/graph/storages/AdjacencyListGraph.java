@@ -263,7 +263,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
     }
 
     /**
-     * The wrapper method.
+     * The wrapper method t.
      *
      * @return topological sorted graph
      */
