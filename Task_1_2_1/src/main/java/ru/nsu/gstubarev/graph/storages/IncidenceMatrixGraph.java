@@ -296,7 +296,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
     @Override
     public int getInDegree(V vertex) {
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return 0;
+        if (vertexIndex == -1) {
+            return 0;
+        }
 
         int inDegree = 0;
         for (int j = 0; j < edgeCount; j++) {
@@ -311,7 +313,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
     public List<V> getIncomingNeighbors(V vertex) {
         List<V> incomingNeighbors = new ArrayList<>();
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return incomingNeighbors;
+        if (vertexIndex == -1) {
+            return incomingNeighbors;
+        }
 
         for (int j = 0; j < edgeCount; j++) {
             if (matrix[vertexIndex][j] == -1) {

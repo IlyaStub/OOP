@@ -3,6 +3,11 @@ package ru.nsu.gstubarev.graph.interfaces;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Interface representing a graph operations for sort.
+ *
+ * @param <V> the type of vertices in the graph
+ */
 public interface GraphAlgorithmOperations<V> {
     /**
      * Returns all vertices in the graph.

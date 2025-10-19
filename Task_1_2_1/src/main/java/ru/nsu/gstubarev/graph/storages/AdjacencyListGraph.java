@@ -237,7 +237,6 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         }
 
         int inDegree = 0;
-        // Проходим по всем вершинам и их соседям
         for (Map.Entry<V, List<V>> entry : adjacencyList.entrySet()) {
             if (entry.getValue().contains(vertex)) {
                 inDegree++;

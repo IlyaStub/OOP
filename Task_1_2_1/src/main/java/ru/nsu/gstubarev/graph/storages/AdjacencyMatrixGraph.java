@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+
 import ru.nsu.gstubarev.graph.algorithms.GraphAlgorithms;
 import ru.nsu.gstubarev.graph.interfaces.Graph;
 import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
@@ -267,7 +268,9 @@ public class AdjacencyMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
     @Override
     public int getInDegree(V vertex) {
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return 0;
+        if (vertexIndex == -1) {
+            return 0;
+        }
 
         int inDegree = 0;
         for (int j = 0; j < edgeCount; j++) {
@@ -282,7 +285,9 @@ public class AdjacencyMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
     public List<V> getIncomingNeighbors(V vertex) {
         List<V> incomingNeighbors = new ArrayList<>();
         int vertexIndex = vertices.indexOf(vertex);
-        if (vertexIndex == -1) return incomingNeighbors;
+        if (vertexIndex == -1) {
+            return incomingNeighbors;
+        }
 
         for (int j = 0; j < edgeCount; j++) {
             if (matrix[vertexIndex][j] == -1) {
