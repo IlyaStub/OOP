@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -129,5 +133,37 @@ class AdjacencyListGraphTest {
 
         graph2.addEdge("C", "D", 3);
         assertFalse(graph1.equals(graph2));
+    }
+
+    @Test
+    void testReadFile() throws IOException {
+        String testFileName = "graph.txt";
+
+        try {
+            Files.write(Paths.get(testFileName), Arrays.asList(
+                    "# Test graph file",
+                    "v A",
+                    "v B",
+                    "v C",
+                    "e A B 1",
+                    "e B C 2",
+                    "e A C 3"
+            ));
+
+            graph.readFile(testFileName);
+
+            assertTrue(graph.hasVertex("A"));
+            assertTrue(graph.hasVertex("B"));
+            assertTrue(graph.hasVertex("C"));
+            assertEquals(3, graph.getVertexCount());
+
+            assertTrue(graph.hasEdge("A", "B", 1));
+            assertTrue(graph.hasEdge("B", "C", 2));
+            assertTrue(graph.hasEdge("A", "C", 3));
+            assertEquals(3, graph.getEdgeCount());
+
+        } finally {
+            Files.deleteIfExists(Paths.get(testFileName));
+        }
     }
 }
