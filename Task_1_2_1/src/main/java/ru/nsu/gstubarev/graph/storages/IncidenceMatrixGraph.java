@@ -1,19 +1,20 @@
-package ru.nsu.gstubarev.graph;
+package ru.nsu.gstubarev.graph.storages;
+
+import ru.nsu.gstubarev.graph.algorithms.GraphAlgorithms;
+import ru.nsu.gstubarev.graph.interfaces.Graph;
+import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Graph implementation using incidence matrix representation.
  *
  * @param <V> the type of vertices in the graph
  */
-public class IncidenceMatrixGraph<V> implements Graph<V> {
+public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperations<V> {
     private List<V> vertices;
     private int[][] matrix;
     private int[] edgeWeights;
@@ -281,5 +282,51 @@ public class IncidenceMatrixGraph<V> implements Graph<V> {
             }
         }
         return result;
+    }
+
+    @Override
+    public Set<V> getVertices() {
+        return new HashSet<>(vertices);
+    }
+
+    @Override
+    public int getInDegree(V vertex) {
+        int vertexIndex = vertices.indexOf(vertex);
+        if (vertexIndex == -1) return 0;
+
+        int inDegree = 0;
+        for (int j = 0; j < edgeCount; j++) {
+            if (matrix[vertexIndex][j] == -1) {
+                inDegree++;
+            }
+        }
+        return inDegree;
+    }
+
+    @Override
+    public List<V> getIncomingNeighbors(V vertex) {
+        List<V> incomingNeighbors = new ArrayList<>();
+        int vertexIndex = vertices.indexOf(vertex);
+        if (vertexIndex == -1) return incomingNeighbors;
+
+        for (int j = 0; j < edgeCount; j++) {
+            if (matrix[vertexIndex][j] == -1) {
+                for (int i = 0; i < vertices.size(); i++) {
+                    if (matrix[i][j] == 1) {
+                        incomingNeighbors.add(vertices.get(i));
+                    }
+                }
+            }
+        }
+        return incomingNeighbors;
+    }
+
+    /**
+     * The wrapper method.
+     *
+     * @return topological sorted graph
+     */
+    public List<V> topologicalSort() {
+        return GraphAlgorithms.topologicalSort(this);
     }
 }

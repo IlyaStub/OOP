@@ -9,8 +9,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.graph.storages.AdjacencyListGraph;
+import ru.nsu.gstubarev.graph.storages.AdjacencyMatrixGraph;
 
 class AdjacencyMatrixGraphTest {
 
@@ -199,5 +203,73 @@ class AdjacencyMatrixGraphTest {
         } finally {
             Files.deleteIfExists(Paths.get(testFileName));
         }
+    }
+
+    @Test
+    void testGetVertices() {
+        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
+
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addEdge("A", "C", 1);
+
+        Set<String> vertices = graph.getVertices();
+
+        assertEquals(3, vertices.size());
+        assertTrue(vertices.contains("A"));
+        assertTrue(vertices.contains("B"));
+        assertTrue(vertices.contains("C"));
+    }
+
+    @Test
+    void testGetInDegree() {
+        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
+
+        graph.addEdge("A", "B", 1);
+        graph.addEdge("C", "B", 1);
+        graph.addEdge("B", "D", 1);
+
+        assertEquals(0, graph.getInDegree("A"));
+        assertEquals(2, graph.getInDegree("B"));
+        assertEquals(0, graph.getInDegree("C"));
+        assertEquals(1, graph.getInDegree("D"));
+        assertEquals(0, graph.getInDegree("X"));
+    }
+
+    @Test
+    void testGetIncomingNeighbors() {
+        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
+
+        graph.addEdge("A", "B", 1);
+        graph.addEdge("C", "B", 1);
+        graph.addEdge("B", "D", 1);
+
+        List<String> incomingToB = graph.getIncomingNeighbors("B");
+        List<String> incomingToD = graph.getIncomingNeighbors("D");
+        List<String> incomingToA = graph.getIncomingNeighbors("A");
+
+        assertEquals(2, incomingToB.size());
+        assertTrue(incomingToB.contains("A"));
+        assertTrue(incomingToB.contains("C"));
+
+        assertEquals(1, incomingToD.size());
+        assertTrue(incomingToD.contains("B"));
+
+        assertTrue(incomingToA.isEmpty());
+    }
+
+    @Test
+    void testTopologicalSortMethod() {
+        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
+
+        graph.addEdge("A", "B", 1);
+        graph.addEdge("B", "C", 1);
+
+        List<String> result = graph.topologicalSort();
+
+        assertEquals(3, result.size());
+        assertEquals("A", result.get(0));
+        assertEquals("B", result.get(1));
+        assertEquals("C", result.get(2));
     }
 }

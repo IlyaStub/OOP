@@ -1,4 +1,4 @@
-package ru.nsu.gstubarev.graph;
+package ru.nsu.gstubarev.graph.interfaces;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,14 +39,6 @@ public interface Graph<V> {
      * @return the number of vertices
      */
     int getVertexCount();
-
-    /**
-     * Returns a list of neighbors of the specified vertex.
-     *
-     * @param vertex the vertex to get neighbors for
-     * @return list of neighboring vertices
-     */
-    List<V> getNeighbors(V vertex);
 
     /**
      * Adds a directed edge between two vertices with the specified weight.

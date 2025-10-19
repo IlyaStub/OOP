@@ -1,5 +1,9 @@
 package ru.nsu.gstubarev.graph;
 
+import ru.nsu.gstubarev.graph.storages.AdjacencyListGraph;
+import ru.nsu.gstubarev.graph.storages.AdjacencyMatrixGraph;
+import ru.nsu.gstubarev.graph.storages.IncidenceMatrixGraph;
+
 /**
  * Demonstration class for testing graph implementations.
  */

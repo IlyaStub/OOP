@@ -1,21 +1,20 @@
-package ru.nsu.gstubarev.graph;
+package ru.nsu.gstubarev.graph.storages;
+
+import ru.nsu.gstubarev.graph.algorithms.GraphAlgorithms;
+import ru.nsu.gstubarev.graph.interfaces.Graph;
+import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Graph implementation using adjacency list representation.
  *
  * @param <V> the type of vertices in the graph
  */
-public class AdjacencyListGraph<V> implements Graph<V> {
+public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations<V> {
     private Map<V, List<V>> adjacencyList;
     private Map<String, Integer> edgeWeights;
     private int edgeCount;
@@ -219,5 +218,52 @@ public class AdjacencyListGraph<V> implements Graph<V> {
         }
         result = 31 * result + edgeWeights.hashCode();
         return result;
+    }
+
+    @Override
+    public Set<V> getVertices() {
+        return new HashSet<>(adjacencyList.keySet());
+    }
+
+    @Override
+    public int getInDegree(V vertex) {
+        if (!adjacencyList.containsKey(vertex)) {
+            return 0;
+        }
+
+        int inDegree = 0;
+        // Проходим по всем вершинам и их соседям
+        for (Map.Entry<V, List<V>> entry : adjacencyList.entrySet()) {
+            if (entry.getValue().contains(vertex)) {
+                inDegree++;
+            }
+        }
+        return inDegree;
+    }
+
+    @Override
+    public List<V> getIncomingNeighbors(V vertex) {
+        List<V> incomingNeighbors = new ArrayList<>();
+        if (!adjacencyList.containsKey(vertex)) {
+            return incomingNeighbors;
+        }
+
+        for (Map.Entry<V, List<V>> entry : adjacencyList.entrySet()) {
+            V sourceVertex = entry.getKey();
+            List<V> neighbors = entry.getValue();
+            if (neighbors.contains(vertex)) {
+                incomingNeighbors.add(sourceVertex);
+            }
+        }
+        return incomingNeighbors;
+    }
+
+    /**
+     * The wrapper method.
+     *
+     * @return topological sorted graph
+     */
+    public List<V> topologicalSort() {
+        return GraphAlgorithms.topologicalSort(this);
     }
 }
