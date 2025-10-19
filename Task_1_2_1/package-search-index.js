@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.gstubarev.graph"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.gstubarev.graph"},{"l":"ru.nsu.gstubarev.graph.algorithms"},{"l":"ru.nsu.gstubarev.graph.exeptions"},{"l":"ru.nsu.gstubarev.graph.interfaces"},{"l":"ru.nsu.gstubarev.graph.storages"}];updateSearchResults();
