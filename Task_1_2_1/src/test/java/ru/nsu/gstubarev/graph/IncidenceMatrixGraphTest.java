@@ -40,6 +40,20 @@ class IncidenceMatrixGraphTest {
     }
 
     @Test
+    void testDeleteNonExistentEdge() {
+        graph.addEdge("A", "B", 1);
+        graph.deleteEdge("A", "C", 1);
+        assertEquals(1, graph.getEdgeCount());
+    }
+
+    @Test
+    void testDeleteEdgeWithWrongWeight() {
+        graph.addEdge("A", "B", 1);
+        graph.deleteEdge("A", "B", 2);
+        assertTrue(graph.hasEdge("A", "B", 1));
+    }
+
+    @Test
     void testGetNeighbors() {
         graph.addEdge("A", "B", 1);
         graph.addEdge("A", "C", 2);
@@ -47,6 +61,12 @@ class IncidenceMatrixGraphTest {
         assertEquals(2, neighbors.size());
         assertTrue(neighbors.contains("B"));
         assertTrue(neighbors.contains("C"));
+    }
+
+    @Test
+    void testGetNeighborsNonExistentVertex() {
+        List<String> neighbors = graph.getNeighbors("X");
+        assertTrue(neighbors.isEmpty());
     }
 
     @Test
@@ -107,6 +127,20 @@ class IncidenceMatrixGraphTest {
 
         graph2.addEdge("C", "D", 3);
         assertFalse(graph1.equals(graph2));
+    }
+
+    @Test
+    void testEqualsWithDifferentOrder() {
+        IncidenceMatrixGraph<String> graph1 = new IncidenceMatrixGraph<>(5);
+        IncidenceMatrixGraph<String> graph2 = new IncidenceMatrixGraph<>(5);
+
+        graph1.addVertex("A");
+        graph1.addVertex("B");
+
+        graph2.addVertex("B");
+        graph2.addVertex("A");
+
+        assertEquals(graph1, graph2);
     }
 
     @Test
