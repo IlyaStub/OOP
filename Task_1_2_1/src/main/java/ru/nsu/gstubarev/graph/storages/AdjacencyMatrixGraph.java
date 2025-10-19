@@ -273,8 +273,8 @@ public class AdjacencyMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         }
 
         int inDegree = 0;
-        for (int j = 0; j < edgeCount; j++) {
-            if (matrix[vertexIndex][j] == -1) {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (matrix[i][vertexIndex] != 0) {
                 inDegree++;
             }
         }
@@ -289,13 +289,9 @@ public class AdjacencyMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
             return incomingNeighbors;
         }
 
-        for (int j = 0; j < edgeCount; j++) {
-            if (matrix[vertexIndex][j] == -1) {
-                for (int i = 0; i < vertices.size(); i++) {
-                    if (matrix[i][j] == 1) {
-                        incomingNeighbors.add(vertices.get(i));
-                    }
-                }
+        for (int i = 0; i < vertices.size(); i++) {
+            if (matrix[i][vertexIndex] != 0) {
+                incomingNeighbors.add(vertices.get(i));
             }
         }
         return incomingNeighbors;

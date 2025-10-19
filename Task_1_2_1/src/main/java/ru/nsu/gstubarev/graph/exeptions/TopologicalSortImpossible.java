@@ -6,13 +6,6 @@ package ru.nsu.gstubarev.graph.exeptions;
 public class TopologicalSortImpossible extends RuntimeException {
     /**
      * Constructor of exception about topological sort impossible.
-     */
-    public TopologicalSortImpossible() {
-        this("Граф с цыклами");
-    }
-
-    /**
-     * Constructor of exception about topological sort impossible.
      *
      * @param message the invalid graph
      */

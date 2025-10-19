@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.nsu.gstubarev.graph.storages.AdjacencyListGraph;
 import ru.nsu.gstubarev.graph.storages.AdjacencyMatrixGraph;
 
 class AdjacencyMatrixGraphTest {
@@ -206,8 +205,6 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     void testGetVertices() {
-        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
-
         graph.addVertex("A");
         graph.addVertex("B");
         graph.addEdge("A", "C", 1);
@@ -222,8 +219,6 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     void testGetInDegree() {
-        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
-
         graph.addEdge("A", "B", 1);
         graph.addEdge("C", "B", 1);
         graph.addEdge("B", "D", 1);
@@ -237,30 +232,23 @@ class AdjacencyMatrixGraphTest {
 
     @Test
     void testGetIncomingNeighbors() {
-        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
-
         graph.addEdge("A", "B", 1);
         graph.addEdge("C", "B", 1);
         graph.addEdge("B", "D", 1);
 
         List<String> incomingToB = graph.getIncomingNeighbors("B");
-        List<String> incomingToD = graph.getIncomingNeighbors("D");
-        List<String> incomingToA = graph.getIncomingNeighbors("A");
-
         assertEquals(2, incomingToB.size());
         assertTrue(incomingToB.contains("A"));
         assertTrue(incomingToB.contains("C"));
-
+        List<String> incomingToD = graph.getIncomingNeighbors("D");
         assertEquals(1, incomingToD.size());
         assertTrue(incomingToD.contains("B"));
-
+        List<String> incomingToA = graph.getIncomingNeighbors("A");
         assertTrue(incomingToA.isEmpty());
     }
 
     @Test
     void testTopologicalSortMethod() {
-        AdjacencyListGraph<String> graph = new AdjacencyListGraph<>();
-
         graph.addEdge("A", "B", 1);
         graph.addEdge("B", "C", 1);
 
