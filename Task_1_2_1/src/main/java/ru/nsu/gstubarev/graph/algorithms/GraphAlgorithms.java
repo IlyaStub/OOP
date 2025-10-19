@@ -1,8 +1,5 @@
 package ru.nsu.gstubarev.graph.algorithms;
 
-import ru.nsu.gstubarev.graph.exeptions.TopologicalSortImpossible;
-import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,10 +7,13 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.HashMap;
 
+import ru.nsu.gstubarev.graph.exeptions.TopologicalSortImpossible;
+import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
+
 /**
  * Graph algorithms implementation.
  */
-public class GraphAlgorithms{
+public class GraphAlgorithms {
 
     /**
      * Performs topological sort using Kahn's algorithm.
