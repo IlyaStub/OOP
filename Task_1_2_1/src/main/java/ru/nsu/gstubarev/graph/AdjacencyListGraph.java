@@ -166,6 +166,7 @@ public class AdjacencyListGraph<V> implements Graph<V> {
             if (neighbors.isEmpty()) {
                 sb.append("[]");
             } else {
+                sb.append("[");
                 for (int i = 0; i < neighbors.size(); i++) {
                     V neighbor = neighbors.get(i);
                     String edgeKey = vertex + "-" + neighbor;
@@ -178,6 +179,7 @@ public class AdjacencyListGraph<V> implements Graph<V> {
                         sb.append(", ");
                     }
                 }
+                sb.append("]");
             }
             sb.append("\n");
         }

@@ -108,7 +108,7 @@ class AdjacencyListGraphTest {
         String result = graph.toString();
 
         assertTrue(result.contains("Adjacency List Graph"));
-        assertTrue(result.contains("Vertices: 3, Edges: 2"));
+        assertTrue(result.contains("Vertices: 2, Edges: 1"));
         assertTrue(result.contains("A"));
         assertTrue(result.contains("B"));
     }
