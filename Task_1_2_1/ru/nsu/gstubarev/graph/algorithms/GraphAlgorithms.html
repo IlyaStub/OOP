@@ -108,7 +108,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;V&gt;&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;V&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#topologicalSort(ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations)" class="member-name-link">topologicalSort</a><wbr>(<a href="../interfaces/GraphAlgorithmOperations.html" title="interface in ru.nsu.gstubarev.graph.interfaces">GraphAlgorithmOperations</a>&lt;V&gt;&nbsp;graph)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Performs topological sort using Kahn's algorithm.</div>
+<div class="block">Performs topological sort on the graph.</div>
 </div>
 </div>
 </div>
@@ -145,12 +145,14 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="topologicalSort(ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations)">
 <h3>topologicalSort</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;V&gt;</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;V&gt;</span>&nbsp;<span class="element-name">topologicalSort</span><wbr><span class="parameters">(<a href="../interfaces/GraphAlgorithmOperations.html" title="interface in ru.nsu.gstubarev.graph.interfaces">GraphAlgorithmOperations</a>&lt;V&gt;&nbsp;graph)</span></div>
-<div class="block">Performs topological sort using Kahn's algorithm.</div>
+<div class="block">Performs topological sort on the graph.</div>
 <dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>V</code> - the type of vertices in the graph</dd>
 <dt>Parameters:</dt>
 <dd><code>graph</code> - the graph to sort</dd>
 <dt>Returns:</dt>
-<dd>vertices in topological order</dd>
+<dd>topologically sorted list of vertices</dd>
 <dt>Throws:</dt>
 <dd><code><a href="../exeptions/TopologicalSortImpossible.html" title="class in ru.nsu.gstubarev.graph.exeptions">TopologicalSortImpossible</a></code> - if graph contains cycles</dd>
 </dl>
