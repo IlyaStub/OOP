@@ -1,8 +1,5 @@
 package ru.nsu.gstubarev.graph.storages;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,8 +17,8 @@ import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
  * @param <V> the type of vertices in the graph
  */
 public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations<V> {
-    private Map<V, List<V>> adjacencyList;
-    private Map<String, Integer> edgeWeights;
+    private final Map<V, List<V>> adjacencyList;
+    private final Map<String, Integer> edgeWeights;
     private int edgeCount;
 
     /**
@@ -31,6 +28,17 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         this.adjacencyList = new HashMap<>();
         this.edgeWeights = new HashMap<>();
         this.edgeCount = 0;
+    }
+
+    private String sanitizeVertex(V vertex) {
+        if (vertex == null) {
+            return "null";
+        }
+        return vertex.toString().replace("-", "_");
+    }
+
+    private String createEdgeKey(V from, V to) {
+        return sanitizeVertex(from) + "-" + sanitizeVertex(to);
     }
 
     @Override
@@ -59,8 +67,11 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
             }
         }
 
-        edgeWeights.entrySet().removeIf(entry ->
-                entry.getKey().startsWith(vertex + "-") || entry.getKey().endsWith("-" + vertex));
+        String sanitizedVertex = sanitizeVertex(vertex);
+        edgeWeights.entrySet().removeIf(entry -> {
+            String key = entry.getKey();
+            return key.startsWith(sanitizedVertex + "-") || key.endsWith("-" + sanitizedVertex);
+        });
     }
 
     @Override
@@ -99,7 +110,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
             neighbors.add(to);
             edgeCount++;
         }
-        String edgeKey = from + "-" + to;
+        String edgeKey = createEdgeKey(from, to);
         edgeWeights.put(edgeKey, weight);
     }
 
@@ -111,7 +122,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         List<V> neighbors = adjacencyList.get(from);
         if (neighbors.remove(to)) {
             edgeCount--;
-            String edgeKey = from + "-" + to;
+            String edgeKey = createEdgeKey(from, to);
             edgeWeights.remove(edgeKey);
         }
     }
@@ -121,41 +132,9 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         if (!adjacencyList.containsKey(from)) {
             return false;
         }
-        String edgeKey = from + "-" + to;
+        String edgeKey = createEdgeKey(from, to);
         return adjacencyList.get(from).contains(to)
                 && edgeWeights.getOrDefault(edgeKey, 0) == weight;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void readFile(String name) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (line.isEmpty() || line.startsWith("#")) {
-                    continue;
-                }
-                if (line.startsWith("v")) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 2) {
-                        V vertex = (V) parts[1];
-                        addVertex(vertex);
-                    }
-                } else if (line.startsWith("e")) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 3) {
-                        V from = (V) parts[1];
-                        V to = (V) parts[2];
-                        if (parts.length >= 4) {
-                            addEdge(from, to, Integer.parseInt(parts[3]));
-                        } else {
-                            addEdge(from, to, 1);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @Override
@@ -173,7 +152,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
                 sb.append("[");
                 for (int i = 0; i < neighbors.size(); i++) {
                     V neighbor = neighbors.get(i);
-                    String edgeKey = vertex + "-" + neighbor;
+                    String edgeKey = createEdgeKey(vertex, neighbor);
                     int weight = edgeWeights.getOrDefault(edgeKey, 1);
                     sb.append(neighbor);
                     if (weight != 1) {
@@ -263,7 +242,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
     }
 
     /**
-     * The wrapper method t.
+     * The wrapper method for topological sort.
      *
      * @return topological sorted graph
      */

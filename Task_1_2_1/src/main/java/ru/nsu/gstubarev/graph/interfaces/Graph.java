@@ -1,7 +1,9 @@
 package ru.nsu.gstubarev.graph.interfaces;
 
+import ru.nsu.gstubarev.graph.exeptions.GraphFileReadException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Interface representing a graph data structure.
@@ -9,7 +11,6 @@ import java.util.List;
  * @param <V> the type of vertices in the graph
  */
 public interface Graph<V> {
-
     /**
      * Adds a vertex to the graph.
      *
@@ -75,7 +76,37 @@ public interface Graph<V> {
      * @param name the name of the file to read
      * @throws IOException if an I/O error occurs
      */
-    void readFile(String name) throws IOException;
+    default void readFile(String name) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty() || line.startsWith("#")) {
+                    continue;
+                }
+                if (line.startsWith("v")) {
+                    String[] parts = line.split("\\s+");
+                    if (parts.length >= 2) {
+                        V vertex = (V) parts[1];
+                        addVertex(vertex);
+                    }
+                } else if (line.startsWith("e")) {
+                    String[] parts = line.split("\\s+");
+                    if (parts.length >= 3) {
+                        V from = (V) parts[1];
+                        V to = (V) parts[2];
+                        if (parts.length >= 4) {
+                            addEdge(from, to, Integer.parseInt(parts[3]));
+                        } else {
+                            addEdge(from, to, 1);
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new GraphFileReadException("Failed to read graph from file: " + name);
+        }
+    }
 
     /**
      * Compares this graph to the specified object.

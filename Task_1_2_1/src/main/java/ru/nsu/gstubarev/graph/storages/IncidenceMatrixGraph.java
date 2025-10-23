@@ -1,8 +1,5 @@
 package ru.nsu.gstubarev.graph.storages;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,10 +16,13 @@ import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
  * @param <V> the type of vertices in the graph
  */
 public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperations<V> {
-    private List<V> vertices;
+    private final List<V> vertices;
     private int[][] matrix;
-    private int[] edgeWeights;
+    private final int[] edgeWeights;
     private int edgeCount;
+    private final int OUTGOING = 1;
+    private final int INCOMING = -1;
+    private final int NOTHING = 0;
 
     /**
      * Constructs an empty graph with the specified initial capacity.
@@ -70,7 +70,7 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         }
 
         for (int j = edgeCount - 1; j >= 0; j--) {
-            if (matrix[vertexIndex][j] != 0) {
+            if (matrix[vertexIndex][j] != NOTHING) {
                 for (int i = 0; i < vertices.size(); i++) {
                     matrix[i][j] = matrix[i][edgeCount - 1];
                 }
@@ -115,9 +115,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         int vertexIndex = vertices.indexOf(vertex);
         if (vertexIndex != -1) {
             for (int j = 0; j < edgeCount; j++) {
-                if (matrix[vertexIndex][j] == 1) {
+                if (matrix[vertexIndex][j] == OUTGOING) {
                     for (int i = 0; i < vertices.size(); i++) {
-                        if (matrix[i][j] == -1) {
+                        if (matrix[i][j] == INCOMING) {
                             neighbors.add(vertices.get(i));
                         }
                     }
@@ -137,7 +137,7 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
         for (int j = 0; j < edgeCount; j++) {
-            if (matrix[fromIndex][j] == 1 && matrix[toIndex][j] == -1
+            if (matrix[fromIndex][j] == OUTGOING && matrix[toIndex][j] == INCOMING
                     && edgeWeights[j] == weight) {
                 return;
             }
@@ -145,11 +145,11 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         ensureCapacity(edgeCount + 1);
         for (int i = 0; i < vertices.size(); i++) {
             if (i == fromIndex) {
-                matrix[i][edgeCount] = 1;
+                matrix[i][edgeCount] = OUTGOING;
             } else if (i == toIndex) {
-                matrix[i][edgeCount] = -1;
+                matrix[i][edgeCount] = INCOMING;
             } else {
-                matrix[i][edgeCount] = 0;
+                matrix[i][edgeCount] = NOTHING;
             }
         }
         edgeWeights[edgeCount] = weight;
@@ -165,7 +165,7 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         }
 
         for (int j = 0; j < edgeCount; j++) {
-            if (matrix[fromIndex][j] == 1 && matrix[toIndex][j] == -1
+            if (matrix[fromIndex][j] == OUTGOING && matrix[toIndex][j] == INCOMING
                     && edgeWeights[j] == weight) {
                 for (int i = 0; i < vertices.size(); i++) {
                     for (int k = j; k < edgeCount - 1; k++) {
@@ -190,44 +190,12 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         }
 
         for (int j = 0; j < edgeCount; j++) {
-            if (matrix[fromIndex][j] == 1 && matrix[toIndex][j] == -1
+            if (matrix[fromIndex][j] == OUTGOING && matrix[toIndex][j] == INCOMING
                     && edgeWeights[j] == weight) {
                 return true;
             }
         }
         return false;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void readFile(String name) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (line.isEmpty() || line.startsWith("#")) {
-                    continue;
-                }
-                if (line.startsWith("v")) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 2) {
-                        V vertex = (V) parts[1];
-                        addVertex(vertex);
-                    }
-                } else if (line.startsWith("e")) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 3) {
-                        V from = (V) parts[1];
-                        V to = (V) parts[2];
-                        if (parts.length >= 4) {
-                            addEdge(from, to, Integer.parseInt(parts[3]));
-                        } else {
-                            addEdge(from, to, 1);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @Override
@@ -302,7 +270,7 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
 
         int inDegree = 0;
         for (int j = 0; j < edgeCount; j++) {
-            if (matrix[vertexIndex][j] == -1) {
+            if (matrix[vertexIndex][j] == INCOMING) {
                 inDegree++;
             }
         }
@@ -318,9 +286,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         }
 
         for (int j = 0; j < edgeCount; j++) {
-            if (matrix[vertexIndex][j] == -1) {
+            if (matrix[vertexIndex][j] == INCOMING) {
                 for (int i = 0; i < vertices.size(); i++) {
-                    if (matrix[i][j] == 1) {
+                    if (matrix[i][j] == OUTGOING) {
                         incomingNeighbors.add(vertices.get(i));
                     }
                 }

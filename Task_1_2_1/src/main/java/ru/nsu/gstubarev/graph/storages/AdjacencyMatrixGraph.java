@@ -1,8 +1,5 @@
 package ru.nsu.gstubarev.graph.storages;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -20,7 +17,7 @@ import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
  * @param <V> the type of vertices in the graph
  */
 public class AdjacencyMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperations<V> {
-    private List<V> vertices;
+    private final List<V> vertices;
     private double[][] matrix;
     private int edgeCount;
 
@@ -168,37 +165,6 @@ public class AdjacencyMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
         int fromIndex = vertices.indexOf(from);
         int toIndex = vertices.indexOf(to);
         return fromIndex != -1 && toIndex != -1 && matrix[fromIndex][toIndex] == weight;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void readFile(String name) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (line.isEmpty() || line.startsWith("#")) {
-                    continue;
-                }
-                if (line.startsWith("v")) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 2) {
-                        addVertex((V) parts[1]);
-                    }
-                } else if (line.startsWith("e")) {
-                    String[] parts = line.split("\\s+");
-                    if (parts.length >= 3) {
-                        V from = ((V) parts[1]);
-                        V to = ((V) parts[2]);
-                        if (parts.length >= 4) {
-                            addEdge(from, to, Integer.parseInt(parts[3]));
-                        } else {
-                            addEdge(from, to, 1);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @Override

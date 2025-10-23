@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.graph.exeptions.GraphFileReadException;
 import ru.nsu.gstubarev.graph.storages.IncidenceMatrixGraph;
 
 class IncidenceMatrixGraphTest {
@@ -209,6 +210,13 @@ class IncidenceMatrixGraphTest {
         } finally {
             Files.deleteIfExists(Paths.get(testFileName));
         }
+    }
+
+    @Test
+    void testExceptionCreation() {
+        GraphFileReadException exception = new GraphFileReadException("testic");
+
+        assertEquals("testic", exception.getMessage());
     }
 
     @Test
