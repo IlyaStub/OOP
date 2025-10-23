@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.graph.interfaces;
 
-import ru.nsu.gstubarev.graph.exeptions.GraphFileReadException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import ru.nsu.gstubarev.graph.exeptions.GraphFileReadException;
 
 /**
  * Interface representing a graph data structure.
@@ -74,8 +74,8 @@ public interface Graph<V> {
      * Reads graph data from a file.
      *
      * @param name the name of the file to read
-     * @throws IOException if an I/O error occurs
      */
+    @SuppressWarnings("unchecked")
     default void readFile(String name) {
         try (BufferedReader reader = new BufferedReader(new FileReader(name))) {
             String line;

@@ -13,12 +13,12 @@ import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
  * Graph algorithms implementation.
  */
 public class GraphAlgorithms {
-
     /**
-     * Performs topological sort using Kahn's algorithm.
+     * Performs topological sort on the graph.
      *
+     * @param <V> the type of vertices in the graph
      * @param graph the graph to sort
-     * @return vertices in topological order
+     * @return topologically sorted list of vertices
      * @throws TopologicalSortImpossible if graph contains cycles
      */
     public static <V> List<V> topologicalSort(GraphAlgorithmOperations<V> graph) {

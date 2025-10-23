@@ -20,9 +20,9 @@ public class IncidenceMatrixGraph<V> implements Graph<V>, GraphAlgorithmOperatio
     private int[][] matrix;
     private final int[] edgeWeights;
     private int edgeCount;
-    private final int OUTGOING = 1;
-    private final int INCOMING = -1;
-    private final int NOTHING = 0;
+    private static final int OUTGOING = 1;
+    private static final int INCOMING = -1;
+    private static final int NOTHING = 0;
 
     /**
      * Constructs an empty graph with the specified initial capacity.
