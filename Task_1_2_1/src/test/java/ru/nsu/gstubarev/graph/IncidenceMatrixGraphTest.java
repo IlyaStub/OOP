@@ -214,7 +214,8 @@ class IncidenceMatrixGraphTest {
 
     @Test
     void testExceptionCreation() {
-        GraphFileReadException exception = new GraphFileReadException("testic");
+        Throwable cause = new IOException("File not found");
+        GraphFileReadException exception = new GraphFileReadException("testic", cause);
 
         assertEquals("testic", exception.getMessage());
     }

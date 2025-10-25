@@ -17,28 +17,42 @@ import ru.nsu.gstubarev.graph.interfaces.GraphAlgorithmOperations;
  * @param <V> the type of vertices in the graph
  */
 public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations<V> {
-    private final Map<V, List<V>> adjacencyList;
-    private final Map<String, Integer> edgeWeights;
+    private final Map<V, List<Edge<V>>> adjacencyList;
     private int edgeCount;
+
+    private static class Edge<V> {
+        final V target;
+        final int weight;
+
+        Edge(V target, int weight) {
+            this.target = target;
+            this.weight = weight;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Edge<?> edge = (Edge<?>) o;
+            return weight == edge.weight && Objects.equals(target, edge.target);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(target, weight);
+        }
+    }
 
     /**
      * Constructs an empty graph.
      */
     public AdjacencyListGraph() {
         this.adjacencyList = new HashMap<>();
-        this.edgeWeights = new HashMap<>();
         this.edgeCount = 0;
-    }
-
-    private String sanitizeVertex(V vertex) {
-        if (vertex == null) {
-            return "null";
-        }
-        return vertex.toString().replace("-", "_");
-    }
-
-    private String createEdgeKey(V from, V to) {
-        return sanitizeVertex(from) + "-" + sanitizeVertex(to);
     }
 
     @Override
@@ -58,7 +72,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         edgeCount -= adjacencyList.get(vertex).size();
         adjacencyList.remove(vertex);
 
-        for (List<V> neighbors : adjacencyList.values()) {
+        for (List<Edge<V>> neighbors : adjacencyList.values()) {
             for (int i = neighbors.size() - 1; i >= 0; i--) {
                 if (neighbors.get(i).equals(vertex)) {
                     neighbors.remove(i);
@@ -66,12 +80,6 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
                 }
             }
         }
-
-        String sanitizedVertex = sanitizeVertex(vertex);
-        edgeWeights.entrySet().removeIf(entry -> {
-            String key = entry.getKey();
-            return key.startsWith(sanitizedVertex + "-") || key.endsWith("-" + sanitizedVertex);
-        });
     }
 
     @Override
@@ -95,7 +103,12 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
 
     @Override
     public List<V> getNeighbors(V vertex) {
-        return adjacencyList.getOrDefault(vertex, new ArrayList<>());
+        List<Edge<V>> edges = adjacencyList.getOrDefault(vertex, new ArrayList<>());
+        List<V> neighbors = new ArrayList<>();
+        for (Edge<V> edge : edges) {
+            neighbors.add(edge.target);
+        }
+        return neighbors;
     }
 
     @Override
@@ -105,13 +118,12 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         }
         addVertex(from);
         addVertex(to);
-        List<V> neighbors = adjacencyList.get(from);
-        if (!neighbors.contains(to)) {
-            neighbors.add(to);
+        List<Edge<V>> neighbors = adjacencyList.get(from);
+        Edge<V> newEdge = new Edge<>(to, weight);
+        if (!neighbors.contains(newEdge)) {
+            neighbors.add(newEdge);
             edgeCount++;
         }
-        String edgeKey = createEdgeKey(from, to);
-        edgeWeights.put(edgeKey, weight);
     }
 
     @Override
@@ -119,11 +131,10 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         if (!adjacencyList.containsKey(from)) {
             return;
         }
-        List<V> neighbors = adjacencyList.get(from);
-        if (neighbors.remove(to)) {
+        List<Edge<V>> neighbors = adjacencyList.get(from);
+        Edge<V> edgeToRemove = new Edge<>(to, weight);
+        if (neighbors.remove(edgeToRemove)) {
             edgeCount--;
-            String edgeKey = createEdgeKey(from, to);
-            edgeWeights.remove(edgeKey);
         }
     }
 
@@ -132,9 +143,8 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         if (!adjacencyList.containsKey(from)) {
             return false;
         }
-        String edgeKey = createEdgeKey(from, to);
-        return adjacencyList.get(from).contains(to)
-                && edgeWeights.getOrDefault(edgeKey, 0) == weight;
+        List<Edge<V>> edges = adjacencyList.get(from);
+        return edges.contains(new Edge<>(to, weight));
     }
 
     @Override
@@ -145,19 +155,15 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
                 .append(", Edges: ").append(edgeCount).append("\n");
         for (V vertex : adjacencyList.keySet()) {
             sb.append(vertex).append(" -> ");
-            List<V> neighbors = adjacencyList.get(vertex);
+            List<Edge<V>> neighbors = adjacencyList.get(vertex);
             if (neighbors.isEmpty()) {
                 sb.append("[]");
             } else {
                 sb.append("[");
                 for (int i = 0; i < neighbors.size(); i++) {
-                    V neighbor = neighbors.get(i);
-                    String edgeKey = createEdgeKey(vertex, neighbor);
-                    int weight = edgeWeights.getOrDefault(edgeKey, 1);
-                    sb.append(neighbor);
-                    if (weight != 1) {
-                        sb.append("(").append(weight).append(")");
-                    }
+                    Edge<V> neighbor = neighbors.get(i);
+                    sb.append(neighbor.target);
+                    sb.append("(").append(neighbor.weight).append(")");
                     if (i < neighbors.size() - 1) {
                         sb.append(", ");
                     }
@@ -171,36 +177,36 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
         AdjacencyListGraph<?> other = (AdjacencyListGraph<?>) obj;
         if (adjacencyList.size() != other.adjacencyList.size() || edgeCount != other.edgeCount) {
             return false;
         }
+
         if (!adjacencyList.keySet().equals(other.adjacencyList.keySet())) {
             return false;
         }
+
         for (V vertex : adjacencyList.keySet()) {
-            if (!new HashSet<>(adjacencyList.get(vertex)).equals(
-                    new HashSet<>(other.adjacencyList.get(vertex)))) {
+            List<Edge<V>> thisEdges = adjacencyList.get(vertex);
+            List<?> otherEdges = other.adjacencyList.get(vertex);
+
+            if (!new HashSet<>(thisEdges).equals(new HashSet<>(otherEdges))) {
                 return false;
             }
         }
-        return edgeWeights.equals(other.edgeWeights);
+        return true;
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(adjacencyList.size(), edgeCount);
         result = 31 * result + adjacencyList.keySet().hashCode();
-        for (List<V> neighbors : adjacencyList.values()) {
-            result = 31 * result + new HashSet<>(neighbors).hashCode();
+        for (List<Edge<V>> edges : adjacencyList.values()) {
+            result = 31 * result + new HashSet<>(edges).hashCode();
         }
-        result = 31 * result + edgeWeights.hashCode();
         return result;
     }
 
@@ -216,9 +222,11 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
         }
 
         int inDegree = 0;
-        for (Map.Entry<V, List<V>> entry : adjacencyList.entrySet()) {
-            if (entry.getValue().contains(vertex)) {
-                inDegree++;
+        for (List<Edge<V>> edges : adjacencyList.values()) {
+            for (Edge<V> edge : edges) {
+                if (edge.target.equals(vertex)) {
+                    inDegree++;
+                }
             }
         }
         return inDegree;
@@ -231,11 +239,14 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
             return incomingNeighbors;
         }
 
-        for (Map.Entry<V, List<V>> entry : adjacencyList.entrySet()) {
+        for (Map.Entry<V, List<Edge<V>>> entry : adjacencyList.entrySet()) {
             V sourceVertex = entry.getKey();
-            List<V> neighbors = entry.getValue();
-            if (neighbors.contains(vertex)) {
-                incomingNeighbors.add(sourceVertex);
+            List<Edge<V>> edges = entry.getValue();
+            for (Edge<V> edge : edges) {
+                if (edge.target.equals(vertex)) {
+                    incomingNeighbors.add(sourceVertex);
+                    break;
+                }
             }
         }
         return incomingNeighbors;

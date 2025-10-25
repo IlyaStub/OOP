@@ -104,7 +104,7 @@ public interface Graph<V> {
                 }
             }
         } catch (IOException e) {
-            throw new GraphFileReadException("Failed to read graph from file: " + name);
+            throw new GraphFileReadException("Failed to read graph from file: " + name, e);
         }
     }
 
