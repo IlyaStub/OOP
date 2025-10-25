@@ -74,7 +74,7 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
 
         for (List<Edge<V>> neighbors : adjacencyList.values()) {
             for (int i = neighbors.size() - 1; i >= 0; i--) {
-                if (neighbors.get(i).equals(vertex)) {
+                if (neighbors.get(i).target.equals(vertex)) {
                     neighbors.remove(i);
                     edgeCount--;
                 }

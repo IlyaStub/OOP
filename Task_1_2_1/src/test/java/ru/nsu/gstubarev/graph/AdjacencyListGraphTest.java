@@ -39,13 +39,13 @@ class AdjacencyListGraphTest {
 
     @Test
     void testDeleteVertex() {
-        graph.addEdge("A", "B", 1);
+        graph.addEdge("A", "B", 2);
         graph.addEdge("B", "C", 2);
 
         graph.deleteVertex("B");
 
         assertFalse(graph.hasVertex("B"));
-        assertFalse(graph.hasEdge("A", "B", 1));
+        assertFalse(graph.hasEdge("A", "B", 2));
         assertFalse(graph.hasEdge("B", "C", 2));
         assertEquals(2, graph.getVertexCount());
     }
