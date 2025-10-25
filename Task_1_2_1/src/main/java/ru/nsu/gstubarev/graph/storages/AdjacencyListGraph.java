@@ -177,8 +177,12 @@ public class AdjacencyListGraph<V> implements Graph<V>, GraphAlgorithmOperations
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
 
         AdjacencyListGraph<?> other = (AdjacencyListGraph<?>) obj;
         if (adjacencyList.size() != other.adjacencyList.size() || edgeCount != other.edgeCount) {
