@@ -1,0 +1,17 @@
+#!/bin/bash
+
+rm -rf build
+mkdir -p build/classes build/docs build/jar
+
+javac -d build/classes \
+    src/main/java/ru/nsu/gstubarev/graph/*.java \
+    src/main/java/ru/nsu/gstubarev/graph/storages/*.java \
+    src/main/java/ru/nsu/gstubarev/graph/interfaces/*.java \
+    src/main/java/ru/nsu/gstubarev/graph/algorithms/*.java \
+    src/main/java/ru/nsu/gstubarev/graph/exeptions/*.java
+
+javadoc -d build/docs -sourcepath src/main/java -subpackages ru.nsu.gstubarev.graph
+
+jar -cf build/jar/graph.jar -C build/classes .
+
+java -cp build/classes ru.nsu.gstubarev.graph.Main
