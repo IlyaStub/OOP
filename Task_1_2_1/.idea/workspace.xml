@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c01046ff-118b-4acd-a30c-bb0651049b0b" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="34CabHRVpBzBes0Fg1XehkpW1Wh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.testDeleteVertex.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.testEqualsAndHashCode.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.testGetEdgeCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.testGetIncomingNeighbors.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.testGetVertexCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyListGraphTest.testReadFile.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testAddEdge.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testAddEdgeUpdatesWeight.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testAddVertex.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testCapacityExpansion.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testDeleteEdgeWithWrongWeight.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testDeleteNonExistentEdge.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testGetEdgeCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testGetNeighbors.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testGetVertexCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testHasEdge.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testHasVertex.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AdjacencyMatrixGraphTest.testReadFile.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.GraphAlgorithmsTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.testCapacityExpansion.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.testEqualsAndHashCode.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.testGetEdgeCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.testGetVertexCount.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.testReadFile.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.IncidenceMatrixGraphTest.testToString.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MainTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Task_1_2_1 [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;task-1-2-1&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.nsu.gstubarev.graph" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.nsu.gstubarev.graph" />
+      <recent name="ru.nsu.gstubarev.graph.algorithms" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.AdjacencyListGraphTest.testDeleteVertex">
+    <configuration name="AdjacencyListGraphTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.gstubarev.graph.AdjacencyListGraphTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="AdjacencyListGraphTest.testDeleteVertex" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.gstubarev.graph.AdjacencyListGraphTest.testDeleteVertex&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="GraphAlgorithmsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.gstubarev.graph.algorithms.GraphAlgorithmsTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="IncidenceMatrixGraphTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.gstubarev.graph.IncidenceMatrixGraphTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.gstubarev.graph.MainTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.AdjacencyListGraphTest.testDeleteVertex" />
+        <item itemvalue="Gradle.AdjacencyListGraphTest" />
+        <item itemvalue="Gradle.GraphAlgorithmsTest" />
+        <item itemvalue="Gradle.MainTest" />
+        <item itemvalue="Gradle.IncidenceMatrixGraphTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c01046ff-118b-4acd-a30c-bb0651049b0b" name="Changes" comment="" />
+      <created>1760720082204</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760720082204</updated>
+    </task>
+    <servers />
+  </component>
+</project>
