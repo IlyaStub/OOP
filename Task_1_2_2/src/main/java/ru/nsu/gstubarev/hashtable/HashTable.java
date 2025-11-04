@@ -1,19 +1,20 @@
 package ru.nsu.gstubarev.hashtable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class HashTable<K, V> implements MyMap<K, V> {
 
+    private static final int STANDARD_CAPACITY = 100;
+
     static class Node<K, V> {
-        final int hash;
         final K key;
         private V value;
 
-        Node(int hash, K key, V value) {
-            this.hash = hash;
+        Node(K key, V value) {
             this.key = key;
             this.value = value;
         }
@@ -45,13 +46,14 @@ public class HashTable<K, V> implements MyMap<K, V> {
                 return true;
             }
 
-            return o instanceof Node<?, ?> e
-                    && Objects.equals(key, e.getKey())
+            return o instanceof Node<?, ?> e && Objects.equals(key, e.getKey())
                     && Objects.equals(value, e.getValue());
         }
     }
 
-    private ArrayList<Node<K, V>> table = new ArrayList<>();
+    ArrayList<LinkedList<Node<K, V>>> table;
+
+    private final int capacity;
 
     private int size;
 
@@ -60,11 +62,12 @@ public class HashTable<K, V> implements MyMap<K, V> {
     }
 
     public HashTable() {
-        this(100);
-    }
-
-    public HashTable(int initialCapacity) {
-
+        this.capacity = STANDARD_CAPACITY;
+        this.table = new ArrayList<>(this.capacity);
+        this.size = 0;
+        for (int i = 0; i < capacity; i++) {
+            table.add(null);
+        }
     }
 
     private int hash(Object key) {
@@ -72,24 +75,92 @@ public class HashTable<K, V> implements MyMap<K, V> {
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
-    @Override
-    public void put(K key, V value) {
-
+    private int getIndexByHash(int h) {
+        return (this.capacity - 1) & h;
     }
 
     @Override
-    public void remove(K key) {
+    public V put(K key, V value) {
+        int index = getIndexByHash(hash(key));
 
-    }
+        LinkedList<Node<K, V>> bucket = table.get(index);
 
-    @Override
-    public V get(K key) {
+        if (bucket == null) {
+            bucket = new LinkedList<>();
+            table.set(index, bucket);
+        }
+
+        for (Node<K, V> node : bucket) {
+            if (Objects.equals(node.key, key)) {
+                return node.setValue(value);
+            }
+        }
+
+        bucket.add(new Node<>(key, value));
+        this.size++;
         return null;
     }
 
     @Override
-    public void update(K key) {
+    public V remove(K key) {
+        int index = getIndexByHash(hash(key));
 
+        LinkedList<Node<K, V>> bucket = table.get(index);
+
+        if (bucket == null) {
+            return null;
+        }
+
+        Iterator<Node<K, V>> iterator = bucket.iterator();
+        while (iterator.hasNext()) {
+            Node<K, V> node = iterator.next();
+            if (Objects.equals(key, node.key)) {
+                V value = node.value;
+                iterator.remove();
+                this.size--;
+                return value;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public V get(K key) {
+        int index = getIndexByHash(hash(key));
+
+        LinkedList<Node<K, V>> bucket = table.get(index);
+
+        if (bucket == null) {
+            return null;
+        }
+
+        for (Node<K, V> node : bucket) {
+            if (Objects.equals(key, node.key)) {
+                return node.getValue();
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public void update(K key, V value) {
+        int index = getIndexByHash(hash(key));
+        LinkedList<Node<K, V>> bucket = table.get(index);
+
+        if (bucket == null) {
+            throw new NoSuchKeyException(key.toString());
+        }
+
+        for (Node<K, V> node : bucket) {
+            if (Objects.equals(key, node.key)) {
+                node.value = value;
+                return;
+            }
+        }
+
+        throw new NoSuchKeyException(key.toString());
     }
 
     @Override
@@ -99,16 +170,73 @@ public class HashTable<K, V> implements MyMap<K, V> {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        HashTable<?, ?> other = (HashTable<?, ?>) obj;
+
+        if (other.capacity != this.capacity) {
+            return false;
+        }
+
+        for (int i = 0; i < table.size(); i++) {
+            LinkedList<Node<K, V>> bucket1 = table.get(i);
+            LinkedList<?> bucket2 = other.table.get(i);
+
+            if (bucket1 == null && bucket2 == null) continue;
+            if (bucket1 == null || bucket2 == null) return false;
+            if (bucket1.size() != bucket2.size()) return false;
+
+            for (Node<K, V> node1 : bucket1) {
+                boolean found = false;
+                for (Object node2 : bucket2) {
+                    if (Objects.equals(node1, node2)) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return false;
+            }
+        }
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 0;
+        for (LinkedList<Node<K, V>> bucket : table) {
+            if (bucket != null) {
+                hash += bucket.hashCode();
+            }
+        }
+        return hash;
     }
 
     @Override
     public String toString() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("HashTable{");
+        sb.append("size=").append(capacity).append(", ");
+        sb.append("elements=[");
+
+        boolean first = true;
+        for (LinkedList<Node<K, V>> bucket : table) {
+            if (bucket != null && !bucket.isEmpty()) {
+                for (Node<K, V> node : bucket) {
+                    if (!first) {
+                        sb.append(", ");
+                    }
+                    sb.append(node.toString());
+                    first = false;
+                }
+            }
+        }
+
+        sb.append("]}");
+        return sb.toString();
     }
 }
