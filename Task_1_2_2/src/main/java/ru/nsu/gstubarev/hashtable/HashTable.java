@@ -38,7 +38,7 @@ public class HashTable<K, V> implements MyMap<K, V> {
         /**
          * Getter for key.
          *
-         * @return key type of <K>
+         * @return key type of K
          */
         public final K getKey() {
             return key;
@@ -47,7 +47,7 @@ public class HashTable<K, V> implements MyMap<K, V> {
         /**
          * Getter for value.
          *
-         * @return value type of <V>
+         * @return value type of V
          */
         public final V getValue() {
             return value;
@@ -244,9 +244,15 @@ public class HashTable<K, V> implements MyMap<K, V> {
             LinkedList<Node<K, V>> bucket1 = table.get(i);
             LinkedList<?> bucket2 = other.table.get(i);
 
-            if (bucket1 == null && bucket2 == null) continue;
-            if (bucket1 == null || bucket2 == null) return false;
-            if (bucket1.size() != bucket2.size()) return false;
+            if (bucket1 == null && bucket2 == null) {
+                continue;
+            }
+            if (bucket1 == null || bucket2 == null) {
+                return false;
+            }
+            if (bucket1.size() != bucket2.size()) {
+                return false;
+            }
 
             for (Node<K, V> node1 : bucket1) {
                 boolean found = false;
