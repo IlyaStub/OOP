@@ -1,6 +1,14 @@
 package ru.nsu.gstubarev.hashtable;
 
+/**
+ * The Main class.
+ */
 public class Main {
+    /**
+     * Main method to demonstrate HashTable functionality.
+     *
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args) {
         HashTable<String, Number> table = new HashTable<>();
         table.put("Fer", 1);

@@ -5,42 +5,92 @@ import java.util.Objects;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
+/**
+ * Class based implementation of the MyMap interface.
+ *
+ * @param <K>
+ * @param <V>
+ */
 public class HashTable<K, V> implements MyMap<K, V> {
 
     private static final int STANDARD_CAPACITY = 100;
 
+    /**
+     * Class for key-value Node.
+     *
+     * @param <K>
+     * @param <V>
+     */
     static class Node<K, V> {
         final K key;
         private V value;
 
+        /**
+         * Just constructor for Node.
+         * @param key
+         * @param value
+         */
         Node(K key, V value) {
             this.key = key;
             this.value = value;
         }
 
+        /**
+         * Getter for key.
+         *
+         * @return key type of <K>
+         */
         public final K getKey() {
             return key;
         }
 
+        /**
+         * Getter for value.
+         *
+         * @return value type of <V>
+         */
         public final V getValue() {
             return value;
         }
 
-        public final String toString() {
+        /**
+         * Override method toString.
+         *
+         * @return string "key=value"
+         */
+        @Override
+        public String toString() {
             return key + "=" + value;
         }
 
-        public final int hashCode() {
+        /**
+         * Override method hashCode for Node.
+         *
+         * @return hash for Node
+         */
+        @Override
+        public int hashCode() {
             return Objects.hashCode(key) ^ Objects.hashCode(value);
         }
 
-        public final V setValue(V newValue) {
+        /**
+         * Setter for value in Node.
+         *
+         * @param newValue (new value)
+         * @return previous value of this Node
+         */
+        public V setValue(V newValue) {
             V oldValue = value;
             value = newValue;
             return oldValue;
         }
 
+        /**
+         * Override method equals for Node.
+         *
+         * @param o type of Object
+         * @return true if equals else false
+         */
         public final boolean equals(Object o) {
             if (o == this) {
                 return true;
@@ -57,10 +107,18 @@ public class HashTable<K, V> implements MyMap<K, V> {
 
     private int size;
 
+    /**
+     * Getter for int size.
+     *
+     * @return current size of ArrayList with HashTable
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * Constructor for HashTable.
+     */
     public HashTable() {
         this.capacity = STANDARD_CAPACITY;
         this.table = new ArrayList<>(this.capacity);
