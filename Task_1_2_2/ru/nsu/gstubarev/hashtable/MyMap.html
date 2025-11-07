@@ -71,11 +71,17 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>K</code> - </dd>
+<dd><code>V</code> - </dd>
+</dl>
+<dl class="notes">
 <dt>All Known Implementing Classes:</dt>
 <dd><code><a href="HashTable.html" title="class in ru.nsu.gstubarev.hashtable">HashTable</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">MyMap&lt;K,<wbr>V&gt;</span></div>
+<div class="block">The Interface looks like minimal version of Map.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -92,21 +98,31 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="MyMap.html" title="type parameter in MyMap">V</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#get(K)" class="member-name-link">get</a><wbr>(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Get value by key.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#iteration()" class="member-name-link">iteration</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Method for iteration by HashTable.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="MyMap.html" title="type parameter in MyMap">V</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#put(K,V)" class="member-name-link">put</a><wbr>(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key,
  <a href="MyMap.html" title="type parameter in MyMap">V</a>&nbsp;value)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Put value to HashTable by key.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="MyMap.html" title="type parameter in MyMap">V</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#remove(K)" class="member-name-link">remove</a><wbr>(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Remove value from HashTable by key.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#update(K,V)" class="member-name-link">update</a><wbr>(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key,
  <a href="MyMap.html" title="type parameter in MyMap">V</a>&nbsp;value)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Change value in HashTable by key.</div>
+</div>
 </div>
 </div>
 </div>
@@ -126,18 +142,40 @@ loadScripts(document, 'script');</script>
 <h3 id="put(java.lang.Object,java.lang.Object)">put</h3>
 <div class="member-signature"><span class="return-type"><a href="MyMap.html" title="type parameter in MyMap">V</a></span>&nbsp;<span class="element-name">put</span><wbr><span class="parameters">(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key,
  <a href="MyMap.html" title="type parameter in MyMap">V</a>&nbsp;value)</span></div>
+<div class="block">Put value to HashTable by key.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>key</code> - </dd>
+<dd><code>value</code> - </dd>
+<dt>Returns:</dt>
+<dd>Old value of by key if it was else null</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="remove(K)">
 <h3 id="remove(java.lang.Object)">remove</h3>
 <div class="member-signature"><span class="return-type"><a href="MyMap.html" title="type parameter in MyMap">V</a></span>&nbsp;<span class="element-name">remove</span><wbr><span class="parameters">(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key)</span></div>
+<div class="block">Remove value from HashTable by key.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>key</code> - </dd>
+<dt>Returns:</dt>
+<dd>removed value</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="get(K)">
 <h3 id="get(java.lang.Object)">get</h3>
 <div class="member-signature"><span class="return-type"><a href="MyMap.html" title="type parameter in MyMap">V</a></span>&nbsp;<span class="element-name">get</span><wbr><span class="parameters">(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key)</span></div>
+<div class="block">Get value by key.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>key</code> - </dd>
+<dt>Returns:</dt>
+<dd>value by key</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -145,12 +183,19 @@ loadScripts(document, 'script');</script>
 <h3 id="update(java.lang.Object,java.lang.Object)">update</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="MyMap.html" title="type parameter in MyMap">K</a>&nbsp;key,
  <a href="MyMap.html" title="type parameter in MyMap">V</a>&nbsp;value)</span></div>
+<div class="block">Change value in HashTable by key.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>key</code> - </dd>
+<dd><code>value</code> - </dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="iteration()">
 <h3>iteration</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">iteration</span>()</div>
+<div class="block">Method for iteration by HashTable.</div>
 </section>
 </li>
 </ul>
