@@ -44,6 +44,7 @@ public interface MyMap<K, V> {
 
     /**
      * Method for iteration by HashTable.
+     * @return iterator
      */
     Iterator<HashTable.Node<K, V>> iterator();
 }

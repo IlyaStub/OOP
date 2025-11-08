@@ -195,9 +195,9 @@ public class HashTable<K, V> implements MyMap<K, V> {
         while (iterator.hasNext()) {
             Node<K, V> node = iterator.next();
             if (Objects.equals(key, node.key)) {
+                modificationCount++;
                 V value = node.value;
                 iterator.remove();
-                modificationCount++;
                 this.size--;
                 return value;
             }
