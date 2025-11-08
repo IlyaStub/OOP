@@ -7,7 +7,7 @@ public class NoSuchKeyException extends RuntimeException {
     /**
      * Constructs a new NoSuchKeyException with the specified detail message.
      *
-     * @param key
+     * @param key that was not found
      */
     public NoSuchKeyException(String key) {
         super("Нет такого ключа" + key);

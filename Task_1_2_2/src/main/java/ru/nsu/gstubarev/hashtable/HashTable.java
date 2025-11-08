@@ -1,15 +1,15 @@
 package ru.nsu.gstubarev.hashtable;
 
-import java.util.LinkedList;
-import java.util.Objects;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * Class based implementation of the MyMap interface.
  *
- * @param <K>
- * @param <V>
+ * @param <K> the type of keys maintained by this map
+ * @param <V> the type of mapped values
  */
 public class HashTable<K, V> implements MyMap<K, V> {
 
@@ -18,8 +18,8 @@ public class HashTable<K, V> implements MyMap<K, V> {
     /**
      * Class for key-value Node.
      *
-     * @param <K>
-     * @param <V>
+     * @param <K> the type of keys maintained by this node
+     * @param <V> the type of mapped values
      */
     static class Node<K, V> {
         final K key;
@@ -27,8 +27,9 @@ public class HashTable<K, V> implements MyMap<K, V> {
 
         /**
          * Just constructor for Node.
-         * @param key
-         * @param value
+         *
+         * @param key the key
+         * @param value the value
          */
         Node(K key, V value) {
             this.key = key;
@@ -101,7 +102,7 @@ public class HashTable<K, V> implements MyMap<K, V> {
         }
     }
 
-    ArrayList<LinkedList<Node<K, V>>> table;
+    private ArrayList<LinkedList<Node<K, V>>> table;
 
     private final int capacity;
 
@@ -222,11 +223,6 @@ public class HashTable<K, V> implements MyMap<K, V> {
     }
 
     @Override
-    public void iteration() {
-
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj == this) {
             return true;
@@ -262,7 +258,9 @@ public class HashTable<K, V> implements MyMap<K, V> {
                         break;
                     }
                 }
-                if (!found) return false;
+                if (!found) {
+                    return false;
+                }
             }
         }
 

@@ -3,15 +3,15 @@ package ru.nsu.gstubarev.hashtable;
 /**
  * The Interface looks like minimal version of Map.
  *
- * @param <K>
- * @param <V>
+ * @param <K> the type of keys maintained by this map
+ * @param <V> the type of mapped values
  */
 public interface MyMap<K, V> {
     /**
      * Put value to HashTable by key.
      *
-     * @param key
-     * @param value
+     * @param key the key
+     * @param value the value
      * @return Old value of by key if it was else null
      */
     V put(K key, V value);
@@ -19,7 +19,7 @@ public interface MyMap<K, V> {
     /**
      * Remove value from HashTable by key.
      *
-     * @param key
+     * @param key the key
      * @return removed value
      */
     V remove(K key);
@@ -27,7 +27,7 @@ public interface MyMap<K, V> {
     /**
      * Get value by key.
      *
-     * @param key
+     * @param key the key
      * @return value by key
      */
     V get(K key);
@@ -35,13 +35,8 @@ public interface MyMap<K, V> {
     /**
      * Change value in HashTable by key.
      *
-     * @param key
-     * @param value
+     * @param key the key
+     * @param value the value
      */
     void update(K key, V value);
-
-    /**
-     * Method for iteration by HashTable.
-     */
-    void iteration();
 }
