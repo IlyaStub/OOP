@@ -1,5 +1,7 @@
 package ru.nsu.gstubarev.hashtable;
 
+import java.util.Iterator;
+
 /**
  * The Interface looks like minimal version of Map.
  *
@@ -39,4 +41,9 @@ public interface MyMap<K, V> {
      * @param value the value
      */
     void update(K key, V value);
+
+    /**
+     * Method for iteration by HashTable.
+     */
+    Iterator<HashTable.Node<K, V>> iterator();
 }

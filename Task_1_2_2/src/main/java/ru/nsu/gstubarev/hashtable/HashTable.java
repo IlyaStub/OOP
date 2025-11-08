@@ -108,6 +108,8 @@ public class HashTable<K, V> implements MyMap<K, V> {
 
     private int size;
 
+    private int modificationCount = 0;
+
     /**
      * Getter for int size.
      *
@@ -115,6 +117,24 @@ public class HashTable<K, V> implements MyMap<K, V> {
      */
     public int getSize() {
         return size;
+    }
+
+    /**
+     * Getter for int capacity.
+     *
+     * @return current capacity of ArrayList with HashTable
+     */
+    public int getCapacity() {
+        return capacity;
+    }
+
+    /**
+     * Getter for int modificationCount.
+     *
+     * @return current count of modification in ArrayList
+     */
+    public int getModificationCount() {
+        return modificationCount;
     }
 
     /**
@@ -148,6 +168,7 @@ public class HashTable<K, V> implements MyMap<K, V> {
             bucket = new LinkedList<>();
             table.set(index, bucket);
         }
+        modificationCount++;
 
         for (Node<K, V> node : bucket) {
             if (Objects.equals(node.key, key)) {
@@ -176,6 +197,7 @@ public class HashTable<K, V> implements MyMap<K, V> {
             if (Objects.equals(key, node.key)) {
                 V value = node.value;
                 iterator.remove();
+                modificationCount++;
                 this.size--;
                 return value;
             }
@@ -220,6 +242,21 @@ public class HashTable<K, V> implements MyMap<K, V> {
         }
 
         throw new NoSuchKeyException(key.toString());
+    }
+
+    /**
+     * Method for return bucket by index.
+     *
+     * @param index int value for index bucket in ArrayList
+     * @return bucket by index
+     */
+    LinkedList<Node<K, V>> getBucket(int index) {
+        return table.get(index);
+    }
+
+    @Override
+    public Iterator<Node<K, V>> iterator() {
+        return new HashTableIterator<>(this);
     }
 
     @Override
