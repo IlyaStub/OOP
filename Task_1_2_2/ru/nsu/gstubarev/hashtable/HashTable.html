@@ -75,8 +75,8 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Type Parameters:</dt>
-<dd><code>K</code> - </dd>
-<dd><code>V</code> - </dd>
+<dd><code>K</code> - the type of keys maintained by this map</dd>
+<dd><code>V</code> - the type of mapped values</dd>
 </dl>
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
@@ -132,29 +132,24 @@ implements <a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hashCode()" class="member-name-link">hashCode</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#iteration()" class="member-name-link">iteration</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Method for iteration by HashTable.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HashTable.html" title="type parameter in HashTable">V</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#put(K,V)" class="member-name-link">put</a><wbr>(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HashTable.html" title="type parameter in HashTable">V</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#put(K,V)" class="member-name-link">put</a><wbr>(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
  <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Put value to HashTable by key.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HashTable.html" title="type parameter in HashTable">V</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remove(K)" class="member-name-link">remove</a><wbr>(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="HashTable.html" title="type parameter in HashTable">V</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#remove(K)" class="member-name-link">remove</a><wbr>(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Remove value from HashTable by key.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(K,V)" class="member-name-link">update</a><wbr>(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(K,V)" class="member-name-link">update</a><wbr>(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
  <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Change value in HashTable by key.</div>
 </div>
 </div>
@@ -210,6 +205,9 @@ implements <a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="MyMap.html#put(K,V)">put</a></code>&nbsp;in interface&nbsp;<code><a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">MyMap</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,<wbr><a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>key</code> - the key</dd>
+<dd><code>value</code> - the value</dd>
 <dt>Returns:</dt>
 <dd>Old value of by key if it was else null</dd>
 </dl>
@@ -224,6 +222,8 @@ implements <a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="MyMap.html#remove(K)">remove</a></code>&nbsp;in interface&nbsp;<code><a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">MyMap</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,<wbr><a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>key</code> - the key</dd>
 <dt>Returns:</dt>
 <dd>removed value</dd>
 </dl>
@@ -238,6 +238,8 @@ implements <a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="MyMap.html#get(K)">get</a></code>&nbsp;in interface&nbsp;<code><a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">MyMap</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,<wbr><a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>key</code> - the key</dd>
 <dt>Returns:</dt>
 <dd>value by key</dd>
 </dl>
@@ -253,18 +255,9 @@ implements <a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="MyMap.html#update(K,V)">update</a></code>&nbsp;in interface&nbsp;<code><a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">MyMap</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,<wbr><a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;</code></dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="iteration()">
-<h3>iteration</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">iteration</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="MyMap.html#iteration()">MyMap</a></code></span></div>
-<div class="block">Method for iteration by HashTable.</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="MyMap.html#iteration()">iteration</a></code>&nbsp;in interface&nbsp;<code><a href="MyMap.html" title="interface in ru.nsu.gstubarev.hashtable">MyMap</a>&lt;<a href="HashTable.html" title="type parameter in HashTable">K</a>,<wbr><a href="HashTable.html" title="type parameter in HashTable">V</a>&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>key</code> - the key</dd>
+<dd><code>value</code> - the value</dd>
 </dl>
 </section>
 </li>
