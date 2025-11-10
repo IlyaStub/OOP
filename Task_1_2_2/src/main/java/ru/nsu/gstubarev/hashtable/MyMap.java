@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @param <K> the type of keys maintained by this map
  * @param <V> the type of mapped values
  */
-public interface MyMap<K, V> extends Iterable<HashTable.Node<K, V>>{
+public interface MyMap<K, V> extends Iterable<HashTable.Node<K, V>> {
     /**
      * Put value to HashTable by key.
      *
