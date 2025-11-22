@@ -1,0 +1,139 @@
+package ru.nsu.gstubarev.poisk;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import ru.nsu.gstubarev.poisk.exceptions.SearchInFileException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.List;
+
+class SearchSubstringTest {
+
+    @TempDir
+    Path tempDir;
+
+    @Test
+    void testRussianSearch() {
+        File testFile = createTestFile("абракадабра");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "бра");
+        assertEquals(List.of(1L, 8L), result);
+    }
+
+    @Test
+    void testEnglishText() {
+        File testFile = createTestFile("abracadabra");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "bra");
+        assertEquals(List.of(1L, 8L), result);
+    }
+
+    @Test
+    void testNoMatches() {
+        File testFile = createTestFile("абракадабра");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "xyz");
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void testEmptyFile() {
+        File testFile = createTestFile("");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "gfd");
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void testEmptyPattern() {
+        File testFile = createTestFile("абракадабра");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "");
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void testSingleCharacterSearch() {
+        File testFile = createTestFile("hello world");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "o");
+        assertEquals(List.of(4L, 7L), result);
+    }
+
+    @Test
+    void testAlotOfASearch() {
+        File testFile = createTestFile("aaaaaaa");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "a");
+        assertEquals(List.of(0L, 1L, 2L, 3L, 4L, 5L, 6L), result);
+    }
+    @Test
+    void testAlotOfAandMultySearch() {
+        File testFile = createTestFile("aaaaaaa");
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "aa");
+        assertEquals(List.of(0L, 1L, 2L, 3L, 4L, 5L), result);
+    }
+
+    @Test
+    void testLargeFile() {
+        File largeFile = createLargeTestFile(17, "abc");
+        assertEquals(17L * 1024 * 1024 * 1024, largeFile.length());
+        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
+        assertTrue(result.size() > 1_000_000);
+    }
+
+    @Test
+    void testEmptyFilename() {
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> SearchSubstring.find("", "test"));
+        assertTrue(exception.getMessage().contains("Filename cannot be empty"));
+    }
+
+    @Test
+    void testFileNotFound() {
+        Exception exception = assertThrows(SearchInFileException.class,
+                () -> SearchSubstring.find("nonexistent.txt", "test"));
+        assertTrue(exception.getMessage().contains("nonexistent.txt"));
+    }
+
+    private File createTestFile(String content) {
+        try {
+            File testFile = tempDir.resolve("test.txt").toFile();
+            try (OutputStreamWriter writer = new OutputStreamWriter(
+                    new FileOutputStream(testFile), StandardCharsets.UTF_8)) {
+                writer.write(content);
+            }
+            return testFile;
+        } catch (Exception e) {
+            throw new RuntimeException("Test file creation failed", e);
+        }
+    }
+
+    private File createLargeTestFile(int sizeGB, String pattern) {
+        try {
+            File file = tempDir.resolve("large.bin").toFile();
+            byte[] patternBytes = pattern.getBytes(StandardCharsets.UTF_8);
+            long targetBytes = (long) sizeGB * 1024 * 1024 * 1024;
+
+            int bufferSize = 1024 * 1024;
+            byte[] buffer = new byte[bufferSize];
+
+            for (int i = 0; i < bufferSize; i++) {
+                buffer[i] = patternBytes[i % patternBytes.length];
+            }
+
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                long written = 0;
+                while (written < targetBytes) {
+                    int toWrite = (int) Math.min(bufferSize, targetBytes - written);
+                    fos.write(buffer, 0, toWrite);
+                    written += toWrite;
+                }
+            }
+
+            return file;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to create large file: " + sizeGB + "GB", e);
+        }
+    }
+}
