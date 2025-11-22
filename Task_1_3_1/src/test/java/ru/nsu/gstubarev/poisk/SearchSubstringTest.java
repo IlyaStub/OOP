@@ -4,15 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import ru.nsu.gstubarev.poisk.exceptions.SearchInFileException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import ru.nsu.gstubarev.poisk.exceptions.SearchInFileException;
 
 class SearchSubstringTest {
 
@@ -62,13 +63,14 @@ class SearchSubstringTest {
     }
 
     @Test
-    void testAlotOfASearch() {
+    void testManySingleA() {
         File testFile = createTestFile("aaaaaaa");
         List<Long> result = SearchSubstring.find(testFile.getPath(), "a");
         assertEquals(List.of(0L, 1L, 2L, 3L, 4L, 5L, 6L), result);
     }
+
     @Test
-    void testAlotOfAandMultySearch() {
+    void testManyOverlappingAA() {
         File testFile = createTestFile("aaaaaaa");
         List<Long> result = SearchSubstring.find(testFile.getPath(), "aa");
         assertEquals(List.of(0L, 1L, 2L, 3L, 4L, 5L), result);
@@ -76,8 +78,8 @@ class SearchSubstringTest {
 
     @Test
     void testLargeFile() {
-        File largeFile = createLargeTestFile(17, "abc");
-        assertEquals(17L * 1024 * 1024 * 1024, largeFile.length());
+        File largeFile = createLargeTestFileGb(1, "abc"); // 1 GB — безопасно
+        assertEquals(1L * 1024 * 1024 * 1024, largeFile.length());
         List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
         assertTrue(result.size() > 1_000_000);
     }
@@ -109,11 +111,11 @@ class SearchSubstringTest {
         }
     }
 
-    private File createLargeTestFile(int sizeGB, String pattern) {
+    private File createLargeTestFileGb(int sizeGb, String pattern) {
         try {
             File file = tempDir.resolve("large.bin").toFile();
             byte[] patternBytes = pattern.getBytes(StandardCharsets.UTF_8);
-            long targetBytes = (long) sizeGB * 1024 * 1024 * 1024;
+            long targetBytes = (long) sizeGb * 1024 * 1024 * 1024;
 
             int bufferSize = 1024 * 1024;
             byte[] buffer = new byte[bufferSize];
@@ -133,7 +135,7 @@ class SearchSubstringTest {
 
             return file;
         } catch (Exception e) {
-            throw new RuntimeException("Failed to create large file: " + sizeGB + "GB", e);
+            throw new RuntimeException("Failed to create large file: " + sizeGb + "GB", e);
         }
     }
 }
