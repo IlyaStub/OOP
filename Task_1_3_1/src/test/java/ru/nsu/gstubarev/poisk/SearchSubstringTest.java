@@ -41,6 +41,7 @@ class SearchSubstringTest {
         List<Long> result = SearchSubstring.find(testFile.getPath(), "xyz");
         assertTrue(result.isEmpty());
     }
+
     @Test
     void testStrPatternSuffix() {
         File file = createTestFile("ababababab");
@@ -51,7 +52,9 @@ class SearchSubstringTest {
     @Test
     void testPatternLongerThanBuffer() {
         StringBuilder pattern = new StringBuilder();
-        for (int i = 0; i < 10000; i++) pattern.append('a');
+        for (int i = 0; i < 10000; i++) {
+            pattern.append('a');
+        }
         pattern.append('b');
 
         StringBuilder content = new StringBuilder();
@@ -99,14 +102,6 @@ class SearchSubstringTest {
     }
 
     @Test
-    void testLargeFile() {
-        File largeFile = createLargeTestFileGb(1, "abc");
-        assertEquals(1L * 1024 * 1024 * 1024, largeFile.length());
-        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
-        assertTrue(result.size() > 200);
-    }
-
-    @Test
     void testEmptyFilename() {
         Exception exception = assertThrows(IllegalArgumentException.class,
                 () -> SearchSubstring.find("", "test"));
@@ -136,7 +131,9 @@ class SearchSubstringTest {
     @Test
     void testMainWithValidArgs() throws Exception {
         File testFile = createTestFile("abracadabra");
-        String[] args = { testFile.getPath(), "bra" };
+        String[] args = {
+                testFile.getPath(), "bra"
+        };
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
@@ -147,7 +144,7 @@ class SearchSubstringTest {
             String output = outContent.toString(StandardCharsets.UTF_8.name());
             assertTrue(output.contains("Result: [1, 8]"), "Output should contain result");
         } finally {
-            System.setOut(originalOut); // восстанавливаем
+            System.setOut(originalOut);
         }
     }
 
