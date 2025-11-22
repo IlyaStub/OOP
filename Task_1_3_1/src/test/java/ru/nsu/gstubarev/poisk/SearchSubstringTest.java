@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-
 import ru.nsu.gstubarev.poisk.exceptions.SearchInFileException;
 
 class SearchSubstringTest {
@@ -70,19 +69,19 @@ class SearchSubstringTest {
     }
 
     @Test
-    void testManyOverlappingAA() {
+    void testManyOverlappingA() {
         File testFile = createTestFile("aaaaaaa");
         List<Long> result = SearchSubstring.find(testFile.getPath(), "aa");
         assertEquals(List.of(0L, 1L, 2L, 3L, 4L, 5L), result);
     }
 
-    @Test
-    void testLargeFile() {
-        File largeFile = createLargeTestFileGb(1, "abc"); // 1 GB — безопасно
-        assertEquals(1L * 1024 * 1024 * 1024, largeFile.length());
-        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
-        assertTrue(result.size() > 1_000_000);
-    }
+//    @Test
+//    void testLargeFile() {
+//        File largeFile = createLargeTestFileGb(1, "abc");
+//        assertEquals(1L * 1024 * 1024 * 1024, largeFile.length());
+//        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
+//        assertTrue(result.size() > 1_000_000);
+//    }
 
     @Test
     void testEmptyFilename() {

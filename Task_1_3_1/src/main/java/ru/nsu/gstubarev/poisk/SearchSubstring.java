@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-
 import ru.nsu.gstubarev.poisk.exceptions.SearchInFileException;
 
 /**
@@ -97,7 +96,7 @@ public class SearchSubstring {
     /**
      * Main method.
      *
-     * @param args command line arguments: <file_name> <substring>
+     * @param args command line arguments: file_name substring
      */
     public static void main(String[] args) {
         if (args.length != 2) {
