@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.gstubarev.poisk.exceptions","l":"SearchInFileException"},{"p":"ru.nsu.gstubarev.poisk","l":"SearchSubstring"}];updateSearchResults();

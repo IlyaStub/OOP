@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.gstubarev.poisk"},{"l":"ru.nsu.gstubarev.poisk.exceptions"}];updateSearchResults();
