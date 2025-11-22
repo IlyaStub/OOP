@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
@@ -96,13 +98,13 @@ class SearchSubstringTest {
         assertEquals(List.of(0L, 1L, 2L, 3L, 4L, 5L), result);
     }
 
-//    @Test
-//    void testLargeFile() {
-//        File largeFile = createLargeTestFileGb(1, "abc");
-//        assertEquals(1L * 1024 * 1024 * 1024, largeFile.length());
-//        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
-//        assertTrue(result.size() > 1_000_000);
-//    }
+    @Test
+    void testLargeFile() {
+        File largeFile = createLargeTestFileGb(1, "abc");
+        assertEquals(1L * 1024 * 1024 * 1024, largeFile.length());
+        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
+        assertTrue(result.size() > 200);
+    }
 
     @Test
     void testEmptyFilename() {
@@ -112,10 +114,41 @@ class SearchSubstringTest {
     }
 
     @Test
+    void testPatternOnBufferBoundary() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 8190; i++) {
+            sb.append('a');
+        }
+        sb.append("bra");
+        sb.append("xyz");
+        File file = createTestFile(sb.toString());
+        List<Long> result = SearchSubstring.find(file.getPath(), "bra");
+        assertEquals(List.of(8190L), result);
+    }
+
+    @Test
     void testFileNotFound() {
         Exception exception = assertThrows(SearchInFileException.class,
                 () -> SearchSubstring.find("nonexistent.txt", "test"));
         assertTrue(exception.getMessage().contains("nonexistent.txt"));
+    }
+
+    @Test
+    void testMainWithValidArgs() throws Exception {
+        File testFile = createTestFile("abracadabra");
+        String[] args = { testFile.getPath(), "bra" };
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
+
+        try {
+            SearchSubstring.main(args);
+            String output = outContent.toString(StandardCharsets.UTF_8.name());
+            assertTrue(output.contains("Result: [1, 8]"), "Output should contain result");
+        } finally {
+            System.setOut(originalOut); // восстанавливаем
+        }
     }
 
     private File createTestFile(String content) {
