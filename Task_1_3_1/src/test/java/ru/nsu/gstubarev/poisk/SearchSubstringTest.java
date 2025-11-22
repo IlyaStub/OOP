@@ -39,6 +39,27 @@ class SearchSubstringTest {
         List<Long> result = SearchSubstring.find(testFile.getPath(), "xyz");
         assertTrue(result.isEmpty());
     }
+    @Test
+    void testStrPatternSuffix() {
+        File file = createTestFile("ababababab");
+        List<Long> result = SearchSubstring.find(file.getPath(), "ababab");
+        assertEquals(List.of(0L, 2L, 4L), result);
+    }
+
+    @Test
+    void testPatternLongerThanBuffer() {
+        StringBuilder pattern = new StringBuilder();
+        for (int i = 0; i < 10000; i++) pattern.append('a');
+        pattern.append('b');
+
+        StringBuilder content = new StringBuilder();
+        content.append(pattern);
+        content.append("tail");
+
+        File file = createTestFile(content.toString());
+        List<Long> result = SearchSubstring.find(file.getPath(), pattern.toString());
+        assertEquals(List.of(0L), result);
+    }
 
     @Test
     void testEmptyFile() {
