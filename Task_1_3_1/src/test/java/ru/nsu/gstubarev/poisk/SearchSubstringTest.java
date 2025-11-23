@@ -122,6 +122,14 @@ class SearchSubstringTest {
     }
 
     @Test
+    void testLargeFile() {
+        File largeFile = createLargeTestFileGb(4, "abc");
+        assertEquals(4L * 1024 * 1024 * 1024, largeFile.length());
+        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
+        assertTrue(result.size() > 1000);
+    }
+
+    @Test
     void testFileNotFound() {
         Exception exception = assertThrows(SearchInFileException.class,
                 () -> SearchSubstring.find("nonexistent.txt", "test"));
