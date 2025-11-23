@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -122,11 +123,21 @@ class SearchSubstringTest {
     }
 
     @Test
-    void testLargeFile() {
-        File largeFile = createLargeTestFileGb(4, "abc");
-        assertEquals(4L * 1024 * 1024 * 1024, largeFile.length());
-        List<Long> result = SearchSubstring.find(largeFile.getPath(), "abc");
-        assertTrue(result.size() > 1000);
+    void testLargeFile() throws IOException {
+        File testFile = tempDir.resolve("large.txt").toFile();
+
+        String largeContent = "x".repeat(1024 * 1024);
+        long tPos = 15L * 1024 * 1024 * 1024;
+
+        try (FileOutputStream fos = new FileOutputStream(testFile, true)) {
+            for (int i = 0; i < 15 * 1024; i++) {
+                fos.write(largeContent.getBytes(StandardCharsets.UTF_8));
+            }
+            fos.write("target".getBytes(StandardCharsets.UTF_8));
+        }
+
+        List<Long> result = SearchSubstring.find(testFile.getPath(), "target");
+        assertEquals(List.of(tPos), result);
     }
 
     @Test
@@ -166,34 +177,6 @@ class SearchSubstringTest {
             return testFile;
         } catch (Exception e) {
             throw new RuntimeException("Test file creation failed", e);
-        }
-    }
-
-    private File createLargeTestFileGb(int sizeGb, String pattern) {
-        try {
-            File file = tempDir.resolve("large.bin").toFile();
-            byte[] patternBytes = pattern.getBytes(StandardCharsets.UTF_8);
-            long targetBytes = (long) sizeGb * 1024 * 1024 * 1024;
-
-            int bufferSize = 1024 * 1024;
-            byte[] buffer = new byte[bufferSize];
-
-            for (int i = 0; i < bufferSize; i++) {
-                buffer[i] = patternBytes[i % patternBytes.length];
-            }
-
-            try (FileOutputStream fos = new FileOutputStream(file)) {
-                long written = 0;
-                while (written < targetBytes) {
-                    int toWrite = (int) Math.min(bufferSize, targetBytes - written);
-                    fos.write(buffer, 0, toWrite);
-                    written += toWrite;
-                }
-            }
-
-            return file;
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to create large file: " + sizeGb + "GB", e);
         }
     }
 }
