@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
@@ -127,7 +127,7 @@ class SearchSubstringTest {
         File testFile = tempDir.resolve("large.txt").toFile();
 
         String largeContent = "x".repeat(1024 * 1024);
-        long tPos = 15L * 1024 * 1024 * 1024;
+        long tarPos = 15L * 1024 * 1024 * 1024;
 
         try (FileOutputStream fos = new FileOutputStream(testFile, true)) {
             for (int i = 0; i < 15 * 1024; i++) {
@@ -137,7 +137,7 @@ class SearchSubstringTest {
         }
 
         List<Long> result = SearchSubstring.find(testFile.getPath(), "target");
-        assertEquals(List.of(tPos), result);
+        assertEquals(List.of(tarPos), result);
     }
 
     @Test
