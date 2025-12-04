@@ -51,7 +51,7 @@ public class Semester {
     }
 
     /**
-     * Override method toString
+     * Override method toString.
      *
      * @return string
      */

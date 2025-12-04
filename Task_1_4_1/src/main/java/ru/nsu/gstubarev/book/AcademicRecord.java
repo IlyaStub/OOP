@@ -106,7 +106,8 @@ public class AcademicRecord {
          * @return true if this is EXAM or DIFFERENTIATED_CREDIT
          */
         public boolean isExamOrDiffCredit() {
-            return this == EXAM || this == DIFFERENTIATED_CREDIT;
+            return this == EXAM
+                    || this == DIFFERENTIATED_CREDIT;
         }
 
         /**

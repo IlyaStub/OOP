@@ -63,7 +63,9 @@ public enum Grade {
      * @return true if the grade is bad
      */
     public boolean isBad() {
-        return this == SATISFACTORY || this == FAIL || this == FAIL_PASS;
+        return this == SATISFACTORY
+                || this == FAIL
+                || this == FAIL_PASS;
     }
 
     /**

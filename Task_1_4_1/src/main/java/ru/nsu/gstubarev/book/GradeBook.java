@@ -86,9 +86,9 @@ public class GradeBook {
      * @return true if honors diploma is possible
      */
     public boolean getRedDiploma() {
-        return hasExcellentThesis() &&
-                hasNoBadFinalGrades() &&
-                hasExcellentGradesPercentage();
+        return hasExcellentThesis()
+                && hasNoBadFinalGrades()
+                && hasExcellentGradesPercentage();
     }
 
     /**
