@@ -140,10 +140,10 @@ public class AcademicRecord {
             return false;
         }
         AcademicRecord that = (AcademicRecord) o;
-        return semester == that.semester &&
-                Objects.equals(courseName, that.courseName) &&
-                grade == that.grade &&
-                type == that.type;
+        return semester == that.semester
+                && Objects.equals(courseName, that.courseName)
+                && grade == that.grade
+                && type == that.type;
     }
 
     @Override

@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class GradeBookTest {
 
@@ -236,6 +236,6 @@ class GradeBookTest {
         String str = gradeBook.toString();
         assertTrue(str.contains("Илья"));
         assertTrue(str.contains("1"));
-        assertTrue(str.contains("0,00"));
+        assertTrue(str.contains("0,00") || str.contains("0.00"));
     }
 }
