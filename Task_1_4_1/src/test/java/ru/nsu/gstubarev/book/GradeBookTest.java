@@ -145,7 +145,7 @@ class GradeBookTest {
 
     @Test
     void testGetRedDiplomaEligible() {
-        Student student = new Student("Илья Опять", false);
+        Student student = new Student("Илья", false);
 
         AcademicRecord diploma = new AcademicRecord(
                 "Диплом", Grade.EXCELLENT,
@@ -156,16 +156,12 @@ class GradeBookTest {
                 "Физика", Grade.EXCELLENT,
                 AcademicRecord.AssessmentType.DIFFERENTIATED_CREDIT, 1);
         AcademicRecord math = new AcademicRecord(
-                "Математика", Grade.EXCELLENT, AcademicRecord.AssessmentType.EXAM, 1);
-        AcademicRecord imperativka = new AcademicRecord(
-                "Императивка", Grade.GOOD, AcademicRecord.AssessmentType.EXAM, 2);
+                "Математика", Grade.GOOD, AcademicRecord.AssessmentType.EXAM, 4);
 
-        Semester semester1 = new Semester(1, Arrays.asList(oop, physics, math));
-        Semester semester2 = new Semester(2, Arrays.asList(imperativka));
-        Semester semester4 = new Semester(4, Arrays.asList(diploma));
+        Semester semester1 = new Semester(1, Arrays.asList(oop, physics));
+        Semester semester4 = new Semester(4, Arrays.asList(diploma, math));
 
-        GradeBook gradeBook = new GradeBook(student,
-                Arrays.asList(semester1, semester2, semester4));
+        GradeBook gradeBook = new GradeBook(student, Arrays.asList(semester1, semester4));
 
         assertTrue(gradeBook.getRedDiploma());
     }
@@ -181,7 +177,7 @@ class GradeBookTest {
         Semester semester = new Semester(1, records);
         GradeBook gradeBook = new GradeBook(student, Arrays.asList(semester));
 
-        assertFalse(gradeBook.getRedDiploma());
+        assertTrue(gradeBook.getRedDiploma());
     }
 
     @Test
@@ -197,15 +193,14 @@ class GradeBookTest {
         Semester semester1 = new Semester(1, Arrays.asList(oop));
         Semester semester4 = new Semester(4, Arrays.asList(diploma));
 
-        GradeBook gradeBook = new GradeBook(student,
-                Arrays.asList(semester1, semester4));
+        GradeBook gradeBook = new GradeBook(student, Arrays.asList(semester1, semester4));
 
         assertFalse(gradeBook.getRedDiploma());
     }
 
     @Test
     void testGetRedDiplomaNotEnoughExcellent() {
-        Student student = new Student("Иван Неожидали?", false);
+        Student student = new Student("Иван", false);
 
         AcademicRecord diploma = new AcademicRecord(
                 "Диплом", Grade.EXCELLENT,
@@ -213,12 +208,12 @@ class GradeBookTest {
         AcademicRecord oop = new AcademicRecord(
                 "ООП", Grade.EXCELLENT, AcademicRecord.AssessmentType.EXAM, 1);
         AcademicRecord physics = new AcademicRecord(
-                "Физика", Grade.GOOD, AcademicRecord.AssessmentType.EXAM, 1);
+                "Физика", Grade.GOOD, AcademicRecord.AssessmentType.EXAM, 2);
         AcademicRecord imperativka = new AcademicRecord(
                 "Императивка", Grade.GOOD, AcademicRecord.AssessmentType.EXAM, 2);
 
-        Semester semester1 = new Semester(1, Arrays.asList(oop, physics));
-        Semester semester2 = new Semester(2, Arrays.asList(imperativka));
+        Semester semester1 = new Semester(1, Arrays.asList(oop));
+        Semester semester2 = new Semester(2, Arrays.asList(physics, imperativka));
         Semester semester4 = new Semester(4, Arrays.asList(diploma));
 
         GradeBook gradeBook = new GradeBook(student,

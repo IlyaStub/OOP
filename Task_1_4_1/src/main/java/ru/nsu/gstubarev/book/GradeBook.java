@@ -80,15 +80,68 @@ public class GradeBook {
 
     /**
      * Checks if student can get honors diploma (red diploma).
-     * Requirements: excellent thesis, no satisfactory grades,
-     * at least 75% excellent grades.
      *
      * @return true if honors diploma is possible
      */
     public boolean getRedDiploma() {
-        return hasExcellentThesis()
-                && hasNoBadFinalGrades()
-                && hasExcellentGradesPercentage();
+        boolean hasBadThesis = semesters.stream()
+                .flatMap(semester -> semester.getRecords().stream())
+                .filter(record -> record.getType().isThesis())
+                .anyMatch(record -> !record.getGrade().isExcellent());
+
+        if (hasBadThesis) {
+            return false;
+        }
+
+        List<Grade> examGrades = semesters.stream()
+                .flatMap(semester -> semester.getRecords().stream())
+                .filter(record -> record.getType().isExamOrDiffCredit())
+                .map(AcademicRecord::getGrade)
+                .collect(Collectors.toList());
+
+        if (examGrades.isEmpty()) {
+            return true;
+        }
+
+        boolean hasBadGrade = examGrades.stream()
+                .anyMatch(Grade::isBad);
+
+        if (hasBadGrade) {
+            return false;
+        }
+
+        List<Grade> gradedGrades = examGrades.stream()
+                .filter(Grade::hasNumericValue)
+                .collect(Collectors.toList());
+
+        if (gradedGrades.isEmpty()) {
+            return true;
+        }
+
+        int lastSemester = semesters.stream()
+                .mapToInt(Semester::getNumber)
+                .max()
+                .orElse(0);
+
+        List<Grade> lastSemesterGrades = semesters.stream()
+                .flatMap(semester -> semester.getRecords().stream())
+                .filter(record -> record.getSemester() == lastSemester)
+                .filter(record -> record.getType().isExamOrDiffCredit())
+                .map(AcademicRecord::getGrade)
+                .filter(Grade::hasNumericValue)
+                .collect(Collectors.toList());
+
+        long currentExcellent = gradedGrades.stream()
+                .filter(Grade::isExcellent)
+                .count();
+
+        long goodInLastSemester = lastSemesterGrades.stream()
+                .filter(grade -> grade == Grade.GOOD)
+                .count();
+
+        long potentialExcellent = currentExcellent + goodInLastSemester;
+
+        return (double) potentialExcellent / gradedGrades.size() >= 0.75;
     }
 
     /**
@@ -108,38 +161,6 @@ public class GradeBook {
                         .filter(record -> record.getType().isExam())
                         .allMatch(record -> record.getGrade().isExcellent()))
                 .orElse(false);
-    }
-
-    private boolean hasExcellentThesis() {
-        return semesters.stream()
-                .flatMap(semester -> semester.getRecords().stream())
-                .filter(record -> record.getType().isThesis())
-                .anyMatch(record -> record.getGrade().isExcellent());
-    }
-
-    private boolean hasNoBadFinalGrades() {
-        return semesters.stream()
-                .flatMap(semester -> semester.getRecords().stream())
-                .filter(record -> record.getType().isExamOrDiffCredit())
-                .noneMatch(record -> record.getGrade().isBad());
-    }
-
-    private boolean hasExcellentGradesPercentage() {
-        List<Grade> gradesForDiploma = semesters.stream()
-                .flatMap(semester -> semester.getRecords().stream())
-                .filter(record -> record.getType().isExamOrDiffCredit())
-                .map(AcademicRecord::getGrade)
-                .collect(Collectors.toList());
-
-        if (gradesForDiploma.isEmpty()) {
-            return false;
-        }
-
-        long excellentCount = gradesForDiploma.stream()
-                .filter(Grade::isExcellent)
-                .count();
-
-        return (double) excellentCount / gradesForDiploma.size() >= 0.75;
     }
 
     @Override
