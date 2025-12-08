@@ -63,6 +63,15 @@ public class AcademicRecord {
     }
 
     /**
+     * Checks if this record has no grade (NULL_GRADE).
+     *
+     * @return true if grade is NULL_GRADE
+     */
+    public boolean hasNoGrade() {
+        return grade == Grade.NULL_GRADE;
+    }
+
+    /**
      * Types of academic assessments.
      */
     public enum AssessmentType {

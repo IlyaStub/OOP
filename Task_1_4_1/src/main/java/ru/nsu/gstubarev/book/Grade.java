@@ -9,7 +9,8 @@ public enum Grade {
     SATISFACTORY("удовлетворительно", 3, true),
     FAIL("неудовлетворительно", 2, true),
     PASS("зачет", -1, false),
-    FAIL_PASS("не зачет", -1, false);
+    FAIL_PASS("не зачет", -1, false),
+    NULL_GRADE("нет оценки", -1, true);
 
     private final String description;
     private final int numericValue;

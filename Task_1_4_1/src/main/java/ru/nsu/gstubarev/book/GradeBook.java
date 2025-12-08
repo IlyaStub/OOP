@@ -84,8 +84,11 @@ public class GradeBook {
      * @return true if honors diploma is possible
      */
     public boolean getRedDiploma() {
-        boolean hasBadThesis = semesters.stream()
+        List<AcademicRecord> allRecords = semesters.stream()
                 .flatMap(semester -> semester.getRecords().stream())
+                .collect(Collectors.toList());
+
+        boolean hasBadThesis = allRecords.stream()
                 .filter(record -> record.getType().isThesis())
                 .anyMatch(record -> !record.getGrade().isExcellent());
 
@@ -93,57 +96,44 @@ public class GradeBook {
             return false;
         }
 
-        List<Grade> examGrades = semesters.stream()
-                .flatMap(semester -> semester.getRecords().stream())
+        List<AcademicRecord> examRecords = allRecords.stream()
                 .filter(record -> record.getType().isExamOrDiffCredit())
-                .map(AcademicRecord::getGrade)
                 .collect(Collectors.toList());
 
-        if (examGrades.isEmpty()) {
+        if (examRecords.isEmpty()) {
             return true;
         }
 
-        boolean hasBadGrade = examGrades.stream()
-                .anyMatch(Grade::isBad);
+        boolean hasBadActualGrade = examRecords.stream()
+                .anyMatch(record -> record.getGrade().isBad());
 
-        if (hasBadGrade) {
+        if (hasBadActualGrade) {
             return false;
         }
 
-        List<Grade> gradedGrades = examGrades.stream()
+        List<Grade> actualNumGrades = examRecords.stream()
+                .map(AcademicRecord::getGrade)
+                .filter(grade -> grade != Grade.NULL_GRADE)
                 .filter(Grade::hasNumericValue)
                 .collect(Collectors.toList());
 
-        if (gradedGrades.isEmpty()) {
+        if (actualNumGrades.isEmpty()) {
             return true;
         }
 
-        int lastSemester = semesters.stream()
-                .mapToInt(Semester::getNumber)
-                .max()
-                .orElse(0);
-
-        List<Grade> lastSemesterGrades = semesters.stream()
-                .flatMap(semester -> semester.getRecords().stream())
-                .filter(record -> record.getSemester() == lastSemester)
-                .filter(record -> record.getType().isExamOrDiffCredit())
-                .map(AcademicRecord::getGrade)
-                .filter(Grade::hasNumericValue)
-                .collect(Collectors.toList());
-
-        long currentExcellent = gradedGrades.stream()
+        long currentExcellent = actualNumGrades.stream()
                 .filter(Grade::isExcellent)
                 .count();
 
-        long goodInLastSemester = lastSemesterGrades.stream()
-                .filter(grade -> grade == Grade.GOOD)
+        long countWithoutGrade = examRecords.stream()
+                .filter(record -> record.getGrade() == Grade.NULL_GRADE)
                 .count();
 
-        long potentialExcellent = currentExcellent + goodInLastSemester;
+        long totalCourses = actualNumGrades.size() + countWithoutGrade;
+        long projectedExcellent = currentExcellent + countWithoutGrade;
 
-        return (double) potentialExcellent / gradedGrades.size() >= 0.75;
+        return (double) projectedExcellent / totalCourses >= 0.75;
     }
-
     /**
      * Checks if student can get increased scholarship this semester.
      * Student must be on scholarship basis and have all excellent grades in exams.

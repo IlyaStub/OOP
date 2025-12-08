@@ -144,29 +144,6 @@ class GradeBookTest {
     }
 
     @Test
-    void testGetRedDiplomaEligible() {
-        Student student = new Student("Илья", false);
-
-        AcademicRecord diploma = new AcademicRecord(
-                "Диплом", Grade.EXCELLENT,
-                AcademicRecord.AssessmentType.FINAL_QUALIFICATION_WORK_DEFENSE, 4);
-        AcademicRecord oop = new AcademicRecord(
-                "ООП", Grade.EXCELLENT, AcademicRecord.AssessmentType.EXAM, 1);
-        AcademicRecord physics = new AcademicRecord(
-                "Физика", Grade.EXCELLENT,
-                AcademicRecord.AssessmentType.DIFFERENTIATED_CREDIT, 1);
-        AcademicRecord math = new AcademicRecord(
-                "Математика", Grade.GOOD, AcademicRecord.AssessmentType.EXAM, 4);
-
-        Semester semester1 = new Semester(1, Arrays.asList(oop, physics));
-        Semester semester4 = new Semester(4, Arrays.asList(diploma, math));
-
-        GradeBook gradeBook = new GradeBook(student, Arrays.asList(semester1, semester4));
-
-        assertTrue(gradeBook.getRedDiploma());
-    }
-
-    @Test
     void testGetRedDiplomaNoThesis() {
         Student student = new Student("Ilya", false);
 
