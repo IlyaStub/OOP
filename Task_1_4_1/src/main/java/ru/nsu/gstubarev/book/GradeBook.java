@@ -134,6 +134,7 @@ public class GradeBook {
 
         return (double) projectedExcellent / totalCourses >= 0.75;
     }
+
     /**
      * Checks if student can get increased scholarship this semester.
      * Student must be on scholarship basis and have all excellent grades in exams.
