@@ -23,7 +23,8 @@ class CodeBlockTest {
                 .addLine("}")
                 .language("javascript")
                 .build();
-        assertEquals("```javascript\nfunction test() {\n  return 42;\n}\n```", codeBlock3.serialize());
+        assertEquals("```javascript\nfunction test() {\n  return 42;\n}\n```",
+                codeBlock3.serialize());
     }
 
     @Test

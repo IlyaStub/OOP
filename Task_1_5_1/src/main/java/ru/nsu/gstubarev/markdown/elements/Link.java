@@ -12,6 +12,7 @@ public class Link extends Element {
 
     /**
      * Creates a new link.
+     *
      * @param text link text
      * @param url link URL
      */

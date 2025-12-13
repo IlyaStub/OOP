@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 
 class ListMdTest {
 
@@ -27,6 +28,38 @@ class ListMdTest {
         assertTrue(list2.serialize().contains("* **Bold item**"));
         assertTrue(list2.serialize().contains("* [Link](http://example.com)"));
         assertTrue(list2.serialize().contains("* [x] Task"));
+    }
+
+    @Test
+    void serializeEmptyList() {
+        EmptyElementException exception = assertThrows(EmptyElementException.class, () -> {
+            ListMd.builder().build();
+        });
+        assertEquals("List must contain at least one item", exception.getMessage());
+    }
+
+    @Test
+    void serializeWithDifferentMarkers() {
+        ListMd dashList = ListMd.builder()
+                .marker("-")
+                .addTextItem("Item 1")
+                .addTextItem("Item 2")
+                .build();
+        assertEquals("- Item 1\n- Item 2", dashList.serialize());
+
+        ListMd starList = ListMd.builder()
+                .marker("*")
+                .addTextItem("Item 1")
+                .addTextItem("Item 2")
+                .build();
+        assertEquals("* Item 1\n* Item 2", starList.serialize());
+
+        ListMd plusList = ListMd.builder()
+                .marker("+")
+                .addTextItem("Item 1")
+                .addTextItem("Item 2")
+                .build();
+        assertEquals("+ Item 1\n+ Item 2", plusList.serialize());
     }
 
     @Test
@@ -56,6 +89,8 @@ class ListMdTest {
         assertNotEquals(list1, list4);
         assertNotEquals(list1, null);
     }
+
+
 
     @Test
     void builder() {

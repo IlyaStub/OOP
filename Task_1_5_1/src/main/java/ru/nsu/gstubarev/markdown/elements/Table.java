@@ -101,7 +101,7 @@ public class Table extends Element {
     public static class TableBuilder {
         private final List<List<Element>> rows = new ArrayList<>();
         private final List<String> alignments = new ArrayList<>();
-        private int rowLimit = Integer.MAX_VALUE-1;
+        private int rowLimit = Integer.MAX_VALUE - 1;
 
         /**
          * Sets column alignments.
