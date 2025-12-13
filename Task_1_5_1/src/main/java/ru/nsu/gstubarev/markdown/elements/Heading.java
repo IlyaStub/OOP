@@ -13,8 +13,9 @@ public class Heading extends Element {
 
     /**
      * Creates a new heading.
+     *
      * @param level heading level (1-6)
-     * @param text heading text
+     * @param text  heading text
      */
     public Heading(int level, String text) {
         if (level < 1 || level > 6) {
