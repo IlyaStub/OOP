@@ -90,7 +90,26 @@ class ListMdTest {
         assertNotEquals(list1, null);
     }
 
+    @Test
+    void testEqualsWithComplexItems() {
+        ListMd list1 = ListMd.builder()
+                .addItem(TextMd.builder("Text").italic().build())
+                .addItem(Task.builder("Task").completed().build())
+                .build();
 
+        ListMd list2 = ListMd.builder()
+                .addItem(TextMd.builder("Text").italic().build())
+                .addItem(Task.builder("Task").completed().build())
+                .build();
+
+        ListMd list3 = ListMd.builder()
+                .addItem(TextMd.builder("Text").italic().build())
+                .addItem(Task.builder("Task").build())  // not completed
+                .build();
+
+        assertEquals(list1, list2);
+        assertNotEquals(list1, list3);
+    }
 
     @Test
     void builder() {
@@ -105,5 +124,21 @@ class ListMdTest {
 
         assertNotNull(list);
         assertTrue(list.serialize().startsWith("+"));
+    }
+
+    @Test
+    void addItemsMethod() {
+        ListMd list = ListMd.builder()
+                .addItems(
+                        TextMd.builder("Item 1").build(),
+                        TextMd.builder("Item 2").bold().build(),
+                        Task.builder("Task 3").build()
+                )
+                .build();
+
+        String result = list.serialize();
+        assertTrue(result.contains("Item 1"));
+        assertTrue(result.contains("**Item 2**"));
+        assertTrue(result.contains("[ ] Task 3"));
     }
 }
