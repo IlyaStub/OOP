@@ -1,8 +1,8 @@
 package ru.nsu.gstubarev.markdown.elements;
 
+import java.util.Objects;
 import ru.nsu.gstubarev.markdown.Element;
 import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
-import java.util.Objects;
 
 /**
  * Represents a code block in Markdown.

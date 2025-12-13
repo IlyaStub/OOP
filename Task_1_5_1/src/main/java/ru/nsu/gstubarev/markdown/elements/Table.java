@@ -1,11 +1,11 @@
 package ru.nsu.gstubarev.markdown.elements;
 
-import ru.nsu.gstubarev.markdown.Element;
-import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
-import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import ru.nsu.gstubarev.markdown.Element;
+import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
+import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 
 /**
  * Represents a table in Markdown.

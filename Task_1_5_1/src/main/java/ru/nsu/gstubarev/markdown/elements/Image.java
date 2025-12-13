@@ -1,8 +1,8 @@
 package ru.nsu.gstubarev.markdown.elements;
 
+import java.util.Objects;
 import ru.nsu.gstubarev.markdown.Element;
 import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
-import java.util.Objects;
 
 /**
  * Represents an image in Markdown.
@@ -14,8 +14,9 @@ public class Image extends Element {
 
     /**
      * Creates an image with alt text and URL.
+     *
      * @param altText alternative text
-     * @param url image URL
+     * @param url     image URL
      */
     public Image(String altText, String url) {
         this(altText, url, null);
@@ -23,9 +24,10 @@ public class Image extends Element {
 
     /**
      * Creates an image with alt text, URL, and title.
+     *
      * @param altText alternative text
-     * @param url image URL
-     * @param title image title
+     * @param url     image URL
+     * @param title   image title
      */
     public Image(String altText, String url, String title) {
         if (altText == null) {

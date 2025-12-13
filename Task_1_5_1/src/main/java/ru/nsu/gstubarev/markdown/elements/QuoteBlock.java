@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.markdown.elements;
 
-import ru.nsu.gstubarev.markdown.Element;
-import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 import java.util.ArrayList;
 import java.util.List;
+import ru.nsu.gstubarev.markdown.Element;
+import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 
 /**
  * Represents a block quote in Markdown.
