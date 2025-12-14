@@ -71,14 +71,17 @@ loadScripts(document, 'script');</script>
 <h1 title="Class QuoteBlock" class="title">Class QuoteBlock</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="../Element.html" title="class in ru.nsu.gstubarev.markdown">ru.nsu.gstubarev.markdown.Element</a>
 <div class="inheritance">ru.nsu.gstubarev.markdown.elements.QuoteBlock</div>
 </div>
-</div>
 <section class="class-description" id="class-description">
+<dl class="notes">
+<dt>All Implemented Interfaces:</dt>
+<dd><code><a href="../Element.html" title="interface in ru.nsu.gstubarev.markdown">Element</a></code></dd>
+</dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">QuoteBlock</span>
-<span class="extends-implements">extends <a href="../Element.html" title="class in ru.nsu.gstubarev.markdown">Element</a></span></div>
+<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
+implements <a href="../Element.html" title="interface in ru.nsu.gstubarev.markdown">Element</a></span></div>
 <div class="block">Represents a block quote in Markdown.</div>
 </section>
 <section class="summary">
@@ -196,11 +199,11 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="serialize()">
 <h3>serialize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">serialize</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../Element.html#serialize()">Element</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../Element.html#serialize()">Element</a></code></span></div>
 <div class="block">Converts the element to Markdown string.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../Element.html#serialize()">serialize</a></code>&nbsp;in class&nbsp;<code><a href="../Element.html" title="class in ru.nsu.gstubarev.markdown">Element</a></code></dd>
+<dd><code><a href="../Element.html#serialize()">serialize</a></code>&nbsp;in interface&nbsp;<code><a href="../Element.html" title="interface in ru.nsu.gstubarev.markdown">Element</a></code></dd>
 <dt>Returns:</dt>
 <dd>Markdown representation</dd>
 </dl>
@@ -210,11 +213,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="equals(java.lang.Object)">
 <h3>equals</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">equals</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;obj)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="../Element.html#equals(java.lang.Object)">Element</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../Element.html#equals(java.lang.Object)">Element</a></code></span></div>
 <div class="block">Compares this element with another object for equality.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../Element.html#equals(java.lang.Object)">equals</a></code>&nbsp;in class&nbsp;<code><a href="../Element.html" title="class in ru.nsu.gstubarev.markdown">Element</a></code></dd>
+<dd><code><a href="../Element.html#equals(java.lang.Object)">equals</a></code>&nbsp;in interface&nbsp;<code><a href="../Element.html" title="interface in ru.nsu.gstubarev.markdown">Element</a></code></dd>
+<dt>Overrides:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>obj</code> - the object to compare with</dd>
 <dt>Returns:</dt>
