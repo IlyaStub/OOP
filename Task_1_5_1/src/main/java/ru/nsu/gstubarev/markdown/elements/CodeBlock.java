@@ -7,7 +7,7 @@ import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 /**
  * Represents a code block in Markdown.
  */
-public class CodeBlock extends Element {
+public class CodeBlock implements Element {
     private final String code;
     private final String language;
 

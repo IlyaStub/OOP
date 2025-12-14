@@ -12,13 +12,16 @@ import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 class ListMdTest {
 
     @Test
-    void serialize() {
+    void serializeWithoutMarker() {
         ListMd list1 = ListMd.builder()
                 .addTextItem("Item 1")
                 .addTextItem("Item 2")
                 .build();
         assertEquals("- Item 1\n- Item 2", list1.serialize());
+    }
 
+    @Test
+    void serializeDifListWithMarker() {
         ListMd list2 = ListMd.builder()
                 .marker("*")
                 .addItem(TextMd.builder("Bold item").bold().build())
@@ -104,7 +107,7 @@ class ListMdTest {
 
         ListMd list3 = ListMd.builder()
                 .addItem(TextMd.builder("Text").italic().build())
-                .addItem(Task.builder("Task").build())  // not completed
+                .addItem(Task.builder("Task").build())
                 .build();
 
         assertEquals(list1, list2);

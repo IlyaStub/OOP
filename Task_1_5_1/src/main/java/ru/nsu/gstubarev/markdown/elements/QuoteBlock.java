@@ -8,7 +8,7 @@ import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 /**
  * Represents a block quote in Markdown.
  */
-public class QuoteBlock extends Element {
+public class QuoteBlock implements Element {
     private final List<String> lines;
 
     /**

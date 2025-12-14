@@ -5,19 +5,26 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 
 class ImageTest {
 
     @Test
-    void serialize() {
-        Image img1 = new Image("Cat", "cat.jpg");
-        assertEquals("![Cat](cat.jpg)", img1.serialize());
+    void serializeImgWithoutTitle() {
+        Image img = new Image("Cat", "cat.jpg");
+        assertEquals("![Cat](cat.jpg)", img.serialize());
+    }
 
-        Image img2 = new Image("Cat", "cat.jpg", "A cute cat");
-        assertEquals("![Cat](cat.jpg \"A cute cat\")", img2.serialize());
+    @Test
+    void serializeFoolImg() {
+        Image img = new Image("Cat", "cat.jpg", "A cute cat");
+        assertEquals("![Cat](cat.jpg \"A cute cat\")", img.serialize());
+    }
 
-        Image img3 = new Image(null, "cat.jpg");
-        assertEquals("![One second](cat.jpg)", img3.serialize());
+    @Test
+    void serializeOnlyImgUrl() {
+        Image img = new Image(null, "cat.jpg");
+        assertEquals("![One second](cat.jpg)", img.serialize());
     }
 
     @Test
@@ -32,7 +39,7 @@ class ImageTest {
 
     @Test
     void constructorEmptyUrlShouldThrowException() {
-        assertThrows(ru.nsu.gstubarev.markdown.exceptions.EmptyElementException.class,
+        assertThrows(EmptyElementException.class,
                 () -> new Image("Alt", null));
     }
 }

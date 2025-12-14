@@ -9,7 +9,7 @@ import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 /**
  * Represents an unordered list in Markdown.
  */
-public class ListMd extends Element {
+public class ListMd implements Element {
     private final List<Element> items;
     private final String marker;
 

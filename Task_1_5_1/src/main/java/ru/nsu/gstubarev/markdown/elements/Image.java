@@ -7,7 +7,7 @@ import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 /**
  * Represents an image in Markdown.
  */
-public class Image extends Element {
+public class Image implements Element {
     private final String altText;
     private final String url;
     private final String title;

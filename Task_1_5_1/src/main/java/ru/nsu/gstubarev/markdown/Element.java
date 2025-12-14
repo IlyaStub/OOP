@@ -3,7 +3,7 @@ package ru.nsu.gstubarev.markdown;
 /**
  * Base class for all Markdown elements.
  */
-public abstract class Element {
+public interface Element {
     /**
      * Compares this element with another object for equality.
      *

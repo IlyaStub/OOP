@@ -10,14 +10,17 @@ import org.junit.jupiter.api.Test;
 class TableTest {
 
     @Test
-    void serialize() {
+    void serializeSimpleTable() {
         Table table1 = Table.builder()
                 .addRow("Header1", "Header2")
                 .addRow("Data1", "Data2")
                 .build();
         String expected1 = "| Header1 | Header2 |\n| :--- | :--- |\n| Data1 | Data2 |\n";
         assertEquals(expected1, table1.serialize());
+    }
 
+    @Test
+    void serializeTableWithAlign() {
         Table table2 = Table.builder()
                 .withAlignments(Table.ALIGN_RIGHT, Table.ALIGN_CENTER)
                 .addRow("ID", "Name")

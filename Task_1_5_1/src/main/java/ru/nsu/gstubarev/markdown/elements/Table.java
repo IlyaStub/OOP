@@ -10,7 +10,7 @@ import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 /**
  * Represents a table in Markdown.
  */
-public class Table extends Element {
+public class Table implements Element {
     /**
      * Left alignment constant.
      */

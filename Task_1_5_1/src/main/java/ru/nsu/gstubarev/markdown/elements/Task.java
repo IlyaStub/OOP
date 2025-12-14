@@ -6,7 +6,7 @@ import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 /**
  * Represents a task (checkbox) in Markdown.
  */
-public class Task extends Element {
+public class Task implements Element {
     private final String text;
     private final boolean isCompleted;
 

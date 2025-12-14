@@ -6,7 +6,7 @@ import ru.nsu.gstubarev.markdown.exceptions.EmptyElementException;
 /**
  * Represents a hyperlink in Markdown.
  */
-public class Link extends Element {
+public class Link implements Element {
     private final String text;
     private final String url;
 
@@ -29,7 +29,10 @@ public class Link extends Element {
 
     @Override
     public String serialize() {
-        return "[" + text + "](" + url + ")";
+        String escText = text.replace("[", "\\[")
+                .replace("]", "\\]")
+                .replace("\n", "\\n");
+        return "[" + escText + "](" + url + ")";
     }
 
     @Override

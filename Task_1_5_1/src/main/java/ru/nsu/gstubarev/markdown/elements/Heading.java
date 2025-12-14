@@ -7,7 +7,7 @@ import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 /**
  * Represents a heading in Markdown.
  */
-public class Heading extends Element {
+public class Heading implements Element {
     private final int level;
     private final String text;
 

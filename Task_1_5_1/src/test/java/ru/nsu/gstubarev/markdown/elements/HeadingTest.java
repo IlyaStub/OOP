@@ -5,16 +5,23 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 
 class HeadingTest {
     @Test
-    void serialize() {
+    void serializeH1() {
         Heading h1 = new Heading(1, "Main Title");
         assertEquals("# Main Title", h1.serialize());
+    }
 
+    @Test
+    void serializeH2() {
         Heading h2 = new Heading(2, "Subtitle");
         assertEquals("## Subtitle", h2.serialize());
+    }
 
+    @Test
+    void serializeH6() {
         Heading h6 = new Heading(6, "Smallest");
         assertEquals("###### Smallest", h6.serialize());
     }
@@ -34,7 +41,7 @@ class HeadingTest {
 
     @Test
     void constructorInvalidLevelShouldThrowException() {
-        assertThrows(ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException.class,
+        assertThrows(SelectionsSequenceException.class,
                 () -> new Heading(0, "Invalid"));
     }
 }

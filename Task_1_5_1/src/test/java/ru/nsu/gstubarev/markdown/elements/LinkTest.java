@@ -7,12 +7,15 @@ import org.junit.jupiter.api.Test;
 
 class LinkTest {
     @Test
-    void serialize() {
-        Link link1 = new Link("Google", "https://google.com");
-        assertEquals("[Google](https://google.com)", link1.serialize());
+    void serializeSimpleLink() {
+        Link link = new Link("Google", "https://google.com");
+        assertEquals("[Google](https://google.com)", link.serialize());
+    }
 
-        Link link2 = new Link("Search", "https://example.com/search?q=test");
-        assertEquals("[Search](https://example.com/search?q=test)", link2.serialize());
+    @Test
+    void serializeLinkWithInjectionText() {
+        Link link = new Link("a](lya)\n[", "https://google.com");
+        assertEquals("[a\\](lya)\\n\\[](https://google.com)", link.serialize());
     }
 
     @Test

@@ -7,7 +7,7 @@ import ru.nsu.gstubarev.markdown.exceptions.SelectionsSequenceException;
 /**
  * Represents formatted text in Markdown.
  */
-public class TextMd extends Element {
+public class TextMd implements Element {
     private final String content;
     private final boolean isBold;
     private final boolean isItalic;
