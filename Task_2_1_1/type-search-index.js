@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.gstubarev.prime","l":"CalculationPrime"},{"p":"ru.nsu.gstubarev.prime","l":"ConsistentCalculation"},{"p":"ru.nsu.gstubarev.prime","l":"Main"},{"p":"ru.nsu.gstubarev.prime","l":"ParallelStreamCalculation"},{"p":"ru.nsu.gstubarev.prime","l":"ThreadCalculation"}];updateSearchResults();
