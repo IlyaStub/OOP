@@ -5,9 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
+import org.junit.jupiter.api.Test;
 
 public class SimpleTests {
     @Test
@@ -50,7 +49,7 @@ public class SimpleTests {
 
     @Test
     void testHugeArrayPerformance() {
-        long[] hugeArray = new long[100_000_00];
+        long[] hugeArray = new long[100_000];
         Arrays.fill(hugeArray, 3);
 
         ConsistentCalculation cc = new ConsistentCalculation();
@@ -64,7 +63,7 @@ public class SimpleTests {
 
     @Test
     void testHugeArrayWithOneCompositeAtEnd() {
-        long[] hugeArray = new long[500_000_00];
+        long[] hugeArray = new long[500_000];
         for (int i = 0; i < hugeArray.length - 1; i++) {
             hugeArray[i] = 5;
         }

@@ -20,7 +20,7 @@ public class Main {
         CalculationPrime thread2 = new ThreadCalculation(8);
         CalculationPrime thread4 = new ThreadCalculation(16);
 
-        long[] performanceTestArray = generateLargeArray(1_000_000);
+        long[] performanceTestArray = generateLargeArray(1_000);
         System.out.println("Start:\n");
         measurePerformance(performanceTestArray, consistent, parallelStream, thread2, thread4);
     }
