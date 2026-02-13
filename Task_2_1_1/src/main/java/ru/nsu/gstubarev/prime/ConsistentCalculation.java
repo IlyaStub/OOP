@@ -5,7 +5,7 @@ package ru.nsu.gstubarev.prime;
  * Processes array elements one by one in a single thread.
  */
 public class ConsistentCalculation implements CalculationPrime {
-
+    @Override
     public boolean hasComposite(long[] array) {
         for (long l : array) {
             if (!CalculationPrime.isPrime(l)) {
