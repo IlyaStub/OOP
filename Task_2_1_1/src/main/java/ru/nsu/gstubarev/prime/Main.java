@@ -17,12 +17,12 @@ public class Main {
     public static void main(String[] args) {
         CalculationPrime consistent = new ConsistentCalculation();
         CalculationPrime parallelStream = new ParallelStreamCalculation();
-        CalculationPrime thread2 = new ThreadCalculation(8);
-        CalculationPrime thread4 = new ThreadCalculation(16);
+        CalculationPrime thread8 = new ThreadCalculation(8);
+        CalculationPrime thread16 = new ThreadCalculation(16);
 
         long[] performanceTestArray = generateLargeArray(1_000);
         System.out.println("Start:\n");
-        measurePerformance(performanceTestArray, consistent, parallelStream, thread2, thread4);
+        measurePerformance(performanceTestArray, consistent, parallelStream, thread8, thread16);
     }
 
     /**
@@ -44,15 +44,13 @@ public class Main {
      * @param calculators implementations to benchmark
      */
     private static void measurePerformance(long[] array, CalculationPrime... calculators) {
-        String[] names = {"Consistent", "ParallelStream", "8 threads", "16 threads"};
-
-        for (int i = 0; i < calculators.length; i++) {
+        for (CalculationPrime calculator : calculators) {
             long startTime = System.currentTimeMillis();
-            boolean result = calculators[i].hasComposite(array);
+            boolean result = calculator.hasComposite(array);
             long endTime = System.currentTimeMillis();
 
-            System.out.printf("%s: %b for %d ms%n",
-                    names[i], result, endTime - startTime);
+            System.out.printf("%s %b for %d ms%n",
+                    calculator, result, endTime - startTime);
         }
     }
 }

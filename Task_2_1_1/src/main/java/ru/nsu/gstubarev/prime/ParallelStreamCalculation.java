@@ -14,4 +14,9 @@ public class ParallelStreamCalculation implements CalculationPrime {
                 .parallel()
                 .anyMatch(n -> !CalculationPrime.isPrime(n));
     }
+
+    @Override
+    public String toString() {
+        return "ParallelStreamCalculation:";
+    }
 }

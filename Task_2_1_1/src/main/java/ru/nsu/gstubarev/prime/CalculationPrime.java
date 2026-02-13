@@ -31,4 +31,12 @@ public interface CalculationPrime {
      * @return true if a composite number is found, false otherwise
      */
     boolean hasComposite(long[] array);
+
+    /**
+     * Override this method in your class, please.
+     *
+     * @return sting name class
+     */
+    @Override
+    String toString();
 }

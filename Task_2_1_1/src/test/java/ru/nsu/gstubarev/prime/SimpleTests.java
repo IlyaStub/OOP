@@ -86,9 +86,28 @@ public class SimpleTests {
         assertThrows(IllegalArgumentException.class, () -> {
             new ThreadCalculation(0);
         });
-        assertThrows(IllegalArgumentException.class, () -> {
-            new ThreadCalculation(-3);
-        });
+        assertThrows(IllegalArgumentException.class, () -> new ThreadCalculation(-3));
+    }
+
+    @Test
+    void testEmptyArray() {
+        ConsistentCalculation cc = new ConsistentCalculation();
+        ThreadCalculation tc = new ThreadCalculation(8);
+        ParallelStreamCalculation pc = new ParallelStreamCalculation();
+        long[] emptyArray = new long[]{};
+        assertFalse(cc.hasComposite(emptyArray));
+        assertFalse(tc.hasComposite(emptyArray));
+        assertFalse(pc.hasComposite(emptyArray));
+    }
+
+    @Test
+    void testLengthArrayShortestThenCountThread() {
+        long[] shortArray = new long[10];
+        Arrays.fill(shortArray, 3);
+        ThreadCalculation tc12 = new ThreadCalculation(12);
+        ThreadCalculation tc16 = new ThreadCalculation(16);
+        assertFalse(tc12.hasComposite(shortArray));
+        assertFalse(tc16.hasComposite(shortArray));
     }
 
     @Test

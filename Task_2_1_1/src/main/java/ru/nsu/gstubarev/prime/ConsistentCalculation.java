@@ -6,7 +6,6 @@ package ru.nsu.gstubarev.prime;
  */
 public class ConsistentCalculation implements CalculationPrime {
 
-    @Override
     public boolean hasComposite(long[] array) {
         for (long l : array) {
             if (!CalculationPrime.isPrime(l)) {
@@ -14,5 +13,10 @@ public class ConsistentCalculation implements CalculationPrime {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "ConsistentCalculation:";
     }
 }

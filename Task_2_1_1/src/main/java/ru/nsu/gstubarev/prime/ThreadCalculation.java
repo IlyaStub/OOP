@@ -60,4 +60,9 @@ public class ThreadCalculation implements CalculationPrime {
         }
         return found.get();
     }
+
+    @Override
+    public String toString() {
+        return "ThreadCalculation " + "threadCount=" + threadCount + ":";
+    }
 }
