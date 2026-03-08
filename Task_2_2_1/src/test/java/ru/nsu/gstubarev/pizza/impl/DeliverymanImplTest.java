@@ -7,6 +7,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.LinkedList;
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.pizza.enums.OrderState;
 import ru.nsu.gstubarev.pizza.enums.PizzaType;
@@ -14,7 +15,6 @@ import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
 import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 import ru.nsu.gstubarev.pizza.records.Pizza;
-import java.util.LinkedList;
 
 class DeliverymanImplTest {
     @Test

@@ -3,10 +3,10 @@ package ru.nsu.gstubarev.pizza.records;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.LinkedList;
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.pizza.enums.OrderState;
 import ru.nsu.gstubarev.pizza.enums.PizzaType;
-import java.util.LinkedList;
 
 class OrderTest {
     @Test

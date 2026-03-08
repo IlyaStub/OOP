@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-import ru.nsu.gstubarev.pizza.records.Order;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.pizza.records.Order;
 
 class ClientImplTest {
     @Test

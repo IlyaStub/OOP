@@ -37,7 +37,8 @@ public class Pizzeria {
 
         BlockingQueue<Order> orderQueue = new LinkedBlockingQueue<>();
         Istorage storage = new StorageImpl(config.storageCapacity());
-        IgeneratorTime deliveryTimeGen = new GeneratorTime(config.minDeliveryTimeMs(), config.maxDeliveryTimeMs());
+        IgeneratorTime deliveryTimeGen = new GeneratorTime(config.minDeliveryTimeMs(),
+                config.maxDeliveryTimeMs());
 
         ExecutorService clientPool = Executors.newSingleThreadExecutor();
         ExecutorService bakersPool = Executors.newFixedThreadPool(config.bakersCount());
@@ -57,7 +58,8 @@ public class Pizzeria {
 
         for (int i = 0; i < config.deliverymanCount(); i++) {
             int randomTrunkCapacity = 2 + (i % 3);
-            DeliverymanImpl courier = new DeliverymanImpl(i + 1, randomTrunkCapacity, deliveryTimeGen, storage);
+            DeliverymanImpl courier = new DeliverymanImpl(i + 1, randomTrunkCapacity,
+                    deliveryTimeGen, storage);
             couriers.add(courier);
             deliverymanPool.execute(courier);
         }

@@ -3,12 +3,12 @@ package ru.nsu.gstubarev.pizza.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-import ru.nsu.gstubarev.pizza.records.Configuration;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+import ru.nsu.gstubarev.pizza.records.Configuration;
 
 class JsonParserConfTest {
     @Test

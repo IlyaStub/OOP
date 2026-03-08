@@ -2,10 +2,9 @@ package ru.nsu.gstubarev.pizza.records;
 
 import static ru.nsu.gstubarev.pizza.enums.OrderState.CREATED;
 
-import ru.nsu.gstubarev.pizza.enums.OrderState;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
-
+import ru.nsu.gstubarev.pizza.enums.OrderState;
 
 /**
  * Class representing a customer's order containing pizzas.

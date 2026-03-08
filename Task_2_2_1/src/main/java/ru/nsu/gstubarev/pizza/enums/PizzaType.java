@@ -1,5 +1,8 @@
 package ru.nsu.gstubarev.pizza.enums;
 
+/**
+ * Type of pizza.
+ */
 public enum PizzaType {
     PEPPERONI,
     MARGHERITA,
