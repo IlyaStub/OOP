@@ -76,12 +76,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a></code></dd>
+<dd><code><a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">StorageImpl</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a></span></div>
+implements <a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -167,11 +167,11 @@ implements <a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstub
 <h3>addOrder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addOrder</span><wbr><span class="parameters">(<a href="../records/Order.html" title="class in ru.nsu.gstubarev.pizza.records">Order</a>&nbsp;order)</span>
               throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/IStorage.html#addOrder(ru.nsu.gstubarev.pizza.records.Order)">IStorage</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/Istorage.html#addOrder(ru.nsu.gstubarev.pizza.records.Order)">Istorage</a></code></span></div>
 <div class="block">Adds a ready order to the storage. Blocks if storage is full.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../intefaces/IStorage.html#addOrder(ru.nsu.gstubarev.pizza.records.Order)">addOrder</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a></code></dd>
+<dd><code><a href="../intefaces/Istorage.html#addOrder(ru.nsu.gstubarev.pizza.records.Order)">addOrder</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>order</code> - the order to add</dd>
 <dt>Throws:</dt>
@@ -184,11 +184,11 @@ implements <a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstub
 <h3>takeOrder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../records/Order.html" title="class in ru.nsu.gstubarev.pizza.records">Order</a></span>&nbsp;<span class="element-name">takeOrder</span><wbr><span class="parameters">(int&nbsp;trunkCapacity)</span>
                 throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/IStorage.html#takeOrder(int)">IStorage</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/Istorage.html#takeOrder(int)">Istorage</a></code></span></div>
 <div class="block">Takes an order from the storage. Blocks if storage is empty.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../intefaces/IStorage.html#takeOrder(int)">takeOrder</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a></code></dd>
+<dd><code><a href="../intefaces/Istorage.html#takeOrder(int)">takeOrder</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>trunkCapacity</code> - maximum number of pizzas the courier can take</dd>
 <dt>Returns:</dt>
@@ -202,11 +202,11 @@ implements <a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstub
 <section class="detail" id="isEmpty()">
 <h3>isEmpty</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isEmpty</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/IStorage.html#isEmpty()">IStorage</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/Istorage.html#isEmpty()">Istorage</a></code></span></div>
 <div class="block">Checks if the storage is currently empty.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../intefaces/IStorage.html#isEmpty()">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a></code></dd>
+<dd><code><a href="../intefaces/Istorage.html#isEmpty()">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a></code></dd>
 <dt>Returns:</dt>
 <dd>true if storage is empty, false otherwise</dd>
 </dl>

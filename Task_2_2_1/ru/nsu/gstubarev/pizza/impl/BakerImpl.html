@@ -76,12 +76,12 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></code>, <code><a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IBaker</a></code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></code>, <code><a href="../intefaces/Ibaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Ibaker</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">BakerImpl</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IBaker</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></span></div>
+implements <a href="../intefaces/Ibaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Ibaker</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -93,10 +93,10 @@ implements <a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubar
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int,java.util.concurrent.BlockingQueue,ru.nsu.gstubarev.pizza.intefaces.IStorage)" class="member-name-link">BakerImpl</a><wbr>(int&nbsp;id,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int,java.util.concurrent.BlockingQueue,ru.nsu.gstubarev.pizza.intefaces.Istorage)" class="member-name-link">BakerImpl</a><wbr>(int&nbsp;id,
  int&nbsp;cookingSpeedMs,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/BlockingQueue.html" title="class or interface in java.util.concurrent" class="external-link">BlockingQueue</a>&lt;<a href="../records/Order.html" title="class in ru.nsu.gstubarev.pizza.records">Order</a>&gt;&nbsp;orderQueue,
- <a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a>&nbsp;storage)</code></div>
+ <a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a>&nbsp;storage)</code></div>
 <div class="col-last even-row-color">
 <div class="block">This is constructor.</div>
 </div>
@@ -145,12 +145,12 @@ implements <a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubar
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(int,int,java.util.concurrent.BlockingQueue,ru.nsu.gstubarev.pizza.intefaces.IStorage)">
+<section class="detail" id="&lt;init&gt;(int,int,java.util.concurrent.BlockingQueue,ru.nsu.gstubarev.pizza.intefaces.Istorage)">
 <h3>BakerImpl</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BakerImpl</span><wbr><span class="parameters">(int&nbsp;id,
  int&nbsp;cookingSpeedMs,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/BlockingQueue.html" title="class or interface in java.util.concurrent" class="external-link">BlockingQueue</a>&lt;<a href="../records/Order.html" title="class in ru.nsu.gstubarev.pizza.records">Order</a>&gt;&nbsp;orderQueue,
- <a href="../intefaces/IStorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IStorage</a>&nbsp;storage)</span></div>
+ <a href="../intefaces/Istorage.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Istorage</a>&nbsp;storage)</span></div>
 <div class="block">This is constructor.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -173,11 +173,11 @@ implements <a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubar
 <section class="detail" id="takeOrder(ru.nsu.gstubarev.pizza.records.Order)">
 <h3>takeOrder</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">takeOrder</span><wbr><span class="parameters">(<a href="../records/Order.html" title="class in ru.nsu.gstubarev.pizza.records">Order</a>&nbsp;order)</span></div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/IBaker.html#takeOrder(ru.nsu.gstubarev.pizza.records.Order)">IBaker</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/Ibaker.html#takeOrder(ru.nsu.gstubarev.pizza.records.Order)">Ibaker</a></code></span></div>
 <div class="block">Takes an order and simulates the cooking process.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../intefaces/IBaker.html#takeOrder(ru.nsu.gstubarev.pizza.records.Order)">takeOrder</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IBaker</a></code></dd>
+<dd><code><a href="../intefaces/Ibaker.html#takeOrder(ru.nsu.gstubarev.pizza.records.Order)">takeOrder</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/Ibaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Ibaker</a></code></dd>
 <dt>Parameters:</dt>
 <dd><code>order</code> - the order to prepare</dd>
 </dl>
@@ -187,11 +187,11 @@ implements <a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubar
 <section class="detail" id="stopWork()">
 <h3>stopWork</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">stopWork</span>()</div>
-<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/IBaker.html#stopWork()">IBaker</a></code></span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../intefaces/Ibaker.html#stopWork()">Ibaker</a></code></span></div>
 <div class="block">Signals the baker to stop working after finishing current tasks.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../intefaces/IBaker.html#stopWork()">stopWork</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/IBaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">IBaker</a></code></dd>
+<dd><code><a href="../intefaces/Ibaker.html#stopWork()">stopWork</a></code>&nbsp;in interface&nbsp;<code><a href="../intefaces/Ibaker.html" title="interface in ru.nsu.gstubarev.pizza.intefaces">Ibaker</a></code></dd>
 </dl>
 </section>
 </li>
