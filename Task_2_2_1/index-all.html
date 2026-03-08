@@ -62,7 +62,9 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
 <dt><a href="ru/nsu/gstubarev/pizza/impl/BakerImpl.html" class="type-name-link" title="class in ru.nsu.gstubarev.pizza.impl">BakerImpl</a> - Class in <a href="ru/nsu/gstubarev/pizza/impl/package-summary.html">ru.nsu.gstubarev.pizza.impl</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Implementation of a baker that processes orders from queue and puts them into storage.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/BakerImpl.html#%3Cinit%3E(int,int,java.util.concurrent.BlockingQueue,ru.nsu.gstubarev.pizza.intefaces.Istorage)" class="member-name-link">BakerImpl(int, int, BlockingQueue&lt;Order&gt;, Istorage)</a> - Constructor for class ru.nsu.gstubarev.pizza.impl.<a href="ru/nsu/gstubarev/pizza/impl/BakerImpl.html" title="class in ru.nsu.gstubarev.pizza.impl">BakerImpl</a></dt>
 <dd>
 <div class="block">This is constructor.</div>
@@ -85,7 +87,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Changes the current state of the order and logs it.</div>
 </dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/ClientImpl.html" class="type-name-link" title="class in ru.nsu.gstubarev.pizza.impl">ClientImpl</a> - Class in <a href="ru/nsu/gstubarev/pizza/impl/package-summary.html">ru.nsu.gstubarev.pizza.impl</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Implementation of a client that generates random orders and puts them into queue.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/ClientImpl.html#%3Cinit%3E(java.util.concurrent.BlockingQueue)" class="member-name-link">ClientImpl(BlockingQueue&lt;Order&gt;)</a> - Constructor for class ru.nsu.gstubarev.pizza.impl.<a href="ru/nsu/gstubarev/pizza/impl/ClientImpl.html" title="class in ru.nsu.gstubarev.pizza.impl">ClientImpl</a></dt>
 <dd>
 <div class="block">This is constructor.</div>
@@ -120,7 +124,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns the value of the <a href="./ru/nsu/gstubarev/pizza/records/Configuration.html#param-deliverymanCount"><code>deliverymanCount</code></a> record component.</div>
 </dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/DeliverymanImpl.html" class="type-name-link" title="class in ru.nsu.gstubarev.pizza.impl">DeliverymanImpl</a> - Class in <a href="ru/nsu/gstubarev/pizza/impl/package-summary.html">ru.nsu.gstubarev.pizza.impl</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Implementation of a deliveryman that takes orders from storage and delivers them.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/DeliverymanImpl.html#%3Cinit%3E(int,int,ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime,ru.nsu.gstubarev.pizza.intefaces.Istorage)" class="member-name-link">DeliverymanImpl(int, int, IgeneratorTime, Istorage)</a> - Constructor for class ru.nsu.gstubarev.pizza.impl.<a href="ru/nsu/gstubarev/pizza/impl/DeliverymanImpl.html" title="class in ru.nsu.gstubarev.pizza.impl">DeliverymanImpl</a></dt>
 <dd>
 <div class="block">This is constructor.</div>
@@ -151,7 +157,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Generates a random time duration for delivery.</div>
 </dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/GeneratorTime.html" class="type-name-link" title="class in ru.nsu.gstubarev.pizza.impl">GeneratorTime</a> - Class in <a href="ru/nsu/gstubarev/pizza/impl/package-summary.html">ru.nsu.gstubarev.pizza.impl</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Implementation of time generator that produces random delivery times within range.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/GeneratorTime.html#%3Cinit%3E(int,int)" class="member-name-link">GeneratorTime(int, int)</a> - Constructor for class ru.nsu.gstubarev.pizza.impl.<a href="ru/nsu/gstubarev/pizza/impl/GeneratorTime.html" title="class in ru.nsu.gstubarev.pizza.impl">GeneratorTime</a></dt>
 <dd>
 <div class="block">This is constructor.</div>
@@ -224,7 +232,9 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:J">J</h2>
 <dl class="index">
 <dt><a href="ru/nsu/gstubarev/pizza/impl/JsonParserConf.html" class="type-name-link" title="class in ru.nsu.gstubarev.pizza.impl">JsonParserConf</a> - Class in <a href="ru/nsu/gstubarev/pizza/impl/package-summary.html">ru.nsu.gstubarev.pizza.impl</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">JSON implementation of configuration parser using Gson library.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/JsonParserConf.html#%3Cinit%3E()" class="member-name-link">JsonParserConf()</a> - Constructor for class ru.nsu.gstubarev.pizza.impl.<a href="ru/nsu/gstubarev/pizza/impl/JsonParserConf.html" title="class in ru.nsu.gstubarev.pizza.impl">JsonParserConf</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -341,7 +351,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns the value of the <a href="./ru/nsu/gstubarev/pizza/records/Configuration.html#param-storageCapacity"><code>storageCapacity</code></a> record component.</div>
 </dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/StorageImpl.html" class="type-name-link" title="class in ru.nsu.gstubarev.pizza.impl">StorageImpl</a> - Class in <a href="ru/nsu/gstubarev/pizza/impl/package-summary.html">ru.nsu.gstubarev.pizza.impl</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Implementation of pizza storage with capacity limit and order management.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/pizza/impl/StorageImpl.html#%3Cinit%3E(int)" class="member-name-link">StorageImpl(int)</a> - Constructor for class ru.nsu.gstubarev.pizza.impl.<a href="ru/nsu/gstubarev/pizza/impl/StorageImpl.html" title="class in ru.nsu.gstubarev.pizza.impl">StorageImpl</a></dt>
 <dd>
 <div class="block">The constructor.</div>
