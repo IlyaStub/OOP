@@ -7,6 +7,9 @@ import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * Implementation of a baker that processes orders from queue and puts them into storage.
+ */
 public class BakerImpl implements Ibaker, Runnable {
     private final int id;
     private final int cookingSpeedMs;

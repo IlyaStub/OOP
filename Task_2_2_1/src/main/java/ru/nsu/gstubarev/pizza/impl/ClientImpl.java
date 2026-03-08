@@ -8,6 +8,9 @@ import ru.nsu.gstubarev.pizza.intefaces.Iclient;
 import ru.nsu.gstubarev.pizza.records.Order;
 import ru.nsu.gstubarev.pizza.records.Pizza;
 
+/**
+ * Implementation of a client that generates random orders and puts them into queue.
+ */
 public class ClientImpl implements Iclient, Runnable {
     private final BlockingQueue<Order> orderQueue;
     private volatile boolean isOrdering = true;

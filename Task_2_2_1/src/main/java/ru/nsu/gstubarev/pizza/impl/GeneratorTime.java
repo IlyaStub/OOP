@@ -3,6 +3,9 @@ package ru.nsu.gstubarev.pizza.impl;
 import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
 import java.util.Random;
 
+/**
+ * Implementation of time generator that produces random delivery times within range.
+ */
 public class GeneratorTime implements IgeneratorTime {
     private final int minTime;
     private final int maxTime;

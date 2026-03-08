@@ -6,6 +6,9 @@ import ru.nsu.gstubarev.pizza.records.Configuration;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * JSON implementation of configuration parser using Gson library.
+ */
 public class JsonParserConf implements IparserConf {
     @Override
     public Configuration parse(String filePath) {

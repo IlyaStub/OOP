@@ -6,6 +6,9 @@ import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
 import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 
+/**
+ * Implementation of a deliveryman that takes orders from storage and delivers them.
+ */
 public class DeliverymanImpl implements Ideliveryman, Runnable {
     private final int id;
     private final int trunkCapacity;

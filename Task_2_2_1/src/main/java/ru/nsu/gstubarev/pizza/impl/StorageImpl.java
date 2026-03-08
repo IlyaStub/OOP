@@ -7,6 +7,9 @@ import ru.nsu.gstubarev.pizza.records.Pizza;
 
 import java.util.LinkedList;
 
+/**
+ * Implementation of pizza storage with capacity limit and order management.
+ */
 public class StorageImpl implements Istorage {
     private final int maxCapacity;
     private int currentPizzasCount = 0;
