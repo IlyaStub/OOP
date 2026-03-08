@@ -1,7 +1,7 @@
 package ru.nsu.gstubarev.pizza.impl;
 
-import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
 import java.util.Random;
+import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
 
 /**
  * Implementation of time generator that produces random delivery times within range.

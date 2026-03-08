@@ -2,10 +2,10 @@ package ru.nsu.gstubarev.pizza.impl;
 
 import static ru.nsu.gstubarev.pizza.enums.OrderState.IN_PROGRESS;
 
+import java.util.concurrent.BlockingQueue;
 import ru.nsu.gstubarev.pizza.intefaces.Ibaker;
 import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
-import java.util.concurrent.BlockingQueue;
 
 /**
  * Implementation of a baker that processes orders from queue and puts them into storage.
@@ -25,7 +25,8 @@ public class BakerImpl implements Ibaker, Runnable {
      * @param orderQueue queue of order
      * @param storage storage of order
      */
-    public BakerImpl(int id, int cookingSpeedMs, BlockingQueue<Order> orderQueue, Istorage storage) {
+    public BakerImpl(int id, int cookingSpeedMs,
+                     BlockingQueue<Order> orderQueue, Istorage storage) {
         this.id = id;
         this.cookingSpeedMs = cookingSpeedMs;
         this.orderQueue = orderQueue;

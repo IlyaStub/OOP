@@ -1,11 +1,10 @@
 package ru.nsu.gstubarev.pizza.impl;
 
+import java.util.LinkedList;
 import ru.nsu.gstubarev.pizza.enums.OrderState;
 import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 import ru.nsu.gstubarev.pizza.records.Pizza;
-
-import java.util.LinkedList;
 
 /**
  * Implementation of pizza storage with capacity limit and order management.

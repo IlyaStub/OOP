@@ -1,10 +1,10 @@
 package ru.nsu.gstubarev.pizza.impl;
 
 import com.google.gson.Gson;
-import ru.nsu.gstubarev.pizza.intefaces.IparserConf;
-import ru.nsu.gstubarev.pizza.records.Configuration;
 import java.io.FileReader;
 import java.io.IOException;
+import ru.nsu.gstubarev.pizza.intefaces.IparserConf;
+import ru.nsu.gstubarev.pizza.records.Configuration;
 
 /**
  * JSON implementation of configuration parser using Gson library.

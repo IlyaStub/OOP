@@ -2,7 +2,9 @@ package ru.nsu.gstubarev.pizza.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -48,5 +50,45 @@ class BakerImplTest {
         thread.join(1000);
 
         assertFalse(thread.isAlive());
+    }
+
+    @Test
+    void testRunInterruptedException() throws InterruptedException {
+        Istorage mockStorage = mock(Istorage.class);
+        BlockingQueue<Order> queue = new LinkedBlockingQueue<>();
+        BakerImpl baker = new BakerImpl(1, 1000, queue, mockStorage);
+
+        Thread thread = new Thread(baker);
+        thread.start();
+
+        Thread.sleep(50);
+
+        thread.interrupt();
+
+        thread.join(1000);
+
+        assertFalse(thread.isAlive());
+    }
+
+    @Test
+    void testTakeOrderInterruptedException() throws InterruptedException {
+        Istorage mockStorage = mock(Istorage.class);
+        BlockingQueue<Order> queue = new LinkedBlockingQueue<>();
+
+        BakerImpl baker = new BakerImpl(1, 5000, queue, mockStorage);
+
+        LinkedList<Pizza> pizzas = new LinkedList<>();
+        pizzas.add(new Pizza(PizzaType.MARGHERITA, 30, 400));
+        Order order = new Order(pizzas);
+
+        Thread thread = new Thread(() -> baker.takeOrder(order));
+        thread.start();
+
+        Thread.sleep(100);
+
+        thread.interrupt();
+        thread.join(1000);
+
+        verify(mockStorage, never()).addOrder(any());
     }
 }
