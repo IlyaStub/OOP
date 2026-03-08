@@ -1,14 +1,14 @@
 package ru.nsu.gstubarev.pizza.impl;
 
-import ru.nsu.gstubarev.pizza.enums.PizzaType;
-import ru.nsu.gstubarev.pizza.intefaces.IClient;
-import ru.nsu.gstubarev.pizza.records.Order;
-import ru.nsu.gstubarev.pizza.records.Pizza;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
+import ru.nsu.gstubarev.pizza.enums.PizzaType;
+import ru.nsu.gstubarev.pizza.intefaces.Iclient;
+import ru.nsu.gstubarev.pizza.records.Order;
+import ru.nsu.gstubarev.pizza.records.Pizza;
 
-public class ClientImpl implements IClient, Runnable {
+public class ClientImpl implements Iclient, Runnable {
     private final BlockingQueue<Order> orderQueue;
     private volatile boolean isOrdering = true;
     private final Random random = new Random();

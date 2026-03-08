@@ -5,7 +5,7 @@ import ru.nsu.gstubarev.pizza.records.Order;
 /**
  * Interface representing a storage for ready pizza orders.
  */
-public interface IStorage {
+public interface Istorage {
     /**
      * Adds a ready order to the storage. Blocks if storage is full.
      *

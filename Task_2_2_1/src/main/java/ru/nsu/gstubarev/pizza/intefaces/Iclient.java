@@ -1,14 +1,11 @@
 package ru.nsu.gstubarev.pizza.intefaces;
 
 import ru.nsu.gstubarev.pizza.records.Order;
-import ru.nsu.gstubarev.pizza.records.Pizza;
-
-import java.util.LinkedList;
 
 /**
  * Interface representing a client that generates new orders.
  */
-public interface IClient {
+public interface Iclient {
     /**
      * Creates a new random pizza order.
      *

@@ -3,7 +3,7 @@ package ru.nsu.gstubarev.pizza.intefaces;
 /**
  * This interface describes a class for generation time for delivering order or cooking of pizza.
  */
-public interface IGeneratorTime {
+public interface IgeneratorTime {
     /**
      * Generates a random time duration for delivery.
      *

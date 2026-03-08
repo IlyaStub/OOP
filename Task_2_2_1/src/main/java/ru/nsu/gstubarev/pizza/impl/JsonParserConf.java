@@ -1,12 +1,12 @@
 package ru.nsu.gstubarev.pizza.impl;
 
 import com.google.gson.Gson;
-import ru.nsu.gstubarev.pizza.intefaces.IParserConf;
+import ru.nsu.gstubarev.pizza.intefaces.IparserConf;
 import ru.nsu.gstubarev.pizza.records.Configuration;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class JsonParserConf implements IParserConf {
+public class JsonParserConf implements IparserConf {
     @Override
     public Configuration parse(String filePath) {
         Gson gson = new Gson();

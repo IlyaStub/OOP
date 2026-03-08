@@ -1,16 +1,16 @@
 package ru.nsu.gstubarev.pizza.impl;
 
 import ru.nsu.gstubarev.pizza.enums.OrderState;
-import ru.nsu.gstubarev.pizza.intefaces.IDeliveryman;
-import ru.nsu.gstubarev.pizza.intefaces.IGeneratorTime;
-import ru.nsu.gstubarev.pizza.intefaces.IStorage;
+import ru.nsu.gstubarev.pizza.intefaces.Ideliveryman;
+import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
+import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 
-public class DeliverymanImpl implements IDeliveryman, Runnable {
+public class DeliverymanImpl implements Ideliveryman, Runnable {
     private final int id;
     private final int trunkCapacity;
-    private final IGeneratorTime generatorTime;
-    private final IStorage storage;
+    private final IgeneratorTime generatorTime;
+    private final Istorage storage;
     private volatile boolean isWorking = true;
 
     /**
@@ -22,7 +22,7 @@ public class DeliverymanImpl implements IDeliveryman, Runnable {
      * @param storage storage of pizza
      */
     public DeliverymanImpl(int id, int trunkCapacity,
-                           IGeneratorTime generatorTime, IStorage storage) {
+                           IgeneratorTime generatorTime, Istorage storage) {
         this.id = id;
         this.trunkCapacity = trunkCapacity;
         this.generatorTime = generatorTime;
@@ -43,7 +43,7 @@ public class DeliverymanImpl implements IDeliveryman, Runnable {
     }
 
     @Override
-    public void takePizzas(IStorage storage) throws InterruptedException {
+    public void takePizzas(Istorage storage) throws InterruptedException {
         Order order = storage.takeOrder(trunkCapacity);
         if (order != null) {
             order.changeState(OrderState.IN_DELIVERY);

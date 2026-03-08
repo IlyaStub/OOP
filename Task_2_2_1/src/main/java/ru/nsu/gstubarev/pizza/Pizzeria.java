@@ -6,9 +6,9 @@ import ru.nsu.gstubarev.pizza.impl.DeliverymanImpl;
 import ru.nsu.gstubarev.pizza.impl.GeneratorTime;
 import ru.nsu.gstubarev.pizza.impl.JsonParserConf;
 import ru.nsu.gstubarev.pizza.impl.StorageImpl;
-import ru.nsu.gstubarev.pizza.intefaces.IGeneratorTime;
-import ru.nsu.gstubarev.pizza.intefaces.IParserConf;
-import ru.nsu.gstubarev.pizza.intefaces.IStorage;
+import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
+import ru.nsu.gstubarev.pizza.intefaces.IparserConf;
+import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Configuration;
 import ru.nsu.gstubarev.pizza.records.Order;
 import java.util.ArrayList;
@@ -31,13 +31,13 @@ public class Pizzeria {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        IParserConf parser = new JsonParserConf();
+        IparserConf parser = new JsonParserConf();
         Configuration config = parser.parse("config.json");
         System.out.println("Pizzeria opened! Config: " + config);
 
         BlockingQueue<Order> orderQueue = new LinkedBlockingQueue<>();
-        IStorage storage = new StorageImpl(config.storageCapacity());
-        IGeneratorTime deliveryTimeGen = new GeneratorTime(config.minDeliveryTimeMs(), config.maxDeliveryTimeMs());
+        Istorage storage = new StorageImpl(config.storageCapacity());
+        IgeneratorTime deliveryTimeGen = new GeneratorTime(config.minDeliveryTimeMs(), config.maxDeliveryTimeMs());
 
         ExecutorService clientPool = Executors.newSingleThreadExecutor();
         ExecutorService bakersPool = Executors.newFixedThreadPool(config.bakersCount());

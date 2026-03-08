@@ -5,7 +5,7 @@ import ru.nsu.gstubarev.pizza.records.Order;
 /**
  * Interface representing a baker who prepares pizza orders.
  */
-public interface IBaker {
+public interface Ibaker {
     /**
      * Takes an order and simulates the cooking process.
      *

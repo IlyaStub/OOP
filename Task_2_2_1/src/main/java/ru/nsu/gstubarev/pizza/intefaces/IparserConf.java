@@ -5,7 +5,7 @@ import ru.nsu.gstubarev.pizza.records.Configuration;
 /**
  * Interface for parsing configuration files.
  */
-public interface IParserConf {
+public interface IparserConf {
     /**
      * Parses the configuration from a specified file.
      *

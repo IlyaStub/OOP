@@ -1,13 +1,13 @@
 package ru.nsu.gstubarev.pizza.impl;
 
 import ru.nsu.gstubarev.pizza.enums.OrderState;
-import ru.nsu.gstubarev.pizza.intefaces.IStorage;
+import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 import ru.nsu.gstubarev.pizza.records.Pizza;
 
 import java.util.LinkedList;
 
-public class StorageImpl implements IStorage {
+public class StorageImpl implements Istorage {
     private final int maxCapacity;
     private int currentPizzasCount = 0;
     private final LinkedList<Order> orders = new LinkedList<>();

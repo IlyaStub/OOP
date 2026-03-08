@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.pizza.impl;
 
-import ru.nsu.gstubarev.pizza.intefaces.IGeneratorTime;
+import ru.nsu.gstubarev.pizza.intefaces.IgeneratorTime;
 import java.util.Random;
 
-public class GeneratorTime implements IGeneratorTime {
+public class GeneratorTime implements IgeneratorTime {
     private final int minTime;
     private final int maxTime;
     private final Random random = new Random();

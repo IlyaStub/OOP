@@ -2,17 +2,17 @@ package ru.nsu.gstubarev.pizza.impl;
 
 import static ru.nsu.gstubarev.pizza.enums.OrderState.IN_PROGRESS;
 
-import ru.nsu.gstubarev.pizza.intefaces.IBaker;
-import ru.nsu.gstubarev.pizza.intefaces.IStorage;
+import ru.nsu.gstubarev.pizza.intefaces.Ibaker;
+import ru.nsu.gstubarev.pizza.intefaces.Istorage;
 import ru.nsu.gstubarev.pizza.records.Order;
 import java.util.concurrent.BlockingQueue;
 
-public class BakerImpl implements IBaker, Runnable {
+public class BakerImpl implements Ibaker, Runnable {
     private final int id;
     private final int cookingSpeedMs;
     private volatile boolean isWorking = true;
     private final BlockingQueue<Order> orderQueue;
-    private final IStorage storage;
+    private final Istorage storage;
 
     /**
      * This is constructor.
@@ -22,7 +22,7 @@ public class BakerImpl implements IBaker, Runnable {
      * @param orderQueue queue of order
      * @param storage storage of order
      */
-    public BakerImpl(int id, int cookingSpeedMs, BlockingQueue<Order> orderQueue, IStorage storage) {
+    public BakerImpl(int id, int cookingSpeedMs, BlockingQueue<Order> orderQueue, Istorage storage) {
         this.id = id;
         this.cookingSpeedMs = cookingSpeedMs;
         this.orderQueue = orderQueue;
