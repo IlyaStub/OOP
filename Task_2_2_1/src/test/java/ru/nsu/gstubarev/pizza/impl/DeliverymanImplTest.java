@@ -22,8 +22,6 @@ class DeliverymanImplTest {
         Istorage mockStorage = mock(Istorage.class);
         IgeneratorTime mockGen = mock(IgeneratorTime.class);
 
-        DeliverymanImpl courier = new DeliverymanImpl(1, 3, mockGen, mockStorage);
-
         LinkedList<Pizza> pizzas = new LinkedList<>();
         pizzas.add(new Pizza(PizzaType.SEAFOOD, 30, 600));
         Order order = new Order(pizzas);
@@ -31,12 +29,39 @@ class DeliverymanImplTest {
         when(mockStorage.takeOrder(3)).thenReturn(order);
         when(mockGen.generateDeliveryTime()).thenReturn(10);
 
+        DeliverymanImpl courier = new DeliverymanImpl(1, 3, mockGen, mockStorage);
         courier.takePizzas(mockStorage);
 
         assertEquals(OrderState.DELIVERED, order.getState());
 
         verify(mockStorage, times(1)).takeOrder(3);
         verify(mockGen, times(1)).generateDeliveryTime();
+    }
+
+    @Test
+    void testTakePizzasWithNullOrder() throws InterruptedException {
+        Istorage mockStorage = mock(Istorage.class);
+        IgeneratorTime mockGen = mock(IgeneratorTime.class);
+        when(mockStorage.takeOrder(3)).thenReturn(null);
+        DeliverymanImpl courier = new DeliverymanImpl(1, 3, mockGen, mockStorage);
+        courier.takePizzas(mockStorage);
+        verify(mockGen, times(0)).generateDeliveryTime();
+    }
+
+    @Test
+    void testInterruptedExceptionHandling() throws InterruptedException {
+        Istorage mockStorage = mock(Istorage.class);
+        IgeneratorTime mockGen = mock(IgeneratorTime.class);
+        when(mockStorage.takeOrder(3)).thenThrow(new InterruptedException());
+        when(mockStorage.isEmpty()).thenReturn(false);
+        DeliverymanImpl courier = new DeliverymanImpl(1, 3, mockGen, mockStorage);
+
+        Thread thread = new Thread(courier);
+        thread.start();
+
+        thread.join(500);
+
+        assertFalse(thread.isAlive());
     }
 
     @Test

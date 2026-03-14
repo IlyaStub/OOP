@@ -3,7 +3,6 @@ package ru.nsu.gstubarev.pizza.impl;
 import static ru.nsu.gstubarev.pizza.enums.OrderState.IN_PROGRESS;
 
 import java.util.concurrent.BlockingQueue;
-
 import ru.nsu.gstubarev.pizza.enums.OrderState;
 import ru.nsu.gstubarev.pizza.intefaces.Ibaker;
 import ru.nsu.gstubarev.pizza.intefaces.Istorage;
@@ -45,7 +44,8 @@ public class BakerImpl implements Ibaker, Runnable {
 
             storage.addOrder(order);
         } catch (InterruptedException e) {
-            System.err.println("Baker " + id + " was interrupt. Return order" + order.getId() + " to queue");
+            System.err.println("Baker " + id + " was interrupt. Return order"
+                    + order.getId() + " to queue");
             order.changeState(OrderState.CREATED);
             orderQueue.add(order);
             Thread.currentThread().interrupt();
