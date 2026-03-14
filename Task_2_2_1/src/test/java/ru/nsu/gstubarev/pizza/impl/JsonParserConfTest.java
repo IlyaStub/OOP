@@ -15,9 +15,9 @@ class JsonParserConfTest {
     @Test
     void testParseValidJson(@TempDir Path tempDir) throws IOException {
         Path file = tempDir.resolve("test_config.json");
-        String jsonContent = "{\"bakerSpeedMs\": [100, 200, 300], " +
-                "\"trunkCapacity\": [2, 3], \"storageCapacity\":20, " +
-                "\"minDeliveryTimeMs\":200, \"maxDeliveryTimeMs\":300}";
+        String jsonContent = "{\"bakerSpeedMs\": [100, 200, 300], "
+                + "\"trunkCapacity\": [2, 3], \"storageCapacity\":20, "
+                + "\"minDeliveryTimeMs\":200, \"maxDeliveryTimeMs\":300}";
         Files.writeString(file, jsonContent);
 
         JsonParserConf parser = new JsonParserConf();
