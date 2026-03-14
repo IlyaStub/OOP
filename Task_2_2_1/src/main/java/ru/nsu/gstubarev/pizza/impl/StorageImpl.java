@@ -27,6 +27,12 @@ public class StorageImpl implements Istorage {
     public synchronized void addOrder(Order order) throws InterruptedException {
         int pizzasInOrder = order.getPizzas().size();
 
+        if (pizzasInOrder > maxCapacity) {
+            System.err.println("Order " + order.getId() + " is too big.");
+            order.changeState(OrderState.CANCELED);
+            return;
+        }
+
         while (currentPizzasCount + pizzasInOrder > maxCapacity) {
             this.wait();
         }
@@ -42,7 +48,10 @@ public class StorageImpl implements Istorage {
     @Override
     public synchronized Order takeOrder(int trunkCapacity) throws InterruptedException {
         while (orders.isEmpty()) {
-            this.wait();
+            this.wait(1000);
+            if (orders.isEmpty()) {
+                return null;
+            }
         }
 
         Order currentOrder = orders.peek();

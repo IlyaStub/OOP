@@ -8,5 +8,6 @@ public enum OrderState {
     IN_PROGRESS,
     IN_STORAGE,
     IN_DELIVERY,
-    DELIVERED
+    DELIVERED,
+    CANCELED
 }

@@ -40,9 +40,12 @@ public class Pizzeria {
         IgeneratorTime deliveryTimeGen = new GeneratorTime(config.minDeliveryTimeMs(),
                 config.maxDeliveryTimeMs());
 
+        int bakersCount = config.bakerSpeedMs().length;
+        int deliverymanCount = config.trunkCapacity().length;
+
         ExecutorService clientPool = Executors.newSingleThreadExecutor();
-        ExecutorService bakersPool = Executors.newFixedThreadPool(config.bakersCount());
-        ExecutorService deliverymanPool = Executors.newFixedThreadPool(config.deliverymanCount());
+        ExecutorService bakersPool = Executors.newFixedThreadPool(bakersCount);
+        ExecutorService deliverymanPool = Executors.newFixedThreadPool(deliverymanCount);
 
         List<BakerImpl> bakers = new ArrayList<>();
         List<DeliverymanImpl> couriers = new ArrayList<>();
@@ -50,18 +53,17 @@ public class Pizzeria {
         ClientImpl client = new ClientImpl(orderQueue);
         clientPool.execute(client);
 
-        for (int i = 0; i < config.bakersCount(); i++) {
-            BakerImpl baker = new BakerImpl(i + 1, config.bakerSpeedMs(), orderQueue, storage);
+        for (int i = 0; i < bakersCount; i++) {
+            BakerImpl baker = new BakerImpl(i + 1, config.bakerSpeedMs()[i], orderQueue, storage);
             bakers.add(baker);
             bakersPool.execute(baker);
         }
 
-        for (int i = 0; i < config.deliverymanCount(); i++) {
-            int randomTrunkCapacity = 2 + (i % 3);
-            DeliverymanImpl courier = new DeliverymanImpl(i + 1, randomTrunkCapacity,
+        for (int i = 0; i < deliverymanCount; i++) {
+            DeliverymanImpl deliveryman = new DeliverymanImpl(i + 1, config.trunkCapacity()[i],
                     deliveryTimeGen, storage);
-            couriers.add(courier);
-            deliverymanPool.execute(courier);
+            couriers.add(deliveryman);
+            deliverymanPool.execute(deliveryman);
         }
 
         try {
@@ -86,9 +88,9 @@ public class Pizzeria {
         }
 
         couriers.forEach(DeliverymanImpl::stopWork);
-        deliverymanPool.shutdownNow();
+        deliverymanPool.shutdown();
         try {
-            while (!deliverymanPool.awaitTermination(10, TimeUnit.SECONDS)) {
+            while (!deliverymanPool.awaitTermination(30, TimeUnit.SECONDS)) {
                 System.out.println("Deliveryman is working");
             }
         } catch (InterruptedException e) {
@@ -96,6 +98,6 @@ public class Pizzeria {
             Thread.currentThread().interrupt();
         }
 
-        System.out.println("Pizzeria closed. All orders done.");
+        System.out.println("Pizzeria closed.");
     }
 }

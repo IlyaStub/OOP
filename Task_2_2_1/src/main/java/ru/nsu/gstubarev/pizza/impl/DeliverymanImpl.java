@@ -50,8 +50,14 @@ public class DeliverymanImpl implements Ideliveryman, Runnable {
         Order order = storage.takeOrder(trunkCapacity);
         if (order != null) {
             order.changeState(OrderState.IN_DELIVERY);
-            Thread.sleep(generatorTime.generateDeliveryTime());
-            order.changeState(OrderState.DELIVERED);
+            try {
+                Thread.sleep(generatorTime.generateDeliveryTime());
+                order.changeState(OrderState.DELIVERED);
+            } catch (InterruptedException e) {
+                System.err.println("Deliveryman " + this.id + " was interrupted! Order " + order.getId() + " is lost.");
+                order.changeState(OrderState.IN_STORAGE);
+                throw e;
+            }
         }
     }
 

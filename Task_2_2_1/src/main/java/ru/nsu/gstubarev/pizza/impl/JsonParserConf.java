@@ -16,7 +16,7 @@ public class JsonParserConf implements IparserConf {
         try (FileReader reader = new FileReader(filePath)) {
             return gson.fromJson(reader, Configuration.class);
         } catch (IOException e) {
-            return new Configuration(3, 2, 10, 2000, 1000, 3000);
+            throw new RuntimeException("Read file error");
         }
     }
 }
