@@ -78,15 +78,14 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>Record Components:</dt>
-<dd><code><span id="param-bakersCount">bakersCount</span></code> - number of bakers working in the pizzeria</dd>
-<dd><code><span id="param-deliverymanCount">deliverymanCount</span></code> - number of couriers available for delivery</dd>
+<dd><code><span id="param-bakerSpeedMs">bakerSpeedMs</span></code> - time in milliseconds to prepare one pizza for every baker</dd>
+<dd><code><span id="param-trunkCapacity">trunkCapacity</span></code> - capacity trunk for every deliveryman</dd>
 <dd><code><span id="param-storageCapacity">storageCapacity</span></code> - maximum number of orders that can be stored</dd>
-<dd><code><span id="param-bakerSpeedMs">bakerSpeedMs</span></code> - time in milliseconds to prepare one pizza</dd>
 <dd><code><span id="param-minDeliveryTimeMs">minDeliveryTimeMs</span></code> - minimum delivery time in milliseconds</dd>
 <dd><code><span id="param-maxDeliveryTimeMs">maxDeliveryTimeMs</span></code> - maximum delivery time in milliseconds</dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">Configuration</span>(int&nbsp;bakersCount, int&nbsp;deliverymanCount, int&nbsp;storageCapacity, int&nbsp;bakerSpeedMs, int&nbsp;minDeliveryTimeMs, int&nbsp;maxDeliveryTimeMs)
+<div class="type-signature"><span class="modifiers">public record </span><span class="element-name type-name-label">Configuration</span>(int[]&nbsp;bakerSpeedMs, int[]&nbsp;trunkCapacity, int&nbsp;storageCapacity, int&nbsp;minDeliveryTimeMs, int&nbsp;maxDeliveryTimeMs)
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></span></div>
 <div class="block">Configuration parameters for the pizza delivery system.</div>
 </section>
@@ -100,10 +99,9 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int,int,int,int,int)" class="member-name-link">Configuration</a><wbr>(int&nbsp;bakersCount,
- int&nbsp;deliverymanCount,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int%5B%5D,int%5B%5D,int,int,int)" class="member-name-link">Configuration</a><wbr>(int[]&nbsp;bakerSpeedMs,
+ int[]&nbsp;trunkCapacity,
  int&nbsp;storageCapacity,
- int&nbsp;bakerSpeedMs,
  int&nbsp;minDeliveryTimeMs,
  int&nbsp;maxDeliveryTimeMs)</code></div>
 <div class="col-last even-row-color">
@@ -123,20 +121,10 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bakersCount()" class="member-name-link">bakersCount</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int[]</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bakerSpeedMs()" class="member-name-link">bakerSpeedMs</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <a href="#param-bakersCount"><code>bakersCount</code></a> record component.</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bakerSpeedMs()" class="member-name-link">bakerSpeedMs</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the value of the <a href="#param-bakerSpeedMs"><code>bakerSpeedMs</code></a> record component.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#deliverymanCount()" class="member-name-link">deliverymanCount</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Returns the value of the <a href="#param-deliverymanCount"><code>deliverymanCount</code></a> record component.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#equals(java.lang.Object)" class="member-name-link">equals</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</code></div>
@@ -168,6 +156,11 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a string representation of this record class.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int[]</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#trunkCapacity()" class="member-name-link">trunkCapacity</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the value of the <a href="#param-trunkCapacity"><code>trunkCapacity</code></a> record component.</div>
+</div>
 </div>
 </div>
 </div>
@@ -186,21 +179,19 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(int,int,int,int,int,int)">
+<section class="detail" id="&lt;init&gt;(int[],int[],int,int,int)">
 <h3>Configuration</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Configuration</span><wbr><span class="parameters">(int&nbsp;bakersCount,
- int&nbsp;deliverymanCount,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Configuration</span><wbr><span class="parameters">(int[]&nbsp;bakerSpeedMs,
+ int[]&nbsp;trunkCapacity,
  int&nbsp;storageCapacity,
- int&nbsp;bakerSpeedMs,
  int&nbsp;minDeliveryTimeMs,
  int&nbsp;maxDeliveryTimeMs)</span></div>
 <div class="block">Creates an instance of a <code>Configuration</code> record class.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>bakersCount</code> - the value for the <a href="#param-bakersCount"><code>bakersCount</code></a> record component</dd>
-<dd><code>deliverymanCount</code> - the value for the <a href="#param-deliverymanCount"><code>deliverymanCount</code></a> record component</dd>
-<dd><code>storageCapacity</code> - the value for the <a href="#param-storageCapacity"><code>storageCapacity</code></a> record component</dd>
 <dd><code>bakerSpeedMs</code> - the value for the <a href="#param-bakerSpeedMs"><code>bakerSpeedMs</code></a> record component</dd>
+<dd><code>trunkCapacity</code> - the value for the <a href="#param-trunkCapacity"><code>trunkCapacity</code></a> record component</dd>
+<dd><code>storageCapacity</code> - the value for the <a href="#param-storageCapacity"><code>storageCapacity</code></a> record component</dd>
 <dd><code>minDeliveryTimeMs</code> - the value for the <a href="#param-minDeliveryTimeMs"><code>minDeliveryTimeMs</code></a> record component</dd>
 <dd><code>maxDeliveryTimeMs</code> - the value for the <a href="#param-maxDeliveryTimeMs"><code>maxDeliveryTimeMs</code></a> record component</dd>
 </dl>
@@ -244,7 +235,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="equals(java.lang.Object)">
 <h3>equals</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">equals</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</span></div>
-<div class="block">Indicates whether some other object is "equal to" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with '=='.</div>
+<div class="block">Indicates whether some other object is "equal to" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Objects.html#equals(java.lang.Object,java.lang.Object)" title="class or interface in java.util" class="external-link"><code>Objects::equals(Object,Object)</code></a>; primitive components are compared with '=='.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" title="class or interface in java.lang" class="external-link">Record</a></code></dd>
@@ -256,24 +247,24 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="bakersCount()">
-<h3>bakersCount</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">bakersCount</span>()</div>
-<div class="block">Returns the value of the <a href="#param-bakersCount"><code>bakersCount</code></a> record component.</div>
+<section class="detail" id="bakerSpeedMs()">
+<h3>bakerSpeedMs</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int[]</span>&nbsp;<span class="element-name">bakerSpeedMs</span>()</div>
+<div class="block">Returns the value of the <a href="#param-bakerSpeedMs"><code>bakerSpeedMs</code></a> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <a href="#param-bakersCount"><code>bakersCount</code></a> record component</dd>
+<dd>the value of the <a href="#param-bakerSpeedMs"><code>bakerSpeedMs</code></a> record component</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="deliverymanCount()">
-<h3>deliverymanCount</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">deliverymanCount</span>()</div>
-<div class="block">Returns the value of the <a href="#param-deliverymanCount"><code>deliverymanCount</code></a> record component.</div>
+<section class="detail" id="trunkCapacity()">
+<h3>trunkCapacity</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int[]</span>&nbsp;<span class="element-name">trunkCapacity</span>()</div>
+<div class="block">Returns the value of the <a href="#param-trunkCapacity"><code>trunkCapacity</code></a> record component.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the value of the <a href="#param-deliverymanCount"><code>deliverymanCount</code></a> record component</dd>
+<dd>the value of the <a href="#param-trunkCapacity"><code>trunkCapacity</code></a> record component</dd>
 </dl>
 </section>
 </li>
@@ -285,17 +276,6 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>the value of the <a href="#param-storageCapacity"><code>storageCapacity</code></a> record component</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="bakerSpeedMs()">
-<h3>bakerSpeedMs</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">bakerSpeedMs</span>()</div>
-<div class="block">Returns the value of the <a href="#param-bakerSpeedMs"><code>bakerSpeedMs</code></a> record component.</div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd>the value of the <a href="#param-bakerSpeedMs"><code>bakerSpeedMs</code></a> record component</dd>
 </dl>
 </section>
 </li>
