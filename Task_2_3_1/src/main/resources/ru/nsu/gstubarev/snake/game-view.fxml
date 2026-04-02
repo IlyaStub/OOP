@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.canvas.Canvas?>
+
+<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.nsu.gstubarev.snake.GameController">
+
+  <Canvas fx:id="gameCanvas" width="500" height="500" />
+
+</VBox>
