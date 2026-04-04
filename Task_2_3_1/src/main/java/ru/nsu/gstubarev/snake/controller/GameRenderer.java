@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.snake.controller;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 
 /**

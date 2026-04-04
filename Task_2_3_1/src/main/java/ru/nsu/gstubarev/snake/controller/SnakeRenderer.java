@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.snake.controller;
 
+import java.util.Objects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
-import java.util.Objects;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
 import ru.nsu.gstubarev.snake.model.Snake;

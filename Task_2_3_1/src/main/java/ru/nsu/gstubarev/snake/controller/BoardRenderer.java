@@ -1,12 +1,11 @@
 package ru.nsu.gstubarev.snake.controller;
 
+import java.util.Objects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
-
-import java.util.Objects;
 
 /**
  * Renders the game board, including the background, grid pattern, and wall obstacles.
@@ -26,18 +25,17 @@ public class BoardRenderer implements EntityRenderer {
     @Override
     public void render(GraphicsContext gc, GameEngine engine, double offsetX,
                        double offsetY, double tileSize) {
-        int columns = engine.getBoard().getWidth();
-        int rows = engine.getBoard().getHeight();
-
-        double boardWidthPx = tileSize * engine.getBoard().getWidth();
-        double boardHeightPx = tileSize * engine.getBoard().getHeight();
 
         gc.setFill(Color.web("#121212"));
         gc.fillRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
 
+        double boardWidthPx = tileSize * engine.getBoard().getWidth();
+        double boardHeightPx = tileSize * engine.getBoard().getHeight();
         gc.setFill(Color.web("#1fb714"));
         gc.fillRect(offsetX, offsetY, boardWidthPx, boardHeightPx);
 
+        int columns = engine.getBoard().getWidth();
+        int rows = engine.getBoard().getHeight();
         for (int x = 0; x < columns; x++) {
             for (int y = 0; y < rows; y++) {
                 double px = offsetX + x * tileSize;
