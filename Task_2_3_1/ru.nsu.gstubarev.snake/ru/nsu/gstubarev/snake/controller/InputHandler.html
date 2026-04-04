@@ -78,6 +78,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">InputHandler</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Handles keyboard input to control the snake's movement direction.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -109,10 +110,14 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleKeyPress(javafx.scene.input.KeyEvent,ru.nsu.gstubarev.snake.model.GameEngine,boolean)" class="member-name-link">handleKeyPress</a><wbr>(javafx.scene.input.KeyEvent&nbsp;event,
  <a href="../model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a>&nbsp;engine,
  boolean&nbsp;isPaused)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Processes a key press event to update the snake's direction.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetTick()" class="member-name-link">resetTick</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Resets the direction change flag for the current game tick.</div>
+</div>
 </div>
 </div>
 </div>
@@ -148,6 +153,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="resetTick()">
 <h3>resetTick</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">resetTick</span>()</div>
+<div class="block">Resets the direction change flag for the current game tick.
+ Ensures the player can only change direction once per tick.</div>
 </section>
 </li>
 <li>
@@ -156,6 +163,13 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handleKeyPress</span><wbr><span class="parameters">(javafx.scene.input.KeyEvent&nbsp;event,
  <a href="../model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a>&nbsp;engine,
  boolean&nbsp;isPaused)</span></div>
+<div class="block">Processes a key press event to update the snake's direction.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>event</code> - the keyboard event</dd>
+<dd><code>engine</code> - the game engine state</dd>
+<dd><code>isPaused</code> - true if the game is currently paused</dd>
+</dl>
 </section>
 </li>
 </ul>
