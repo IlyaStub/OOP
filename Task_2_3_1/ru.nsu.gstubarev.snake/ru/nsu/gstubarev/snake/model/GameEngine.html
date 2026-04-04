@@ -78,6 +78,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameEngine</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Core game engine responsible for processing game logic, updates, and collisions.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +92,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Board,ru.nsu.gstubarev.snake.model.Snake)" class="member-name-link">GameEngine</a><wbr>(<a href="Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a>&nbsp;board,
  <a href="Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a>&nbsp;playerSnake)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Initializes the game engine with a board and player snake.</div>
+</div>
 </div>
 </section>
 </li>
@@ -108,28 +111,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addScore(int)" class="member-name-link">addScore</a><wbr>(int&nbsp;points)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Adds the specified points to the current game score.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getBoard()" class="member-name-link">getBoard</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for board.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="interfaces/Food.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Food</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFoods()" class="member-name-link">getFoods</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for food.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayerSnake()" class="member-name-link">getPlayerSnake</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the player's snake entity.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getScore()" class="member-name-link">getScore</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Getter for score.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isGameOver()" class="member-name-link">isGameOver</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if the game is over.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setShouldGrow(boolean)" class="member-name-link">setShouldGrow</a><wbr>(boolean&nbsp;shouldGrow)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Flags whether the snake should grow its body on the next movement tick.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Advances the game state by a single tick, moving the snake and handling collisions.</div>
+</div>
 </div>
 </div>
 </div>
@@ -152,6 +171,12 @@ loadScripts(document, 'script');</script>
 <h3>GameEngine</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameEngine</span><wbr><span class="parameters">(<a href="Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a>&nbsp;board,
  <a href="Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a>&nbsp;playerSnake)</span></div>
+<div class="block">Initializes the game engine with a board and player snake.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>board</code> - the game board</dd>
+<dd><code>playerSnake</code> - the player's snake</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -166,48 +191,84 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="update()">
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span>()</div>
+<div class="block">Advances the game state by a single tick, moving the snake and handling collisions.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="isGameOver()">
 <h3>isGameOver</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isGameOver</span>()</div>
+<div class="block">Checks if the game is over.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if the game has ended, false otherwise</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPlayerSnake()">
 <h3>getPlayerSnake</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></span>&nbsp;<span class="element-name">getPlayerSnake</span>()</div>
+<div class="block">Gets the player's snake entity.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the snake</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setShouldGrow(boolean)">
 <h3>setShouldGrow</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setShouldGrow</span><wbr><span class="parameters">(boolean&nbsp;shouldGrow)</span></div>
+<div class="block">Flags whether the snake should grow its body on the next movement tick.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>shouldGrow</code> - true to make the snake grow</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="addScore(int)">
 <h3>addScore</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addScore</span><wbr><span class="parameters">(int&nbsp;points)</span></div>
+<div class="block">Adds the specified points to the current game score.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>points</code> - the amount to add</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getScore()">
 <h3>getScore</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getScore</span>()</div>
+<div class="block">Getter for score.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current score</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getFoods()">
 <h3>getFoods</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="interfaces/Food.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Food</a>&gt;</span>&nbsp;<span class="element-name">getFoods</span>()</div>
+<div class="block">Getter for food.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>list of food</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getBoard()">
 <h3>getBoard</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></span>&nbsp;<span class="element-name">getBoard</span>()</div>
+<div class="block">Getter for board.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>current board</dd>
+</dl>
 </section>
 </li>
 </ul>

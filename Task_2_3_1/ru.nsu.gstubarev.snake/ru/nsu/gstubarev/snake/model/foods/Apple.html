@@ -83,6 +83,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Apple</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="../interfaces/Food.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Food</a></span></div>
+<div class="block">Represents a standard apple that increases score by 1 and grows the snake.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,7 +96,9 @@ implements <a href="../interfaces/Food.html" title="interface in ru.nsu.gstubare
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">Apple</a><wbr>(<a href="../Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;position)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs an apple at the given position.</div>
+</div>
 </div>
 </section>
 </li>
@@ -112,10 +115,14 @@ implements <a href="../interfaces/Food.html" title="interface in ru.nsu.gstubare
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#consume(ru.nsu.gstubarev.snake.model.GameEngine)" class="member-name-link">consume</a><wbr>(<a href="../GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a>&nbsp;engine)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Applies the consumption effect to the game state.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPosition()" class="member-name-link">getPosition</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the position of the food.</div>
+</div>
 </div>
 </div>
 </div>
@@ -137,6 +144,11 @@ implements <a href="../interfaces/Food.html" title="interface in ru.nsu.gstubare
 <section class="detail" id="&lt;init&gt;(ru.nsu.gstubarev.snake.model.Point)">
 <h3>Apple</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Apple</span><wbr><span class="parameters">(<a href="../Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;position)</span></div>
+<div class="block">Constructs an apple at the given position.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>position</code> - the point where the apple is located</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -151,9 +163,13 @@ implements <a href="../interfaces/Food.html" title="interface in ru.nsu.gstubare
 <section class="detail" id="getPosition()">
 <h3>getPosition</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></span>&nbsp;<span class="element-name">getPosition</span>()</div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../interfaces/Food.html#getPosition()">Food</a></code></span></div>
+<div class="block">Gets the position of the food.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../interfaces/Food.html#getPosition()">getPosition</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/Food.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Food</a></code></dd>
+<dt>Returns:</dt>
+<dd>the position point</dd>
 </dl>
 </section>
 </li>
@@ -161,9 +177,13 @@ implements <a href="../interfaces/Food.html" title="interface in ru.nsu.gstubare
 <section class="detail" id="consume(ru.nsu.gstubarev.snake.model.GameEngine)">
 <h3>consume</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">consume</span><wbr><span class="parameters">(<a href="../GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a>&nbsp;engine)</span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="../interfaces/Food.html#consume(ru.nsu.gstubarev.snake.model.GameEngine)">Food</a></code></span></div>
+<div class="block">Applies the consumption effect to the game state.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../interfaces/Food.html#consume(ru.nsu.gstubarev.snake.model.GameEngine)">consume</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/Food.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Food</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>engine</code> - the game engine to apply effects to</dd>
 </dl>
 </section>
 </li>

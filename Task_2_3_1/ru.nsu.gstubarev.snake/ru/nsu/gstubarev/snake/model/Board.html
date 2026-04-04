@@ -78,6 +78,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Board</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Represents the game board, its boundaries, and wall obstacles.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,7 +92,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,int)" class="member-name-link">Board</a><wbr>(int&nbsp;width,
  int&nbsp;height)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructs a new game board with the specified dimensions.</div>
+</div>
 </div>
 </section>
 </li>
@@ -108,19 +111,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addWall(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">addWall</a><wbr>(<a href="Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;wall)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Adds a wall obstacle at the specified point.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getHeight()" class="member-name-link">getHeight</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the height of the board.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWidth()" class="member-name-link">getWidth</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the width of the board.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isOutOfBounds(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">isOutOfBounds</a><wbr>(<a href="Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;p)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if a point is outside the board boundaries.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isWall(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">isWall</a><wbr>(<a href="Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;p)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks if there is a wall at the specified point.</div>
+</div>
 </div>
 </div>
 </div>
@@ -143,6 +156,12 @@ loadScripts(document, 'script');</script>
 <h3>Board</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Board</span><wbr><span class="parameters">(int&nbsp;width,
  int&nbsp;height)</span></div>
+<div class="block">Constructs a new game board with the specified dimensions.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>width</code> - the width of the board</dd>
+<dd><code>height</code> - the height of the board</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -157,30 +176,59 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="addWall(ru.nsu.gstubarev.snake.model.Point)">
 <h3>addWall</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addWall</span><wbr><span class="parameters">(<a href="Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;wall)</span></div>
+<div class="block">Adds a wall obstacle at the specified point.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>wall</code> - the coordinate point of the wall</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isWall(ru.nsu.gstubarev.snake.model.Point)">
 <h3>isWall</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isWall</span><wbr><span class="parameters">(<a href="Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;p)</span></div>
+<div class="block">Checks if there is a wall at the specified point.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>p</code> - the point to check</dd>
+<dt>Returns:</dt>
+<dd>true if a wall exists at the point, false otherwise</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isOutOfBounds(ru.nsu.gstubarev.snake.model.Point)">
 <h3>isOutOfBounds</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOutOfBounds</span><wbr><span class="parameters">(<a href="Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a>&nbsp;p)</span></div>
+<div class="block">Checks if a point is outside the board boundaries.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>p</code> - the point to check</dd>
+<dt>Returns:</dt>
+<dd>true if the point is out of bounds, false otherwise</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getWidth()">
 <h3>getWidth</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getWidth</span>()</div>
+<div class="block">Gets the width of the board.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the width</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getHeight()">
 <h3>getHeight</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getHeight</span>()</div>
+<div class="block">Gets the height of the board.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the height</dd>
+</dl>
 </section>
 </li>
 </ul>

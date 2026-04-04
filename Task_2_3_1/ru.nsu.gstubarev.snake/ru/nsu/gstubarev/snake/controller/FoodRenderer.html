@@ -83,6 +83,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">FoodRenderer</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="EntityRenderer.html" title="interface in ru.nsu.gstubarev.snake.controller">EntityRenderer</a></span></div>
+<div class="block">Renderer responsible for drawing food items (apples, golden apples) onto the canvas.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,7 +96,9 @@ implements <a href="EntityRenderer.html" title="interface in ru.nsu.gstubarev.sn
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">FoodRenderer</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Constructor for FoodRenderer.</div>
+</div>
 </div>
 </section>
 </li>
@@ -116,7 +119,9 @@ implements <a href="EntityRenderer.html" title="interface in ru.nsu.gstubarev.sn
  double&nbsp;offsetX,
  double&nbsp;offsetY,
  double&nbsp;tileSize)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">The render method.</div>
+</div>
 </div>
 </div>
 </div>
@@ -138,6 +143,7 @@ implements <a href="EntityRenderer.html" title="interface in ru.nsu.gstubarev.sn
 <section class="detail" id="&lt;init&gt;()">
 <h3>FoodRenderer</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">FoodRenderer</span>()</div>
+<div class="block">Constructor for FoodRenderer.</div>
 </section>
 </li>
 </ul>
@@ -156,9 +162,17 @@ implements <a href="EntityRenderer.html" title="interface in ru.nsu.gstubarev.sn
  double&nbsp;offsetX,
  double&nbsp;offsetY,
  double&nbsp;tileSize)</span></div>
+<div class="block"><span class="descfrm-type-label">Description copied from interface:&nbsp;<code><a href="EntityRenderer.html#render(javafx.scene.canvas.GraphicsContext,ru.nsu.gstubarev.snake.model.GameEngine,double,double,double)">EntityRenderer</a></code></span></div>
+<div class="block">The render method.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="EntityRenderer.html#render(javafx.scene.canvas.GraphicsContext,ru.nsu.gstubarev.snake.model.GameEngine,double,double,double)">render</a></code>&nbsp;in interface&nbsp;<code><a href="EntityRenderer.html" title="interface in ru.nsu.gstubarev.snake.controller">EntityRenderer</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>gc</code> - the graphics context to draw on</dd>
+<dd><code>engine</code> - the current game state</dd>
+<dd><code>offsetX</code> - the horizontal drawing offset</dd>
+<dd><code>offsetY</code> - the vertical drawing offset</dd>
+<dd><code>tileSize</code> - the size of a single grid tile</dd>
 </dl>
 </section>
 </li>
