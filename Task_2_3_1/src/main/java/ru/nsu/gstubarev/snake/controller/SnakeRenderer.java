@@ -3,11 +3,11 @@ package ru.nsu.gstubarev.snake.controller;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
+import java.util.Objects;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
 import ru.nsu.gstubarev.snake.model.Snake;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
-import java.util.Objects;
 
 /**
  * Renders the player's snake entity, including head rotation and body segments.

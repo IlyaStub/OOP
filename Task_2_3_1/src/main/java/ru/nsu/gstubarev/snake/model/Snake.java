@@ -1,8 +1,7 @@
 package ru.nsu.gstubarev.snake.model;
 
-import ru.nsu.gstubarev.snake.model.enums.Direction;
-
 import java.util.LinkedList;
+import ru.nsu.gstubarev.snake.model.enums.Direction;
 
 /**
  * Represents the player's snake entity in the game.
