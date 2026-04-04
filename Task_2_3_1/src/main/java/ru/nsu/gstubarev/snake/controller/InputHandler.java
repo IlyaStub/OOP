@@ -5,13 +5,27 @@ import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Snake;
 
+/**
+ * Handles keyboard input to control the snake's movement direction.
+ */
 public class InputHandler {
     private boolean isDirectionChangedThisTick = false;
 
+    /**
+     * Resets the direction change flag for the current game tick.
+     * Ensures the player can only change direction once per tick.
+     */
     public void resetTick() {
         isDirectionChangedThisTick = false;
     }
 
+    /**
+     * Processes a key press event to update the snake's direction.
+     *
+     * @param event    the keyboard event
+     * @param engine   the game engine state
+     * @param isPaused true if the game is currently paused
+     */
     public void handleKeyPress(KeyEvent event, GameEngine engine, boolean isPaused) {
         if (engine == null || isPaused || engine.isGameOver() || isDirectionChangedThisTick) {
             return;

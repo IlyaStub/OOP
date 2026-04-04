@@ -4,7 +4,6 @@ import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.foods.Apple;
 import ru.nsu.gstubarev.snake.model.foods.GoldApple;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

@@ -6,6 +6,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 
+/**
+ * Renders UI overlays, such as the "Game Over" text message.
+ */
 public class OverlayRenderer implements EntityRenderer{
     @Override
     public void render(GraphicsContext gc, GameEngine engine, double offsetX,

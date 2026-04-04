@@ -8,10 +8,16 @@ import ru.nsu.gstubarev.snake.model.Point;
 
 import java.util.Objects;
 
+/**
+ * Renders the game board, including the background, grid pattern, and wall obstacles.
+ */
 public class BoardRenderer implements EntityRenderer {
     private final Image wallImg;
     private final Color darkTileOverlay = Color.rgb(0, 0, 0, 0.15);
 
+    /**
+     * Initializes the board renderer and loads wall image assets.
+     */
     public BoardRenderer() {
         wallImg = new Image(Objects.requireNonNull(getClass()
                 .getResourceAsStream("/images/wall.png")));

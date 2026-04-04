@@ -9,10 +9,16 @@ import ru.nsu.gstubarev.snake.model.Snake;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
 import java.util.Objects;
 
+/**
+ * Renders the player's snake entity, including head rotation and body segments.
+ */
 public class SnakeRenderer implements EntityRenderer {
     private final Image headImg;
     private final Image bodyImg;
 
+    /**
+     * Initializes the snake renderer and loads the head and body images.
+     */
     public SnakeRenderer() {
         headImg = new Image(Objects.requireNonNull(getClass()
                 .getResourceAsStream("/images/head.png")));
