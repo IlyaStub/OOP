@@ -1,0 +1,7 @@
+module:ru.nsu.gstubarev.snake
+ru.nsu.gstubarev.snake
+ru.nsu.gstubarev.snake.controller
+ru.nsu.gstubarev.snake.model
+ru.nsu.gstubarev.snake.model.enums
+ru.nsu.gstubarev.snake.model.foods
+ru.nsu.gstubarev.snake.model.interfaces
