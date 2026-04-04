@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.snake.model.enums;
 
-import ru.nsu.gstubarev.snake.model.Point;
-import ru.nsu.gstubarev.snake.model.enums.Direction;
-
 import static ru.nsu.gstubarev.snake.model.enums.Direction.LEFT;
+
+import ru.nsu.gstubarev.snake.model.Point;
+
 
 /**
  * Represents predefined level configurations, dictating initial speed and starting parameters.

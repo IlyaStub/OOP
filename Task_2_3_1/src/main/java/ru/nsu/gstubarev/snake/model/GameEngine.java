@@ -1,12 +1,12 @@
 package ru.nsu.gstubarev.snake.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.foods.Apple;
 import ru.nsu.gstubarev.snake.model.foods.GoldApple;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Core game engine responsible for processing game logic, updates, and collisions.
@@ -84,7 +84,9 @@ public class GameEngine {
     }
 
     private boolean checkCollision(Point newHead) {
-        return board.isOutOfBounds(newHead) || playerSnake.getBody().contains(newHead) || board.isWall(newHead);
+        return board.isOutOfBounds(newHead)
+                || playerSnake.getBody().contains(newHead)
+                || board.isWall(newHead);
     }
 
     private void spawnFood() {
