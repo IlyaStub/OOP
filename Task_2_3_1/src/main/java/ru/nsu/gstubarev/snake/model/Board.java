@@ -8,7 +8,6 @@ public class Board {
     private final int height;
     private final Set<Point> walls;
 
-
     public Board(int width, int height) {
         this.width = width;
         this.height = height;
