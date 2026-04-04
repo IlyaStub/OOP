@@ -1,14 +1,13 @@
-package ru.nsu.gstubarev.snake.model.food;
+package ru.nsu.gstubarev.snake.model.foods;
 
 import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
 
-public class Apple implements Food {
-
+public class GoldApple implements Food {
     private final Point position;
 
-    public Apple(Point position) {
+    public GoldApple(Point position) {
         this.position = position;
     }
 
@@ -19,7 +18,7 @@ public class Apple implements Food {
 
     @Override
     public void consume(GameEngine engine) {
-        engine.addScore(10);
+        engine.addScore(2);
         engine.setShouldGrow(true);
     }
 }

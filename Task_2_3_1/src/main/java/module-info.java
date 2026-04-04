@@ -5,4 +5,6 @@ module ru.nsu.gstubarev.snake {
 
     opens ru.nsu.gstubarev.snake to javafx.fxml;
     exports ru.nsu.gstubarev.snake;
+    exports ru.nsu.gstubarev.snake.controller;
+    opens ru.nsu.gstubarev.snake.controller to javafx.fxml;
 }

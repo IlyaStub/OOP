@@ -1,7 +1,8 @@
 package ru.nsu.gstubarev.snake.model;
 
 import ru.nsu.gstubarev.snake.model.enums.Direction;
-import ru.nsu.gstubarev.snake.model.food.Apple;
+import ru.nsu.gstubarev.snake.model.foods.Apple;
+import ru.nsu.gstubarev.snake.model.foods.GoldApple;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
 
 import java.util.ArrayList;
@@ -65,9 +66,9 @@ public class GameEngine {
         }
 
         if (shouldGrow) {
-            shouldGrow = false; // Змейка выросла, просто не удаляем хвост в этот тик
+            shouldGrow = false;
         } else {
-            playerSnake.getBody().removeLast(); // Обычный шаг - удаляем хвост
+            playerSnake.getBody().removeLast();
         }
     }
 
@@ -77,16 +78,17 @@ public class GameEngine {
 
     private void spawnFood() {
         Point pointFood;
-        while(true) {
+        do {
             int x = random.nextInt(board.getWidth());
             int y = random.nextInt(board.getHeight());
             pointFood = new Point(x, y);
+        } while (checkCollision(pointFood));
 
-            if (!checkCollision(pointFood)) {
-                break;
-            }
+        if (random.nextDouble() < 0.2) {
+            foods.add(new GoldApple(pointFood));
+        } else {
+            foods.add(new Apple(pointFood));
         }
-        foods.add(new Apple(pointFood));
     }
 
     public boolean isGameOver() {

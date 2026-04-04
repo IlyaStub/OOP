@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ru.nsu.gstubarev.snake.GameController">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ru.nsu.gstubarev.snake.controller.GameController">
 
-  <Canvas fx:id="gameCanvas" width="500" height="500" />
+  <center>
+    <Pane fx:id="gamePane" style="-fx-background-color: #1e1e1e;">
+      <Canvas fx:id="gameCanvas" />
+    </Pane>
+  </center>
 
-</VBox>
+  <right>
+    <VBox spacing="15" alignment="TOP_CENTER" style="-fx-padding: 20; -fx-background-color: #2b2b2b; -fx-pref-width: 200;">
+      <Label text="SNAKE" textFill="LIMEGREEN" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+      <Separator />
+
+      <Label fx:id="scoreLabel" text="Score: 0" textFill="WHITE" style="-fx-font-size: 16;"/>
+      <Label fx:id="lengthLabel" text="Length: 1" textFill="WHITE" style="-fx-font-size: 16;"/>
+
+      <Separator />
+
+      <Button text="Start / Restart" fx:id="restartBtn" maxWidth="Infinity" focusTraversable="false"/>
+      <Button text="Pause" fx:id="pauseBtn" maxWidth="Infinity" focusTraversable="false"/>
+
+      <Separator />
+
+      <Label text="Level Select" textFill="GRAY" />
+      <ComboBox fx:id="levelSelector" promptText="Choose Level" maxWidth="Infinity" focusTraversable="false"/>
+    </VBox>
+  </right>
+</BorderPane>

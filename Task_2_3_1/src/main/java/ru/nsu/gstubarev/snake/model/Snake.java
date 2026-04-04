@@ -39,4 +39,8 @@ public class Snake {
     public void setCurrentDirection(Direction direction) {
         this.currentDirection = direction;
     }
+
+    public int getLength() {
+        return body.size();
+    }
 }
