@@ -16,6 +16,9 @@ import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
 import ru.nsu.gstubarev.snake.model.Snake;
 
+/**
+ * Controller class managing UI interactions, the game loop, and input delegation.
+ */
 public class GameController {
     @FXML
     private Canvas gameCanvas;
@@ -37,6 +40,10 @@ public class GameController {
     private GameRenderer renderer;
     private InputHandler inputHandler;
 
+    /**
+     * Initializes the controller, sets up renderers, and binds canvas dimensions.
+     * Automatically called by JavaFX after FXML loading.
+     */
     @FXML
     public void initialize() {
         renderer = new GameRenderer(gameCanvas);
@@ -72,6 +79,11 @@ public class GameController {
         });
     }
 
+    /**
+     * Handles keyboard events for controlling the game.
+     *
+     * @param event the triggered key event
+     */
     public void handleKeyPress(KeyEvent event) {
         inputHandler.handleKeyPress(event, engine, isPaused);
     }

@@ -7,10 +7,18 @@ import ru.nsu.gstubarev.snake.model.GameEngine;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main rendering manager that delegates drawing tasks to specific entity renderers.
+ */
 public class GameRenderer {
     private final Canvas gameCanvas;
     private final List<EntityRenderer> renderers;
 
+    /**
+     * Constructs a GameRenderer attached to the given canvas.
+     *
+     * @param gameCanvas the JavaFX canvas to draw on
+     */
     public GameRenderer(Canvas gameCanvas) {
         this.gameCanvas = gameCanvas;
         this.renderers = new ArrayList<>();

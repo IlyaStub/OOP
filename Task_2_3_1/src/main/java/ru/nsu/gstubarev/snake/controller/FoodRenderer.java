@@ -6,13 +6,18 @@ import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
 import ru.nsu.gstubarev.snake.model.foods.GoldApple;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
-
 import java.util.Objects;
 
+/**
+ * Renderer responsible for drawing food items (apples, golden apples) onto the canvas.
+ */
 public class FoodRenderer implements EntityRenderer {
     private final Image appleImg;
     private final Image goldAppleImg;
 
+    /**
+     * Constructor for FoodRenderer.
+     */
     public FoodRenderer() {
         this.goldAppleImg = new Image(Objects.requireNonNull(getClass()
                 .getResourceAsStream("/images/goldApple.png")));

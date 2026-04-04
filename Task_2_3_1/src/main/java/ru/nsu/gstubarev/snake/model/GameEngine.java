@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Core game engine responsible for processing game logic, updates, and collisions.
+ */
 public class GameEngine {
     private final Random random = new Random();
     private final Board board;
@@ -18,6 +21,12 @@ public class GameEngine {
     private boolean isGameOver;
     private boolean shouldGrow;
 
+    /**
+     * Initializes the game engine with a board and player snake.
+     *
+     * @param board       the game board
+     * @param playerSnake the player's snake
+     */
     public GameEngine(Board board, Snake playerSnake) {
         this.board = board;
         this.playerSnake = playerSnake;
@@ -29,6 +38,9 @@ public class GameEngine {
         spawnFood();
     }
 
+    /**
+     * Advances the game state by a single tick, moving the snake and handling collisions.
+     */
     public void update() {
         if (isGameOver) {
             return;
@@ -91,30 +103,65 @@ public class GameEngine {
         }
     }
 
+    /**
+     * Checks if the game is over.
+     *
+     * @return true if the game has ended, false otherwise
+     */
     public boolean isGameOver() {
         return isGameOver;
     }
 
+    /**
+     * Gets the player's snake entity.
+     *
+     * @return the snake
+     */
     public Snake getPlayerSnake() {
         return playerSnake;
     }
 
+    /**
+     * Flags whether the snake should grow its body on the next movement tick.
+     *
+     * @param shouldGrow true to make the snake grow
+     */
     public void setShouldGrow(boolean shouldGrow) {
         this.shouldGrow = shouldGrow;
     }
 
+    /**
+     * Adds the specified points to the current game score.
+     *
+     * @param points the amount to add
+     */
     public void addScore(int points) {
         this.score += points;
     }
 
+    /**
+     * Getter for score.
+     *
+     * @return current score
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Getter for food.
+     *
+     * @return list of food
+     */
     public List<Food> getFoods() {
         return foods;
     }
 
+    /**
+     * Getter for board.
+     *
+     * @return current board
+     */
     public Board getBoard() {
         return board;
     }

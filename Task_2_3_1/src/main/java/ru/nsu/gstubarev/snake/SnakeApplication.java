@@ -6,7 +6,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.nsu.gstubarev.snake.controller.GameController;
 
+/**
+ * Main application class responsible for launching the JavaFX application.
+ */
 public class SnakeApplication extends Application {
+    /**
+     * Initializes and displays the main game stage.
+     *
+     * @param stage the primary stage for this application
+     * @throws Exception if FXML loading fails
+     */
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(SnakeApplication.class
@@ -24,6 +33,11 @@ public class SnakeApplication extends Application {
         stage.show();
     }
 
+    /**
+     * The main entry point for the Java application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch();
     }
