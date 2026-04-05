@@ -9,7 +9,7 @@ import ru.nsu.gstubarev.snake.model.GameEngine;
 /**
  * Renders UI overlays, such as the "Game Over" text message.
  */
-public class OverlayRenderer implements EntityRenderer{
+public class OverlayRenderer implements EntityRenderer {
     @Override
     public void render(GraphicsContext gc, GameEngine engine, double offsetX,
                        double offsetY, double tileSize) {

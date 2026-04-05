@@ -28,6 +28,9 @@ public class GameRenderer {
         renderers.add(new OverlayRenderer());
     }
 
+    /**
+     * A method for drawing the playing field.
+     */
     public void draw(GameEngine engine) {
         if (engine == null) return;
 

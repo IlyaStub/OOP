@@ -11,10 +11,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import ru.nsu.gstubarev.snake.model.Board;
-import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.Point;
 import ru.nsu.gstubarev.snake.model.Snake;
+import ru.nsu.gstubarev.snake.model.enums.Direction;
 
 /**
  * Controller class managing UI interactions, the game loop, and input delegation.
