@@ -32,7 +32,9 @@ public class GameRenderer {
      * A method for drawing the playing field.
      */
     public void draw(GameEngine engine) {
-        if (engine == null) return;
+        if (engine == null) {
+            return;
+        }
 
         GraphicsContext gc = gameCanvas.getGraphicsContext2D();
         double width = gameCanvas.getWidth();
