@@ -60,7 +60,9 @@ public class InputHandler {
                     directionChanged = true;
                 }
             }
-            default -> {}
+            default -> {
+                //do nothing
+            }
         }
 
         if (directionChanged) {
