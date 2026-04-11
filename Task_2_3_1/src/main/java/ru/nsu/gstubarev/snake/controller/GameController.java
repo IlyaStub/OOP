@@ -11,7 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import ru.nsu.gstubarev.snake.model.*;
+import ru.nsu.gstubarev.snake.model.Board;
+import ru.nsu.gstubarev.snake.model.GameEngine;
+import ru.nsu.gstubarev.snake.model.LevelConfig;
+import ru.nsu.gstubarev.snake.model.LevelFactory;
+import ru.nsu.gstubarev.snake.model.SnakeClassic;
 import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 

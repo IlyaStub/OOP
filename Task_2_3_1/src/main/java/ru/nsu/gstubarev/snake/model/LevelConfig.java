@@ -109,8 +109,7 @@ public class LevelConfig {
      *
      * @return food generator implementation
      */
-    public FoodGenerator getFoodGenerator()
-    {
+    public FoodGenerator getFoodGenerator() {
         return foodGenerator;
     }
 }

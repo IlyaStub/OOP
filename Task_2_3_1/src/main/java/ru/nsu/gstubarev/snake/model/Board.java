@@ -1,9 +1,8 @@
 package ru.nsu.gstubarev.snake.model;
 
-import ru.nsu.gstubarev.snake.model.enums.Point;
-
 import java.util.HashSet;
 import java.util.Set;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 
 /**
  * Represents the game board, its boundaries, and wall obstacles.

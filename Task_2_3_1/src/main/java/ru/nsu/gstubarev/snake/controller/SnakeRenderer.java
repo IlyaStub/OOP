@@ -5,8 +5,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
 /**

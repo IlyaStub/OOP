@@ -35,8 +35,7 @@ public class SnakeTest {
     }
 
     @Test
-    public void testGetNextHead()
-    {
+    public void testGetNextHead() {
         SnakeClassic snakeRight = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
         assertEquals(new Point(6, 5), snakeRight.getNextHead());
 
@@ -51,8 +50,7 @@ public class SnakeTest {
     }
 
     @Test
-    public void testMoveWithGrowth()
-    {
+    public void testMoveWithGrowth() {
         SnakeClassic snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
         snake.move(new Point(6, 5), true);
 
@@ -62,8 +60,7 @@ public class SnakeTest {
     }
 
     @Test
-    public void testMoveWithoutGrowth()
-    {
+    public void testMoveWithoutGrowth() {
         SnakeClassic snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
         snake.move(new Point(6, 5), true);
 

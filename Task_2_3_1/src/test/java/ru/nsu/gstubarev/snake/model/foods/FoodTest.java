@@ -3,12 +3,13 @@ package ru.nsu.gstubarev.snake.model.foods;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+
 import ru.nsu.gstubarev.snake.model.Board;
 import ru.nsu.gstubarev.snake.model.FoodGeneratorClassic;
 import ru.nsu.gstubarev.snake.model.GameEngine;
+import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.SnakeClassic;
-import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
