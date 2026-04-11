@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Point;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 
 /**
  * Renders the game board, including the background, grid pattern, and wall obstacles.

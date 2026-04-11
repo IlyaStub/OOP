@@ -1,7 +1,7 @@
 package ru.nsu.gstubarev.snake.model.foods;
 
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Point;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
 
 /**

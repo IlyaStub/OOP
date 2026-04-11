@@ -4,7 +4,7 @@ import java.util.Objects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Point;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.foods.GoldApple;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
 

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 
 public class PointTest {
     @Test

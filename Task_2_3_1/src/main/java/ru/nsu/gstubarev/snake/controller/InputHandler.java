@@ -2,8 +2,9 @@ package ru.nsu.gstubarev.snake.controller;
 
 import javafx.scene.input.KeyEvent;
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Snake;
+import ru.nsu.gstubarev.snake.model.SnakeClassic;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
+import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
 /**
  * Handles keyboard input to control the snake's movement direction.

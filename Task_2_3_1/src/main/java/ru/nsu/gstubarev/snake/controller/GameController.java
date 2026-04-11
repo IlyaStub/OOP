@@ -6,15 +6,14 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-import ru.nsu.gstubarev.snake.model.Board;
-import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Point;
-import ru.nsu.gstubarev.snake.model.Snake;
-import ru.nsu.gstubarev.snake.model.enums.Direction;
+import ru.nsu.gstubarev.snake.model.*;
+import ru.nsu.gstubarev.snake.model.enums.Point;
+import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
 /**
  * Controller class managing UI interactions, the game loop, and input delegation.
@@ -32,11 +31,14 @@ public class GameController {
     private Button pauseBtn;
     @FXML
     private Button restartBtn;
+    @FXML
+    private ComboBox<String> levelSelector;
 
     private GameEngine engine;
     private Timeline timeline;
+    private int currentLevelNumber = 1;
+    private LevelConfig currentConfig;
     private boolean isPaused = false;
-
     private GameRenderer renderer;
     private InputHandler inputHandler;
 
@@ -58,6 +60,26 @@ public class GameController {
         pauseBtn.setOnAction(e -> togglePause());
         restartBtn.setOnAction(e -> restartGame());
 
+        levelSelector.getItems().clear();
+        int totalLevels = LevelFactory.getLevelCount();
+
+        for (int i = 1; i <= totalLevels; i++) {
+            levelSelector.getItems().add("Level " + i);
+        }
+
+        levelSelector.getSelectionModel().selectFirst();
+
+        levelSelector.setOnAction(e -> {
+            int selectedIndex = levelSelector.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                int selectedLevel = selectedIndex + 1;
+                if (selectedLevel != currentLevelNumber) {
+                    currentLevelNumber = selectedLevel;
+                    loadLevel(currentLevelNumber);
+                }
+            }
+        });
+
         restartGame();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(200), e -> runTick()));
@@ -68,6 +90,19 @@ public class GameController {
     private void runTick() {
         engine.update();
         inputHandler.resetTick();
+
+        if (engine.isGameWon() || engine.getScore() >= currentConfig.getTargetScore()) {
+            timeline.stop();
+            renderer.draw(engine);
+            return;
+        }
+
+        if (engine.isGameOver()) {
+            timeline.stop();
+            renderer.draw(engine);
+            return;
+        }
+
         renderer.draw(engine);
 
         double currentRate = 1.0 + (engine.getPlayerSnake().getSpeed() - 1) * 0.2;
@@ -99,15 +134,22 @@ public class GameController {
         isPaused = !isPaused;
     }
 
-    private void restartGame() {
-        Board board = new Board(15, 15);
-        board.addWall(new Point(5, 5));
-        board.addWall(new Point(5, 6));
-        board.addWall(new Point(5, 7));
+    private void loadLevel(int levelNumber) {
+        currentConfig = LevelFactory.getLevel(levelNumber);
 
-        Snake player = new Snake(new Point(7, 7), Direction.RIGHT, 1);
+        Board board = new Board(currentConfig.getBoardWidth(), currentConfig.getBoardHeight());
+        for (Point wall : currentConfig.getWalls()) {
+            board.addWall(wall);
+        }
 
-        engine = new GameEngine(board, player);
+        Snake player = new SnakeClassic(
+                currentConfig.getSnakeStartPos(),
+                currentConfig.getSnakeStartDir(),
+                currentConfig.getSnakeStartSpeed()
+        );
+
+        engine = new GameEngine(board, player, currentConfig.getFoodGenerator(),
+                currentConfig.getTargetScore());
 
         isPaused = false;
         pauseBtn.setText("Pause");
@@ -116,7 +158,11 @@ public class GameController {
         if (timeline != null) {
             timeline.play();
         }
-
         renderer.draw(engine);
+    }
+
+    private void restartGame() {
+        currentLevelNumber = levelSelector.getSelectionModel().getSelectedIndex() + 1;
+        loadLevel(currentLevelNumber);
     }
 }

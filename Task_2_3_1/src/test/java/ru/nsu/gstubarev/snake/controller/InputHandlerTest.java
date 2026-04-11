@@ -12,19 +12,19 @@ import javafx.scene.input.KeyEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Snake;
+import ru.nsu.gstubarev.snake.model.SnakeClassic;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
 
 public class InputHandlerTest {
     private InputHandler inputHandler;
     private GameEngine engineMock;
-    private Snake snakeMock;
+    private SnakeClassic snakeMock;
 
     @BeforeEach
     public void setUp() {
         inputHandler = new InputHandler();
         engineMock = mock(GameEngine.class);
-        snakeMock = mock(Snake.class);
+        snakeMock = mock(SnakeClassic.class);
 
         when(engineMock.getPlayerSnake()).thenReturn(snakeMock);
         when(engineMock.isGameOver()).thenReturn(false);

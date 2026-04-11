@@ -4,10 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.snake.model.Board;
+import ru.nsu.gstubarev.snake.model.FoodGeneratorClassic;
 import ru.nsu.gstubarev.snake.model.GameEngine;
-import ru.nsu.gstubarev.snake.model.Point;
-import ru.nsu.gstubarev.snake.model.Snake;
+import ru.nsu.gstubarev.snake.model.enums.Point;
+import ru.nsu.gstubarev.snake.model.SnakeClassic;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
+import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
+import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
 public class FoodTest {
     @Test
@@ -18,8 +21,10 @@ public class FoodTest {
         assertEquals(position, apple.getPosition());
 
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(0, 0), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(0, 0), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         int initialScore = engine.getScore();
         apple.consume(engine);
@@ -35,8 +40,9 @@ public class FoodTest {
         assertEquals(position, goldApple.getPosition());
 
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(0, 0), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(0, 0), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         int initialScore = engine.getScore();
         goldApple.consume(engine);

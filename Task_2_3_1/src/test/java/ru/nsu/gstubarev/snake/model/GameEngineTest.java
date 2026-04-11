@@ -6,15 +6,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.foods.Apple;
+import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
+import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
 public class GameEngineTest {
 
     @Test
     public void testInitialization() {
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(5, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         assertFalse(engine.isGameOver());
         assertEquals(0, engine.getScore());
@@ -26,8 +30,9 @@ public class GameEngineTest {
     @Test
     public void testMovementWithoutCollision() {
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(5, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         engine.update();
         assertEquals(new Point(6, 5), snake.getHead());
@@ -49,8 +54,9 @@ public class GameEngineTest {
     public void testCollisionWithWall() {
         Board board = new Board(10, 10);
         board.addWall(new Point(6, 5));
-        Snake snake = new Snake(new Point(5, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         engine.update();
         assertTrue(engine.isGameOver());
@@ -59,8 +65,9 @@ public class GameEngineTest {
     @Test
     public void testCollisionOutOfBounds() {
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(9, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(9, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         engine.update();
         assertTrue(engine.isGameOver());
@@ -69,8 +76,9 @@ public class GameEngineTest {
     @Test
     public void testCollisionWithSelf() {
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(5, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         engine.setShouldGrow(true);
         engine.update();
@@ -92,8 +100,9 @@ public class GameEngineTest {
     @Test
     public void testEatingFood() {
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(5, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         engine.getFoods().clear();
         engine.getFoods().add(new Apple(new Point(6, 5)));
@@ -108,8 +117,9 @@ public class GameEngineTest {
     @Test
     public void testUpdateWhenGameOver() {
         Board board = new Board(10, 10);
-        Snake snake = new Snake(new Point(9, 5), Direction.RIGHT, 1);
-        GameEngine engine = new GameEngine(board, snake);
+        Snake snake = new SnakeClassic(new Point(9, 5), Direction.RIGHT, 1);
+        FoodGenerator generator = new FoodGeneratorClassic();
+        GameEngine engine = new GameEngine(board, snake, generator, 2);
 
         engine.update();
         assertTrue(engine.isGameOver());

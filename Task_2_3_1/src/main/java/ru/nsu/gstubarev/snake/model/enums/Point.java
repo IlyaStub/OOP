@@ -1,4 +1,4 @@
-package ru.nsu.gstubarev.snake.model;
+package ru.nsu.gstubarev.snake.model.enums;
 
 /**
  * Represents a 2D coordinate point on the game board.

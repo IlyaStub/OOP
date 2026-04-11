@@ -1,0 +1,8 @@
+to do 
+- one test lvl, with wall, starting speed and position of snake and etc
+- unload an overloaded class GameEngine
+- add possibility to win in the game
+- fix forever cycle for food generator
+- add Javadoc comments for test (хз почему review dogs там вообще,
+                                наверное что то не так насторил при создании)
+
