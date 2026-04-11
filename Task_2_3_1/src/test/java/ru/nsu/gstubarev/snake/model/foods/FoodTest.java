@@ -12,6 +12,9 @@ import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
+/**
+ * Test.
+ */
 public class FoodTest {
     @Test
     public void testApple() {

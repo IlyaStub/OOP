@@ -11,6 +11,9 @@ import ru.nsu.gstubarev.snake.model.foods.Apple;
 import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
+/**
+ * Test.
+ */
 public class GameEngineTest {
 
     @Test

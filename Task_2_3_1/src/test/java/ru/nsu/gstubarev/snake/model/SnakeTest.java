@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.enums.Point;
 
+/**
+ * Test.
+ */
 public class SnakeTest {
     @Test
     public void testSnakeInitialization() {

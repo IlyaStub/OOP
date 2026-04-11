@@ -15,11 +15,17 @@ import ru.nsu.gstubarev.snake.model.GameEngine;
 import ru.nsu.gstubarev.snake.model.SnakeClassic;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
 
+/**
+ * Test.
+ */
 public class InputHandlerTest {
     private InputHandler inputHandler;
     private GameEngine engineMock;
     private SnakeClassic snakeMock;
 
+    /**
+     * Test.
+     */
     @BeforeEach
     public void setUp() {
         inputHandler = new InputHandler();

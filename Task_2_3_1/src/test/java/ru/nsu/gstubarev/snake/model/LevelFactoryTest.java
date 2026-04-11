@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.enums.Point;
 
-public class LevelFactoryTest
-{
+/**
+ * Test.
+ */
+public class LevelFactoryTest {
     @Test
-    public void testGetLevelCount()
-    {
+    public void testGetLevelCount() {
         assertEquals(2, LevelFactory.getLevelCount());
     }
 
     @Test
-    public void testGetLevelOne()
-    {
+    public void testGetLevelOne() {
         LevelConfig config = LevelFactory.getLevel(1);
 
         assertNotNull(config);
@@ -32,8 +32,7 @@ public class LevelFactoryTest
     }
 
     @Test
-    public void testGetLevelTwo()
-    {
+    public void testGetLevelTwo() {
         LevelConfig config = LevelFactory.getLevel(2);
 
         assertNotNull(config);
@@ -47,8 +46,7 @@ public class LevelFactoryTest
     }
 
     @Test
-    public void testGetInvalidLevel()
-    {
+    public void testGetInvalidLevel() {
         assertNull(LevelFactory.getLevel(0));
         assertNull(LevelFactory.getLevel(3));
     }

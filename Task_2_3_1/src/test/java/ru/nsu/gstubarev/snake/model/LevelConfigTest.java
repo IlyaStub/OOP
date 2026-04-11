@@ -8,11 +8,12 @@ import ru.nsu.gstubarev.snake.model.enums.Direction;
 import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 
-public class LevelConfigTest
-{
+/**
+ * Test.
+ */
+public class LevelConfigTest {
     @Test
-    public void testLevelConfigGetters()
-    {
+    public void testLevelConfigGetters() {
         List<Point> walls = List.of(new Point(1, 1));
         FoodGenerator generator = new FoodGeneratorClassic();
         LevelConfig config = new LevelConfig(20, 15, walls, new Point(10, 10),

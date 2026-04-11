@@ -13,11 +13,12 @@ import ru.nsu.gstubarev.snake.model.interfaces.Food;
 import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 import ru.nsu.gstubarev.snake.model.interfaces.Snake;
 
-public class FoodGeneratorClassicTest
-{
+/**
+ * Test.
+ */
+public class FoodGeneratorClassicTest {
     @Test
-    public void testGenerateReturnsFood()
-    {
+    public void testGenerateReturnsFood() {
         Board board = new Board(10, 10);
         Snake snake = new SnakeClassic(new Point(5, 5), Direction.RIGHT, 1);
         FoodGenerator generator = new FoodGeneratorClassic();
@@ -29,8 +30,7 @@ public class FoodGeneratorClassicTest
     }
 
     @Test
-    public void testGenerateReturnsNullWhenNoEmptyPoints()
-    {
+    public void testGenerateReturnsNullWhenNoEmptyPoints() {
         Board board = new Board(1, 1);
         Snake snake = new SnakeClassic(new Point(0, 0), Direction.RIGHT, 1);
         FoodGenerator generator = new FoodGeneratorClassic();

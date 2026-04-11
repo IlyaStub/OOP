@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.snake.model.enums.Point;
 
+/**
+ * Test.
+ */
 public class BoardTest {
     @Test
     public void testBoardDimensions() {
