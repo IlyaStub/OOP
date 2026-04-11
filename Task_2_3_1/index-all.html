@@ -56,7 +56,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Adds the specified points to the current game score.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#addWall(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">addWall(Point)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#addWall(ru.nsu.gstubarev.snake.model.enums.Point)" class="member-name-link">addWall(Point)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
 <dd>
 <div class="block">Adds a wall obstacle at the specified point.</div>
 </dd>
@@ -64,7 +64,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Represents a standard apple that increases score by 1 and grows the snake.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/Apple.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">Apple(Point)</a> - Constructor for class ru.nsu.gstubarev.snake.model.foods.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/Apple.html" title="class in ru.nsu.gstubarev.snake.model.foods">Apple</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/Apple.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.enums.Point)" class="member-name-link">Apple(Point)</a> - Constructor for class ru.nsu.gstubarev.snake.model.foods.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/Apple.html" title="class in ru.nsu.gstubarev.snake.model.foods">Apple</a></dt>
 <dd>
 <div class="block">Constructs an apple at the given position.</div>
 </dd>
@@ -118,7 +118,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Interface for renderer entity.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in record class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a></dt>
 <dd>
 <div class="block">Indicates whether some other object is "equal to" this one.</div>
 </dd>
@@ -129,6 +129,16 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Just food.</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/FoodGenerator.html" class="type-name-link" title="interface in ru.nsu.gstubarev.snake.model.interfaces">FoodGenerator</a> - Interface in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/package-summary.html">ru.nsu.gstubarev.snake.model.interfaces</a></dt>
+<dd>
+<div class="block">Interface for food generation.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/FoodGeneratorClassic.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model">FoodGeneratorClassic</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/package-summary.html">ru.nsu.gstubarev.snake.model</a></dt>
+<dd>
+<div class="block">Classic food generator implementation.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/FoodGeneratorClassic.html#%3Cinit%3E()" class="member-name-link">FoodGeneratorClassic()</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/FoodGeneratorClassic.html" title="class in ru.nsu.gstubarev.snake.model">FoodGeneratorClassic</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/controller/FoodRenderer.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.controller">FoodRenderer</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/controller/package-summary.html">ru.nsu.gstubarev.snake.controller</a></dt>
 <dd>
 <div class="block">Renderer responsible for drawing food items (apples, golden apples) onto the canvas.</div>
@@ -150,7 +160,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Core game engine responsible for processing game logic, updates, and collisions.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Board,ru.nsu.gstubarev.snake.model.Snake)" class="member-name-link">GameEngine(Board, Snake)</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Board,ru.nsu.gstubarev.snake.model.interfaces.Snake,ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator,int)" class="member-name-link">GameEngine(Board, Snake, FoodGenerator, int)</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
 <dd>
 <div class="block">Initializes the game engine with a board and player snake.</div>
 </dd>
@@ -162,49 +172,77 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructs a GameRenderer attached to the given canvas.</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/FoodGeneratorClassic.html#generate(ru.nsu.gstubarev.snake.model.Board,ru.nsu.gstubarev.snake.model.interfaces.Snake)" class="member-name-link">generate(Board, Snake)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/FoodGeneratorClassic.html" title="class in ru.nsu.gstubarev.snake.model">FoodGeneratorClassic</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/FoodGenerator.html#generate(ru.nsu.gstubarev.snake.model.Board,ru.nsu.gstubarev.snake.model.interfaces.Snake)" class="member-name-link">generate(Board, Snake)</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/FoodGenerator.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">FoodGenerator</a></dt>
+<dd>
+<div class="block">Food generate method.</div>
+</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#getBoard()" class="member-name-link">getBoard()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
 <dd>
 <div class="block">Getter for board.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#getBody()" class="member-name-link">getBody()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getBoardHeight()" class="member-name-link">getBoardHeight()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Returns the height of the game board.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getBoardWidth()" class="member-name-link">getBoardWidth()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Returns the width of the game board.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#getBody()" class="member-name-link">getBody()</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Gets the list of points making up the snake's body.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#getCurrentDirection()" class="member-name-link">getCurrentDirection()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#getBody()" class="member-name-link">getBody()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#getCurrentDirection()" class="member-name-link">getCurrentDirection()</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Gets the current moving direction of the snake.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#getDirection()" class="member-name-link">getDirection()</a> - Method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#getCurrentDirection()" class="member-name-link">getCurrentDirection()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getFoodGenerator()" class="member-name-link">getFoodGenerator()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
 <dd>
-<div class="block">Gets the initial starting direction for the snake.</div>
+<div class="block">Returns the food generator strategy for this level.</div>
 </dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#getFoods()" class="member-name-link">getFoods()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
 <dd>
 <div class="block">Getter for food.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#getHead()" class="member-name-link">getHead()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#getHead()" class="member-name-link">getHead()</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Gets the position of the snake's head.</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#getHead()" class="member-name-link">getHead()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#getHeight()" class="member-name-link">getHeight()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
 <dd>
 <div class="block">Gets the height of the board.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#getLength()" class="member-name-link">getLength()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#getLength()" class="member-name-link">getLength()</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Gets the current length of the snake.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#getLvl()" class="member-name-link">getLvl()</a> - Method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#getLength()" class="member-name-link">getLength()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html#getLevel(int)" class="member-name-link">getLevel(int)</a> - Static method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html" title="class in ru.nsu.gstubarev.snake.model">LevelFactory</a></dt>
 <dd>
-<div class="block">Gets the level identifier number.</div>
+<div class="block">Constructor for level config.</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html#getLevelCount()" class="member-name-link">getLevelCount()</a> - Static method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html" title="class in ru.nsu.gstubarev.snake.model">LevelFactory</a></dt>
+<dd>
+<div class="block">Getter level counts.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#getNextHead()" class="member-name-link">getNextHead()</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
+<dd>
+<div class="block">Calculates the next position of the snake's head based on its current direction.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#getNextHead()" class="member-name-link">getNextHead()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#getPlayerSnake()" class="member-name-link">getPlayerSnake()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
 <dd>
 <div class="block">Gets the player's snake entity.</div>
-</dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#getPoint()" class="member-name-link">getPoint()</a> - Method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
-<dd>
-<div class="block">Gets the starting coordinate point for the snake.</div>
 </dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/Apple.html#getPosition()" class="member-name-link">getPosition()</a> - Method in class ru.nsu.gstubarev.snake.model.foods.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/Apple.html" title="class in ru.nsu.gstubarev.snake.model.foods">Apple</a></dt>
 <dd>&nbsp;</dd>
@@ -218,13 +256,31 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getter for score.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#getSpeed()" class="member-name-link">getSpeed()</a> - Method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getSnakeStartDir()" class="member-name-link">getSnakeStartDir()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
 <dd>
-<div class="block">Gets the initial speed multiplier for this level.</div>
+<div class="block">Returns the starting direction of the snake.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#getSpeed()" class="member-name-link">getSpeed()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getSnakeStartPos()" class="member-name-link">getSnakeStartPos()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Returns the starting position of the snake.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getSnakeStartSpeed()" class="member-name-link">getSnakeStartSpeed()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Returns the starting movement speed of the snake.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#getSpeed()" class="member-name-link">getSpeed()</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Gets the current speed of the snake.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#getSpeed()" class="member-name-link">getSpeed()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getTargetScore()" class="member-name-link">getTargetScore()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Returns the target score required to complete the level.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#getWalls()" class="member-name-link">getWalls()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Returns the list of wall positions.</div>
 </dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#getWidth()" class="member-name-link">getWidth()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
 <dd>
@@ -234,7 +290,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Represents a gold apple that increases score by 2 and grows the snake.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/GoldApple.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">GoldApple(Point)</a> - Constructor for class ru.nsu.gstubarev.snake.model.foods.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/GoldApple.html" title="class in ru.nsu.gstubarev.snake.model.foods">GoldApple</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/GoldApple.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.enums.Point)" class="member-name-link">GoldApple(Point)</a> - Constructor for class ru.nsu.gstubarev.snake.model.foods.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/foods/GoldApple.html" title="class in ru.nsu.gstubarev.snake.model.foods">GoldApple</a></dt>
 <dd>
 <div class="block">Constructs an apple at the given position.</div>
 </dd>
@@ -249,7 +305,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Processes a key press event to update the snake's direction.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#hashCode()" class="member-name-link">hashCode()</a> - Method in record class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a></dt>
 <dd>
 <div class="block">Returns a hash code value for this object.</div>
 </dd>
@@ -270,25 +326,37 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Checks if the game is over.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#isOutOfBounds(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">isOutOfBounds(Point)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#isGameWon()" class="member-name-link">isGameWon()</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
+<dd>
+<div class="block">Getter for win.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#isOutOfBounds(ru.nsu.gstubarev.snake.model.enums.Point)" class="member-name-link">isOutOfBounds(Point)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
 <dd>
 <div class="block">Checks if a point is outside the board boundaries.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#isWall(ru.nsu.gstubarev.snake.model.Point)" class="member-name-link">isWall(Point)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html#isWall(ru.nsu.gstubarev.snake.model.enums.Point)" class="member-name-link">isWall(Point)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Board.html" title="class in ru.nsu.gstubarev.snake.model">Board</a></dt>
 <dd>
 <div class="block">Checks if there is a wall at the specified point.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#L1" class="member-name-link">L1</a> - Enum constant in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Direction.html#LEFT" class="member-name-link">LEFT</a> - Enum constant in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Direction.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Direction</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" class="type-name-link" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a> - Enum Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/package-summary.html">ru.nsu.gstubarev.snake.model.enums</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/package-summary.html">ru.nsu.gstubarev.snake.model</a></dt>
 <dd>
-<div class="block">Represents predefined level configurations, dictating initial speed and starting parameters.</div>
+<div class="block">Class for saving settings of some level</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html#%3Cinit%3E(int,int,java.util.List,ru.nsu.gstubarev.snake.model.enums.Point,ru.nsu.gstubarev.snake.model.enums.Direction,int,int,ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator)" class="member-name-link">LevelConfig(int, int, List&lt;Point&gt;, Point, Direction, int, int, FoodGenerator)</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelConfig.html" title="class in ru.nsu.gstubarev.snake.model">LevelConfig</a></dt>
+<dd>
+<div class="block">Constructs level configuration.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model">LevelFactory</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/package-summary.html">ru.nsu.gstubarev.snake.model</a></dt>
+<dd>
+<div class="block">Class factory of levels.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html#%3Cinit%3E()" class="member-name-link">LevelFactory()</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/LevelFactory.html" title="class in ru.nsu.gstubarev.snake.model">LevelFactory</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
@@ -296,6 +364,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The main entry point for the Java application.</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#move(ru.nsu.gstubarev.snake.model.enums.Point,boolean)" class="member-name-link">move(Point, boolean)</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
+<dd>
+<div class="block">Method for moving.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#move(ru.nsu.gstubarev.snake.model.enums.Point,boolean)" class="member-name-link">move(Point, boolean)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:O">O</h2>
 <dl class="index">
@@ -308,11 +382,11 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model">Point</a> - Record Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/package-summary.html">ru.nsu.gstubarev.snake.model</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a> - Record Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/package-summary.html">ru.nsu.gstubarev.snake.model.enums</a></dt>
 <dd>
 <div class="block">Represents a 2D coordinate point on the game board.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#%3Cinit%3E(int,int)" class="member-name-link">Point(int, int)</a> - Constructor for record class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#%3Cinit%3E(int,int)" class="member-name-link">Point(int, int)</a> - Constructor for record class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a></dt>
 <dd>
 <div class="block">Creates an instance of a <code>Point</code> record class.</div>
 </dd>
@@ -354,25 +428,25 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#setCurrentDirection(ru.nsu.gstubarev.snake.model.enums.Direction)" class="member-name-link">setCurrentDirection(Direction)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#setCurrentDirection(ru.nsu.gstubarev.snake.model.enums.Direction)" class="member-name-link">setCurrentDirection(Direction)</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Sets a new moving direction for the snake.</div>
 </dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#setCurrentDirection(ru.nsu.gstubarev.snake.model.enums.Direction)" class="member-name-link">setCurrentDirection(Direction)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html#setShouldGrow(boolean)" class="member-name-link">setShouldGrow(boolean)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/GameEngine.html" title="class in ru.nsu.gstubarev.snake.model">GameEngine</a></dt>
 <dd>
 <div class="block">Flags whether the snake should grow its body on the next movement tick.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#setSpeed(int)" class="member-name-link">setSpeed(int)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html#setSpeed(int)" class="member-name-link">setSpeed(int)</a> - Method in interface ru.nsu.gstubarev.snake.model.interfaces.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a></dt>
 <dd>
 <div class="block">Sets a new speed for the snake.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model">Snake</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/package-summary.html">ru.nsu.gstubarev.snake.model</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#setSpeed(int)" class="member-name-link">setSpeed(int)</a> - Method in class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/Snake.html" class="type-name-link" title="interface in ru.nsu.gstubarev.snake.model.interfaces">Snake</a> - Interface in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/interfaces/package-summary.html">ru.nsu.gstubarev.snake.model.interfaces</a></dt>
 <dd>
-<div class="block">Represents the player's snake entity in the game.</div>
-</dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.Point,ru.nsu.gstubarev.snake.model.enums.Direction,int)" class="member-name-link">Snake(Point, Direction, int)</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Snake.html" title="class in ru.nsu.gstubarev.snake.model">Snake</a></dt>
-<dd>
-<div class="block">Constructs a new snake.</div>
+<div class="block">Interface of snake.</div>
 </dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/SnakeApplication.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake">SnakeApplication</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/package-summary.html">ru.nsu.gstubarev.snake</a></dt>
 <dd>
@@ -380,6 +454,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/SnakeApplication.html#%3Cinit%3E()" class="member-name-link">SnakeApplication()</a> - Constructor for class ru.nsu.gstubarev.snake.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/SnakeApplication.html" title="class in ru.nsu.gstubarev.snake">SnakeApplication</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/package-summary.html">ru.nsu.gstubarev.snake.model</a></dt>
+<dd>
+<div class="block">Represents the player's snake entity in the game.</div>
+</dd>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html#%3Cinit%3E(ru.nsu.gstubarev.snake.model.enums.Point,ru.nsu.gstubarev.snake.model.enums.Direction,int)" class="member-name-link">SnakeClassic(Point, Direction, int)</a> - Constructor for class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/SnakeClassic.html" title="class in ru.nsu.gstubarev.snake.model">SnakeClassic</a></dt>
+<dd>
+<div class="block">Constructs a new snake.</div>
+</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/controller/SnakeRenderer.html" class="type-name-link" title="class in ru.nsu.gstubarev.snake.controller">SnakeRenderer</a> - Class in <a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/controller/package-summary.html">ru.nsu.gstubarev.snake.controller</a></dt>
 <dd>
 <div class="block">Renders the player's snake entity, including head rotation and body segments.</div>
@@ -395,7 +477,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#toString()" class="member-name-link">toString()</a> - Method in record class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#toString()" class="member-name-link">toString()</a> - Method in record class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a></dt>
 <dd>
 <div class="block">Returns a string representation of this record class.</div>
 </dd>
@@ -415,16 +497,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
-<dd>
-<div class="block">Returns the enum constant of this class with the specified name.</div>
-</dd>
 <dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Direction.html#values()" class="member-name-link">values()</a> - Static method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Direction.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Direction</a></dt>
-<dd>
-<div class="block">Returns an array containing the constants of this enum class, in
-the order they are declared.</div>
-</dd>
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html#values()" class="member-name-link">values()</a> - Static method in enum class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Level.html" title="enum class in ru.nsu.gstubarev.snake.model.enums">Level</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
@@ -432,16 +505,16 @@ the order they are declared.</div>
 </dl>
 <h2 class="title" id="I:X">X</h2>
 <dl class="index">
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#x()" class="member-name-link">x()</a> - Method in record class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#x()" class="member-name-link">x()</a> - Method in record class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a></dt>
 <dd>
-<div class="block">Returns the value of the <a href="./ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#param-x"><code>x</code></a> record component.</div>
+<div class="block">Returns the value of the <a href="./ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#param-x"><code>x</code></a> record component.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:Y">Y</h2>
 <dl class="index">
-<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#y()" class="member-name-link">y()</a> - Method in record class ru.nsu.gstubarev.snake.model.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html" title="class in ru.nsu.gstubarev.snake.model">Point</a></dt>
+<dt><a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#y()" class="member-name-link">y()</a> - Method in record class ru.nsu.gstubarev.snake.model.enums.<a href="ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html" title="class in ru.nsu.gstubarev.snake.model.enums">Point</a></dt>
 <dd>
-<div class="block">Returns the value of the <a href="./ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/Point.html#param-y"><code>y</code></a> record component.</div>
+<div class="block">Returns the value of the <a href="./ru.nsu.gstubarev.snake/ru/nsu/gstubarev/snake/model/enums/Point.html#param-y"><code>y</code></a> record component.</div>
 </dd>
 </dl>
 <a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
