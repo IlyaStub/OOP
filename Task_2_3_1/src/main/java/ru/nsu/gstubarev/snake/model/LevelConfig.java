@@ -66,8 +66,7 @@ public class LevelConfig {
      *
      * @return snake start position as a Point
      */
-    public Point getSnakeStartPos()
-    {
+    public Point getSnakeStartPos() {
         return snakeStartPos;
     }
 
