@@ -1,8 +1,8 @@
 package ru.nsu.gstubarev.snake.model.interfaces;
 
-import ru.nsu.gstubarev.snake.model.enums.Point;
-import ru.nsu.gstubarev.snake.model.enums.Direction;
 import java.util.List;
+import ru.nsu.gstubarev.snake.model.enums.Direction;
+import ru.nsu.gstubarev.snake.model.enums.Point;
 
 /**
  * Interface of snake.

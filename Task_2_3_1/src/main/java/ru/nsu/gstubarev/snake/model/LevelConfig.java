@@ -2,11 +2,11 @@ package ru.nsu.gstubarev.snake.model;
 
 import java.util.List;
 import ru.nsu.gstubarev.snake.model.enums.Direction;
-import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 import ru.nsu.gstubarev.snake.model.enums.Point;
+import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
 
 /**
- * Class for saving settings of some level
+ * Class for saving settings of some level.
  */
 public class LevelConfig {
     private final int boardWidth;
@@ -39,8 +39,7 @@ public class LevelConfig {
      *
      * @return board width in cells
      */
-    public int getBoardWidth()
-    {
+    public int getBoardWidth() {
         return boardWidth;
     }
 
@@ -49,8 +48,7 @@ public class LevelConfig {
      *
      * @return board height in cells
      */
-    public int getBoardHeight()
-    {
+    public int getBoardHeight() {
         return boardHeight;
     }
 
@@ -59,8 +57,7 @@ public class LevelConfig {
      *
      * @return list of points where walls are located
      */
-    public List<Point> getWalls()
-    {
+    public List<Point> getWalls() {
         return walls;
     }
 
@@ -79,8 +76,7 @@ public class LevelConfig {
      *
      * @return snake start direction (UP, DOWN, LEFT, RIGHT)
      */
-    public Direction getSnakeStartDir()
-    {
+    public Direction getSnakeStartDir() {
         return snakeStartDir;
     }
 
@@ -89,8 +85,7 @@ public class LevelConfig {
      *
      * @return snake start speed in cells per second
      */
-    public int getSnakeStartSpeed()
-    {
+    public int getSnakeStartSpeed() {
         return snakeStartSpeed;
     }
 
@@ -99,8 +94,7 @@ public class LevelConfig {
      *
      * @return target score value
      */
-    public int getTargetScore()
-    {
+    public int getTargetScore() {
         return targetScore;
     }
 

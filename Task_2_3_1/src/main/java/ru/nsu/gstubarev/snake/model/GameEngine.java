@@ -2,7 +2,6 @@ package ru.nsu.gstubarev.snake.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import ru.nsu.gstubarev.snake.model.enums.Point;
 import ru.nsu.gstubarev.snake.model.interfaces.Food;
 import ru.nsu.gstubarev.snake.model.interfaces.FoodGenerator;
@@ -28,7 +27,8 @@ public class GameEngine {
      * @param board the game board
      * @param playerSnake the player's snake
      */
-    public GameEngine(Board board, Snake playerSnake, FoodGenerator foodGenerator, int targetScore) {
+    public GameEngine(Board board, Snake playerSnake,
+                      FoodGenerator foodGenerator, int targetScore) {
         this.board = board;
         this.playerSnake = playerSnake;
         this.foodGenerator = foodGenerator;
@@ -36,7 +36,7 @@ public class GameEngine {
 
         this.foods = new ArrayList<>();
         this.isGameOver = false;
-        this.isGameWon= false;
+        this.isGameWon = false;
         this.shouldGrow = false;
         this.score = 0;
 
