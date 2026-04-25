@@ -9,14 +9,14 @@ declareCheckpoints {
 
 declareGroups {
     addGroup('12345') {
-        addStudent(nameGit: 'Student1', fio: 'Студент №1', repoLink: 'https://github.com/stud1/oop')
-        addStudent(nameGit: 'Student2', fio: 'Студент №2', repoLink: 'https://github.com/stud2/oop')
+        addStudent(nameGit: 'Student1', fio: 'Студент №1', repoLink: 'https://github.com/IlyaStub/OOP')
+        addStudent(nameGit: 'Student2', fio: 'Студент №2', repoLink: 'https://github.com/IlyaStub/OOP')
     }
 }
 
 command('test') {
-    check(group: '12345', taskId: 1)
-    check(group: '12345', taskId: 2)
+    check(group: '24213', taskId: 1)
+    check(group: '24214', taskId: 2)
 
     bonus(studentGit: 'Student2', taskId: 2, points: 1)
 }
