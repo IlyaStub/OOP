@@ -1,9 +1,7 @@
 package ru.nsu.gstubarev.dsl.outputs;
 
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.Group;
-import ru.nsu.gstubarev.dsl.dataClasses.Student;
-import ru.nsu.gstubarev.dsl.dataClasses.Task;
+import ru.nsu.gstubarev.dsl.dataClasses.*;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -11,10 +9,10 @@ import java.util.List;
 /**
  * To be honest, I didn't write this file myself, GPT helped me.
  */
-public class HtmlGenerator implements ReportGenerator {
-    @Override
+public class HtmlGenerator implements ReportGenerator{
     public void gen(Config config, String outputPath) {
         StringBuilder html = new StringBuilder();
+
         html.append("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Отчет по ООП</title>");
         html.append("<style>");
         html.append("body { font-family: Arial, sans-serif; margin: 20px; }");
@@ -22,14 +20,13 @@ public class HtmlGenerator implements ReportGenerator {
         html.append("table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }");
         html.append("th, td { border: 1px solid #aaa; padding: 8px; text-align: center; }");
         html.append("th { background-color: #f2f2f2; font-weight: bold; }");
-        html.append("td:first-child { text-align: left; font-weight: bold; }"); // Имя студента слева
+        html.append("td:first-child { text-align: left; font-weight: bold; }");
         html.append("</style></head><body>");
 
-        html.append("<h1>Результаты проверки (oop-checker test)</h1>");
+        html.append("<h1>Результаты проверки (oop-checker)</h1>");
 
         for (Group group : config.getGroups()) {
             html.append("<h2>Группа ").append(group.getName()).append("</h2>");
-
             List<Long> checkedTaskIds = config.getChecks().get(group.getName());
 
             if (checkedTaskIds != null) {
@@ -43,54 +40,60 @@ public class HtmlGenerator implements ReportGenerator {
                             .append("<th>Style guide</th><th>Тесты</th><th>Доп. балл</th><th>Общий балл</th></tr>");
 
                     for (Student student : group.getStudents()) {
+                        html.append("<tr>").append("<td>").append(student.getFio()).append("</td>");
+
+                        CheckResult result = student.getResult(taskId);
                         int bonus = config.getBonus(student.getNameGit(), taskId);
 
-                        html.append("<tr>")
-                                .append("<td>").append(student.getFio()).append("</td>")
-                                .append("<td>?</td>")
-                                .append("<td>?</td>")
-                                .append("<td>?</td>")
-                                .append("<td>?/?/?</td>")
-                                .append("<td>").append(bonus).append("</td>")
-                                .append("<td>?</td>")
-                                .append("</tr>");
+                        if (result == null) {
+                            html.append("<td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>");
+                        } else {
+                            html.append("<td>").append(result.compiled ? "+" : "-").append("</td>")
+                                    .append("<td>").append(result.docsGen ? "+" : "-").append("</td>")
+                                    .append("<td>").append(result.withoutReviewDogs ? "+" : "-").append("</td>")
+                                    .append("<td>").append(result.getTestsString()).append("</td>")
+                                    .append("<td>").append(bonus).append("</td>")
+                                    .append("<td>").append(result.finalScore).append("</td>");
+                        }
+                        html.append("</tr>");
                     }
                     html.append("</table>");
                 }
 
                 html.append("<h3>Общая статистика группы ").append(group.getName()).append("</h3>");
-                html.append("<table>");
-                html.append("<tr><th>Студент</th>");
+                html.append("<table><tr><th>Студент</th>");
+
                 for (Long taskId : checkedTaskIds) {
-                    Task task = config.getTaskById(taskId);
-                    html.append("<th>").append(task.getName()).append("</th>");
+                    html.append("<th>").append(config.getTaskById(taskId).getName()).append("</th>");
                 }
                 html.append("<th>Сумма</th><th>Активность</th><th>Оценка</th></tr>");
 
                 for (Student student : group.getStudents()) {
-                    html.append("<tr>")
-                            .append("<td>").append(student.getFio()).append("</td>");
+                    html.append("<tr>").append("<td>").append(student.getFio()).append("</td>");
 
+                    int totalScore = 0;
                     for (Long taskId : checkedTaskIds) {
-                        html.append("<td>?</td>");
+                        CheckResult result = student.getResult(taskId);
+                        if (result != null) {
+                            html.append("<td>").append(result.finalScore).append("</td>");
+                            totalScore += result.finalScore;
+                        } else {
+                            html.append("<td>-</td>");
+                        }
                     }
 
-                    html.append("<td>?</td>")
+                    html.append("<td>").append(totalScore).append("</td>")
                             .append("<td>?%</td>")
                             .append("<td>-</td>")
                             .append("</tr>");
                 }
                 html.append("</table>");
-            } else {
-                html.append("<p>Для этой группы нет назначенных проверок.</p>");
             }
         }
-
         html.append("</body></html>");
 
         try {
             Files.writeString(Path.of(outputPath), html.toString());
-            System.out.println("HTML отчет успешно сгенерирован: " + outputPath);
         } catch (Exception e) {
             System.err.println("Ошибка при сохранении отчета: " + e.getMessage());
         }

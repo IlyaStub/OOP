@@ -1,18 +1,18 @@
 package ru.nsu.gstubarev.dsl.services;
 
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.Group;
-import ru.nsu.gstubarev.dsl.dataClasses.Student;
+import ru.nsu.gstubarev.dsl.dataClasses.*;
 
 import java.io.File;
 import java.util.List;
 
 public class CheckerService {
     private final GitService gitService;
+    private final BuildService buildService;
     private final File workDir;
 
     public CheckerService() {
         this.gitService = new GitService();
+        this.buildService = new BuildService();
         this.workDir = new File("studRepo");
         if (!workDir.exists()) {
             workDir.mkdir();
@@ -32,11 +32,22 @@ public class CheckerService {
                 boolean isCloned = gitService.cloneRepository(student.getRepoLink(), studentRepoDir);
 
                 if (isCloned) {
-                    // билдим, тестим, находим review доги и по-новой)
+                    for (Long taskId : tasksToCheck) {
+                        Task task = config.getTaskById(taskId);
+                        if (task == null) continue;
 
-                    System.out.println("репо готов.");
+                        CheckResult result = buildService.checkTask(studentRepoDir, task.getName());
+
+                        if (result.compiled && result.withoutReviewDogs && result.testsFailed == 0) {
+                            result.finalScore = task.getMaxScores();
+                        }
+
+                        result.finalScore += config.getBonus(student.getNameGit(), taskId);
+
+                        student.addResult(taskId, result);
+                    }
                 } else {
-                    System.out.println("ошибка");
+                    System.out.println("ошибка загрузки");
                 }
             }
         }
