@@ -1,0 +1,7 @@
+{
+  "bakerSpeedMs": [1000, 1500, 1200],
+  "trunkCapacity": [2, 4, 1, 3],
+  "storageCapacity": 10,
+  "minDeliveryTimeMs": 1000,
+  "maxDeliveryTimeMs": 3000
+}
