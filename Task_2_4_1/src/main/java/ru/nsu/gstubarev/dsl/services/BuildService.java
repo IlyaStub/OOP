@@ -3,13 +3,15 @@ package ru.nsu.gstubarev.dsl.services;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service for building and testing student tasks via Gradle.
+ */
 public class BuildService {
     private boolean runCommand(File targetDir, String... command) {
         ProcessBuilder pb = new ProcessBuilder(command);
@@ -33,7 +35,7 @@ public class BuildService {
         File taskDir = new File(studentRepoDir, taskName);
 
         if (!taskDir.exists() || !taskDir.isDirectory()) {
-            System.out.println("е найдена папка");
+            System.out.println("не найдена папка " + taskDir.getAbsolutePath());
             return res;
         }
 
@@ -46,13 +48,13 @@ public class BuildService {
         }
         System.out.println("Успех компиляции");
 
-//        System.out.println("РЕВЬЮ ДОГИ))))");
-//        res.withoutReviewDogs = runGradle(taskDir, isWin, "checkstyleMain");
-//
-//        if (!res.withoutReviewDogs) {
-//            System.out.println("ХАХАХАХАХА");
-//            return res;
-//        }
+        System.out.println("РЕВЬЮ ДОГИ))))");
+        res.withoutReviewDogs = runGradle(taskDir, isWin, "checkstyleMain");
+
+        if (!res.withoutReviewDogs) {
+            System.out.println("ХАХАХАХАХА");
+            return res;
+        }
 
         System.out.println("дока");
         res.docsGen = runGradle(taskDir, isWin, "javadoc");
@@ -108,7 +110,7 @@ public class BuildService {
                 }
             }
         } catch (Exception e) {
-            System.err.println("jib,rf " + e.getMessage());
+            System.err.println("Ошибка " + e.getMessage());
         }
     }
 }
