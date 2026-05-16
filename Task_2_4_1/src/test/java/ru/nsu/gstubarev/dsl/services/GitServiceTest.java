@@ -2,13 +2,14 @@ package ru.nsu.gstubarev.dsl.services;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.dsl.exceptions.GitOperationException;
 
 /**
  * TEST.
@@ -16,38 +17,41 @@ import org.junit.jupiter.api.Test;
 public class GitServiceTest {
     @Test
     public void testCloneRepositoryInvalidUrl() {
-        GitService gitService = new GitService();
         File dummyDir = new File("dummy_git_dir_invalid");
-
-        boolean cloned = gitService.cloneRepository("http://invalid-url-that-does-not-exist", dummyDir);
-        assertFalse(cloned);
+        GitService gitService = new GitService();
+        assertThrows(GitOperationException.class, () -> {
+            gitService.cloneRepository(
+                    "http://invalid-url-that-does-not-exist", dummyDir);
+        });
     }
 
     @Test
     public void testLatestCommitDateAndActiveWeeksEmptyDir() {
-        GitService gitService = new GitService();
         File dummyDir = new File("dummy_git_dir_empty");
+        GitService gitService = new GitService();
 
-        LocalDate date = gitService.getLatestCommitDate(dummyDir, ".");
-        assertNull(date);
+        assertThrows(GitOperationException.class, () -> {
+            gitService.getLatestCommitDate(dummyDir, ".");
+        });
 
-        int weeks = gitService.getUniqueActiveWeeksCount(dummyDir);
-        assertTrue(weeks == 0);
+        assertThrows(GitOperationException.class, () -> {
+            gitService.getUniqueActiveWeeksCount(dummyDir);
+        });
     }
 
     @Test
     public void testDeleteDirectoryRecursive() throws Exception {
-        GitService gitService = new GitService();
-
         File parentDir = Files.createTempDirectory("parentDir").toFile();
         File childDir = new File(parentDir, "child");
         childDir.mkdir();
         File file = new File(childDir, "file.txt");
         file.createNewFile();
+        GitService gitService = new GitService();
+        assertThrows(GitOperationException.class, () -> {
+            gitService.cloneRepository("invalid_url", parentDir);
+        });
 
-        gitService.cloneRepository("invalid_url", parentDir);
-
-        assertFalse(parentDir.exists());
+        assertFalse(parentDir.exists()); // Удаление папки всё равно должно было произойти до ошибки
     }
 
     @Test

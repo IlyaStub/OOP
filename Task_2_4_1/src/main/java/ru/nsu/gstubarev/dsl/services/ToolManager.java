@@ -1,5 +1,7 @@
 package ru.nsu.gstubarev.dsl.services;
 
+import ru.nsu.gstubarev.dsl.exceptions.ToolDownloadException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -34,16 +36,17 @@ public class ToolManager {
     }
 
     private Path ensureFile(String name, String url) throws IOException {
-        if (!Files.exists(toolsDir)) {
-            Files.createDirectories(toolsDir);
-        }
         Path target = toolsDir.resolve(name);
-        if (!Files.exists(target)) {
-            System.out.println("Загрузка " + name);
-            try (InputStream in = URI.create(url).toURL().openStream()) {
-                Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
+        try {
+            if (!Files.exists(target)) {
+                System.out.println("Загрузка " + name);
+                try (InputStream in = URI.create(url).toURL().openStream()) {
+                    Files.copy(in, target, StandardCopyOption.REPLACE_EXISTING);
+                }
             }
+            return target;
+        } catch (IOException e) {
+            throw new ToolDownloadException("Не удалось загрузить или сохранить инструмент " + name + " по URL: " + url, e);
         }
-        return target;
     }
 }

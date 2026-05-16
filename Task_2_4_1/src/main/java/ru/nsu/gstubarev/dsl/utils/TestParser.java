@@ -5,6 +5,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import ru.nsu.gstubarev.dsl.exceptions.TestParsingException;
 
 
 /**
@@ -55,7 +56,8 @@ public class TestParser {
                 }
             }
         } catch (Exception e) {
-            System.err.println("Ошибка парсинга XML: " + e.getMessage());
+            throw new TestParsingException("Не удалось распарсить XML тестов в директории: "
+                    + resultsDir, e);
         }
         return stats;
     }

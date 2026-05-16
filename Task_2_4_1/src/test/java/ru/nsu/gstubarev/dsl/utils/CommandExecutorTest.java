@@ -1,6 +1,6 @@
 package ru.nsu.gstubarev.dsl.utils;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.dsl.exceptions.CommandExecutionException;
 
 /**
  * TEST.
@@ -36,9 +37,11 @@ public class CommandExecutorTest {
         File tempDir = Files.createTempDirectory("cmd_fail").toFile();
 
         List<String> cmd = Arrays.asList("non_existent_command_12345");
-        boolean res = executor.execute(tempDir, cmd, null);
 
-        assertFalse(res);
+        assertThrows(CommandExecutionException.class, () -> {
+            executor.execute(tempDir, cmd, null);
+        });
+
         tempDir.delete();
     }
 }

@@ -9,6 +9,8 @@ import java.time.temporal.WeekFields;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+import ru.nsu.gstubarev.dsl.exceptions.GitOperationException;
+
 
 /**
  * Class for work with git.
@@ -37,12 +39,12 @@ public class GitService {
                 System.out.println("Склонировали");
                 return true;
             } else {
-                System.err.println("ошибка клонирования");
-                return false;
+                throw new GitOperationException("Код возврата git clone != 0 для "
+                        + repoUrl, null);
             }
         } catch (IOException | InterruptedException e) {
-            System.err.println("ошибка " + e.getMessage());
-            return false;
+            throw new GitOperationException("Ошибка при клонировании репозитория "
+                    + repoUrl, e);
         }
     }
 
@@ -63,9 +65,8 @@ public class GitService {
                 }
             }
             p.waitFor();
-        } catch (Exception e) {
-            System.err.println("Ошибка получения даты коммита для "
-                    + taskName + ": " + e.getMessage());
+        } catch (IOException | InterruptedException e) {
+            throw new GitOperationException("Ошибка получения даты коммита", e);
         }
         return null;
     }
@@ -93,8 +94,9 @@ public class GitService {
                 }
             }
             p.waitFor();
-        } catch (Exception e) {
-            System.err.println("Ошибка подсчета активности: " + e.getMessage());
+        } catch (IOException | InterruptedException e) {
+            throw new GitOperationException("Ошибка подсчета активности (git log) в "
+                    + repoDir.getAbsolutePath(), e);
         }
         return uniqueWeeks.size();
     }

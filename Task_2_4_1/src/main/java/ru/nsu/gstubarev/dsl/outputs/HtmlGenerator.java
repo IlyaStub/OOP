@@ -1,9 +1,11 @@
 package ru.nsu.gstubarev.dsl.outputs;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import ru.nsu.gstubarev.dsl.dataclasses.Config;
 import ru.nsu.gstubarev.dsl.dataclasses.ReportData;
+import ru.nsu.gstubarev.dsl.exceptions.ReportGenerationException;
 import ru.nsu.gstubarev.dsl.services.ReportDataService;
 
 /**
@@ -71,8 +73,9 @@ public class HtmlGenerator implements ReportGenerator {
 
         try {
             Files.writeString(Path.of(outputPath), html.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new ReportGenerationException("Ошибка при записи HTML отчета в файл: "
+                    + outputPath, e);
         }
     }
 }

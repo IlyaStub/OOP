@@ -1,6 +1,7 @@
 package ru.nsu.gstubarev.dsl.services;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
@@ -12,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
+import ru.nsu.gstubarev.dsl.exceptions.StyleCheckException;
 import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
 
 /**
@@ -88,8 +90,9 @@ public class StyleCheckerTest {
         when(toolManager.getJar()).thenThrow(new RuntimeException("Simulated checkstyle error"));
 
         StyleChecker checker = new StyleChecker(toolManager, executor);
-        boolean result = checker.check(new File("dummy"));
 
-        assertFalse(result);
+        assertThrows(StyleCheckException.class, () -> {
+            checker.check(new File("dummy"));
+        });
     }
 }

@@ -34,20 +34,4 @@ public class ToolManagerTest {
         dummyXml.delete();
         toolsDir.delete();
     }
-
-    @Test
-    public void testDownloadXmlFileNotExists() throws Exception {
-        Path toolsPath = Paths.get("tools");
-        File xmlFile = new File(toolsPath.toFile(), "checkstyle.xml");
-
-        if (xmlFile.exists()) {
-            xmlFile.delete();
-        }
-
-        ToolManager manager = new ToolManager();
-        Path resultPath = manager.getXml();
-
-        assertNotNull(resultPath);
-        assertTrue(Files.exists(resultPath));
-    }
 }

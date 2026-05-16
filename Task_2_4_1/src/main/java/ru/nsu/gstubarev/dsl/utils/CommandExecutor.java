@@ -2,9 +2,11 @@ package ru.nsu.gstubarev.dsl.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.function.Consumer;
+import ru.nsu.gstubarev.dsl.exceptions.CommandExecutionException;
 
 /**
  * Execute commands.
@@ -31,9 +33,9 @@ public class CommandExecutor {
                 }
             }
             return process.waitFor() == 0;
-        } catch (Exception e) {
-            System.err.println("Ошибка выполнения команды: " + String.join(" ", command));
-            return false;
+        } catch (IOException | InterruptedException e) {
+            throw new CommandExecutionException("Ошибка выполнения команды: "
+                    + String.join(" ", command), e);
         }
     }
 }
