@@ -1,11 +1,14 @@
 package ru.nsu.gstubarev.dsl.services;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,70 +18,76 @@ import ru.nsu.gstubarev.dsl.exceptions.ToolDownloadException;
  * TEST.
  */
 public class ToolManagerTest {
-    private File dummyJar;
-    private File dummyXml;
+    private File toolsDir;
 
     /**
-     * Test.
+     * TEST.
      */
     @BeforeEach
-    public void setUp() throws Exception {
-        File toolsDir = new File("tools");
-        if (!toolsDir.exists()) {
-            toolsDir.mkdirs();
-        }
-
-        dummyJar = new File(toolsDir, "checkstyle-all.jar");
-        dummyXml = new File(toolsDir, "checkstyle.xml");
-
-        if (!dummyJar.exists()) {
-            dummyJar.createNewFile();
-        }
+    public void setUp() {
+        toolsDir = new File("tools");
+        cleanUp();
     }
 
     /**
-     * Test.
+     * TEST.
      */
     @AfterEach
     public void tearDown() {
-        if (dummyJar.exists()) {
-            dummyJar.delete();
+        if (toolsDir.exists()) {
+            toolsDir.setWritable(true);
         }
-        if (dummyXml.exists()) {
-            dummyXml.delete();
+        cleanUp();
+    }
+
+    private void cleanUp() {
+        if (toolsDir.exists()) {
+            try {
+                Files.walk(toolsDir.toPath())
+                        .sorted(Comparator.reverseOrder())
+                        .map(Path::toFile)
+                        .forEach(File::delete);
+            } catch (IOException e) {
+                System.err.println("Не удалось очистить директорию: " + e.getMessage());
+            }
         }
     }
 
     @Test
     public void testGetJarAndXmlBypassDownload() throws Exception {
-        if (!dummyXml.exists()) {
-            dummyXml.createNewFile();
-        }
+        assertTrue(toolsDir.mkdirs());
+        new File(toolsDir, "checkstyle-all.jar").createNewFile();
+        new File(toolsDir, "checkstyle.xml").createNewFile();
 
         ToolManager manager = new ToolManager();
 
         assertNotNull(manager.getJar());
         assertNotNull(manager.getXml());
-
-        assertTrue(dummyJar.exists());
-        assertTrue(dummyXml.exists());
     }
 
     @Test
-    public void testDownloadXmlCoversBranch() {
-        if (dummyXml.exists()) {
-            dummyXml.delete();
-        }
+    public void testDirectoryCreationAndDownload() throws Exception {
+        ToolManager manager = new ToolManager();
+
+        Path xmlPath = manager.getXml();
+
+        assertNotNull(xmlPath);
+        assertTrue(Files.exists(xmlPath));
+    }
+
+    @Test
+    public void testToolDownloadExceptionIsThrown() throws Exception {
+        cleanUp();
+
+        File toolsFile = new File("tools");
+        assertTrue(toolsFile.createNewFile());
 
         ToolManager manager = new ToolManager();
 
-        try {
-            Path downloadedXml = manager.getXml();
+        assertThrows(ToolDownloadException.class, () -> {
+            manager.getJar();
+        });
 
-            assertNotNull(downloadedXml);
-            assertTrue(Files.exists(downloadedXml));
-        } catch (Exception e) {
-            assertTrue(e instanceof ToolDownloadException);
-        }
+        toolsFile.delete();
     }
 }
