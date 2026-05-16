@@ -5,13 +5,22 @@ import ru.nsu.gstubarev.dsl.dataClasses.Task;
 import java.time.LocalDate;
 import java.util.Map;
 
+/**
+ * Configures task list entries.
+ */
 public class TaskListConfig {
     private final Config config;
 
+    /**
+     * Wraps config for task setup.
+     */
     public TaskListConfig(Config config) {
         this.config = config;
     }
 
+    /**
+     * Adds task from parameters.
+     */
     public void addTask(Map<String, Object> params) {
         int id = (Integer) params.get("id");
         String name = (String) params.get("name");

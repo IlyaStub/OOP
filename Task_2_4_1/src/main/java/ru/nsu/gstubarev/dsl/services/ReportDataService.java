@@ -1,9 +1,11 @@
 package ru.nsu.gstubarev.dsl.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import ru.nsu.gstubarev.dsl.dataClasses.Config;
 import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
+import ru.nsu.gstubarev.dsl.dataClasses.Checkpoint;
 import ru.nsu.gstubarev.dsl.dataClasses.Group;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData.GroupData;
@@ -55,33 +57,94 @@ public class ReportDataService {
                 taskTables.add(new TaskTable(task.getName(), rows));
             }
 
-            SummaryTable summaryTable = prepareSummary(group, checkedTaskIds, config);
-            groups.add(new GroupData(group.getName(), taskTables, summaryTable));
+            List<SummaryTable> summaries = new ArrayList<>();
+
+            if (config.getCheckpoints() != null && !config.getCheckpoints().isEmpty()) {
+                for (Checkpoint cp : config.getCheckpoints()) {
+                    summaries.add(prepareSummaryForCheckpoint(group, checkedTaskIds, config, cp));
+                }
+            } else {
+                summaries.add(prepareSummaryForCheckpoint(group, checkedTaskIds, config, null));
+            }
+
+            groups.add(new GroupData(group.getName(), taskTables, summaries));
         }
 
         return new ReportData(groups);
     }
 
-    private SummaryTable prepareSummary(Group group, List<Long> taskIds, Config config) {
+    private SummaryTable prepareSummaryForCheckpoint(Group group,
+                                                     List<Long> taskIds,
+                                                     Config config,
+                                                     Checkpoint checkpoint) {
         List<String> taskNames = new ArrayList<>();
+        int maxPossibleSumForCheckpoint = 0;
+
         for (Long id : taskIds) {
-            taskNames.add(config.getTaskById(id).getName());
+            Task t = config.getTaskById(id);
+            if (t != null) {
+                taskNames.add(t.getName());
+
+                if (checkpoint != null) {
+                    LocalDate hardDeadline = LocalDate.parse(t.getHardDeadline().toString());
+                    if (!hardDeadline.isAfter(checkpoint.getDate())) {
+                        maxPossibleSumForCheckpoint += t.getMaxScores();
+                    }
+                } else {
+                    maxPossibleSumForCheckpoint += t.getMaxScores();
+                }
+            }
         }
 
         List<SummaryRow> rows = new ArrayList<>();
         for (Student student : group.getStudents()) {
             String fio = student.getFio();
             List<Integer> scores = new ArrayList<>();
-            int sum = 0;
+            int totalSum = 0;
+            int sumForCheckpoint = 0;
+            int rawActiveWeeks = 0;
+
             for (Long id : taskIds) {
+                Task t = config.getTaskById(id);
                 CheckResult r = student.getResult(id);
                 int score = (r != null) ? r.finalScore : 0;
                 scores.add(score);
-                sum += score;
+                totalSum += score;
+
+                if (r != null) {
+                    rawActiveWeeks = r.activeWeeks;
+                }
+                if (t != null && checkpoint != null) {
+                    LocalDate hardDeadline = LocalDate.parse(t.getHardDeadline().toString());
+                    if (!hardDeadline.isAfter(checkpoint.getDate())) {
+                        sumForCheckpoint += score;
+                    }
+                } else {
+                    sumForCheckpoint += score;
+                }
             }
-            rows.add(new SummaryRow(fio, scores, sum, "?%", "-"));
+
+            int expectedWeeks = 6;
+            int activityPercentage = (int) ((((double) rawActiveWeeks) / expectedWeeks) * 100);
+            if (activityPercentage > 100) activityPercentage = 100;
+            String activityStr = activityPercentage + "%";
+
+            String grade;
+            if (maxPossibleSumForCheckpoint == 0) {
+                grade = "нет лаб для аттестации";
+            } else {
+                double successRate = (double) sumForCheckpoint / maxPossibleSumForCheckpoint;
+
+                if (successRate >= 0.85) grade = "5";
+                else if (successRate >= 0.70) grade = "4";
+                else if (successRate >= 0.50) grade = "3";
+                else grade = "2";
+            }
+
+            rows.add(new SummaryRow(fio, scores, totalSum, activityStr, grade));
         }
 
-        return new SummaryTable(taskNames, rows);
+        String title = (checkpoint != null) ? checkpoint.getName() : "Общая статистика";
+        return new SummaryTable(title, taskNames, rows);
     }
 }

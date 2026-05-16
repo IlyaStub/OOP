@@ -13,7 +13,7 @@ public record ReportData(List<GroupData> groups) {
     public record GroupData(
             String groupName,
             List<TaskTable> taskTables,
-            SummaryTable summaryTable
+            List<SummaryTable> summaries
     ) {}
 
     /**
@@ -41,6 +41,7 @@ public record ReportData(List<GroupData> groups) {
      * Aggregated results summary.
      */
     public record SummaryTable(
+            String checkpointName,
             List<String> taskNames,
             List<SummaryRow> rows
     ) {}

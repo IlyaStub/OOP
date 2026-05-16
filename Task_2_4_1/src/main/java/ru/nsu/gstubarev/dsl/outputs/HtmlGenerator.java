@@ -44,23 +44,27 @@ public class HtmlGenerator implements ReportGenerator {
                 html.append("</table>");
             }
 
-            html.append("<h3>Общая статистика группы ").append(group.groupName())
-                    .append("</h3><table><tr><th>Студент</th>");
-            for (String name : group.summaryTable().taskNames()) {
-                html.append("<th>").append(name).append("</th>");
-            }
-            html.append("<th>Сумма</th><th>Активность</th><th>Оценка</th></tr>");
+            for (ReportData.SummaryTable summary : group.summaries()) {
+                html.append("<h3>").append(summary.checkpointName()).append("</h3>");
+                html.append("<table><tr><th>Студент</th>");
 
-            for (ReportData.SummaryRow sRow : group.summaryTable().rows()) {
-                html.append("<tr><td>").append(sRow.fio()).append("</td>");
-                for (Integer score : sRow.scores()) {
-                    html.append("<td>").append(score).append("</td>");
+                for (String name : summary.taskNames()) {
+                    html.append("<th>").append(name).append("</th>");
                 }
-                html.append("<td>").append(sRow.totalSum()).append("</td>")
-                        .append("<td>").append(sRow.activity()).append("</td>")
-                        .append("<td>").append(sRow.grade()).append("</td></tr>");
+
+                html.append("<th>Сумма</th><th>Активность</th><th>Оценка</th></tr>");
+
+                for (ReportData.SummaryRow sRow : summary.rows()) {
+                    html.append("<tr><td>").append(sRow.fio()).append("</td>");
+                    for (Integer score : sRow.scores()) {
+                        html.append("<td>").append(score).append("</td>");
+                    }
+                    html.append("<td>").append(sRow.totalSum()).append("</td>")
+                            .append("<td>").append(sRow.activity()).append("</td>")
+                            .append("<td>").append(sRow.grade()).append("</td></tr>");
+                }
+                html.append("</table>");
             }
-            html.append("</table>");
         }
 
         html.append("</body></html>");

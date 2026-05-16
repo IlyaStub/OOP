@@ -1,116 +1,71 @@
 package ru.nsu.gstubarev.dsl.services;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
+import ru.nsu.gstubarev.dsl.utils.TestParser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Service for building and testing student tasks via Gradle.
+ * Class with methods for building student's project.
  */
 public class BuildService {
-    private boolean runCommand(File targetDir, String... command) {
-        ProcessBuilder pb = new ProcessBuilder(command);
-        pb.directory(targetDir);
-        pb.inheritIO();
+    private final CommandExecutor executor;
+    private final StyleChecker styleChecker;
+    private final TestParser testParser;
 
-        try {
-            Process process = pb.start();
-            int ec = process.waitFor();
-            return ec == 0;
-        } catch (Exception e) {
-            System.err.println("ошибка при: " + String.join(" ", command));
-            return false;
-        }
+    /**
+     * Constructor for BuildService.
+     */
+    public BuildService(CommandExecutor executor,
+                        StyleChecker styleChecker,
+                        TestParser testParser) {
+        this.executor = executor;
+        this.styleChecker = styleChecker;
+        this.testParser = testParser;
     }
 
+    /**
+     * Method for check all Task.
+     */
     public CheckResult checkTask(File studentRepoDir, String taskName) {
         CheckResult res = new CheckResult();
+        File taskDir = new File(studentRepoDir, taskName);
+        if (!taskDir.exists()) {
+            return res;
+        }
+
         boolean isWin = System.getProperty("os.name").toLowerCase().contains("win");
 
-        File taskDir = new File(studentRepoDir, taskName);
-
-        if (!taskDir.exists() || !taskDir.isDirectory()) {
-            System.out.println("не найдена папка " + taskDir.getAbsolutePath());
-            return res;
-        }
-
-        System.out.println("Компиляция " + taskName);
         res.compiled = runGradle(taskDir, isWin, "classes");
-
         if (!res.compiled) {
-            System.out.println("Ошибка компиляции");
-            return res;
-        }
-        System.out.println("Успех компиляции");
-
-        System.out.println("РЕВЬЮ ДОГИ))))");
-        res.withoutReviewDogs = runGradle(taskDir, isWin, "checkstyleMain");
-
-        if (!res.withoutReviewDogs) {
-            System.out.println("ХАХАХАХАХА");
             return res;
         }
 
-        System.out.println("дока");
+        res.withoutReviewDogs = styleChecker.check(taskDir);
+
         res.docsGen = runGradle(taskDir, isWin, "javadoc");
 
-        System.out.println("Тесты");
         runGradle(taskDir, isWin, "test");
 
-        parseTestResults(taskDir, res);
+        TestParser.TestStats stats =
+                testParser.parse(new File(taskDir, "build/test-results/test"));
+        res.testsPassed = stats.passed;
+        res.testsFailed = stats.failed;
+        res.testsSkipped = stats.skipped;
 
         return res;
     }
 
     private boolean runGradle(File dir, boolean isWin, String task) {
-        List<String> command = new ArrayList<>();
+        List<String> cmd = new ArrayList<>();
         if (isWin) {
-            command.add("cmd.exe");
-            command.add("/c");
-            command.add("gradlew.bat");
+            cmd.addAll(List.of("cmd.exe", "/c", "gradlew.bat"));
         } else {
-            command.add("sh");
-            command.add("./gradlew");
+            cmd.addAll(List.of("sh", "./gradlew"));
         }
-        command.add(task);
-
-        return runCommand(dir, command.toArray(new String[0]));
-    }
-
-    private void parseTestResults(File taskDir, CheckResult res) {
-        File resultsDir = new File(taskDir, "build/test-results/test");
-
-        if (!resultsDir.exists() || !resultsDir.isDirectory()) return;
-
-        File[] xmlFiles = resultsDir.listFiles((dir, name) -> name.endsWith(".xml"));
-        if (xmlFiles == null || xmlFiles.length == 0) return;
-
-        try {
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-
-            for (File xml : xmlFiles) {
-                Document doc = dBuilder.parse(xml);
-                doc.getDocumentElement().normalize();
-
-                Element testSuite = (Element) doc.getElementsByTagName("testsuite").item(0);
-                if (testSuite != null) {
-                    int tests = Integer.parseInt(testSuite.getAttribute("tests"));
-                    int failures = Integer.parseInt(testSuite.getAttribute("failures"));
-                    int skipped = Integer.parseInt(testSuite.getAttribute("skipped"));
-
-                    res.testsFailed += failures;
-                    res.testsSkipped += skipped;
-                    res.testsPassed += (tests - failures - skipped);
-                }
-            }
-        } catch (Exception e) {
-            System.err.println("Ошибка " + e.getMessage());
-        }
+        cmd.add(task);
+        return executor.execute(dir, cmd, System.out::println);
     }
 }

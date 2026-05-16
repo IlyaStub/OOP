@@ -1,5 +1,10 @@
 package ru.nsu.gstubarev.dsl.dataClasses;
 
+import java.time.LocalDate;
+
+/**
+ * Holds single task check result.
+ */
 public class CheckResult {
     public boolean compiled = false;
     public boolean docsGen = false;
@@ -10,6 +15,12 @@ public class CheckResult {
     public int testsSkipped = 0;
     public int finalScore = 0;
 
+    public LocalDate commitDate;
+    public int activeWeeks = 0;
+
+    /**
+     * Returns formatted test counters.
+     */
     public String getTestsString() {
         if (!compiled) return "-";
         return testsPassed + "/" + testsFailed + "/" + testsSkipped;
