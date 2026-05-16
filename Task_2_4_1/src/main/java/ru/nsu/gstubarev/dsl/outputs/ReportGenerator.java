@@ -1,6 +1,6 @@
 package ru.nsu.gstubarev.dsl.outputs;
 
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
 
 /**
  * The interface that the classes implement for generating the report.

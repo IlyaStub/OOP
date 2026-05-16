@@ -2,8 +2,8 @@ package ru.nsu.gstubarev.dsl.delegates;
 
 import java.time.LocalDate;
 import java.util.Map;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.Task;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Task;
 
 /**
  * Configures task list entries.

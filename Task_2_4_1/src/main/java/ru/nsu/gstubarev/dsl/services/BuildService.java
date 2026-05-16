@@ -3,7 +3,7 @@ package ru.nsu.gstubarev.dsl.services;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
+import ru.nsu.gstubarev.dsl.dataclasses.CheckResult;
 import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
 import ru.nsu.gstubarev.dsl.utils.TestParser;
 

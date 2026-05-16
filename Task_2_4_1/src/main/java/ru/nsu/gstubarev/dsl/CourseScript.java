@@ -2,7 +2,7 @@ package ru.nsu.gstubarev.dsl;
 
 import groovy.lang.Closure;
 import groovy.lang.Script;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
 import ru.nsu.gstubarev.dsl.delegates.CheckpointListConfig;
 import ru.nsu.gstubarev.dsl.delegates.GroupListConfig;
 import ru.nsu.gstubarev.dsl.delegates.RunCommandConfig;

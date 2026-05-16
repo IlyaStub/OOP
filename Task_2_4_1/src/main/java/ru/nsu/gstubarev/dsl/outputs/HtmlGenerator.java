@@ -2,8 +2,8 @@ package ru.nsu.gstubarev.dsl.outputs;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData;
 import ru.nsu.gstubarev.dsl.services.ReportDataService;
 
 /**

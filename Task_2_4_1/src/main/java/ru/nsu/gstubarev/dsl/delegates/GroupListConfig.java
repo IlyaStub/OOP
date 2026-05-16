@@ -1,8 +1,8 @@
 package ru.nsu.gstubarev.dsl.delegates;
 
 import groovy.lang.Closure;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.Group;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Group;
 
 /**
  * Configures group list entries.

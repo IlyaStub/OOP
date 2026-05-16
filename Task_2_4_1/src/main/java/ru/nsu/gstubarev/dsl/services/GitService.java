@@ -55,7 +55,8 @@ public class GitService {
         pb.directory(repoDir);
         try {
             Process p = pb.start();
-            try (BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()))) {
+            try (BufferedReader r =
+                         new BufferedReader(new InputStreamReader(p.getInputStream()))) {
                 String line = r.readLine();
                 if (line != null && !line.trim().isEmpty()) {
                     return LocalDate.parse(line.trim().substring(0, 10));
@@ -69,6 +70,9 @@ public class GitService {
         return null;
     }
 
+    /**
+     * Method for getting unique active weeks count.
+     */
     public int getUniqueActiveWeeksCount(File repoDir) {
         ProcessBuilder pb = new ProcessBuilder("git", "log", "--format=%cI");
         pb.directory(repoDir);

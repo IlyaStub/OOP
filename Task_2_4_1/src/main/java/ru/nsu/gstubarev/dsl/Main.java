@@ -2,8 +2,9 @@ package ru.nsu.gstubarev.dsl;
 
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
+import java.io.File;
 import org.codehaus.groovy.control.CompilerConfiguration;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
 import ru.nsu.gstubarev.dsl.outputs.HtmlGenerator;
 import ru.nsu.gstubarev.dsl.outputs.ReportGenerator;
 import ru.nsu.gstubarev.dsl.services.BuildService;
@@ -13,7 +14,6 @@ import ru.nsu.gstubarev.dsl.services.StyleChecker;
 import ru.nsu.gstubarev.dsl.services.ToolManager;
 import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
 import ru.nsu.gstubarev.dsl.utils.TestParser;
-import java.io.File;
 
 /**
  * Main class.

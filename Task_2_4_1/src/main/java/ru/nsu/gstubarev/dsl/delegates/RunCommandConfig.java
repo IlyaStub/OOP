@@ -1,7 +1,7 @@
 package ru.nsu.gstubarev.dsl.delegates;
 
 import java.util.Map;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
 
 /**
  * Configures run commands and bonuses.

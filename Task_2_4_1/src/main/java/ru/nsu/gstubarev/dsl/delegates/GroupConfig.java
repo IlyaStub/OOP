@@ -1,8 +1,8 @@
 package ru.nsu.gstubarev.dsl.delegates;
 
 import java.util.Map;
-import ru.nsu.gstubarev.dsl.dataClasses.Group;
-import ru.nsu.gstubarev.dsl.dataClasses.Student;
+import ru.nsu.gstubarev.dsl.dataclasses.Group;
+import ru.nsu.gstubarev.dsl.dataclasses.Student;
 
 /**
  * Configures single group contents.

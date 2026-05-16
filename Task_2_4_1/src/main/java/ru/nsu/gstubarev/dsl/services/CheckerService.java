@@ -3,11 +3,11 @@ package ru.nsu.gstubarev.dsl.services;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
-import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.Group;
-import ru.nsu.gstubarev.dsl.dataClasses.Student;
-import ru.nsu.gstubarev.dsl.dataClasses.Task;
+import ru.nsu.gstubarev.dsl.dataclasses.CheckResult;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Group;
+import ru.nsu.gstubarev.dsl.dataclasses.Student;
+import ru.nsu.gstubarev.dsl.dataclasses.Task;
 
 /**
  * Orchestrates the full checking pipeline for students.

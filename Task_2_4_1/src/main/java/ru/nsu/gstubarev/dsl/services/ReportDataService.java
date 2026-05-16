@@ -3,18 +3,18 @@ package ru.nsu.gstubarev.dsl.services;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
-import ru.nsu.gstubarev.dsl.dataClasses.Checkpoint;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
-import ru.nsu.gstubarev.dsl.dataClasses.Group;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData.GroupData;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData.StudentRow;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData.SummaryRow;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData.SummaryTable;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData.TaskTable;
-import ru.nsu.gstubarev.dsl.dataClasses.Student;
-import ru.nsu.gstubarev.dsl.dataClasses.Task;
+import ru.nsu.gstubarev.dsl.dataclasses.CheckResult;
+import ru.nsu.gstubarev.dsl.dataclasses.Checkpoint;
+import ru.nsu.gstubarev.dsl.dataclasses.Config;
+import ru.nsu.gstubarev.dsl.dataclasses.Group;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData.GroupData;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData.StudentRow;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData.SummaryRow;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData.SummaryTable;
+import ru.nsu.gstubarev.dsl.dataclasses.ReportData.TaskTable;
+import ru.nsu.gstubarev.dsl.dataclasses.Student;
+import ru.nsu.gstubarev.dsl.dataclasses.Task;
 
 /**
  * Service for collecting and building report data.
@@ -95,14 +95,12 @@ public class ReportDataService {
 
         List<SummaryRow> rows = new ArrayList<>();
         for (Student student : group.getStudents()) {
-            String fio = student.getFio();
             List<Integer> scores = new ArrayList<>();
             int totalSum = 0;
             int sumForCheckpoint = 0;
             int rawActiveWeeks = 0;
 
             for (Long id : taskIds) {
-                Task t = config.getTaskById(id);
                 CheckResult r = student.getResult(id);
                 int score = (r != null) ? r.finalScore : 0;
                 scores.add(score);
@@ -111,6 +109,7 @@ public class ReportDataService {
                 if (r != null) {
                     rawActiveWeeks = r.activeWeeks;
                 }
+                Task t = config.getTaskById(id);
                 if (t != null && checkpoint != null) {
                     LocalDate hardDeadline = LocalDate.parse(t.getHardDeadline().toString());
                     if (!hardDeadline.isAfter(checkpoint.getDate())) {
@@ -136,18 +135,15 @@ public class ReportDataService {
 
                 if (successRate >= 0.85) {
                     grade = "5";
-                }
-                else if (successRate >= 0.70) {
+                } else if (successRate >= 0.70) {
                     grade = "4";
-                }
-                else if (successRate >= 0.50) {
+                } else if (successRate >= 0.50) {
                     grade = "3";
-                }
-                else {
+                } else {
                     grade = "2";
                 }
             }
-
+            String fio = student.getFio();
             rows.add(new SummaryRow(fio, scores, totalSum, activityStr, grade));
         }
 

@@ -1,4 +1,4 @@
-package ru.nsu.gstubarev.dsl.dataClasses;
+package ru.nsu.gstubarev.dsl.dataclasses;
 
 import java.util.List;
 
