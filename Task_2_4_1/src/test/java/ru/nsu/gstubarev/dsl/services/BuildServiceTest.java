@@ -14,6 +14,9 @@ import ru.nsu.gstubarev.dsl.dataclasses.CheckResult;
 import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
 import ru.nsu.gstubarev.dsl.utils.TestParser;
 
+/**
+ * TEST.
+ */
 public class BuildServiceTest {
 
     @Test

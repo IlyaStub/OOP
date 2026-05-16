@@ -4,8 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * TEST.
+ */
 public class CheckResultTest {
 
+    /**
+     * Test.
+     */
     @Test
     public void testGetTestsStringNotCompiled() {
         CheckResult result = new CheckResult();

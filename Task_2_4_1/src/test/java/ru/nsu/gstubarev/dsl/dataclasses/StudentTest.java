@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * TEST.
+ */
 public class StudentTest {
     @Test
     public void testStudentMethods() {

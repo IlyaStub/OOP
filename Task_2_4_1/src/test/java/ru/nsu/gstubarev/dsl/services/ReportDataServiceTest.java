@@ -14,6 +14,9 @@ import ru.nsu.gstubarev.dsl.dataclasses.ReportData;
 import ru.nsu.gstubarev.dsl.dataclasses.Student;
 import ru.nsu.gstubarev.dsl.dataclasses.Task;
 
+/**
+ * TEST.
+ */
 public class ReportDataServiceTest {
 
     @Test

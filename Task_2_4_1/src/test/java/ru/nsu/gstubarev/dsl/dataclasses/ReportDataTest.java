@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
+/**
+ * TEST.
+ */
 public class ReportDataTest {
 
     @Test

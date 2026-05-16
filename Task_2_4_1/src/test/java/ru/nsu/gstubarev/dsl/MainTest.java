@@ -8,8 +8,10 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.dsl.dataclasses.Student;
 import ru.nsu.gstubarev.dsl.dataclasses.Task;
 
+/**
+ * TEST.
+ */
 class MainTest {
-
     @Test
     void testTaskCreation() {
         LocalDate soft = LocalDate.parse("2024-05-10");
