@@ -3,10 +3,10 @@ package ru.nsu.gstubarev.dsl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import ru.nsu.gstubarev.dsl.dataClasses.Student;
 import ru.nsu.gstubarev.dsl.dataClasses.Task;
-import java.time.LocalDate;
 
 class MainTest {
 

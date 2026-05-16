@@ -12,10 +12,10 @@ import java.nio.file.StandardCopyOption;
  * Manages external tools required for task checking.
  */
 public class ToolManager {
-    private static final String CS_URL = "https://github.com/checkstyle/checkstyle" +
-            "/releases/download/checkstyle-10.17.0/checkstyle-10.17.0-all.jar";
-    private static final String GOOGLE_XML = "https://raw.githubusercontent.com/" +
-            "checkstyle/checkstyle/master/src/main/resources/google_checks.xml";
+    private static final String CS_URL = "https://github.com/checkstyle/checkstyle"
+            + "/releases/download/checkstyle-10.17.0/checkstyle-10.17.0-all.jar";
+    private static final String GOOGLE_XML = "https://raw.githubusercontent.com/"
+            + "checkstyle/checkstyle/master/src/main/resources/google_checks.xml";
 
     private final Path toolsDir = Paths.get("tools").toAbsolutePath();
 

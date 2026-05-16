@@ -1,10 +1,10 @@
 package ru.nsu.gstubarev.dsl.outputs;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import ru.nsu.gstubarev.dsl.dataClasses.Config;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData;
 import ru.nsu.gstubarev.dsl.services.ReportDataService;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  * Class for html generation.
@@ -29,8 +29,8 @@ public class HtmlGenerator implements ReportGenerator {
             for (ReportData.TaskTable taskTable : group.taskTables()) {
                 html.append("<h3>Лабораторная ").append(taskTable.taskName()).append("</h3>");
                 html.append("<table><tr><th>Студент</th><th>Сборка</th><th>Документация</th>")
-                        .append("<th>Style</th><th>Тесты</th><th>Доп. " +
-                                "балл</th><th>Общий балл</th></tr>");
+                        .append("<th>Style</th><th>Тесты</th><th>Доп. "
+                                + "балл</th><th>Общий балл</th></tr>");
 
                 for (ReportData.StudentRow row : taskTable.rows()) {
                     html.append("<tr><td>").append(row.fio()).append("</td>")
@@ -54,14 +54,14 @@ public class HtmlGenerator implements ReportGenerator {
 
                 html.append("<th>Сумма</th><th>Активность</th><th>Оценка</th></tr>");
 
-                for (ReportData.SummaryRow sRow : summary.rows()) {
-                    html.append("<tr><td>").append(sRow.fio()).append("</td>");
-                    for (Integer score : sRow.scores()) {
+                for (ReportData.SummaryRow summaryRow : summary.rows()) {
+                    html.append("<tr><td>").append(summaryRow.fio()).append("</td>");
+                    for (Integer score : summaryRow.scores()) {
                         html.append("<td>").append(score).append("</td>");
                     }
-                    html.append("<td>").append(sRow.totalSum()).append("</td>")
-                            .append("<td>").append(sRow.activity()).append("</td>")
-                            .append("<td>").append(sRow.grade()).append("</td></tr>");
+                    html.append("<td>").append(summaryRow.totalSum()).append("</td>")
+                            .append("<td>").append(summaryRow.activity()).append("</td>")
+                            .append("<td>").append(summaryRow.grade()).append("</td></tr>");
                 }
                 html.append("</table>");
             }

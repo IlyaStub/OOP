@@ -64,12 +64,10 @@ public class Task {
      */
     @Override
     public String toString() {
-        return "\n\tTask{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", maxScores=" + maxScores +
-                ", softDeadline=" + softDeadline +
-                ", hardDeadline=" + hardDeadline +
-                "}";
+        return "\n\tTask{" + "id=" + id + ", name='"
+                + name + '\'' + ", maxScores="
+                + maxScores + ", softDeadline="
+                + softDeadline + ", hardDeadline=" + hardDeadline
+                + "}";
     }
 }

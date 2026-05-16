@@ -58,10 +58,11 @@ public class Student {
      */
     @Override
     public String toString() {
-        return "Student{" +
-                "nameGit='" + nameGit + '\'' +
-                ", fio='" + fio + '\'' +
-                ", repoLink='" + repoLink + '\'' +
-                '}';
+        return "Student{"
+                + "nameGit='"
+                + nameGit + '\''
+                + ", fio='" + fio + '\''
+                + ", repoLink='"
+                + repoLink + '\'' + '}';
     }
 }

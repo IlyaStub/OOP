@@ -3,15 +3,15 @@ package ru.nsu.gstubarev.dsl.services;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
 import ru.nsu.gstubarev.dsl.dataClasses.CheckResult;
 import ru.nsu.gstubarev.dsl.dataClasses.Checkpoint;
+import ru.nsu.gstubarev.dsl.dataClasses.Config;
 import ru.nsu.gstubarev.dsl.dataClasses.Group;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData.GroupData;
+import ru.nsu.gstubarev.dsl.dataClasses.ReportData.StudentRow;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData.SummaryRow;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData.SummaryTable;
-import ru.nsu.gstubarev.dsl.dataClasses.ReportData.StudentRow;
 import ru.nsu.gstubarev.dsl.dataClasses.ReportData.TaskTable;
 import ru.nsu.gstubarev.dsl.dataClasses.Student;
 import ru.nsu.gstubarev.dsl.dataClasses.Task;
@@ -43,16 +43,13 @@ public class ReportDataService {
                 List<StudentRow> rows = new ArrayList<>();
                 for (Student student : group.getStudents()) {
                     CheckResult res = student.getResult(taskId);
-
-                    String fio = student.getFio();
-                    String build = (res != null && res.compiled) ? "+" : "-";
-                    String docs = (res != null && res.docsGen) ? "+" : "-";
-                    String style = (res != null && res.withoutReviewDogs) ? "+" : "-";
-                    String tests = (res != null) ? res.getTestsString() : "0/0/0";
-                    int bonus = config.getBonus(student.getNameGit(), taskId);
-                    int total = (res != null) ? res.finalScore : 0;
-
-                    rows.add(new StudentRow(fio, build, docs, style, tests, bonus, total));
+                    rows.add(new StudentRow(student.getFio(),
+                            (res != null && res.compiled) ? "+" : "-",
+                            (res != null && res.docsGen) ? "+" : "-",
+                            (res != null && res.withoutReviewDogs) ? "+" : "-",
+                            (res != null) ? res.getTestsString() : "0/0/0",
+                            config.getBonus(student.getNameGit(), taskId),
+                            (res != null) ? res.finalScore : 0));
                 }
                 taskTables.add(new TaskTable(task.getName(), rows));
             }
@@ -126,7 +123,9 @@ public class ReportDataService {
 
             int expectedWeeks = 6;
             int activityPercentage = (int) ((((double) rawActiveWeeks) / expectedWeeks) * 100);
-            if (activityPercentage > 100) activityPercentage = 100;
+            if (activityPercentage > 100) {
+                activityPercentage = 100;
+            }
             String activityStr = activityPercentage + "%";
 
             String grade;
@@ -135,10 +134,18 @@ public class ReportDataService {
             } else {
                 double successRate = (double) sumForCheckpoint / maxPossibleSumForCheckpoint;
 
-                if (successRate >= 0.85) grade = "5";
-                else if (successRate >= 0.70) grade = "4";
-                else if (successRate >= 0.50) grade = "3";
-                else grade = "2";
+                if (successRate >= 0.85) {
+                    grade = "5";
+                }
+                else if (successRate >= 0.70) {
+                    grade = "4";
+                }
+                else if (successRate >= 0.50) {
+                    grade = "3";
+                }
+                else {
+                    grade = "2";
+                }
             }
 
             rows.add(new SummaryRow(fio, scores, totalSum, activityStr, grade));

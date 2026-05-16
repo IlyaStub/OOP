@@ -1,10 +1,11 @@
 package ru.nsu.gstubarev.dsl.utils;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 
 /**
  * Parses XML test results.
@@ -35,10 +36,10 @@ public class TestParser {
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            DocumentBuilder builder = dbFactory.newDocumentBuilder();
 
             for (File xml : xmlFiles) {
-                Document doc = dBuilder.parse(xml);
+                Document doc = builder.parse(xml);
                 doc.getDocumentElement().normalize();
                 Element suite = (Element) doc.getElementsByTagName("testsuite").item(0);
 

@@ -97,8 +97,9 @@ public class Config {
      */
     @Override
     public String toString() {
-        return "Config{" +
-                "tasks=" + tasks +
-                '}';
+        return "Config{"
+                + "tasks="
+                + tasks
+                + '}';
     }
 }

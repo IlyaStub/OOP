@@ -1,9 +1,9 @@
 package ru.nsu.gstubarev.dsl.delegates;
 
-import ru.nsu.gstubarev.dsl.dataClasses.Checkpoint;
-import ru.nsu.gstubarev.dsl.dataClasses.Config;
 import java.time.LocalDate;
 import java.util.Map;
+import ru.nsu.gstubarev.dsl.dataClasses.Checkpoint;
+import ru.nsu.gstubarev.dsl.dataClasses.Config;
 
 /**
  * Configures checkpoint list entries.

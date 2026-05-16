@@ -46,6 +46,9 @@ public class GitService {
         }
     }
 
+    /**
+     * Method for get latest commit.
+     */
     public LocalDate getLatestCommitDate(File repoDir, String taskName) {
         ProcessBuilder pb =
                 new ProcessBuilder("git", "log", "-1", "--format=%cI", "--", taskName);

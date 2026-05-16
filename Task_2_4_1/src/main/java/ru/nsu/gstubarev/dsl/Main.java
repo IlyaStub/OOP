@@ -13,7 +13,6 @@ import ru.nsu.gstubarev.dsl.services.StyleChecker;
 import ru.nsu.gstubarev.dsl.services.ToolManager;
 import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
 import ru.nsu.gstubarev.dsl.utils.TestParser;
-
 import java.io.File;
 
 /**
@@ -27,7 +26,8 @@ public class Main {
         CompilerConfiguration compilerConfig = new CompilerConfiguration();
         compilerConfig.setScriptBaseClass(CourseScript.class.getName());
 
-        GroovyShell shell = new GroovyShell(Main.class.getClassLoader(), new Binding(), compilerConfig);
+        GroovyShell shell =
+                new GroovyShell(Main.class.getClassLoader(), new Binding(), compilerConfig);
 
         try {
             CourseScript script = (CourseScript) shell.parse(new File("conf.groovy"));

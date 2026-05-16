@@ -22,7 +22,9 @@ public class CheckResult {
      * Returns formatted test counters.
      */
     public String getTestsString() {
-        if (!compiled) return "-";
+        if (!compiled) {
+            return "-";
+        }
         return testsPassed + "/" + testsFailed + "/" + testsSkipped;
     }
 }
