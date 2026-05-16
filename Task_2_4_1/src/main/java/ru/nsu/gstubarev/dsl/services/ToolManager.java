@@ -35,6 +35,9 @@ public class ToolManager {
     }
 
     private Path ensureFile(String name, String url) throws IOException {
+        if (!Files.exists(toolsDir)) {
+            Files.createDirectories(toolsDir);
+        }
         Path target = toolsDir.resolve(name);
         try {
             if (!Files.exists(target)) {
