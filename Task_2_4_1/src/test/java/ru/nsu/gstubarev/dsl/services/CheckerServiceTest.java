@@ -36,8 +36,8 @@ public class CheckerServiceTest {
     public void testRunChecksEmptyTasks() {
         Config config = new Config();
         config.addGroup(new Group("20201"));
-
-        CheckerService checkerService = new CheckerService(mock(GitService.class), mock(BuildService.class));
+        CheckerService checkerService =
+                new CheckerService(mock(GitService.class), mock(BuildService.class));
         checkerService.runChecks(config);
     }
 
@@ -59,20 +59,20 @@ public class CheckerServiceTest {
     public void testRunChecksAfterSoftDeadline() {
         Student student = new Student("userGit", "Иванов", "link");
         LocalDate now = LocalDate.now();
-        Config config = createBaseConfig(student,
-                now.minusDays(2), now.plusDays(2));
 
         GitService gitService = mock(GitService.class);
         when(gitService.cloneRepository(anyString(), any())).thenReturn(true);
         when(gitService.getLatestCommitDate(any(), anyString())).thenReturn(now);
 
-        BuildService buildService = mock(BuildService.class);
         CheckResult cr = new CheckResult();
         cr.compiled = true;
         cr.withoutReviewDogs = true;
         cr.testsFailed = 0;
+        BuildService buildService = mock(BuildService.class);
         when(buildService.checkTask(any(), anyString())).thenReturn(cr);
 
+        Config config = createBaseConfig(student,
+                now.minusDays(2), now.plusDays(2));
         CheckerService checkerService = new CheckerService(gitService, buildService);
         checkerService.runChecks(config);
 
@@ -83,8 +83,6 @@ public class CheckerServiceTest {
     public void testRunChecksAfterHardDeadline() {
         Student student = new Student("userGit", "Иванов", "link");
         LocalDate now = LocalDate.now();
-        Config config = createBaseConfig(student,
-                now.minusDays(5), now.minusDays(2));
 
         GitService gitService = mock(GitService.class);
         when(gitService.cloneRepository(anyString(), any())).thenReturn(true);
@@ -97,6 +95,8 @@ public class CheckerServiceTest {
         BuildService buildService = mock(BuildService.class);
         when(buildService.checkTask(any(), anyString())).thenReturn(cr);
 
+        Config config = createBaseConfig(student,
+                now.minusDays(5), now.minusDays(2));
         CheckerService checkerService = new CheckerService(gitService, buildService);
         checkerService.runChecks(config);
 

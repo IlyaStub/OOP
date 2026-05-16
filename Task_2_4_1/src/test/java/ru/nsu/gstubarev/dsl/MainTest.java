@@ -1,34 +1,44 @@
 package ru.nsu.gstubarev.dsl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDate;
+import java.io.File;
+import java.nio.file.Files;
 import org.junit.jupiter.api.Test;
-import ru.nsu.gstubarev.dsl.dataclasses.Student;
-import ru.nsu.gstubarev.dsl.dataclasses.Task;
 
 /**
  * TEST.
  */
-class MainTest {
+public class MainTest {
     @Test
-    void testTaskCreation() {
-        LocalDate soft = LocalDate.parse("2024-05-10");
-        LocalDate hard = LocalDate.parse("2024-05-20");
+    public void testMainExecutesSuccessfully() throws Exception {
+        File confFile = new File("conf.groovy");
+        String groovyScript = "";
+        Files.writeString(confFile.toPath(), groovyScript);
 
-        Task task = new Task(1, "Task_2_4_1", 10, soft, hard);
+        String[] args = new String[0];
+        Main.main(args);
 
-        assertNotNull(task);
+        assertTrue(confFile.exists());
 
-        assertEquals(1L, task.getId());
-        assertEquals("Task_2_4_1", task.getName());
+        File reportFile = new File("report.html");
+        assertTrue(reportFile.exists());
+
+        confFile.delete();
+        reportFile.delete();
     }
 
     @Test
-    void testStudentCreation() {
-        Student student = new Student("IlyaStub", "Stubarev Ilya", "https://github.com/IlyaStub/repo");
+    public void testMainHandlesException() {
+        File confFile = new File("conf.groovy");
+        if (confFile.exists()) {
+            confFile.delete();
+        }
 
-        assertNotNull(student);
+        String[] args = new String[0];
+        Main.main(args);
+
+        assertFalse(confFile.exists());
     }
 }
