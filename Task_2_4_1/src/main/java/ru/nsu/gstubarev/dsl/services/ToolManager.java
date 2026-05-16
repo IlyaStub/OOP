@@ -1,7 +1,5 @@
 package ru.nsu.gstubarev.dsl.services;
 
-import ru.nsu.gstubarev.dsl.exceptions.ToolDownloadException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -9,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import ru.nsu.gstubarev.dsl.exceptions.ToolDownloadException;
 
 /**
  * Manages external tools required for task checking.
@@ -46,7 +45,8 @@ public class ToolManager {
             }
             return target;
         } catch (IOException e) {
-            throw new ToolDownloadException("Не удалось загрузить или сохранить инструмент " + name + " по URL: " + url, e);
+            throw new ToolDownloadException("Не удалось загрузить или сохранить инструмент "
+                    + name + " по URL: " + url, e);
         }
     }
 }

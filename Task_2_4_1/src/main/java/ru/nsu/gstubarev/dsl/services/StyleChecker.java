@@ -3,7 +3,6 @@ package ru.nsu.gstubarev.dsl.services;
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import ru.nsu.gstubarev.dsl.exceptions.StyleCheckException;
 import ru.nsu.gstubarev.dsl.utils.CommandExecutor;
 
