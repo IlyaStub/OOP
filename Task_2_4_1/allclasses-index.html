@@ -61,74 +61,124 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/BuildService.html" title="class in ru.nsu.gstubarev.dsl.services">BuildService</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Service for building and testing student tasks via Gradle.</div>
+<div class="block">Class with methods for building student's project.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/CheckerService.html" title="class in ru.nsu.gstubarev.dsl.services">CheckerService</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Checkpoint.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Checkpoint</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/CheckpointListConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">CheckpointListConfig</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/CheckResult.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">CheckResult</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Config.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Config</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/CourseScript.html" title="class in ru.nsu.gstubarev.dsl">CourseScript</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/GitService.html" title="class in ru.nsu.gstubarev.dsl.services">GitService</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Group.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Group</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/GroupConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">GroupConfig</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/GroupListConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">GroupListConfig</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/outputs/HtmlGenerator.html" title="class in ru.nsu.gstubarev.dsl.outputs">HtmlGenerator</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Orchestrates the full checking pipeline for students.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Checkpoint.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Checkpoint</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a control point.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/CheckpointListConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">CheckpointListConfig</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Configures checkpoint list entries.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/CheckResult.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">CheckResult</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Holds single task check result.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/utils/CommandExecutor.html" title="class in ru.nsu.gstubarev.dsl.utils">CommandExecutor</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Execute commands.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Config.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Config</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Stores course configuration data.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/CourseScript.html" title="class in ru.nsu.gstubarev.dsl">CourseScript</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Base class for Groovy DSL scripts.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/GitService.html" title="class in ru.nsu.gstubarev.dsl.services">GitService</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Class for work with git.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Group.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Group</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a student group.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/GroupConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">GroupConfig</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Configures single group contents.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/GroupListConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">GroupListConfig</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Configures group list entries.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/outputs/HtmlGenerator.html" title="class in ru.nsu.gstubarev.dsl.outputs">HtmlGenerator</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Class for html generation.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/Main.html" title="class in ru.nsu.gstubarev.dsl">Main</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/Main.html" title="class in ru.nsu.gstubarev.dsl">Main</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Main class.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
 <div class="block">Root container for report results.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.GroupData.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.GroupData</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.GroupData.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.GroupData</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
 <div class="block">Group data with tasks and summary.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.StudentRow.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.StudentRow</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.StudentRow.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.StudentRow</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
 <div class="block">Student assessment details.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.SummaryRow.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.SummaryRow</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.SummaryRow.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.SummaryRow</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
 <div class="block">Student summary row.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.SummaryTable.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.SummaryTable</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.SummaryTable.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.SummaryTable</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
 <div class="block">Aggregated results summary.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.TaskTable.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.TaskTable</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab4">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab4"><a href="ru/nsu/gstubarev/dsl/dataClasses/ReportData.TaskTable.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">ReportData.TaskTable</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab4">
 <div class="block">Task evaluation table.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/ReportDataService.html" title="class in ru.nsu.gstubarev.dsl.services">ReportDataService</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/ReportDataService.html" title="class in ru.nsu.gstubarev.dsl.services">ReportDataService</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Service for collecting and building report data.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="ru/nsu/gstubarev/dsl/outputs/ReportGenerator.html" title="interface in ru.nsu.gstubarev.dsl.outputs">ReportGenerator</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="ru/nsu/gstubarev/dsl/outputs/ReportGenerator.html" title="interface in ru.nsu.gstubarev.dsl.outputs">ReportGenerator</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">The interface that the classes implement for generating the report.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/RunCommandConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">RunCommandConfig</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Student.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Student</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/RunCommandConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">RunCommandConfig</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Configures run commands and bonuses.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Student.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Student</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a single student.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/StyleChecker.html" title="class in ru.nsu.gstubarev.dsl.services">StyleChecker</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Checks code style using Checkstyle.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/dataClasses/Task.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Task</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a course task.</div>
+</div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/delegates/TaskListConfig.html" title="class in ru.nsu.gstubarev.dsl.delegates">TaskListConfig</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">&nbsp;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Configures task list entries.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/utils/TestParser.html" title="class in ru.nsu.gstubarev.dsl.utils">TestParser</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Parses XML test results.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/utils/TestParser.TestStats.html" title="class in ru.nsu.gstubarev.dsl.utils">TestParser.TestStats</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Holds aggregated test counts.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/dsl/services/ToolManager.html" title="class in ru.nsu.gstubarev.dsl.services">ToolManager</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Manages external tools required for task checking.</div>
+</div>
 </div>
 </div>
 </div>

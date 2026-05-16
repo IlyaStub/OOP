@@ -85,6 +85,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">CourseScript</span>
 <span class="extends-implements">extends groovy.lang.Script</span></div>
+<div class="block">Base class for Groovy DSL scripts.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -115,19 +116,29 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#command(java.lang.String,groovy.lang.Closure)" class="member-name-link">command</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;commandName,
  groovy.lang.Closure&lt;?&gt;&nbsp;closure)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Registers a run command.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#declareCheckpoints(groovy.lang.Closure)" class="member-name-link">declareCheckpoints</a><wbr>(groovy.lang.Closure&lt;?&gt;&nbsp;closure)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Declares checkpoint definitions.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#declareGroups(groovy.lang.Closure)" class="member-name-link">declareGroups</a><wbr>(groovy.lang.Closure&lt;?&gt;&nbsp;closure)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Declares group definitions.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#declareTasks(groovy.lang.Closure)" class="member-name-link">declareTasks</a><wbr>(groovy.lang.Closure&lt;?&gt;&nbsp;closure)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Declares task definitions.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="dataClasses/Config.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Config</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getConfig()" class="member-name-link">getConfig</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns course configuration.</div>
+</div>
 </div>
 </div>
 </div>
@@ -169,24 +180,28 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getConfig()">
 <h3>getConfig</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="dataClasses/Config.html" title="class in ru.nsu.gstubarev.dsl.dataClasses">Config</a></span>&nbsp;<span class="element-name">getConfig</span>()</div>
+<div class="block">Returns course configuration.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="declareTasks(groovy.lang.Closure)">
 <h3>declareTasks</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">declareTasks</span><wbr><span class="parameters">(groovy.lang.Closure&lt;?&gt;&nbsp;closure)</span></div>
+<div class="block">Declares task definitions.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="declareGroups(groovy.lang.Closure)">
 <h3>declareGroups</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">declareGroups</span><wbr><span class="parameters">(groovy.lang.Closure&lt;?&gt;&nbsp;closure)</span></div>
+<div class="block">Declares group definitions.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="declareCheckpoints(groovy.lang.Closure)">
 <h3>declareCheckpoints</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">declareCheckpoints</span><wbr><span class="parameters">(groovy.lang.Closure&lt;?&gt;&nbsp;closure)</span></div>
+<div class="block">Declares checkpoint definitions.</div>
 </section>
 </li>
 <li>
@@ -194,6 +209,7 @@ loadScripts(document, 'script');</script>
 <h3>command</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">command</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;commandName,
  groovy.lang.Closure&lt;?&gt;&nbsp;closure)</span></div>
+<div class="block">Registers a run command.</div>
 </section>
 </li>
 </ul>
