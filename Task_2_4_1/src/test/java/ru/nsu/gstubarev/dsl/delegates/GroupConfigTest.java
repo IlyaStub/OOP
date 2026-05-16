@@ -16,13 +16,12 @@ public class GroupConfigTest {
     @Test
     public void testAddStudent() {
         Group group = new Group("20201");
-        GroupConfig config = new GroupConfig(group);
 
         Map<String, String> params = new HashMap<>();
         params.put("nameGit", "user123");
         params.put("fio", "Ivanov Ivan");
         params.put("repoLink", "https://github.com/user123");
-
+        GroupConfig config = new GroupConfig(group);
         config.addStudent(params);
         assertEquals(1, group.getStudents().size());
 

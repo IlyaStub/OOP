@@ -17,7 +17,6 @@ public class TaskListConfigTest {
     @Test
     public void testAddTask() {
         Config config = new Config();
-        TaskListConfig delegate = new TaskListConfig(config);
 
         Map<String, Object> params = new HashMap<>();
         params.put("id", 1);
@@ -26,6 +25,7 @@ public class TaskListConfigTest {
         params.put("softDeadline", "2024-01-01");
         params.put("hardDeadline", "2024-01-10");
 
+        TaskListConfig delegate = new TaskListConfig(config);
         delegate.addTask(params);
         Task task = config.getTaskById(1);
 

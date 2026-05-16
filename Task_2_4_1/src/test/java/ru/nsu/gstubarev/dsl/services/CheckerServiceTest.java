@@ -57,7 +57,6 @@ public class CheckerServiceTest {
 
     @Test
     public void testRunChecksAfterSoftDeadline() {
-        Student student = new Student("userGit", "Иванов", "link");
         LocalDate now = LocalDate.now();
 
         GitService gitService = mock(GitService.class);
@@ -70,7 +69,7 @@ public class CheckerServiceTest {
         cr.testsFailed = 0;
         BuildService buildService = mock(BuildService.class);
         when(buildService.checkTask(any(), anyString())).thenReturn(cr);
-
+        Student student = new Student("userGit", "Иванов", "link");
         Config config = createBaseConfig(student,
                 now.minusDays(2), now.plusDays(2));
         CheckerService checkerService = new CheckerService(gitService, buildService);
@@ -81,7 +80,6 @@ public class CheckerServiceTest {
 
     @Test
     public void testRunChecksAfterHardDeadline() {
-        Student student = new Student("userGit", "Иванов", "link");
         LocalDate now = LocalDate.now();
 
         GitService gitService = mock(GitService.class);
@@ -94,7 +92,7 @@ public class CheckerServiceTest {
         cr.testsFailed = 0;
         BuildService buildService = mock(BuildService.class);
         when(buildService.checkTask(any(), anyString())).thenReturn(cr);
-
+        Student student = new Student("userGit", "Иванов", "link");
         Config config = createBaseConfig(student,
                 now.minusDays(5), now.minusDays(2));
         CheckerService checkerService = new CheckerService(gitService, buildService);

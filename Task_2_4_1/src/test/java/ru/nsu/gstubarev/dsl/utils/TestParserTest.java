@@ -17,7 +17,8 @@ public class TestParserTest {
         File dir = Files.createTempDirectory("test-results").toFile();
 
         File xmlFile = new File(dir, "TEST-result.xml");
-        String xmlData = "<testsuite tests=\"10\" failures=\"2\" errors=\"1\" skipped=\"1\"></testsuite>";
+        String xmlData = "<testsuite"
+                + " tests=\"10\" failures=\"2\" errors=\"1\" skipped=\"1\"></testsuite>";
         Files.writeString(xmlFile.toPath(), xmlData);
 
         TestParser.TestStats stats = parser.parse(dir);
