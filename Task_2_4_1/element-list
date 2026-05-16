@@ -1,6 +1,7 @@
 ru.nsu.gstubarev.dsl
 ru.nsu.gstubarev.dsl.dataclasses
 ru.nsu.gstubarev.dsl.delegates
+ru.nsu.gstubarev.dsl.exceptions
 ru.nsu.gstubarev.dsl.outputs
 ru.nsu.gstubarev.dsl.services
 ru.nsu.gstubarev.dsl.utils
