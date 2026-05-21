@@ -170,4 +170,63 @@ class WorkerTest {
             }
         }
     }
+
+    @Test
+    void testAcceptExceptionWhenNotRunning() throws IOException, InterruptedException {
+        worker.stop();
+        Thread.sleep(100);
+        assertThrows(IOException.class, () -> {
+            new Socket("localhost", PORT);
+        });
+    }
+
+    @Test
+    void testWorkerStartTwice() throws IOException, InterruptedException {
+        worker.stop();
+        Thread.sleep(100);
+        assertDoesNotThrow(() -> worker.start());
+        worker.stop();
+    }
+
+    @Test
+    void testCheckSinglePrime() throws IOException {
+        try (Socket socket = new Socket("localhost", PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             )
+        ) {
+            out.println("CHECK 17");
+            String response = in.readLine();
+            assertEquals("RESULT false", response);
+        }
+    }
+
+    @Test
+    void testCheckSingleComposite() throws IOException {
+        try (Socket socket = new Socket("localhost", PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             )
+        ) {
+            out.println("CHECK 4");
+            String response = in.readLine();
+            assertEquals("RESULT true", response);
+        }
+    }
+
+    @Test
+    void testHandleConnectionWithEmptyLine() throws IOException {
+        try (Socket socket = new Socket("localhost", PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             )
+        ) {
+            out.println("");
+            String response = in.readLine();
+            assertEquals(null, response);
+        }
+    }
 }
