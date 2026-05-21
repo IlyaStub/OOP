@@ -47,7 +47,6 @@ public class Worker {
                 if (!running) {
                     break;
                 }
-                System.err.println("Accept error: " + e.getMessage());
             }
         }
     }
