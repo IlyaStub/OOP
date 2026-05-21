@@ -82,6 +82,40 @@ class WorkerTest {
     }
 
     @Test
+    void testHandleConnectionWithNullLine() throws IOException, InterruptedException {
+        try (Socket socket = new Socket("localhost", PORT)) {
+            socket.shutdownOutput();
+        }
+        Thread.sleep(100);
+        try (Socket socket = new Socket("localhost", PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             )
+        ) {
+            out.println(Command.PING.getText());
+            assertEquals(Command.PONG.getText(), in.readLine());
+        }
+    }
+
+    @Test
+    void testHandleConnectionIOException() throws IOException, InterruptedException {
+        try (Socket socket = new Socket("localhost", PORT)) {
+            socket.close();
+        }
+        Thread.sleep(100);
+        try (Socket socket = new Socket("localhost", PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             )
+        ) {
+            out.println(Command.PING.getText());
+            assertEquals(Command.PONG.getText(), in.readLine());
+        }
+    }
+
+    @Test
     void testCheckAllPrimesReturnsFalse() throws IOException {
         try (Socket socket = new Socket("localhost", PORT);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

@@ -8,7 +8,14 @@ import ru.nsu.gstubarev.topology.worker.Worker;
  */
 public class Main {
 
-    private static final int STARTUP_WAIT_MS = 10000;
+    private static int startupWaitMs = 10000;
+
+    /**
+     * Sets startup wait time. For testing only.
+     */
+    public static void setStartupWaitMs(int ms) {
+        startupWaitMs = ms;
+    }
 
     /**
      * Application entry point.
@@ -34,9 +41,9 @@ public class Main {
         Master master = new Master(registrationPort);
         master.startRegistrationListener();
 
-        System.out.println("Waiting " + STARTUP_WAIT_MS + "ms for workers to connect...");
+        System.out.println("Waiting " + startupWaitMs + "ms for workers to connect...");
         try {
-            Thread.sleep(STARTUP_WAIT_MS);
+            Thread.sleep(startupWaitMs);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

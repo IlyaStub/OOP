@@ -77,7 +77,7 @@ class MasterTest {
         registerWorker();
 
         assertFalse(master.hasComposite(new long[]{
-                20319251L, 6997901L, 6997927L, 6997937L
+            20319251L, 6997901L, 6997927L, 6997937L
         }));
     }
 
