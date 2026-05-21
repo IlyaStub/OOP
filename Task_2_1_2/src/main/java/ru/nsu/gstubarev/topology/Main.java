@@ -25,9 +25,6 @@ public class Main {
         }
     }
 
-    /**
-     * Starts the master node and runs demo task after workers connect.
-     */
     private static void runMaster(String[] args) {
         if (args.length < 2) {
             System.err.println("Usage: master <registrationPort>");
@@ -118,9 +115,6 @@ public class Main {
         }
     }
 
-    /**
-     * Starts worker node and registers it with the master.
-     */
     private static void runWorker(String[] args) {
         if (args.length < 4) {
             System.err.println("Usage: worker <masterHost> <masterPort> <workerPort>");
