@@ -18,6 +18,7 @@ public class Master {
     private final WorkerRegistry registry;
     private final TaskDistributor distributor;
     private volatile boolean running;
+    private ServerSocket serverSocket;
 
     /**
      * Creates a Master that listens for worker registrations on the given port.
@@ -43,7 +44,8 @@ public class Master {
      * Accepts worker registration connections until stopped.
      */
     private void listenForRegistrations() {
-        try (ServerSocket serverSocket = new ServerSocket(registrationPort)) {
+        try {
+            serverSocket = new ServerSocket(registrationPort);
             while (running) {
                 Socket socket = serverSocket.accept();
                 new Thread(() -> handleRegistration(socket)).start();
@@ -52,6 +54,14 @@ public class Master {
             if (running) {
                 System.err.println("Registration listener error: " + e.getMessage());
             }
+        } finally {
+            if (serverSocket != null && !serverSocket.isClosed()) {
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    System.err.println("Error closing socket: " + e.getMessage());
+                }
+            }
         }
     }
 
@@ -59,12 +69,11 @@ public class Master {
      * Handles a single worker registration request.
      */
     private void handleRegistration(Socket socket) {
-        try (
-                socket;
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(socket.getInputStream())
-                );
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+        try (socket;
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             );
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
         ) {
             String line = in.readLine();
             if (line == null || !line.startsWith(Command.REGISTER.getText())) {
@@ -96,5 +105,12 @@ public class Master {
      */
     public void stop() {
         running = false;
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                System.err.println("Error closing server socket: " + e.getMessage());
+            }
+        }
     }
 }

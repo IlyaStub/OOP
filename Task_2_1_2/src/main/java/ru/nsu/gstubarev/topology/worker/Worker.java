@@ -15,6 +15,7 @@ public class Worker {
     private final int port;
     private final CommandHandler handler;
     private volatile boolean running;
+    private ServerSocket serverSocket;
 
     /**
      * Constructor for Worker.
@@ -36,11 +37,17 @@ public class Worker {
      * Starts listening for incoming task connections.
      */
     public void start() throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Worker listening on port " + port);
-            while (running) {
+        serverSocket = new ServerSocket(port);
+        System.out.println("Worker listening on port " + port);
+        while (running) {
+            try {
                 Socket client = serverSocket.accept();
                 new Thread(() -> handleConnection(client)).start();
+            } catch (IOException e) {
+                if (!running) {
+                    break;
+                }
+                System.err.println("Accept error: " + e.getMessage());
             }
         }
     }
@@ -67,5 +74,12 @@ public class Worker {
      */
     public void stop() {
         running = false;
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                System.err.println("Error closing server socket: " + e.getMessage());
+            }
+        }
     }
 }
