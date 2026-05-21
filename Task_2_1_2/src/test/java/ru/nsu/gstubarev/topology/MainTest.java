@@ -48,7 +48,7 @@ class MainTest {
     @Test
     void testRunWorkerInvalidHostLogsError() {
         assertDoesNotThrow(() ->
-                Main.main(new String[]{"worker", "invalid-host", "9999", "19401"})
+            Main.main(new String[]{"worker", "invalid-host", "9999", "19401"})
         );
     }
 }

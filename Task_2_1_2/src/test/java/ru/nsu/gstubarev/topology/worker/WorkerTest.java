@@ -99,7 +99,7 @@ class WorkerTest {
     }
 
     @Test
-    void testHandleConnectionIOException() throws IOException, InterruptedException {
+    void testHandleConnectionIoException() throws IOException, InterruptedException {
         try (Socket socket = new Socket("localhost", PORT)) {
             socket.close();
         }
@@ -141,6 +141,19 @@ class WorkerTest {
             String response = in.readLine();
             assertEquals("RESULT true", response);
         }
+    }
+
+    @Test
+    void testStopClosesServerSocket() throws InterruptedException {
+        worker.stop();
+        Thread.sleep(100);
+        assertDoesNotThrow(worker::stop);
+    }
+
+    @Test
+    void testStopBeforeStart() {
+        Worker w = new Worker(19998);
+        assertDoesNotThrow(w::stop);
     }
 
     @Test
