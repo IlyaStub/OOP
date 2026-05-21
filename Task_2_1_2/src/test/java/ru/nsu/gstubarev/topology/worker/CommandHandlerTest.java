@@ -2,8 +2,8 @@ package ru.nsu.gstubarev.topology.worker;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import org.junit.jupiter.api.Test;
 
 /**
