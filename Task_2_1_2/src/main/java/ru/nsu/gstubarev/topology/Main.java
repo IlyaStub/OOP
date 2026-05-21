@@ -1,0 +1,148 @@
+package ru.nsu.gstubarev.topology;
+
+import ru.nsu.gstubarev.topology.master.Master;
+import ru.nsu.gstubarev.topology.worker.Worker;
+
+/**
+ * Main class.
+ */
+public class Main {
+
+    private static final int STARTUP_WAIT_MS = 10000;
+
+    /**
+     * Application entry point.
+     */
+    public static void main(String[] args) {
+        if (args.length < 1) {
+            printUsage();
+            return;
+        }
+        switch (args[0]) {
+            case "master" -> runMaster(args);
+            case "worker" -> runWorker(args);
+            default -> printUsage();
+        }
+    }
+
+    /**
+     * Starts the master node and runs demo task after workers connect.
+     */
+    private static void runMaster(String[] args) {
+        if (args.length < 2) {
+            System.err.println("Usage: master <registrationPort>");
+            return;
+        }
+        int registrationPort = Integer.parseInt(args[1]);
+        Master master = new Master(registrationPort);
+        master.startRegistrationListener();
+
+        System.out.println("Waiting " + STARTUP_WAIT_MS + "ms for workers to connect...");
+        try {
+            Thread.sleep(STARTUP_WAIT_MS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        long[] testArray = {
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L,
+                20319251L, 6997901L, 6997927L, 6997937L,
+                17858849L, 6997967L, 6998009L, 6998029L,
+                6998039L, 20165149L, 6998051L, 6998053L
+        };
+
+        try {
+            boolean result = master.hasComposite(testArray);
+            System.out.println("Has composite: " + result);
+        } catch (IllegalStateException e) {
+            System.err.println("Computation failed: " + e.getMessage());
+        } finally {
+            master.stop();
+        }
+    }
+
+    /**
+     * Starts worker node and registers it with the master.
+     */
+    private static void runWorker(String[] args) {
+        if (args.length < 4) {
+            System.err.println("Usage: worker <masterHost> <masterPort> <workerPort>");
+            return;
+        }
+        String masterHost = args[1];
+        int masterPort = Integer.parseInt(args[2]);
+        int workerPort = Integer.parseInt(args[3]);
+
+        Worker worker = new Worker(workerPort);
+
+        try {
+            worker.register(masterHost, masterPort);
+            worker.start();
+        } catch (Exception e) {
+            System.err.println("Worker error: " + e.getMessage());
+        }
+    }
+
+    private static void printUsage() {
+        System.out.println("Usage:");
+        System.out.println("  master <registrationPort>");
+        System.out.println("  worker <masterHost> <masterPort> <workerPort>");
+    }
+}
