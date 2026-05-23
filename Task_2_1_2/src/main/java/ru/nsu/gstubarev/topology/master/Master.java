@@ -97,7 +97,12 @@ public class Master {
             throw new IllegalStateException("No alive workers available");
         }
         long[][] chunks = ArraySplitter.split(array, alive.size());
-        return distributor.distribute(chunks, alive);
+        try {
+            return distributor.distribute(chunks, alive);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Computation interrupted", e);
+        }
     }
 
     /**

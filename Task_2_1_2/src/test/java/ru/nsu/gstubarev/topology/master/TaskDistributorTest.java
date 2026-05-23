@@ -22,7 +22,7 @@ class TaskDistributorTest {
     private static final int SLEEP_MS = 100;
 
     @Test
-    void testDistributeWithEmptyChunks() {
+    void testDistributeWithEmptyChunks() throws InterruptedException {
         TaskDistributor distributor = new TaskDistributor();
         long[][] chunks = {new long[0], new long[0]};
         List<WorkerInfo> workers = new ArrayList<>();
@@ -32,7 +32,7 @@ class TaskDistributorTest {
     }
 
     @Test
-    void testDistributeAllChunksEmpty() {
+    void testDistributeAllChunksEmpty() throws InterruptedException {
         TaskDistributor distributor = new TaskDistributor();
         long[][] chunks = {new long[0], new long[0], new long[0]};
         List<WorkerInfo> workers = List.of(new WorkerInfo("localhost", 9999));

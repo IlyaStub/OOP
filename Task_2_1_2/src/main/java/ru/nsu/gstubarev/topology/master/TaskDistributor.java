@@ -6,30 +6,71 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicBoolean;
 import ru.nsu.gstubarev.topology.MessageParser;
 
 /**
  * Distributes array chunks to workers and collects results.
  */
 public class TaskDistributor {
+    private final int connectTimeoutMs;
+    private final int readTimeoutMs;
 
-    private static final int CONNECT_TIMEOUT_MS = 3000;
-    private static final int READ_TIMEOUT_MS = 10000;
+    /**
+     * Default constructor.
+     */
+    public TaskDistributor() {
+        this(3000, 10000);
+    }
+
+    /**
+     * Custom constructor.
+     */
+    public TaskDistributor(int connectTimeoutMs, int readTimeoutMs) {
+        this.connectTimeoutMs = connectTimeoutMs;
+        this.readTimeoutMs = readTimeoutMs;
+    }
 
     /**
      * Sends chunks to workers and returns true if any composite number found.
      */
-    public boolean distribute(long[][] chunks, List<WorkerInfo> workers) {
+    public boolean distribute(long[][] chunks, List<WorkerInfo> workers)
+            throws InterruptedException {
+        if (workers.isEmpty()) {
+            throw new IllegalStateException("No workers available");
+        }
+
+        ExecutorService executor = Executors.newFixedThreadPool(workers.size());
+        AtomicBoolean result = new AtomicBoolean(false);
+        List<Future<?>> futures = new ArrayList<>();
+
         for (int i = 0; i < chunks.length; i++) {
             if (chunks[i].length == 0) {
                 continue;
             }
-            if (sendWithFallback(chunks[i], workers, i)) {
-                return true;
+            final int index = i;
+            futures.add(executor.submit(() -> {
+                if (sendWithFallback(chunks[index], workers, index)) {
+                    result.set(true);
+                }
+            }));
+        }
+
+        for (Future<?> f : futures) {
+            try {
+                f.get();
+            } catch (ExecutionException e) {
+                throw new IllegalStateException("Worker failed", e.getCause());
             }
         }
-        return false;
+        executor.shutdown();
+        return result.get();
     }
 
     /**
@@ -58,9 +99,9 @@ public class TaskDistributor {
         try (Socket socket = new Socket()) {
             socket.connect(
                     new InetSocketAddress(worker.getHost(), worker.getPort()),
-                    CONNECT_TIMEOUT_MS
+                    connectTimeoutMs
             );
-            socket.setSoTimeout(READ_TIMEOUT_MS);
+            socket.setSoTimeout(readTimeoutMs);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(socket.getInputStream())

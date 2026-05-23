@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
  * Test.
  */
 class MainTest {
-
     @BeforeEach
     void setUp() {
         Main.setStartupWaitMs(100);
