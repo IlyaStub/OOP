@@ -90,7 +90,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">TaskDistributor</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Default constructor.</div>
+</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(int,int)" class="member-name-link">TaskDistributor</a><wbr>(int&nbsp;connectTimeoutMs,
+ int&nbsp;readTimeoutMs)</code></div>
+<div class="col-last odd-row-color">
+<div class="block">Custom constructor.</div>
+</div>
 </div>
 </section>
 </li>
@@ -132,6 +139,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;()">
 <h3>TaskDistributor</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TaskDistributor</span>()</div>
+<div class="block">Default constructor.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(int,int)">
+<h3>TaskDistributor</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TaskDistributor</span><wbr><span class="parameters">(int&nbsp;connectTimeoutMs,
+ int&nbsp;readTimeoutMs)</span></div>
+<div class="block">Custom constructor.</div>
 </section>
 </li>
 </ul>
@@ -146,8 +162,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="distribute(long[][],java.util.List)">
 <h3>distribute</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">distribute</span><wbr><span class="parameters">(long[][]&nbsp;chunks,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a>&gt;&nbsp;workers)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a>&gt;&nbsp;workers)</span>
+                   throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
 <div class="block">Sends chunks to workers and returns true if any composite number found.</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code></dd>
+</dl>
 </section>
 </li>
 </ul>
