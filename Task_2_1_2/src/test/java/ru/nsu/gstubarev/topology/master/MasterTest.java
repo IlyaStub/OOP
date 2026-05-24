@@ -114,7 +114,7 @@ class MasterTest {
                         new InputStreamReader(socket.getInputStream())
                 )
         ) {
-            out.println(Command.REGISTER.getText() + " " + WORKER_PORT);
+            out.println(Command.REGISTER.getText() + " localhost " + WORKER_PORT);
             in.readLine();
         }
         Thread.sleep(SLEEP_MS);
