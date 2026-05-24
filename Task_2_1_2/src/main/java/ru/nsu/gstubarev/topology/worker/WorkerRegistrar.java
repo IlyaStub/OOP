@@ -36,7 +36,8 @@ public class WorkerRegistrar {
                         new InputStreamReader(socket.getInputStream())
                 )
         ) {
-            out.println(Command.REGISTER.getText() + " " + workerPort);
+            String localIp = socket.getLocalAddress().getHostAddress();
+            out.println(Command.REGISTER.getText() + " " + localIp + " " + workerPort);
             String response = in.readLine();
             if (!Command.OK.getText().equals(response)) {
                 throw new IOException("Registration rejected: " + response);

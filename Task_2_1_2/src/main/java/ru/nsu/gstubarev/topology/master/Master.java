@@ -79,8 +79,9 @@ public class Master {
             if (line == null || !line.startsWith(Command.REGISTER.getText())) {
                 return;
             }
-            int workerPort = Integer.parseInt(line.split(" ")[1].trim());
-            String workerHost = socket.getInetAddress().getHostAddress();
+            String[] parts = line.split(" ");
+            String workerHost = parts[1].trim();
+            int workerPort = Integer.parseInt(parts[2].trim());
             registry.register(workerHost, workerPort);
             out.println(Command.OK.getText());
         } catch (IOException | NumberFormatException e) {
