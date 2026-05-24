@@ -92,6 +92,27 @@ class MasterTest {
         );
     }
 
+    @Test
+    void testRegistrationWithNullLine() throws IOException, InterruptedException {
+        try (Socket socket = new Socket("localhost", MASTER_PORT)) {
+            socket.shutdownOutput();
+        }
+        Thread.sleep(100);
+        assertDoesNotThrow(master::stop);
+    }
+
+    @Test
+    void testRegistrationWithInvalidCommand() throws IOException, InterruptedException {
+        try (
+                Socket socket = new Socket("localhost", MASTER_PORT);
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+        ) {
+            out.println("INVALID COMMAND");
+        }
+        Thread.sleep(100);
+        assertDoesNotThrow(master::stop);
+    }
+
     private void startWorker() throws InterruptedException {
         worker = new Worker(WORKER_PORT);
         workerThread = new Thread(() -> {
