@@ -1,0 +1,64 @@
+package ru.nsu.gstubarev.dsl.utils;
+
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import ru.nsu.gstubarev.dsl.exceptions.TestParsingException;
+
+
+/**
+ * Parses XML test results.
+ */
+public class TestParser {
+    /**
+     * Holds aggregated test counts.
+     */
+    public static class TestStats {
+        public int passed = 0;
+        public int failed = 0;
+        public int skipped = 0;
+    }
+
+    /**
+     * Parses test XML files.
+     */
+    public TestStats parse(File resultsDir) {
+        TestStats stats = new TestStats();
+        if (!resultsDir.exists() || !resultsDir.isDirectory()) {
+            return stats;
+        }
+
+        File[] xmlFiles = resultsDir.listFiles((dir, name) -> name.endsWith(".xml"));
+        if (xmlFiles == null) {
+            return stats;
+        }
+
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = dbFactory.newDocumentBuilder();
+
+            for (File xml : xmlFiles) {
+                Document doc = builder.parse(xml);
+                doc.getDocumentElement().normalize();
+                Element suite = (Element) doc.getElementsByTagName("testsuite").item(0);
+
+                if (suite != null) {
+                    int tests = Integer.parseInt(suite.getAttribute("tests"));
+                    int failures = Integer.parseInt(suite.getAttribute("failures"));
+                    int errors = Integer.parseInt(suite.getAttribute("errors"));
+                    int skipped = Integer.parseInt(suite.getAttribute("skipped"));
+
+                    stats.failed += (failures + errors);
+                    stats.skipped += skipped;
+                    stats.passed += (tests - failures - errors - skipped);
+                }
+            }
+        } catch (Exception e) {
+            throw new TestParsingException("Не удалось распарсить XML тестов в директории: "
+                    + resultsDir, e);
+        }
+        return stats;
+    }
+}
