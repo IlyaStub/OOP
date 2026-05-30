@@ -1,0 +1,87 @@
+package ru.nsu.gstubarev.topology.worker;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import ru.nsu.gstubarev.topology.master.MasterInfo;
+
+/**
+ * Worker node that listens for tasks from Master and checks numbers for primality.
+ */
+public class Worker {
+
+    private final int port;
+    private final CommandHandler handler;
+    private volatile boolean running;
+    private ServerSocket serverSocket;
+
+    /**
+     * Constructor for Worker.
+     */
+    public Worker(int port) {
+        this.port = port;
+        this.handler = new CommandHandler();
+        this.running = true;
+    }
+
+    /**
+     * Discovers master via UDP broadcast and registers with it.
+     */
+    public void discoverAndRegister(int udpPort, int timeoutMs) throws IOException {
+        WorkerDiscovery discovery = new WorkerDiscovery(udpPort, timeoutMs);
+        MasterInfo master = discovery.discover();
+        new WorkerRegistrar(master.getHost(), master.getPort(), port).register();
+    }
+
+    /**
+     * Starts listening for incoming task connections.
+     */
+    public void start() throws IOException {
+        serverSocket = new ServerSocket(port);
+        System.out.println("Worker listening on port " + port);
+        while (running) {
+            try {
+                Socket client = serverSocket.accept();
+                new Thread(() -> handleConnection(client)).start();
+            } catch (IOException e) {
+                if (!running) {
+                    break;
+                }
+            }
+        }
+    }
+
+    private void handleConnection(Socket socket) {
+        try (socket;
+             BufferedReader in = new BufferedReader(
+                     new InputStreamReader(socket.getInputStream())
+             );
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
+        ) {
+            String line = in.readLine();
+            if (line == null) {
+                return;
+            }
+            handler.handle(line, out);
+        } catch (IOException e) {
+            System.err.println("Worker connection error: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Stops the worker gracefully.
+     */
+    public void stop() {
+        running = false;
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                System.err.println("Error closing server socket: " + e.getMessage());
+            }
+        }
+    }
+}
