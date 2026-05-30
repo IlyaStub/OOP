@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import ru.nsu.gstubarev.topology.master.MasterInfo;
 
 /**
  * Worker node that listens for tasks from Master and checks numbers for primality.
@@ -27,10 +28,12 @@ public class Worker {
     }
 
     /**
-     * Registers this worker with the master node.
+     * Discovers master via UDP broadcast and registers with it.
      */
-    public void register(String masterHost, int masterPort) throws IOException {
-        new WorkerRegistrar(masterHost, masterPort, port).register();
+    public void discoverAndRegister(int udpPort, int timeoutMs) throws IOException {
+        WorkerDiscovery discovery = new WorkerDiscovery(udpPort, timeoutMs);
+        MasterInfo master = discovery.discover();
+        new WorkerRegistrar(master.getHost(), master.getPort(), port).register();
     }
 
     /**

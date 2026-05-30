@@ -7,8 +7,10 @@ import ru.nsu.gstubarev.topology.worker.Worker;
  * Main class.
  */
 public class Main {
+    private static final int UDP_PORT = 9001;
+    private static final int DISCOVERY_TIMEOUT_MS = 30000;
 
-    private static int startupWaitMs = 10000;
+    private static int startupWaitMs = 15000;
 
     /**
      * Sets startup wait time. For testing only.
@@ -38,7 +40,7 @@ public class Main {
             return;
         }
         int registrationPort = Integer.parseInt(args[1]);
-        Master master = new Master(registrationPort);
+        Master master = new Master(registrationPort, UDP_PORT);
         master.startRegistrationListener();
 
         System.out.println("Waiting " + startupWaitMs + "ms for workers to connect...");
@@ -63,18 +65,15 @@ public class Main {
     }
 
     private static void runWorker(String[] args) {
-        if (args.length < 4) {
-            System.err.println("Usage: worker <masterHost> <masterPort> <workerPort>");
+        if (args.length < 2) {
+            System.err.println("Usage: worker <workerPort>");
             return;
         }
-        String masterHost = args[1];
-        int masterPort = Integer.parseInt(args[2]);
-        int workerPort = Integer.parseInt(args[3]);
-
+        int workerPort = Integer.parseInt(args[1]);
         Worker worker = new Worker(workerPort);
 
         try {
-            worker.register(masterHost, masterPort);
+            worker.discoverAndRegister(UDP_PORT, DISCOVERY_TIMEOUT_MS);
             worker.start();
         } catch (Exception e) {
             System.err.println("Worker error: " + e.getMessage());

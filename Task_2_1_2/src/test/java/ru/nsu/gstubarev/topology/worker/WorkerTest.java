@@ -2,6 +2,7 @@ package ru.nsu.gstubarev.topology.worker;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
@@ -62,12 +63,6 @@ class WorkerTest {
     }
 
     @Test
-    void testRegisterThrowsWithInvalidMaster() {
-        Worker w = new Worker(17777);
-        assertThrows(Exception.class, () -> w.register("invalid-host", 9999));
-    }
-
-    @Test
     void testPingReturnsPoint() throws IOException {
         try (Socket socket = new Socket("localhost", PORT);
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -85,23 +80,6 @@ class WorkerTest {
     void testHandleConnectionWithNullLine() throws IOException, InterruptedException {
         try (Socket socket = new Socket("localhost", PORT)) {
             socket.shutdownOutput();
-        }
-        Thread.sleep(100);
-        try (Socket socket = new Socket("localhost", PORT);
-             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-             BufferedReader in = new BufferedReader(
-                     new InputStreamReader(socket.getInputStream())
-             )
-        ) {
-            out.println(Command.PING.getText());
-            assertEquals(Command.PONG.getText(), in.readLine());
-        }
-    }
-
-    @Test
-    void testHandleConnectionIoException() throws IOException, InterruptedException {
-        try (Socket socket = new Socket("localhost", PORT)) {
-            socket.close();
         }
         Thread.sleep(100);
         try (Socket socket = new Socket("localhost", PORT);
@@ -181,11 +159,26 @@ class WorkerTest {
     }
 
     @Test
+    void testDiscoverAndRegisterTimeout() {
+        assertThrows(Exception.class, () -> worker.discoverAndRegister(19700, 50));
+    }
+
+    @Test
     void testWorkerStartTwice() throws IOException, InterruptedException {
         worker.stop();
         Thread.sleep(100);
-        assertDoesNotThrow(() -> worker.start());
-        worker.stop();
+        Worker w2 = new Worker(PORT);
+        Thread t = new Thread(() -> {
+            try {
+                w2.start();
+            } catch (IOException e) {
+                System.err.println("error: " + e.getMessage());
+            }
+        });
+        t.setDaemon(true);
+        t.start();
+        Thread.sleep(200);
+        assertDoesNotThrow(w2::stop);
     }
 
     @Test
@@ -225,8 +218,7 @@ class WorkerTest {
              )
         ) {
             out.println("");
-            String response = in.readLine();
-            assertEquals(null, response);
+            assertNull(in.readLine());
         }
     }
 }

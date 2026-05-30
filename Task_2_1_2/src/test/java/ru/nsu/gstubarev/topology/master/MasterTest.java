@@ -21,6 +21,7 @@ import ru.nsu.gstubarev.topology.worker.Worker;
 class MasterTest {
 
     private static final int MASTER_PORT = 19300;
+    private static final int MASTER_UDP_PORT = 19302;
     private static final int WORKER_PORT = 19301;
     private static final int SLEEP_MS = 300;
     private Master master;
@@ -32,7 +33,7 @@ class MasterTest {
      */
     @BeforeEach
     void setUp() throws InterruptedException {
-        master = new Master(MASTER_PORT);
+        master = new Master(MASTER_PORT, MASTER_UDP_PORT);
         master.startRegistrationListener();
         Thread.sleep(SLEEP_MS);
     }

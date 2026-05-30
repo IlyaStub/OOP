@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
  * Test.
  */
 class MainTest {
+
     @BeforeEach
     void setUp() {
         Main.setStartupWaitMs(100);
@@ -35,19 +36,12 @@ class MainTest {
     }
 
     @Test
-    void testMainWithWorkerPartialArgs() {
-        assertDoesNotThrow(() -> Main.main(new String[]{"worker", "localhost"}));
+    void testMainWithWorkerValidPort() {
+        assertDoesNotThrow(() -> Main.main(new String[]{"worker", "19401"}));
     }
 
     @Test
     void testRunMasterNoWorkersLogsError() {
         assertDoesNotThrow(() -> Main.main(new String[]{"master", "19400"}));
-    }
-
-    @Test
-    void testRunWorkerInvalidHostLogsError() {
-        assertDoesNotThrow(() ->
-            Main.main(new String[]{"worker", "invalid-host", "9999", "19401"})
-        );
     }
 }

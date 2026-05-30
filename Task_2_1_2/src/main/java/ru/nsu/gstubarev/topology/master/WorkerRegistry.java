@@ -1,5 +1,7 @@
 package ru.nsu.gstubarev.topology.master;
 
+import ru.nsu.gstubarev.topology.worker.WorkerInfo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 import ru.nsu.gstubarev.topology.Command;
+import ru.nsu.gstubarev.topology.worker.WorkerInfo;
 
 /**
  * Master node that coordinates distributed prime checking across worker nodes.
@@ -16,17 +17,20 @@ public class Master {
 
     private final int registrationPort;
     private final WorkerRegistry registry;
-    private final TaskDistributor distributor;
+    private final ChunkDistributor distributor;
     private volatile boolean running;
     private ServerSocket serverSocket;
+    private final MasterDiscovery discovery;
+
 
     /**
      * Creates a Master that listens for worker registrations on the given port.
      */
-    public Master(int registrationPort) {
+    public Master(int registrationPort, int udpPort) {
         this.registrationPort = registrationPort;
         this.registry = new WorkerRegistry();
-        this.distributor = new TaskDistributor();
+        this.distributor = new ChunkDistributor();
+        this.discovery = new MasterDiscovery(registrationPort, udpPort);
         this.running = true;
     }
 
@@ -37,6 +41,7 @@ public class Master {
         Thread listener = new Thread(this::listenForRegistrations);
         listener.setDaemon(true);
         listener.start();
+        discovery.startBroadcasting();
         System.out.println("Master listening on port " + registrationPort);
     }
 
@@ -111,6 +116,7 @@ public class Master {
      */
     public void stop() {
         running = false;
+        discovery.stop();
         if (serverSocket != null && !serverSocket.isClosed()) {
             try {
                 serverSocket.close();
