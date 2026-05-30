@@ -63,48 +63,60 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Utility class for splitting arrays.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="ru/nsu/gstubarev/topology/Command.html" title="enum class in ru.nsu.gstubarev.topology">Command</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
-<div class="block">Text protocol constants for Master-Worker communication.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/CommandHandler.html" title="class in ru.nsu.gstubarev.topology.worker">CommandHandler</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Parses and handles commands received by a worker node.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/Main.html" title="class in ru.nsu.gstubarev.topology">Main</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Main class.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/Master.html" title="class in ru.nsu.gstubarev.topology.master">Master</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Master node that coordinates distributed prime checking across worker nodes.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/MessageParser.html" title="class in ru.nsu.gstubarev.topology">MessageParser</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Builds and parses protocol messages for Master-Worker communication.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/PrimeChecker.html" title="class in ru.nsu.gstubarev.topology">PrimeChecker</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Utility class for prime number validation.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html" title="class in ru.nsu.gstubarev.topology.master">TaskDistributor</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html" title="class in ru.nsu.gstubarev.topology.master">ChunkDistributor</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Distributes array chunks to workers and collects results.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="ru/nsu/gstubarev/topology/Command.html" title="enum class in ru.nsu.gstubarev.topology">Command</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
+<div class="block">Text protocol constants for Master-Worker communication.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/CommandHandler.html" title="class in ru.nsu.gstubarev.topology.worker">CommandHandler</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Parses and handles commands received by a worker node.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/Main.html" title="class in ru.nsu.gstubarev.topology">Main</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Main class.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/Master.html" title="class in ru.nsu.gstubarev.topology.master">Master</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Master node that coordinates distributed prime checking across worker nodes.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html" title="class in ru.nsu.gstubarev.topology.master">MasterDiscovery</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Broadcasts master presence over UDP to the local subnet.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/MasterInfo.html" title="class in ru.nsu.gstubarev.topology.master">MasterInfo</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Holds the address of a discovered master node.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/MessageParser.html" title="class in ru.nsu.gstubarev.topology">MessageParser</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Builds and parses protocol messages for Master-Worker communication.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/PrimeChecker.html" title="class in ru.nsu.gstubarev.topology">PrimeChecker</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Utility class for prime number validation.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/Worker.html" title="class in ru.nsu.gstubarev.topology.worker">Worker</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Worker node that listens for tasks from Master and checks numbers for primality.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/WorkerDiscovery.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerDiscovery</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Listens for UDP broadcast from master and returns its address.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Holds connection info and status of a remote worker node.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/WorkerRegistrar.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerRegistrar</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/worker/WorkerRegistrar.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerRegistrar</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Handles worker registration with the master.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/WorkerRegistry.html" title="class in ru.nsu.gstubarev.topology.master">WorkerRegistry</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/gstubarev/topology/master/WorkerRegistry.html" title="class in ru.nsu.gstubarev.topology.master">WorkerRegistry</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Stores and manages registered worker nodes.</div>
 </div>
 </div>

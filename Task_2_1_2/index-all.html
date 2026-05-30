@@ -74,6 +74,18 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/gstubarev/topology/Command.html#CHECK" class="member-name-link">CHECK</a> - Enum constant in enum class ru.nsu.gstubarev.topology.<a href="ru/nsu/gstubarev/topology/Command.html" title="enum class in ru.nsu.gstubarev.topology">Command</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.master">ChunkDistributor</a> - Class in <a href="ru/nsu/gstubarev/topology/master/package-summary.html">ru.nsu.gstubarev.topology.master</a></dt>
+<dd>
+<div class="block">Distributes array chunks to workers and collects results.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html#%3Cinit%3E()" class="member-name-link">ChunkDistributor()</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html" title="class in ru.nsu.gstubarev.topology.master">ChunkDistributor</a></dt>
+<dd>
+<div class="block">Default constructor.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html#%3Cinit%3E(int,int)" class="member-name-link">ChunkDistributor(int, int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html" title="class in ru.nsu.gstubarev.topology.master">ChunkDistributor</a></dt>
+<dd>
+<div class="block">Custom constructor.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/topology/Command.html" class="type-name-link" title="enum class in ru.nsu.gstubarev.topology">Command</a> - Enum Class in <a href="ru/nsu/gstubarev/topology/package-summary.html">ru.nsu.gstubarev.topology</a></dt>
 <dd>
 <div class="block">Text protocol constants for Master-Worker communication.</div>
@@ -87,7 +99,15 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
-<dt><a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html#distribute(long%5B%5D%5B%5D,java.util.List)" class="member-name-link">distribute(long[][], List&lt;WorkerInfo&gt;)</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html" title="class in ru.nsu.gstubarev.topology.master">TaskDistributor</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerDiscovery.html#discover()" class="member-name-link">discover()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerDiscovery.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerDiscovery</a></dt>
+<dd>
+<div class="block">Waits for master broadcast and returns master address.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/worker/Worker.html#discoverAndRegister(int,int)" class="member-name-link">discoverAndRegister(int, int)</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/Worker.html" title="class in ru.nsu.gstubarev.topology.worker">Worker</a></dt>
+<dd>
+<div class="block">Discovers master via UDP broadcast and registers with it.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html#distribute(long%5B%5D%5B%5D,java.util.List)" class="member-name-link">distribute(long[][], List&lt;WorkerInfo&gt;)</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/ChunkDistributor.html" title="class in ru.nsu.gstubarev.topology.master">ChunkDistributor</a></dt>
 <dd>
 <div class="block">Sends chunks to workers and returns true if any composite number found.</div>
 </dd>
@@ -98,11 +118,19 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns list of currently alive workers.</div>
 </dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html#getHost()" class="member-name-link">getHost()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterInfo.html#getHost()" class="member-name-link">getHost()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterInfo.html" title="class in ru.nsu.gstubarev.topology.master">MasterInfo</a></dt>
+<dd>
+<div class="block">Returns master host.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html#getHost()" class="member-name-link">getHost()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></dt>
 <dd>
 <div class="block">Get worker hostname or IP.</div>
 </dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html#getPort()" class="member-name-link">getPort()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterInfo.html#getPort()" class="member-name-link">getPort()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterInfo.html" title="class in ru.nsu.gstubarev.topology.master">MasterInfo</a></dt>
+<dd>
+<div class="block">Returns master port.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html#getPort()" class="member-name-link">getPort()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></dt>
 <dd>
 <div class="block">Get worker port.</div>
 </dd>
@@ -124,7 +152,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html#isAlive()" class="member-name-link">isAlive()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html#isAlive()" class="member-name-link">isAlive()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></dt>
 <dd>
 <div class="block">Get true if worker is considered alive.</div>
 </dd>
@@ -145,7 +173,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/gstubarev/topology/Main.html#%3Cinit%3E()" class="member-name-link">Main()</a> - Constructor for class ru.nsu.gstubarev.topology.<a href="ru/nsu/gstubarev/topology/Main.html" title="class in ru.nsu.gstubarev.topology">Main</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html#markDead()" class="member-name-link">markDead()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html#markDead()" class="member-name-link">markDead()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></dt>
 <dd>
 <div class="block">Marks this worker as dead.</div>
 </dd>
@@ -153,9 +181,25 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Master node that coordinates distributed prime checking across worker nodes.</div>
 </dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/Master.html#%3Cinit%3E(int)" class="member-name-link">Master(int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/Master.html" title="class in ru.nsu.gstubarev.topology.master">Master</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/master/Master.html#%3Cinit%3E(int,int)" class="member-name-link">Master(int, int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/Master.html" title="class in ru.nsu.gstubarev.topology.master">Master</a></dt>
 <dd>
 <div class="block">Creates a Master that listens for worker registrations on the given port.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.master">MasterDiscovery</a> - Class in <a href="ru/nsu/gstubarev/topology/master/package-summary.html">ru.nsu.gstubarev.topology.master</a></dt>
+<dd>
+<div class="block">Broadcasts master presence over UDP to the local subnet.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html#%3Cinit%3E(int,int)" class="member-name-link">MasterDiscovery(int, int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html" title="class in ru.nsu.gstubarev.topology.master">MasterDiscovery</a></dt>
+<dd>
+<div class="block">Constructor MasterDiscovery.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterInfo.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.master">MasterInfo</a> - Class in <a href="ru/nsu/gstubarev/topology/master/package-summary.html">ru.nsu.gstubarev.topology.master</a></dt>
+<dd>
+<div class="block">Holds the address of a discovered master node.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterInfo.html#%3Cinit%3E(java.lang.String,int)" class="member-name-link">MasterInfo(String, int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterInfo.html" title="class in ru.nsu.gstubarev.topology.master">MasterInfo</a></dt>
+<dd>
+<div class="block">Constructor MasterInfo.</div>
 </dd>
 <dt><a href="ru/nsu/gstubarev/topology/MessageParser.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology">MessageParser</a> - Class in <a href="ru/nsu/gstubarev/topology/package-summary.html">ru.nsu.gstubarev.topology</a></dt>
 <dd>
@@ -200,10 +244,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Registers a new worker.</div>
 </dd>
-<dt><a href="ru/nsu/gstubarev/topology/worker/Worker.html#register(java.lang.String,int)" class="member-name-link">register(String, int)</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/Worker.html" title="class in ru.nsu.gstubarev.topology.worker">Worker</a></dt>
-<dd>
-<div class="block">Registers this worker with the master node.</div>
-</dd>
 <dt><a href="ru/nsu/gstubarev/topology/Command.html#REGISTER" class="member-name-link">REGISTER</a> - Enum constant in enum class ru.nsu.gstubarev.topology.<a href="ru/nsu/gstubarev/topology/Command.html" title="enum class in ru.nsu.gstubarev.topology">Command</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/gstubarev/topology/Command.html#RESULT" class="member-name-link">RESULT</a> - Enum constant in enum class ru.nsu.gstubarev.topology.<a href="ru/nsu/gstubarev/topology/Command.html" title="enum class in ru.nsu.gstubarev.topology">Command</a></dt>
@@ -233,6 +273,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Starts listening for incoming task connections.</div>
 </dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html#startBroadcasting()" class="member-name-link">startBroadcasting()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html" title="class in ru.nsu.gstubarev.topology.master">MasterDiscovery</a></dt>
+<dd>
+<div class="block">Starts broadcasting in a daemon thread.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/topology/master/Master.html#startRegistrationListener()" class="member-name-link">startRegistrationListener()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/Master.html" title="class in ru.nsu.gstubarev.topology.master">Master</a></dt>
 <dd>
 <div class="block">Starts listening for worker registrations in a background thread.</div>
@@ -241,6 +285,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Stops the master node.</div>
 </dd>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html#stop()" class="member-name-link">stop()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterDiscovery.html" title="class in ru.nsu.gstubarev.topology.master">MasterDiscovery</a></dt>
+<dd>
+<div class="block">Stops broadcasting.</div>
+</dd>
 <dt><a href="ru/nsu/gstubarev/topology/worker/Worker.html#stop()" class="member-name-link">stop()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/Worker.html" title="class in ru.nsu.gstubarev.topology.worker">Worker</a></dt>
 <dd>
 <div class="block">Stops the worker gracefully.</div>
@@ -248,19 +296,9 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
-<dt><a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.master">TaskDistributor</a> - Class in <a href="ru/nsu/gstubarev/topology/master/package-summary.html">ru.nsu.gstubarev.topology.master</a></dt>
-<dd>
-<div class="block">Distributes array chunks to workers and collects results.</div>
-</dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html#%3Cinit%3E()" class="member-name-link">TaskDistributor()</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html" title="class in ru.nsu.gstubarev.topology.master">TaskDistributor</a></dt>
-<dd>
-<div class="block">Default constructor.</div>
-</dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html#%3Cinit%3E(int,int)" class="member-name-link">TaskDistributor(int, int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/TaskDistributor.html" title="class in ru.nsu.gstubarev.topology.master">TaskDistributor</a></dt>
-<dd>
-<div class="block">Custom constructor.</div>
-</dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/master/MasterInfo.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/MasterInfo.html" title="class in ru.nsu.gstubarev.topology.master">MasterInfo</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
@@ -285,11 +323,19 @@ the order they are declared.</div>
 <dd>
 <div class="block">Constructor for Worker.</div>
 </dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a> - Class in <a href="ru/nsu/gstubarev/topology/master/package-summary.html">ru.nsu.gstubarev.topology.master</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerDiscovery.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.worker">WorkerDiscovery</a> - Class in <a href="ru/nsu/gstubarev/topology/worker/package-summary.html">ru.nsu.gstubarev.topology.worker</a></dt>
+<dd>
+<div class="block">Listens for UDP broadcast from master and returns its address.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerDiscovery.html#%3Cinit%3E(int,int)" class="member-name-link">WorkerDiscovery(int, int)</a> - Constructor for class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerDiscovery.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerDiscovery</a></dt>
+<dd>
+<div class="block">Creates a WorkerDiscovery that listens on the given UDP port.</div>
+</dd>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" class="type-name-link" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a> - Class in <a href="ru/nsu/gstubarev/topology/worker/package-summary.html">ru.nsu.gstubarev.topology.worker</a></dt>
 <dd>
 <div class="block">Holds connection info and status of a remote worker node.</div>
 </dd>
-<dt><a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html#%3Cinit%3E(java.lang.String,int)" class="member-name-link">WorkerInfo(String, int)</a> - Constructor for class ru.nsu.gstubarev.topology.master.<a href="ru/nsu/gstubarev/topology/master/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.master">WorkerInfo</a></dt>
+<dt><a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html#%3Cinit%3E(java.lang.String,int)" class="member-name-link">WorkerInfo(String, int)</a> - Constructor for class ru.nsu.gstubarev.topology.worker.<a href="ru/nsu/gstubarev/topology/worker/WorkerInfo.html" title="class in ru.nsu.gstubarev.topology.worker">WorkerInfo</a></dt>
 <dd>
 <div class="block">Creates a WorkerInfo with given host and port.</div>
 </dd>
